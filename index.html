@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine — Studio System</title>
+<title>Haerviu Engine — Creative Studio</title>
 
 <style>
+
+/* =========================================================
+   HAERVIU ENGINE — V2
+========================================================= */
+
 *{
   margin:0;
   padding:0;
@@ -18,25 +23,86 @@ html{
 }
 
 :root{
-  --bg:#05060a;
-  --panel:#0d0f15;
-  --panel2:#11141d;
-  --white:#f5f6fa;
+  --bg:#040509;
+  --panel:#0b0d13;
+  --panel2:#11141c;
+  --white:#f5f7fb;
   --soft:#b5bac8;
   --muted:#707685;
-  --line:rgba(255,255,255,.12);
+  --line:rgba(255,255,255,.11);
   --line2:rgba(255,255,255,.24);
+
   --green:#70e0a0;
   --blue:#718cff;
   --purple:#9b7cff;
+  --cyan:#5fd5df;
 }
 
 body{
   background:var(--bg);
   color:var(--white);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "SF Pro Text",Inter,Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    Inter,
+    Arial,
+    sans-serif;
   overflow-x:hidden;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      circle at 78% 8%,
+      rgba(91,112,255,.20),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 8% 42%,
+      rgba(135,72,220,.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 80%,
+      rgba(40,170,185,.09),
+      transparent 28%
+    );
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-4;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+  background-size:80px 80px;
+  mask-image:linear-gradient(
+    to bottom,
+    black,
+    transparent 80%
+  );
 }
 
 a{
@@ -44,30 +110,29 @@ a{
   text-decoration:none;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-3;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 80% 8%,rgba(87,108,220,.18),transparent 30%),
-    radial-gradient(circle at 8% 48%,rgba(119,70,190,.12),transparent 32%),
-    radial-gradient(circle at 90% 85%,rgba(30,140,160,.08),transparent 30%);
-}
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
 
-body::after{
-  content:"";
+.cursor-glow{
   position:fixed;
-  width:900px;
-  height:900px;
-  left:-450px;
-  top:420px;
-  z-index:-2;
-  border:1px solid rgba(255,255,255,.035);
+  width:380px;
+  height:380px;
   border-radius:50%;
   pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(
+    circle,
+    rgba(104,125,255,.08),
+    transparent 68%
+  );
+  transform:translate(-50%,-50%);
+  transition:opacity:.3s;
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
   height:82px;
@@ -75,85 +140,190 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,6,10,.82);
+
+  background:rgba(5,6,10,.72);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
+
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:16px;
-  font-size:15px;
-  font-weight:900;
+  gap:15px;
+
+  font-size:14px;
+  font-weight:950;
   letter-spacing:5px;
 }
 
 .logo-mark{
-  width:48px;
-  height:48px;
+  width:47px;
+  height:47px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border:1px solid rgba(255,255,255,.28);
   border-radius:15px;
+
   font-family:Georgia,serif;
   font-size:24px;
-  box-shadow:0 0 35px rgba(100,120,255,.08);
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255,255,255,.08),
+      transparent 60%
+    );
+
+  box-shadow:
+    0 0 35px rgba(100,120,255,.08),
+    inset 0 0 20px rgba(255,255,255,.025);
 }
 
 .menu{
-  width:50px;
-  height:50px;
+  width:49px;
+  height:49px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border:1px solid var(--line);
   border-radius:15px;
+
   background:rgba(255,255,255,.035);
-  font-size:21px;
+
+  font-size:20px;
+
+  transition:.3s;
 }
+
+.menu:hover{
+  border-color:var(--line2);
+  background:rgba(255,255,255,.08);
+  transform:rotate(90deg);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
   min-height:calc(100vh - 82px);
-  padding:100px 6vw 90px;
+
+  padding:90px 6vw 80px;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
+
   position:relative;
+  overflow:hidden;
 }
 
-.hero::before{
+.hero-orb{
+  position:absolute;
+
+  width:600px;
+  height:600px;
+
+  right:-220px;
+  top:-80px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(105,125,255,.18),
+      transparent 65%
+    );
+
+  filter:blur(5px);
+
+  animation:
+    orbFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+  }
+  50%{
+    transform:translate(-30px,25px) scale(1.08);
+  }
+}
+
+.hero-ring{
+  position:absolute;
+
+  width:520px;
+  height:520px;
+
+  right:-110px;
+  top:80px;
+
+  border:1px solid rgba(255,255,255,.045);
+  border-radius:50%;
+
+  animation:spin 30s linear infinite;
+}
+
+.hero-ring::before,
+.hero-ring::after{
   content:"";
   position:absolute;
-  width:500px;
-  height:500px;
-  right:-180px;
-  top:80px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(105,125,255,.14),transparent 65%);
-  pointer-events:none;
+  border:1px solid rgba(255,255,255,.035);
+}
+
+.hero-ring::before{
+  inset:55px;
+}
+
+.hero-ring::after{
+  inset:120px;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 .kicker{
   margin-bottom:32px;
+
   color:#858b9b;
+
   font-size:11px;
   font-weight:900;
   letter-spacing:5px;
+
+  animation:fadeUp .9s ease both;
 }
 
 .hero h1{
   max-width:1100px;
+
   font-size:clamp(70px,11vw,165px);
   line-height:.82;
+
   letter-spacing:-8px;
   font-weight:950;
+
   position:relative;
+  z-index:2;
+
+  animation:fadeUp 1s .08s ease both;
 }
 
 .hero h1 span{
@@ -163,6 +333,12 @@ header{
 .outline{
   color:transparent;
   -webkit-text-stroke:1px rgba(225,230,245,.38);
+
+  transition:.5s;
+}
+
+.hero h1:hover .outline{
+  -webkit-text-stroke-color:rgba(130,150,255,.7);
 }
 
 .white{
@@ -171,31 +347,70 @@ header{
 
 .hero-text{
   max-width:680px;
+
   margin-top:55px;
+
   color:var(--soft);
+
   font-size:20px;
   line-height:1.65;
+
+  animation:fadeUp 1s .2s ease both;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
+
   gap:15px;
+
   margin-top:38px;
+
+  animation:fadeUp 1s .3s ease both;
 }
 
 .button{
   min-width:220px;
   min-height:62px;
+
   padding:0 28px;
+
   display:flex;
   align-items:center;
   justify-content:center;
   gap:20px;
+
   border-radius:16px;
-  font-size:15px;
-  font-weight:850;
+
+  font-size:14px;
+  font-weight:900;
+
   transition:.35s;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.button::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.20),
+      transparent
+    );
+
+  transform:translateX(-120%);
+  transition:.6s;
+}
+
+.button:hover::before{
+  transform:translateX(120%);
 }
 
 .button:hover{
@@ -205,6 +420,9 @@ header{
 .button-primary{
   background:var(--white);
   color:#08090d;
+
+  box-shadow:
+    0 20px 45px rgba(255,255,255,.06);
 }
 
 .button-secondary{
@@ -212,30 +430,86 @@ header{
   background:rgba(255,255,255,.035);
 }
 
+.button-secondary:hover{
+  border-color:rgba(120,140,255,.55);
+  box-shadow:
+    0 15px 40px rgba(70,90,220,.12);
+}
+
 .system-status{
   margin-top:48px;
+
   display:flex;
   align-items:center;
   gap:10px;
+
   color:#747a89;
+
   font-size:10px;
   font-weight:900;
   letter-spacing:3px;
+
+  animation:fadeUp 1s .4s ease both;
 }
 
 .status-dot{
   width:8px;
   height:8px;
+
   border-radius:50%;
+
   background:var(--green);
-  box-shadow:0 0 20px var(--green);
+
+  box-shadow:
+    0 0 20px var(--green);
+
   animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.45;transform:scale(.75)}
+  0%,100%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  50%{
+    opacity:.45;
+    transform:scale(.75);
+  }
 }
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(45px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section{
   padding:125px 0;
@@ -252,7 +526,9 @@ header{
 
 .section-number{
   margin-bottom:18px;
+
   color:#707685;
+
   font-size:10px;
   font-weight:900;
   letter-spacing:5px;
@@ -261,20 +537,103 @@ header{
 .section-title{
   font-size:clamp(50px,7vw,92px);
   line-height:.9;
+
   letter-spacing:-5px;
 }
 
 .section-description{
   max-width:730px;
+
   margin-top:25px;
+
   color:var(--soft);
+
   font-size:18px;
   line-height:1.65;
 }
 
-/* =========================================
-   DEVICE GRID
-========================================= */
+/* =========================================================
+   STUDIO LIVE BAR
+========================================================= */
+
+.live-panel{
+  margin-bottom:35px;
+
+  padding:20px 24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+
+  border:1px solid var(--line);
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  overflow:hidden;
+}
+
+.live-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  color:#9ea4b3;
+
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.live-dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:0 0 16px var(--green);
+}
+
+.levels{
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+  height:25px;
+}
+
+.levels span{
+  width:3px;
+  border-radius:5px;
+  background:var(--green);
+
+  animation:level 1s ease-in-out infinite alternate;
+}
+
+.levels span:nth-child(1){height:8px;animation-delay:.1s}
+.levels span:nth-child(2){height:18px;animation-delay:.3s}
+.levels span:nth-child(3){height:12px;animation-delay:.5s}
+.levels span:nth-child(4){height:23px;animation-delay:.2s}
+.levels span:nth-child(5){height:15px;animation-delay:.4s}
+.levels span:nth-child(6){height:20px;animation-delay:.1s}
+.levels span:nth-child(7){height:10px;animation-delay:.6s}
+.levels span:nth-child(8){height:17px;animation-delay:.3s}
+
+@keyframes level{
+  from{transform:scaleY(.35)}
+  to{transform:scaleY(1)}
+}
+
+/* =========================================================
+   DEVICES
+========================================================= */
 
 .devices{
   display:grid;
@@ -284,64 +643,122 @@ header{
 
 .device{
   min-height:510px;
+
   position:relative;
   overflow:hidden;
+
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+
   border:1px solid var(--line);
   border-radius:30px;
+
   background:
-    radial-gradient(circle at 50% 30%,rgba(90,110,190,.10),transparent 55%),
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(90,110,190,.11),
+      transparent 55%
+    ),
     #0b0d12;
-  transition:.45s;
+
+  transition:
+    transform .45s,
+    border-color .45s,
+    box-shadow .45s;
+}
+
+.device::after{
+  content:"";
+
+  position:absolute;
+  inset:-1px;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(120,140,255,.10),
+      transparent 65%
+    );
+
+  opacity:0;
+  transition:.5s;
+
+  pointer-events:none;
 }
 
 .device:hover{
-  transform:translateY(-9px);
-  border-color:var(--line2);
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  transform:translateY(-10px);
+
+  border-color:rgba(255,255,255,.27);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.42),
+    0 0 50px rgba(75,95,220,.06);
+}
+
+.device:hover::after{
+  opacity:1;
 }
 
 .device-image{
   position:absolute;
   inset:0 0 165px 0;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:40px;
+
+  transition:.5s;
 }
 
 .device-image svg{
   width:100%;
   max-width:580px;
   max-height:300px;
-  filter:drop-shadow(0 30px 30px rgba(0,0,0,.65));
-  transition:.5s;
+
+  filter:
+    drop-shadow(0 30px 30px rgba(0,0,0,.65));
+
+  transition:.55s;
+}
+
+.device:hover .device-image{
+  transform:translateY(-5px);
 }
 
 .device:hover .device-image svg{
-  transform:scale(1.045) translateY(-5px);
+  transform:scale(1.045);
 }
 
 .device-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    transparent 25%,
-    rgba(7,8,12,.05) 42%,
-    rgba(7,8,12,.80) 70%,
-    #07080c 100%
-  );
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 25%,
+      rgba(7,8,12,.05) 42%,
+      rgba(7,8,12,.80) 70%,
+      #07080c 100%
+    );
 }
 
 .device-top{
   position:absolute;
+
   top:25px;
   left:25px;
   right:25px;
+
   z-index:5;
+
   display:flex;
   justify-content:flex-end;
 }
@@ -350,7 +767,9 @@ header{
   display:flex;
   align-items:center;
   gap:8px;
+
   color:var(--green);
+
   font-size:10px;
   font-weight:900;
   letter-spacing:3px;
@@ -358,16 +777,21 @@ header{
 
 .device-status::before{
   content:"";
+
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   background:var(--green);
+
   box-shadow:0 0 15px var(--green);
 }
 
 .device-info{
   position:relative;
   z-index:4;
+
   padding:30px;
 }
 
@@ -378,21 +802,31 @@ header{
 
 .device p{
   margin-top:8px;
+
   color:#858b99;
   font-size:15px;
 }
 
 .device-link{
   margin-top:23px;
+
   color:#b9beca;
-  font-size:12px;
+
+  font-size:11px;
   font-weight:900;
-  letter-spacing:1px;
+  letter-spacing:2px;
+
+  transition:.3s;
 }
 
-/* =========================================
+.device:hover .device-link{
+  color:var(--white);
+  transform:translateX(7px);
+}
+
+/* =========================================================
    ROUTING
-========================================= */
+========================================================= */
 
 .routing,
 .workflow,
@@ -408,33 +842,88 @@ header{
 
 .routing-card{
   min-height:285px;
+
   padding:30px;
+
   border:1px solid var(--line);
   border-radius:25px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.045),
-    rgba(255,255,255,.012)
-  );
-  transition:.35s;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  transition:.4s;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.routing-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:180px;
+  height:180px;
+
+  right:-90px;
+  top:-90px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(105,125,255,.12),
+      transparent 70%
+    );
+
+  transition:.5s;
+}
+
+.routing-card:hover::before{
+  transform:scale(1.6);
 }
 
 .routing-card:hover{
-  transform:translateY(-7px);
+  transform:translateY(-8px);
+
   border-color:var(--line2);
+
   background:rgba(255,255,255,.055);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.22);
 }
 
 .routing-icon{
   width:54px;
   height:54px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border:1px solid var(--line);
   border-radius:15px;
+
   background:rgba(255,255,255,.045);
+
   font-size:23px;
+
+  transition:.4s;
+}
+
+.routing-card:hover .routing-icon{
+  transform:scale(1.08) rotate(-4deg);
+
+  border-color:rgba(115,135,255,.45);
+
+  box-shadow:
+    0 0 30px rgba(90,110,255,.12);
 }
 
 .routing-card h3{
@@ -444,13 +933,15 @@ header{
 
 .routing-card p{
   margin-top:12px;
+
   color:#858a97;
+
   line-height:1.6;
 }
 
-/* =========================================
-   FLOW
-========================================= */
+/* =========================================================
+   SIGNAL FLOW
+========================================================= */
 
 .flow{
   display:grid;
@@ -461,36 +952,130 @@ header{
 .flow-card{
   padding:35px;
   min-height:220px;
+
   border:1px solid var(--line);
   border-radius:25px;
+
   background:#0d0f15;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.flow-card::after{
+  content:"";
+
+  position:absolute;
+  width:250px;
+  height:250px;
+
+  right:-120px;
+  bottom:-140px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(100,120,255,.12),
+      transparent 70%
+    );
+}
+
+.flow-card h3{
+  font-size:23px;
 }
 
 .flow-line{
   display:flex;
   align-items:center;
   flex-wrap:wrap;
+
   gap:10px;
+
   margin-top:28px;
 }
 
 .flow-node{
   padding:12px 15px;
+
   border:1px solid var(--line);
   border-radius:12px;
+
   color:#c8ccd6;
+
   background:rgba(255,255,255,.035);
+
   font-size:12px;
   font-weight:800;
+
+  transition:.3s;
+}
+
+.flow-node:hover{
+  border-color:rgba(115,135,255,.5);
+  transform:translateY(-3px);
 }
 
 .flow-arrow{
   color:#6f7788;
 }
 
-/* =========================================
+/* =========================================================
+   VOCAL FEATURE
+========================================================= */
+
+.vocal-chain{
+  margin-top:30px;
+
+  padding:30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:14px;
+
+  border:1px solid var(--line);
+  border-radius:25px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(105,125,255,.08),
+      transparent 60%
+    );
+}
+
+.vocal-node{
+  padding:17px 22px;
+
+  border:1px solid var(--line2);
+  border-radius:14px;
+
+  background:rgba(255,255,255,.035);
+
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+
+  transition:.3s;
+}
+
+.vocal-node:hover{
+  transform:scale(1.05);
+  border-color:var(--green);
+}
+
+.vocal-arrow{
+  color:#656d7d;
+  font-size:20px;
+}
+
+/* =========================================================
    WORKFLOW
-========================================= */
+========================================================= */
 
 .workflow-grid{
   display:grid;
@@ -500,18 +1085,36 @@ header{
 
 .workflow-step{
   min-height:245px;
+
   padding:27px;
+
   border:1px solid var(--line);
   border-radius:22px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.05),
-    rgba(255,255,255,.012)
-  );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.012)
+    );
+
+  transition:.4s;
+
+  position:relative;
+}
+
+.workflow-step:hover{
+  transform:translateY(-8px);
+
+  border-color:rgba(255,255,255,.25);
+
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.25);
 }
 
 .step-number{
   color:#707685;
+
   font-size:10px;
   font-weight:900;
   letter-spacing:3px;
@@ -519,67 +1122,114 @@ header{
 
 .workflow-step h3{
   margin-top:62px;
+
   font-size:23px;
 }
 
 .workflow-step p{
   margin-top:12px;
+
   color:#858a97;
+
   line-height:1.55;
 }
 
-/* =========================================
+/* =========================================================
    PROJECT
-========================================= */
+========================================================= */
 
 .project-panel{
   padding:58px;
+
   border:1px solid var(--line);
   border-radius:30px;
+
   background:
-    radial-gradient(circle at 80% 20%,rgba(100,120,220,.14),transparent 35%),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(100,120,220,.16),
+      transparent 35%
+    ),
     rgba(255,255,255,.025);
+
+  position:relative;
+  overflow:hidden;
+}
+
+.project-panel::before{
+  content:"HAERVIU";
+
+  position:absolute;
+
+  right:-30px;
+  bottom:-75px;
+
+  font-size:160px;
+  font-weight:950;
+  letter-spacing:-10px;
+
+  color:rgba(255,255,255,.018);
+
+  pointer-events:none;
 }
 
 .project-panel h3{
   font-size:48px;
   letter-spacing:-2px;
+
+  position:relative;
+  z-index:2;
 }
 
 .project-panel p{
   max-width:700px;
+
   margin-top:20px;
+
   color:var(--soft);
+
   font-size:18px;
   line-height:1.6;
+
+  position:relative;
+  z-index:2;
 }
 
 .project-buttons{
   display:flex;
   flex-wrap:wrap;
+
   gap:14px;
+
   margin-top:32px;
+
+  position:relative;
+  z-index:2;
 }
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 footer{
   padding:45px 6vw;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   border-top:1px solid var(--line);
+
   color:#646a78;
+
   font-size:10px;
   font-weight:900;
   letter-spacing:4px;
 }
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media(max-width:850px){
 
@@ -590,7 +1240,7 @@ footer{
 
   .logo{
     gap:12px;
-    font-size:12px;
+    font-size:11px;
     letter-spacing:3px;
   }
 
@@ -681,6 +1331,11 @@ footer{
     align-items:flex-start;
     gap:15px;
   }
+
+  .live-panel{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
 
 @media(max-width:500px){
@@ -700,76 +1355,128 @@ footer{
   .device-image{
     inset:0 0 150px 0;
   }
+
+  .vocal-chain{
+    justify-content:flex-start;
+  }
+
+  .vocal-arrow{
+    transform:rotate(90deg);
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
 
 <header>
 
 <a href="#home" class="logo">
+
   <div class="logo-mark">H</div>
+
   HAERVIU ENGINE
+
 </a>
 
 <div class="menu">☰</div>
 
 </header>
 
+
 <main>
 
-<!-- =====================================
+
+<!-- ======================================================
      HERO
-===================================== -->
+====================================================== -->
 
 <section id="home" class="hero">
 
+<div class="hero-orb"></div>
+<div class="hero-ring"></div>
+
 <div class="kicker">
-  HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
+HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
 </div>
 
 <h1>
-  <span class="outline">CONNECT.</span>
-  <span class="white">CONFIGURE.</span>
-  <span class="outline">CREATE.</span>
+
+<span class="outline">
+CONNECT.
+</span>
+
+<span class="white">
+CONFIGURE.
+</span>
+
+<span class="outline">
+CREATE.
+</span>
+
 </h1>
 
+
 <p class="hero-text">
-  The central nervous system of the Haerviu studio.
-  Hardware, sequencing, sampling, MIDI, audio,
-  vocals and production workflow — designed as one system.
+
+The central nervous system of the Haerviu studio.
+Hardware, sequencing, sampling, MIDI, audio,
+vocals and production workflow — designed as one system.
+
 </p>
+
 
 <div class="hero-actions">
 
-<a href="#studio-setup" class="button button-primary">
-  ENTER STUDIO
-  <span>→</span>
+<a href="#studio-setup"
+class="button button-primary">
+
+ENTER STUDIO
+
+<span>→</span>
+
 </a>
 
-<a href="#signal-flow" class="button button-secondary">
-  SIGNAL FLOW
-  <span>→</span>
+
+<a href="#signal-flow"
+class="button button-secondary">
+
+SIGNAL FLOW
+
+<span>→</span>
+
 </a>
 
 </div>
 
+
 <div class="system-status">
-  <span class="status-dot"></span>
-  STUDIO SYSTEM READY
+
+<span class="status-dot"></span>
+
+STUDIO SYSTEM READY
+
 </div>
 
 </section>
 
 
-<!-- =====================================
-     STUDIO
-===================================== -->
 
-<section id="studio-setup" class="section">
+<!-- ======================================================
+     STUDIO
+====================================================== -->
+
+<section id="studio-setup"
+class="section reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -782,11 +1489,42 @@ Your Studio.
 </h2>
 
 <p class="section-description">
-Every important machine in the Haerviu production environment.
-Production, rhythm, sampling, mixing and vocals.
+
+Every important machine in the Haerviu production
+environment. Production, rhythm, sampling,
+mixing and vocals — connected as one creative system.
+
 </p>
 
 </div>
+
+
+<div class="live-panel">
+
+<div class="live-left">
+
+<span class="live-dot"></span>
+
+SYSTEM LIVE
+
+</div>
+
+
+<div class="levels">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</div>
+
 
 
 <div class="devices">
@@ -794,54 +1532,110 @@ Production, rhythm, sampling, mixing and vocals.
 
 <!-- MC707 -->
 
-<a href="#midi" class="device">
+<a href="#midi"
+class="device">
 
 <div class="device-top">
-<div class="device-status">CONNECTED</div>
+
+<div class="device-status">
+CONNECTED
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
 <defs>
-<linearGradient id="mcbody" x1="0" x2="1">
-<stop offset="0" stop-color="#151821"/>
-<stop offset="1" stop-color="#05060a"/>
+
+<linearGradient id="mcbody"
+x1="0"
+x2="1">
+
+<stop offset="0"
+stop-color="#151821"/>
+
+<stop offset="1"
+stop-color="#05060a"/>
+
 </linearGradient>
+
 </defs>
 
-<rect x="70" y="55" width="560" height="235" rx="18"
-fill="url(#mcbody)" stroke="#596171"/>
 
-<text x="470" y="78" fill="#aeb5c5"
-font-size="14" font-weight="bold">GROOVEBOX</text>
+<rect
+x="70"
+y="55"
+width="560"
+height="235"
+rx="18"
+fill="url(#mcbody)"
+stroke="#596171"/>
 
-<text x="530" y="100" fill="#d9dde7"
-font-size="22" font-weight="bold">MC-707</text>
 
-<rect x="470" y="120" width="110" height="55" rx="4"
-fill="#171d2b" stroke="#58627a"/>
+<text
+x="470"
+y="78"
+fill="#aeb5c5"
+font-size="14"
+font-weight="bold">
+
+GROOVEBOX
+
+</text>
+
+
+<text
+x="530"
+y="100"
+fill="#d9dde7"
+font-size="22"
+font-weight="bold">
+
+MC-707
+
+</text>
+
+
+<rect
+x="470"
+y="120"
+width="110"
+height="55"
+rx="4"
+fill="#171d2b"
+stroke="#58627a"/>
+
 
 <g fill="#303748">
+
 <circle cx="120" cy="105" r="14"/>
 <circle cx="170" cy="105" r="14"/>
 <circle cx="220" cy="105" r="14"/>
 <circle cx="270" cy="105" r="14"/>
 <circle cx="320" cy="105" r="14"/>
 <circle cx="370" cy="105" r="14"/>
+
 </g>
 
-<g stroke="#8992a6" stroke-width="4">
+
+<g stroke="#8992a6"
+stroke-width="4">
+
 <line x1="115" y1="130" x2="115" y2="220"/>
 <line x1="165" y1="130" x2="165" y2="220"/>
 <line x1="215" y1="130" x2="215" y2="220"/>
 <line x1="265" y1="130" x2="265" y2="220"/>
 <line x1="315" y1="130" x2="315" y2="220"/>
 <line x1="365" y1="130" x2="365" y2="220"/>
+
 </g>
 
+
 <g>
+
 <rect x="100" y="235" width="38" height="22" rx="4" fill="#54bd7e"/>
 <rect x="145" y="235" width="38" height="22" rx="4" fill="#6c82da"/>
 <rect x="190" y="235" width="38" height="22" rx="4" fill="#805fd0"/>
@@ -849,6 +1643,7 @@ fill="#171d2b" stroke="#58627a"/>
 <rect x="280" y="235" width="38" height="22" rx="4" fill="#73c97e"/>
 <rect x="325" y="235" width="38" height="22" rx="4" fill="#aa658e"/>
 <rect x="370" y="235" width="38" height="22" rx="4" fill="#5c87d8"/>
+
 </g>
 
 </svg>
@@ -857,10 +1652,16 @@ fill="#171d2b" stroke="#58627a"/>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Roland MC-707</h3>
-<p>Groovebox / MIDI / Audio</p>
+<h3>
+Roland MC-707
+</h3>
+
+<p>
+Groovebox / MIDI / Audio
+</p>
 
 <div class="device-link">
 MIDI CONTROL →
@@ -871,25 +1672,51 @@ MIDI CONTROL →
 </a>
 
 
+
 <!-- TR8S -->
 
-<a href="#audio" class="device">
+<a href="#audio"
+class="device">
 
 <div class="device-top">
-<div class="device-status">CONNECTED</div>
+
+<div class="device-status">
+CONNECTED
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
-<rect x="70" y="55" width="560" height="235" rx="18"
-fill="#14171d" stroke="#596171"/>
+<rect
+x="70"
+y="55"
+width="560"
+height="235"
+rx="18"
+fill="#14171d"
+stroke="#596171"/>
 
-<text x="500" y="90" fill="#dce0e7"
-font-size="24" font-weight="bold">TR-8S</text>
 
-<g fill="#242932" stroke="#727b8d">
+<text
+x="500"
+y="90"
+fill="#dce0e7"
+font-size="24"
+font-weight="bold">
+
+TR-8S
+
+</text>
+
+
+<g
+fill="#242932"
+stroke="#727b8d">
+
 <circle cx="120" cy="105" r="19"/>
 <circle cx="170" cy="105" r="19"/>
 <circle cx="220" cy="105" r="19"/>
@@ -897,9 +1724,12 @@ font-size="24" font-weight="bold">TR-8S</text>
 <circle cx="320" cy="105" r="19"/>
 <circle cx="370" cy="105" r="19"/>
 <circle cx="420" cy="105" r="19"/>
+
 </g>
 
+
 <g fill="#26302e">
+
 <rect x="105" y="145" width="32" height="80"/>
 <rect x="150" y="145" width="32" height="80"/>
 <rect x="195" y="145" width="32" height="80"/>
@@ -908,9 +1738,12 @@ font-size="24" font-weight="bold">TR-8S</text>
 <rect x="330" y="145" width="32" height="80"/>
 <rect x="375" y="145" width="32" height="80"/>
 <rect x="420" y="145" width="32" height="80"/>
+
 </g>
 
+
 <g fill="#d69b45">
+
 <rect x="105" y="235" width="32" height="20" rx="3"/>
 <rect x="150" y="235" width="32" height="20" rx="3"/>
 <rect x="195" y="235" width="32" height="20" rx="3"/>
@@ -919,13 +1752,29 @@ font-size="24" font-weight="bold">TR-8S</text>
 <rect x="330" y="235" width="32" height="20" rx="3"/>
 <rect x="375" y="235" width="32" height="20" rx="3"/>
 <rect x="420" y="235" width="32" height="20" rx="3"/>
+
 </g>
 
-<rect x="490" y="125" width="105" height="45" rx="4"
-fill="#202b27" stroke="#64786f"/>
 
-<text x="505" y="154" fill="#83d89c"
-font-size="16">125.0</text>
+<rect
+x="490"
+y="125"
+width="105"
+height="45"
+rx="4"
+fill="#202b27"
+stroke="#64786f"/>
+
+
+<text
+x="505"
+y="154"
+fill="#83d89c"
+font-size="16">
+
+125.0
+
+</text>
 
 </svg>
 
@@ -933,10 +1782,16 @@ font-size="16">125.0</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Roland TR-8S</h3>
-<p>Rhythm Performer / Drum Machine</p>
+<h3>
+Roland TR-8S
+</h3>
+
+<p>
+Rhythm Performer / Drum Machine
+</p>
 
 <div class="device-link">
 RHYTHM ENGINE →
@@ -947,44 +1802,104 @@ RHYTHM ENGINE →
 </a>
 
 
-<!-- AKAI FORCE -->
 
-<a href="#workflow" class="device">
+<!-- FORCE -->
+
+<a href="#workflow"
+class="device">
 
 <div class="device-top">
-<div class="device-status">READY</div>
+
+<div class="device-status">
+READY
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 390">
 
 <defs>
-<linearGradient id="force" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#292d35"/>
-<stop offset="1" stop-color="#090b0f"/>
+
+<linearGradient
+id="force"
+x1="0"
+y1="0"
+x2="0"
+y2="1">
+
+<stop offset="0"
+stop-color="#292d35"/>
+
+<stop offset="1"
+stop-color="#090b0f"/>
+
 </linearGradient>
+
 </defs>
 
-<polygon points="90,45 610,45 650,335 50,335"
-fill="url(#force)" stroke="#687080" stroke-width="2"/>
 
-<rect x="235" y="70" width="230" height="105" rx="7"
-fill="#101722" stroke="#737d93"/>
+<polygon
+points="90,45 610,45 650,335 50,335"
+fill="url(#force)"
+stroke="#687080"
+stroke-width="2"/>
 
-<rect x="250" y="83" width="200" height="78" rx="4"
+
+<rect
+x="235"
+y="70"
+width="230"
+height="105"
+rx="7"
+fill="#101722"
+stroke="#737d93"/>
+
+
+<rect
+x="250"
+y="83"
+width="200"
+height="78"
+rx="4"
 fill="#263b55"/>
 
-<path d="M260 140 L285 122 L310 132 L340 105 L365 118 L395 93 L440 125"
-fill="none" stroke="#71a5ff" stroke-width="4"/>
 
-<text x="105" y="80" fill="#bfc5d1"
-font-size="17" font-weight="bold">AKAI PROFESSIONAL</text>
+<path
+d="M260 140 L285 122 L310 132 L340 105 L365 118 L395 93 L440 125"
+fill="none"
+stroke="#71a5ff"
+stroke-width="4"/>
 
-<text x="500" y="80" fill="#dfe3eb"
-font-size="18" font-weight="bold">FORCE</text>
+
+<text
+x="105"
+y="80"
+fill="#bfc5d1"
+font-size="17"
+font-weight="bold">
+
+AKAI PROFESSIONAL
+
+</text>
+
+
+<text
+x="500"
+y="80"
+fill="#dfe3eb"
+font-size="18"
+font-weight="bold">
+
+FORCE
+
+</text>
+
 
 <g>
+
 <rect x="115" y="205" width="42" height="32" rx="4" fill="#ed574f"/>
 <rect x="165" y="205" width="42" height="32" rx="4" fill="#6ad99c"/>
 <rect x="215" y="205" width="42" height="32" rx="4" fill="#64b8e9"/>
@@ -1002,17 +1917,31 @@ font-size="18" font-weight="bold">FORCE</text>
 <rect x="365" y="245" width="42" height="32" rx="4" fill="#bf5bb4"/>
 <rect x="415" y="245" width="42" height="32" rx="4" fill="#5cc4bb"/>
 <rect x="465" y="245" width="42" height="32" rx="4" fill="#72c95f"/>
+
 </g>
 
-<g fill="#161a20" stroke="#737b89">
+
+<g fill="#161a20"
+stroke="#737b89">
+
 <circle cx="125" cy="150" r="14"/>
 <circle cx="170" cy="150" r="14"/>
 <circle cx="520" cy="150" r="14"/>
 <circle cx="565" cy="150" r="14"/>
+
 </g>
 
-<text x="270" y="310" fill="#dce0e7"
-font-size="22" font-weight="bold">FORCE</text>
+
+<text
+x="270"
+y="310"
+fill="#dce0e7"
+font-size="22"
+font-weight="bold">
+
+FORCE
+
+</text>
 
 </svg>
 
@@ -1020,10 +1949,16 @@ font-size="22" font-weight="bold">FORCE</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Akai Force</h3>
-<p>Production / Sampling / Performance</p>
+<h3>
+Akai Force
+</h3>
+
+<p>
+Production / Sampling / Performance
+</p>
 
 <div class="device-link">
 CREATIVE WORKSTATION →
@@ -1034,25 +1969,48 @@ CREATIVE WORKSTATION →
 </a>
 
 
+
 <!-- MX1 -->
 
-<a href="#audio" class="device">
+<a href="#audio"
+class="device">
 
 <div class="device-top">
-<div class="device-status">CONNECTED</div>
+
+<div class="device-status">
+CONNECTED
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
-<rect x="55" y="50" width="590" height="245" rx="14"
-fill="#111419" stroke="#677080"/>
+<rect
+x="55"
+y="50"
+width="590"
+height="245"
+rx="14"
+fill="#111419"
+stroke="#677080"/>
 
-<text x="495" y="78" fill="#aeb4c1"
-font-size="15">MIX PERFORMER</text>
+
+<text
+x="495"
+y="78"
+fill="#aeb4c1"
+font-size="15">
+
+MIX PERFORMER
+
+</text>
+
 
 <g>
+
 <rect x="90" y="75" width="27" height="25" rx="3" fill="#cbd0d8"/>
 <rect x="123" y="75" width="27" height="25" rx="3" fill="#5cd3e0"/>
 <rect x="156" y="75" width="27" height="25" rx="3" fill="#6689e7"/>
@@ -1063,15 +2021,30 @@ font-size="15">MIX PERFORMER</text>
 <rect x="321" y="75" width="27" height="25" rx="3" fill="#6b77d8"/>
 <rect x="354" y="75" width="27" height="25" rx="3" fill="#75c8d2"/>
 <rect x="387" y="75" width="27" height="25" rx="3" fill="#6cd1a1"/>
+
 </g>
 
-<circle cx="350" cy="135" r="32"
-fill="#20262f" stroke="#818b9b" stroke-width="3"/>
 
-<circle cx="350" cy="135" r="8"
+<circle
+cx="350"
+cy="135"
+r="32"
+fill="#20262f"
+stroke="#818b9b"
+stroke-width="3"/>
+
+
+<circle
+cx="350"
+cy="135"
+r="8"
 fill="#6cda9a"/>
 
-<g fill="#1b2028" stroke="#697283">
+
+<g
+fill="#1b2028"
+stroke="#697283">
+
 <circle cx="105" cy="145" r="15"/>
 <circle cx="155" cy="145" r="15"/>
 <circle cx="205" cy="145" r="15"/>
@@ -1079,9 +2052,12 @@ fill="#6cda9a"/>
 <circle cx="445" cy="145" r="15"/>
 <circle cx="495" cy="145" r="15"/>
 <circle cx="545" cy="145" r="15"/>
+
 </g>
 
+
 <g stroke="#8c94a3" stroke-width="5">
+
 <line x1="105" y1="175" x2="105" y2="255"/>
 <line x1="155" y1="175" x2="155" y2="255"/>
 <line x1="205" y1="175" x2="205" y2="255"/>
@@ -1089,9 +2065,12 @@ fill="#6cda9a"/>
 <line x1="445" y1="175" x2="445" y2="255"/>
 <line x1="495" y1="175" x2="495" y2="255"/>
 <line x1="545" y1="175" x2="545" y2="255"/>
+
 </g>
 
+
 <g fill="#4dd58f">
+
 <rect x="96" y="220" width="18" height="35"/>
 <rect x="146" y="205" width="18" height="50"/>
 <rect x="196" y="215" width="18" height="40"/>
@@ -1099,10 +2078,20 @@ fill="#6cda9a"/>
 <rect x="436" y="210" width="18" height="45"/>
 <rect x="486" y="200" width="18" height="55"/>
 <rect x="536" y="218" width="18" height="37"/>
+
 </g>
 
-<text x="82" y="282" fill="#dce1e9"
-font-size="20" font-weight="bold">ROLAND MX-1</text>
+
+<text
+x="82"
+y="282"
+fill="#dce1e9"
+font-size="20"
+font-weight="bold">
+
+ROLAND MX-1
+
+</text>
 
 </svg>
 
@@ -1110,10 +2099,16 @@ font-size="20" font-weight="bold">ROLAND MX-1</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Roland MX-1</h3>
-<p>Mix Performer / Audio Hub / FX</p>
+<h3>
+Roland MX-1
+</h3>
+
+<p>
+Mix Performer / Audio Hub / FX
+</p>
 
 <div class="device-link">
 MASTER MIX →
@@ -1124,59 +2119,103 @@ MASTER MIX →
 </a>
 
 
+
 <!-- VT4 -->
 
-<a href="#vocal" class="device">
+<a href="#vocal"
+class="device">
 
 <div class="device-top">
-<div class="device-status">READY</div>
+
+<div class="device-status">
+READY
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
-<rect x="130" y="55" width="440" height="225" rx="18"
-fill="#151820" stroke="#687080" stroke-width="2"/>
+<rect
+x="130"
+y="55"
+width="440"
+height="225"
+rx="18"
+fill="#151820"
+stroke="#687080"
+stroke-width="2"/>
 
-<text x="170" y="90" fill="#d9dee7"
-font-size="24" font-weight="bold">VT-4</text>
 
-<text x="170" y="110" fill="#777f8e"
-font-size="11">VOICE TRANSFORMER</text>
+<text
+x="170"
+y="90"
+fill="#d9dee7"
+font-size="24"
+font-weight="bold">
 
-<g fill="#202630" stroke="#727c8e">
+VT-4
+
+</text>
+
+
+<text
+x="170"
+y="110"
+fill="#777f8e"
+font-size="11">
+
+VOICE TRANSFORMER
+
+</text>
+
+
+<g
+fill="#202630"
+stroke="#727c8e">
+
 <circle cx="220" cy="150" r="28"/>
 <circle cx="295" cy="150" r="28"/>
 <circle cx="370" cy="150" r="28"/>
 <circle cx="445" cy="150" r="28"/>
+
 </g>
+
 
 <g fill="#6873e4">
+
 <circle cx="220" cy="150" r="9"/>
 <circle cx="295" cy="150" r="9"/>
+
 </g>
 
-<g stroke="#a0a8b8" stroke-width="5">
+
+<g
+stroke="#a0a8b8"
+stroke-width="5">
+
 <line x1="205" y1="215" x2="205" y2="255"/>
 <line x1="255" y1="215" x2="255" y2="255"/>
 <line x1="305" y1="215" x2="305" y2="255"/>
 <line x1="355" y1="215" x2="355" y2="255"/>
 <line x1="405" y1="215" x2="405" y2="255"/>
 <line x1="455" y1="215" x2="455" y2="255"/>
+
 </g>
 
+
 <g fill="#79d99d">
+
 <rect x="198" y="225" width="14" height="30" rx="3"/>
 <rect x="248" y="210" width="14" height="45" rx="3"/>
 <rect x="298" y="230" width="14" height="25" rx="3"/>
 <rect x="348" y="218" width="14" height="37" rx="3"/>
 <rect x="398" y="228" width="14" height="27" rx="3"/>
 <rect x="448" y="205" width="14" height="50" rx="3"/>
-</g>
 
-<text x="470" y="90" fill="#737c8e"
-font-size="12">PITCH</text>
+</g>
 
 </svg>
 
@@ -1184,10 +2223,16 @@ font-size="12">PITCH</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Roland VT-4</h3>
-<p>Voice Transformer / Vocal FX</p>
+<h3>
+Roland VT-4
+</h3>
+
+<p>
+Voice Transformer / Vocal FX
+</p>
 
 <div class="device-link">
 VOCAL PROCESSING →
@@ -1198,55 +2243,116 @@ VOCAL PROCESSING →
 </a>
 
 
+
 <!-- NT1 -->
 
-<a href="#vocal" class="device">
+<a href="#vocal"
+class="device">
 
 <div class="device-top">
-<div class="device-status">READY</div>
+
+<div class="device-status">
+READY
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
 <defs>
-<linearGradient id="mic" x1="0" x2="1">
-<stop offset="0" stop-color="#6d737e"/>
-<stop offset=".5" stop-color="#d5d8de"/>
-<stop offset="1" stop-color="#555b66"/>
+
+<linearGradient
+id="mic"
+x1="0"
+x2="1">
+
+<stop offset="0"
+stop-color="#6d737e"/>
+
+<stop offset=".5"
+stop-color="#d5d8de"/>
+
+<stop offset="1"
+stop-color="#555b66"/>
+
 </linearGradient>
+
 </defs>
 
-<rect x="310" y="45" width="80" height="185" rx="40"
-fill="url(#mic)" stroke="#9097a4"/>
 
-<path d="M325 65 Q350 45 375 65 L375 170 Q350 190 325 170Z"
+<rect
+x="310"
+y="45"
+width="80"
+height="185"
+rx="40"
+fill="url(#mic)"
+stroke="#9097a4"/>
+
+
+<path
+d="M325 65 Q350 45 375 65 L375 170 Q350 190 325 170Z"
 fill="#171a20"/>
 
-<g stroke="#7e8592" stroke-width="3">
+
+<g
+stroke="#7e8592"
+stroke-width="3">
+
 <line x1="335" y1="70" x2="335" y2="165"/>
 <line x1="350" y1="62" x2="350" y2="173"/>
 <line x1="365" y1="70" x2="365" y2="165"/>
+
 </g>
 
-<rect x="290" y="220" width="120" height="25" rx="12"
-fill="#151820" stroke="#6b7382"/>
 
-<path d="M350 245 L350 285"
-stroke="#8c93a0" stroke-width="6"/>
+<rect
+x="290"
+y="220"
+width="120"
+height="25"
+rx="12"
+fill="#151820"
+stroke="#6b7382"/>
 
-<path d="M290 285 Q350 265 410 285"
-fill="none" stroke="#7b8290" stroke-width="6"/>
 
-<text x="455" y="135"
+<path
+d="M350 245 L350 285"
+stroke="#8c93a0"
+stroke-width="6"/>
+
+
+<path
+d="M290 285 Q350 265 410 285"
+fill="none"
+stroke="#7b8290"
+stroke-width="6"/>
+
+
+<text
+x="455"
+y="135"
 fill="#d9dde5"
 font-size="28"
-font-weight="bold">RØDE</text>
+font-weight="bold">
 
-<text x="455" y="165"
+RØDE
+
+</text>
+
+
+<text
+x="455"
+y="165"
 fill="#8d95a4"
-font-size="20">NT1</text>
+font-size="20">
+
+NT1
+
+</text>
 
 </svg>
 
@@ -1254,10 +2360,16 @@ font-size="20">NT1</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>RØDE NT1</h3>
-<p>Studio Microphone / Vocal Recording</p>
+<h3>
+RØDE NT1
+</h3>
+
+<p>
+Studio Microphone / Vocal Recording
+</p>
 
 <div class="device-link">
 RECORDING CHAIN →
@@ -1268,28 +2380,62 @@ RECORDING CHAIN →
 </a>
 
 
+
 <!-- ARTURIA -->
 
-<a href="#workflow" class="device">
+<a href="#workflow"
+class="device">
 
 <div class="device-top">
-<div class="device-status">READY</div>
+
+<div class="device-status">
+READY
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
-<rect x="65" y="70" width="570" height="200" rx="15"
-fill="#17191e" stroke="#747b88"/>
+<rect
+x="65"
+y="70"
+width="570"
+height="200"
+rx="15"
+fill="#17191e"
+stroke="#747b88"/>
 
-<text x="95" y="100" fill="#dce0e7"
-font-size="18" font-weight="bold">ARTURIA</text>
 
-<text x="500" y="100" fill="#b9bec9"
-font-size="16">ESSENTIAL 88</text>
+<text
+x="95"
+y="100"
+fill="#dce0e7"
+font-size="18"
+font-weight="bold">
 
-<g fill="#eeeeee" stroke="#777">
+ARTURIA
+
+</text>
+
+
+<text
+x="500"
+y="100"
+fill="#b9bec9"
+font-size="16">
+
+ESSENTIAL 88
+
+</text>
+
+
+<g
+fill="#eeeeee"
+stroke="#777">
+
 <rect x="100" y="145" width="28" height="95"/>
 <rect x="130" y="145" width="28" height="95"/>
 <rect x="160" y="145" width="28" height="95"/>
@@ -1306,9 +2452,12 @@ font-size="16">ESSENTIAL 88</text>
 <rect x="490" y="145" width="28" height="95"/>
 <rect x="520" y="145" width="28" height="95"/>
 <rect x="550" y="145" width="28" height="95"/>
+
 </g>
 
+
 <g fill="#111">
+
 <rect x="120" y="145" width="17" height="58"/>
 <rect x="150" y="145" width="17" height="58"/>
 <rect x="210" y="145" width="17" height="58"/>
@@ -1320,6 +2469,7 @@ font-size="16">ESSENTIAL 88</text>
 <rect x="450" y="145" width="17" height="58"/>
 <rect x="480" y="145" width="17" height="58"/>
 <rect x="540" y="145" width="17" height="58"/>
+
 </g>
 
 </svg>
@@ -1328,10 +2478,16 @@ font-size="16">ESSENTIAL 88</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Arturia Essential 88</h3>
-<p>MIDI Keyboard / Instrument Control</p>
+<h3>
+Arturia Essential 88
+</h3>
+
+<p>
+MIDI Keyboard / Instrument Control
+</p>
 
 <div class="device-link">
 MIDI PERFORMANCE →
@@ -1342,38 +2498,81 @@ MIDI PERFORMANCE →
 </a>
 
 
+
 <!-- HS8 -->
 
-<a href="#audio" class="device">
+<a href="#audio"
+class="device">
 
 <div class="device-top">
-<div class="device-status">MONITORING</div>
+
+<div class="device-status">
+MONITORING
 </div>
+
+</div>
+
 
 <div class="device-image">
 
 <svg viewBox="0 0 700 330">
 
-<rect x="170" y="35" width="360" height="260" rx="20"
-fill="#17191e" stroke="#666e7d"/>
+<rect
+x="170"
+y="35"
+width="360"
+height="260"
+rx="20"
+fill="#17191e"
+stroke="#666e7d"/>
 
-<circle cx="350" cy="115" r="55"
-fill="#0b0d11" stroke="#59616f" stroke-width="5"/>
 
-<circle cx="350" cy="115" r="23"
+<circle
+cx="350"
+cy="115"
+r="55"
+fill="#0b0d11"
+stroke="#59616f"
+stroke-width="5"/>
+
+
+<circle
+cx="350"
+cy="115"
+r="23"
 fill="#202630"/>
 
-<circle cx="350" cy="225" r="30"
-fill="#080a0e" stroke="#59616f" stroke-width="5"/>
 
-<text x="195" y="75"
+<circle
+cx="350"
+cy="225"
+r="30"
+fill="#080a0e"
+stroke="#59616f"
+stroke-width="5"/>
+
+
+<text
+x="195"
+y="75"
 fill="#dfe3ea"
 font-size="20"
-font-weight="bold">YAMAHA</text>
+font-weight="bold">
 
-<text x="425" y="75"
+YAMAHA
+
+</text>
+
+
+<text
+x="425"
+y="75"
 fill="#9ba2b0"
-font-size="18">HS8</text>
+font-size="18">
+
+HS8
+
+</text>
 
 </svg>
 
@@ -1381,10 +2580,16 @@ font-size="18">HS8</text>
 
 </div>
 
+
 <div class="device-info">
 
-<h3>Yamaha HS8</h3>
-<p>Studio Monitoring / Reference</p>
+<h3>
+Yamaha HS8
+</h3>
+
+<p>
+Studio Monitoring / Reference
+</p>
 
 <div class="device-link">
 MONITORING SYSTEM →
@@ -1396,17 +2601,22 @@ MONITORING SYSTEM →
 
 
 </div>
+
 </div>
+
 </section>
 
 
-<!-- =====================================
-     MIDI
-===================================== -->
 
-<section id="midi" class="section routing">
+<!-- ======================================================
+     MIDI
+====================================================== -->
+
+<section id="midi"
+class="section routing reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -1419,52 +2629,77 @@ MIDI.
 </h2>
 
 <p class="section-description">
+
 The control layer connecting the machines,
 controllers and software.
+
 </p>
 
 </div>
+
 
 <div class="routing-grid">
 
+
 <div class="routing-card">
 
-<div class="routing-icon">↔</div>
+<div class="routing-icon">
+↔
+</div>
 
-<h3>MIDI Clock</h3>
+<h3>
+MIDI Clock
+</h3>
 
 <p>
+
 Keep the MC-707, TR-8S, Force and DAW
 locked to the same tempo and timing.
+
 </p>
 
 </div>
 
+
 <div class="routing-card">
 
-<div class="routing-icon">⌁</div>
+<div class="routing-icon">
+⌁
+</div>
 
-<h3>Controllers</h3>
+<h3>
+Controllers
+</h3>
 
 <p>
+
 Use the Arturia keyboard and hardware
 controllers to play and control the system.
+
 </p>
 
 </div>
+
 
 <div class="routing-card">
 
-<div class="routing-icon">⚡</div>
+<div class="routing-icon">
+⚡
+</div>
 
-<h3>Synchronization</h3>
+<h3>
+Synchronization
+</h3>
 
 <p>
+
 Build a stable studio system where every
 machine knows when to start, stop and follow.
+
 </p>
 
 </div>
+
 
 </div>
 
@@ -1473,13 +2708,16 @@ machine knows when to start, stop and follow.
 </section>
 
 
-<!-- =====================================
-     AUDIO
-===================================== -->
 
-<section id="audio" class="section routing">
+<!-- ======================================================
+     AUDIO
+====================================================== -->
+
+<section id="audio"
+class="section routing reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -1492,45 +2730,84 @@ Sound Flow.
 </h2>
 
 <p class="section-description">
+
 From hardware to the MX-1, through processing,
 recording and monitoring.
+
 </p>
 
 </div>
 
-<div class="flow">
+
+<div id="signal-flow"
+class="flow">
+
 
 <div class="flow-card">
 
-<h3>Hardware → Mix</h3>
+<h3>
+Hardware → Mix
+</h3>
 
 <div class="flow-line">
 
-<div class="flow-node">MC-707</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">TR-8S</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">MX-1</div>
+<div class="flow-node">
+MC-707
+</div>
 
+<div class="flow-arrow">
+→
+</div>
+
+<div class="flow-node">
+TR-8S
+</div>
+
+<div class="flow-arrow">
+→
+</div>
+
+<div class="flow-node">
+MX-1
 </div>
 
 </div>
+
+</div>
+
 
 <div class="flow-card">
 
-<h3>Mix → DAW</h3>
+<h3>
+Mix → DAW
+</h3>
 
 <div class="flow-line">
 
-<div class="flow-node">MX-1</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">Cubase</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">Master</div>
+<div class="flow-node">
+MX-1
+</div>
 
+<div class="flow-arrow">
+→
+</div>
+
+<div class="flow-node">
+Cubase
+</div>
+
+<div class="flow-arrow">
+→
+</div>
+
+<div class="flow-node">
+Master
 </div>
 
 </div>
+
+</div>
+
 
 </div>
 
@@ -1539,13 +2816,16 @@ recording and monitoring.
 </section>
 
 
-<!-- =====================================
-     VOCAL
-===================================== -->
 
-<section id="vocal" class="section routing">
+<!-- ======================================================
+     VOCAL
+====================================================== -->
+
+<section id="vocal"
+class="section routing reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -1558,68 +2838,130 @@ Your Voice.
 </h2>
 
 <p class="section-description">
+
 The vocal chain designed around the RØDE NT1
 and Roland VT-4.
+
 </p>
 
 </div>
+
 
 <div class="routing-grid">
 
+
 <div class="routing-card">
 
-<div class="routing-icon">🎙</div>
+<div class="routing-icon">
+🎙
+</div>
 
-<h3>Capture</h3>
+<h3>
+Capture
+</h3>
 
 <p>
+
 RØDE NT1 captures the clean studio vocal
 before creative processing.
+
 </p>
 
 </div>
 
+
 <div class="routing-card">
 
-<div class="routing-icon">◉</div>
+<div class="routing-icon">
+◉
+</div>
 
-<h3>Transform</h3>
+<h3>
+Transform
+</h3>
 
 <p>
+
 The VT-4 provides pitch, formant,
-vocoder, harmony, delay and other
-creative vocal processing.
+vocoder, harmony, delay and creative
+vocal processing.
+
 </p>
 
 </div>
 
+
 <div class="routing-card">
 
-<div class="routing-icon">🎚</div>
+<div class="routing-icon">
+🎚
+</div>
 
-<h3>Return</h3>
+<h3>
+Return
+</h3>
 
 <p>
+
 Processed vocals return to the MX-1
 and DAW for arrangement and final mix.
+
 </p>
 
 </div>
 
+
 </div>
+
+
+<div class="vocal-chain">
+
+<div class="vocal-node">
+RØDE NT1
+</div>
+
+<div class="vocal-arrow">
+→
+</div>
+
+<div class="vocal-node">
+VT-4
+</div>
+
+<div class="vocal-arrow">
+→
+</div>
+
+<div class="vocal-node">
+MX-1
+</div>
+
+<div class="vocal-arrow">
+→
+</div>
+
+<div class="vocal-node">
+CUBASE
+</div>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- =====================================
-     WORKFLOW
-===================================== -->
 
-<section id="workflow" class="section workflow">
+<!-- ======================================================
+     WORKFLOW
+====================================================== -->
+
+<section id="workflow"
+class="section workflow reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -1632,64 +2974,96 @@ Create.
 </h2>
 
 <p class="section-description">
+
 From the first beat to the finished Haerviu production.
+
 </p>
 
 </div>
+
 
 <div class="workflow-grid">
 
+
 <div class="workflow-step">
 
-<div class="step-number">STEP 01</div>
+<div class="step-number">
+STEP 01
+</div>
 
-<h3>Idea</h3>
+<h3>
+Idea
+</h3>
 
 <p>
+
 Start with rhythm, melody, bass,
 sound design or a vocal idea.
+
 </p>
 
 </div>
 
+
 <div class="workflow-step">
 
-<div class="step-number">STEP 02</div>
+<div class="step-number">
+STEP 02
+</div>
 
-<h3>Build</h3>
+<h3>
+Build
+</h3>
 
 <p>
+
 Use the MC-707, TR-8S and Force
 to develop the musical structure.
+
 </p>
 
 </div>
 
+
 <div class="workflow-step">
 
-<div class="step-number">STEP 03</div>
+<div class="step-number">
+STEP 03
+</div>
 
-<h3>Record</h3>
+<h3>
+Record
+</h3>
 
 <p>
+
 Capture hardware and vocals into
 the DAW through the studio system.
+
 </p>
 
 </div>
+
 
 <div class="workflow-step">
 
-<div class="step-number">STEP 04</div>
+<div class="step-number">
+STEP 04
+</div>
 
-<h3>Finish</h3>
+<h3>
+Finish
+</h3>
 
 <p>
+
 Mix, automate, master and prepare
 the final Haerviu release.
+
 </p>
 
 </div>
+
 
 </div>
 
@@ -1698,13 +3072,16 @@ the final Haerviu release.
 </section>
 
 
-<!-- =====================================
-     PROJECT
-===================================== -->
 
-<section id="projects" class="section projects">
+<!-- ======================================================
+     PRODUCTIONS
+====================================================== -->
+
+<section id="projects"
+class="section projects reveal">
 
 <div class="container">
+
 
 <div class="section-header">
 
@@ -1718,26 +3095,39 @@ Music.
 
 </div>
 
+
 <div class="project-panel">
 
-<h3>Haerviu Productions</h3>
+<h3>
+Haerviu Productions
+</h3>
 
 <p>
+
 One creative environment for your tracks,
 stems, arrangements, vocals, hardware sessions
 and finished productions.
+
 </p>
+
 
 <div class="project-buttons">
 
-<a href="#studio-setup"
+<a
+href="#studio-setup"
 class="button button-secondary">
+
 Studio Setup →
+
 </a>
 
-<a href="#workflow"
+
+<a
+href="#workflow"
 class="button button-secondary">
+
 Creative Workflow →
+
 </a>
 
 </div>
@@ -1748,18 +3138,188 @@ Creative Workflow →
 
 </section>
 
+
 </main>
+
 
 
 <footer>
 
-<span>HAERVIU ENGINE</span>
+<span>
+HAERVIU ENGINE
+</span>
 
 <span>
 CONNECT · CONFIGURE · CREATE
 </span>
 
 </footer>
+
+
+
+<script>
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+},
+
+{
+threshold:.12
+}
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(element=>{
+
+observer.observe(element);
+
+});
+
+
+
+/* =========================================================
+   CURSOR LIGHT
+========================================================= */
+
+const glow =
+document.getElementById("cursorGlow");
+
+
+document.addEventListener(
+"mousemove",
+(event)=>{
+
+glow.style.left =
+event.clientX + "px";
+
+glow.style.top =
+event.clientY + "px";
+
+}
+);
+
+
+
+/* =========================================================
+   DEVICE PARALLAX
+========================================================= */
+
+document
+.querySelectorAll(".device")
+.forEach(card=>{
+
+card.addEventListener(
+"mousemove",
+(event)=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+(event.clientX - rect.left)
+/
+rect.width
+- .5;
+
+const y =
+(event.clientY - rect.top)
+/
+rect.height
+- .5;
+
+const svg =
+card.querySelector("svg");
+
+if(svg){
+
+svg.style.transform =
+`perspective(800px)
+ rotateY(${x * 4}deg)
+ rotateX(${y * -4}deg)
+ scale(1.04)`;
+
+}
+
+}
+);
+
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+const svg =
+card.querySelector("svg");
+
+if(svg){
+
+svg.style.transform =
+"perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)";
+
+}
+
+}
+);
+
+});
+
+
+
+/* =========================================================
+   SMOOTH ANCHOR
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(link=>{
+
+link.addEventListener(
+"click",
+function(event){
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+if(target){
+
+event.preventDefault();
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+}
+);
+
+});
+
+</script>
+
 
 </body>
 </html>
