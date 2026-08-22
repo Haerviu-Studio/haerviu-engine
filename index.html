@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,7 +41,6 @@ a{
   --line:rgba(255,255,255,.13);
   --line2:rgba(255,255,255,.28);
   --green:#70d89b;
-  --blue:#7ea8ff;
 }
 
 body::before{
@@ -222,7 +222,6 @@ header{
 
 .section{
   padding:120px 0;
-  border-top:1px solid var(--line);
 }
 
 .container{
@@ -256,15 +255,13 @@ header{
   line-height:1.65;
 }
 
-/* DEVICE GRID */
+/* DEVICES */
 
 .devices{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:20px;
 }
-
-/* DEVICE CARD */
 
 .device{
   min-height:470px;
@@ -284,7 +281,7 @@ header{
   border-color:var(--line2);
 }
 
-.device-visual{
+.device-image{
   position:absolute;
   inset:0 0 150px 0;
   display:flex;
@@ -292,263 +289,38 @@ header{
   justify-content:center;
   padding:35px;
   background:
-    radial-gradient(
-      circle at center,
-      rgba(100,120,190,.14),
-      transparent 68%
-    );
+    radial-gradient(circle at center,
+    rgba(100,120,190,.12),
+    transparent 65%);
 }
 
-/* IMAGE EXTERNE */
-
-.device-visual img{
+.device-image img{
   width:100%;
   height:100%;
   object-fit:contain;
-  filter:drop-shadow(0 25px 30px rgba(0,0,0,.6));
+  filter:drop-shadow(0 25px 30px rgba(0,0,0,.55));
   transition:.45s;
 }
 
-.device:hover .device-visual img{
+.device:hover .device-image img{
   transform:scale(1.045);
-}
-
-/* FALLBACK VISUEL */
-
-.visual-fallback{
-  width:82%;
-  height:72%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:22px;
-  background:
-    linear-gradient(
-      145deg,
-      #1b1e27,
-      #090a0e
-    );
-  box-shadow:
-    0 35px 55px rgba(0,0,0,.6),
-    inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-.visual-fallback::before{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;
-}
-
-.visual-label{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  font-weight:900;
-  letter-spacing:5px;
-  font-size:28px;
-  color:#e9ebf2;
-}
-
-.visual-sub{
-  margin-top:10px;
-  font-size:10px;
-  letter-spacing:3px;
-  color:#737886;
-}
-
-/* SPECIAL DEVICE VISUALS */
-
-.force-visual{
-  width:86%;
-  height:67%;
-  position:relative;
-  padding:22px;
-  border-radius:20px;
-  background:
-    linear-gradient(
-      145deg,
-      #242832,
-      #0b0d11
-    );
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 35px 60px rgba(0,0,0,.65);
-  transform:perspective(800px) rotateX(4deg);
-}
-
-.force-screen{
-  position:absolute;
-  left:20%;
-  top:13%;
-  width:30%;
-  height:30%;
-  border:2px solid #5e6675;
-  border-radius:5px;
-  background:
-    linear-gradient(
-      135deg,
-      #252d3b,
-      #11151c
-    );
-  box-shadow:inset 0 0 25px rgba(80,120,190,.2);
-}
-
-.force-pads{
-  position:absolute;
-  left:8%;
-  bottom:12%;
-  width:42%;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-}
-
-.force-pads span{
-  aspect-ratio:1;
-  border-radius:4px;
-  background:#292e37;
-  border:1px solid #424956;
-}
-
-.force-knobs{
-  position:absolute;
-  right:9%;
-  top:13%;
-  width:35%;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.force-knobs span{
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:#444a55;
-  border:1px solid #646b77;
-}
-
-.force-name{
-  position:absolute;
-  right:10%;
-  bottom:13%;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:4px;
-  color:#c9cdd5;
-}
-
-.mx1-visual{
-  width:88%;
-  height:63%;
-  position:relative;
-  padding:18px;
-  border-radius:16px;
-  background:
-    linear-gradient(
-      145deg,
-      #15171c,
-      #050609
-    );
-  border:1px solid rgba(255,255,255,.2);
-  box-shadow:0 35px 60px rgba(0,0,0,.7);
-  transform:perspective(800px) rotateX(3deg);
-}
-
-.mx1-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:#c9cdd5;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.mx1-display{
-  margin:12px auto;
-  width:42%;
-  height:32px;
-  border:1px solid #363c46;
-  border-radius:4px;
-  background:#080a0d;
-  box-shadow:inset 0 0 12px rgba(100,150,255,.15);
-}
-
-.mx1-channels{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:8px;
-  height:65%;
-}
-
-.mx1-channel{
-  position:relative;
-  border-radius:4px;
-  background:#0b0d11;
-  border:1px solid #282d35;
-}
-
-.mx1-channel::before{
-  content:"";
-  position:absolute;
-  top:10px;
-  left:50%;
-  width:8px;
-  height:8px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:#6d7581;
-}
-
-.mx1-channel::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:10px;
-  width:8px;
-  height:62%;
-  transform:translateX(-50%);
-  border-radius:4px;
-  background:
-    linear-gradient(
-      to top,
-      #383e48 0 70%,
-      #747c88 70% 73%,
-      #181b21 73%
-    );
-}
-
-.mx1-name{
-  position:absolute;
-  right:18px;
-  bottom:12px;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:4px;
-  color:#c9cdd5;
 }
 
 .device-overlay{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 30%,
-      rgba(7,8,12,.12) 48%,
-      rgba(7,8,12,.96) 79%,
-      #07080c 100%
-    );
-  pointer-events:none;
+  background:linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(7,8,12,.08) 48%,
+    rgba(7,8,12,.88) 74%,
+    #07080c 100%
+  );
 }
 
 .device-info{
   position:relative;
-  z-index:3;
+  z-index:2;
   padding:28px;
 }
 
@@ -557,7 +329,7 @@ header{
   top:25px;
   left:25px;
   right:25px;
-  z-index:4;
+  z-index:3;
   display:flex;
   justify-content:flex-end;
 }
@@ -601,6 +373,10 @@ header{
 }
 
 /* ROUTING */
+
+.routing{
+  border-top:1px solid var(--line);
+}
 
 .routing-grid{
   display:grid;
@@ -648,6 +424,10 @@ header{
 
 /* WORKFLOW */
 
+.workflow{
+  border-top:1px solid var(--line);
+}
+
 .workflow-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -659,12 +439,11 @@ header{
   padding:27px;
   border:1px solid var(--line);
   border-radius:22px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.015)
-    );
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
+  );
 }
 
 .step-number{
@@ -687,16 +466,18 @@ header{
 
 /* PROJECTS */
 
+.projects{
+  border-top:1px solid var(--line);
+}
+
 .project-panel{
   padding:55px;
   border:1px solid var(--line);
   border-radius:30px;
   background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(100,120,200,.12),
-      transparent 35%
-    ),
+    radial-gradient(circle at 80% 20%,
+    rgba(100,120,200,.12),
+    transparent 35%),
     rgba(255,255,255,.025);
 }
 
@@ -824,6 +605,7 @@ footer{
     align-items:flex-start;
     gap:15px;
   }
+
 }
 
 @media(max-width:500px){
@@ -836,7 +618,7 @@ footer{
     min-height:400px;
   }
 
-  .device-visual{
+  .device-image{
     inset:0 0 145px 0;
     padding:25px;
   }
@@ -845,35 +627,40 @@ footer{
     font-size:27px;
   }
 
-  .visual-label{
-    font-size:22px;
-  }
-
-  .force-visual,
-  .mx1-visual{
-    width:94%;
-  }
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
   <a href="#home" class="logo">
-    <div class="logo-mark">H</div>
+
+    <div class="logo-mark">
+      H
+    </div>
+
     HAERVIU ENGINE
+
   </a>
 
-  <div class="menu">☰</div>
+  <div class="menu">
+    ☰
+  </div>
 
 </header>
 
+
 <main>
 
-<!-- HOME -->
+
+<!-- ==================================================
+     HOME
+================================================== -->
 
 <section id="home" class="hero">
 
@@ -882,665 +669,880 @@ footer{
   </div>
 
   <h1>
-    <span class="outline">CONNECT.</span>
-    <span class="white">CONFIGURE.</span>
-    <span class="outline">CREATE.</span>
+
+    <span class="outline">
+      CONNECT.
+    </span>
+
+    <span class="white">
+      CONFIGURE.
+    </span>
+
+    <span class="outline">
+      CREATE.
+    </span>
+
   </h1>
 
+
   <p class="hero-text">
+
     A central workspace for your studio.
     Organize your instruments, MIDI,
     audio routing and production workflow
     in one place.
+
   </p>
+
 
   <div class="hero-actions">
 
-    <a href="#studio-setup" class="button button-primary">
+    <a href="#studio-setup"
+       class="button button-primary">
+
       Studio Setup
-      <span>→</span>
+
+      <span>
+        →
+      </span>
+
     </a>
 
-    <a href="#workflow" class="button button-secondary">
+
+    <a href="#workflow"
+       class="button button-secondary">
+
       Explore Workflow
-      <span>→</span>
+
+      <span>
+        →
+      </span>
+
     </a>
 
   </div>
+
 
   <div class="system-status">
+
     <span class="status-dot"></span>
+
     SYSTEM READY
-  </div>
-
-</section>
-
-
-<!-- STUDIO -->
-
-<section id="studio-setup" class="section">
-
-  <div class="container">
-
-    <div class="section-header">
-
-      <div class="section-number">
-        01 / STUDIO SETUP
-      </div>
-
-      <h2 class="section-title">
-        Your Studio.
-      </h2>
-
-      <p class="section-description">
-        Your complete studio configuration.
-        Hardware, production machines,
-        mixing, synchronization and vocal recording.
-      </p>
-
-    </div>
-
-
-    <div class="devices">
-
-
-      <!-- MC-707 -->
-
-      <a href="#midi-routing" class="device">
-
-        <div class="device-top">
-          <div class="device-status">CONNECTED</div>
-        </div>
-
-        <div class="device-visual">
-
-          <img
-            src="https://www.atpress.ne.jp/releases/192015/img_192015_5.jpg"
-            alt="Roland MC-707"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-          >
-
-          <div class="visual-fallback" style="display:none">
-            <div>
-              <div class="visual-label">MC-707</div>
-              <div class="visual-sub">ROLAND GROOVEBOX</div>
-            </div>
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>Roland MC-707</h3>
-
-          <p>
-            Groovebox / MIDI / Audio
-          </p>
-
-          <div class="device-link">
-            MIDI & AUDIO ROUTING →
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- TR-8S -->
-
-      <a href="#audio-routing" class="device">
-
-        <div class="device-top">
-          <div class="device-status">CONNECTED</div>
-        </div>
-
-        <div class="device-visual">
-
-          <img
-            src="https://www.woodbrass.com/images/SQUARE400/woodbrass/2ROLAND+TR8S.JPG"
-            alt="Roland TR-8S"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-          >
-
-          <div class="visual-fallback" style="display:none">
-            <div>
-              <div class="visual-label">TR-8S</div>
-              <div class="visual-sub">ROLAND RHYTHM PERFORMER</div>
-            </div>
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>Roland TR-8S</h3>
-
-          <p>
-            Rhythm Performer / Drum Machine
-          </p>
-
-          <div class="device-link">
-            AUDIO ROUTING →
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- AKAI FORCE -->
-
-      <a href="#workflow" class="device">
-
-        <div class="device-top">
-          <div class="device-status">READY</div>
-        </div>
-
-        <div class="device-visual">
-
-          <div class="force-visual">
-
-            <div class="force-screen"></div>
-
-            <div class="force-pads">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="force-knobs">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="force-name">
-              AKAI FORCE
-            </div>
-
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>Akai Force</h3>
-
-          <p>
-            Production / Sampling / Performance
-          </p>
-
-          <div class="device-link">
-            CREATIVE WORKFLOW →
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- MX-1 -->
-
-      <a href="#audio-routing" class="device">
-
-        <div class="device-top">
-          <div class="device-status">CONNECTED</div>
-        </div>
-
-        <div class="device-visual">
-
-          <div class="mx1-visual">
-
-            <div class="mx1-top">
-              <span>ROLAND</span>
-              <span>MIX PERFORMER</span>
-            </div>
-
-            <div class="mx1-display"></div>
-
-            <div class="mx1-channels">
-
-              <div class="mx1-channel"></div>
-              <div class="mx1-channel"></div>
-              <div class="mx1-channel"></div>
-              <div class="mx1-channel"></div>
-              <div class="mx1-channel"></div>
-              <div class="mx1-channel"></div>
-
-            </div>
-
-            <div class="mx1-name">
-              MX-1
-            </div>
-
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>Roland MX-1</h3>
-
-          <p>
-            Performance Mixer / Audio / MIDI / Sync
-          </p>
-
-          <div class="device-link">
-            MIXING & AUDIO ROUTING →
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- NT1 -->
-
-      <a href="#audio-routing" class="device">
-
-        <div class="device-top">
-          <div class="device-status">READY</div>
-        </div>
-
-        <div class="device-visual">
-
-          <img
-            src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/561426.jpg"
-            alt="Rode NT1"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-          >
-
-          <div class="visual-fallback" style="display:none">
-            <div>
-              <div class="visual-label">NT1</div>
-              <div class="visual-sub">RØDE STUDIO MICROPHONE</div>
-            </div>
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>RØDE NT1</h3>
-
-          <p>
-            Studio Microphone / Vocal Recording
-          </p>
-
-          <div class="device-link">
-            VOCAL CHAIN →
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- VT-4 -->
-
-      <a href="#audio-routing" class="device">
-
-        <div class="device-top">
-          <div class="device-status">READY</div>
-        </div>
-
-        <div class="device-visual">
-
-          <div class="visual-fallback">
-
-            <div>
-              <div class="visual-label">VT-4</div>
-              <div class="visual-sub">
-                ROLAND VOICE TRANSFORMER
-              </div>
-            </div>
-
-          </div>
-
-          <div class="device-overlay"></div>
-
-        </div>
-
-        <div class="device-info">
-
-          <h3>Roland VT-4</h3>
-
-          <p>
-            Voice Transformer / Vocal Processing
-          </p>
-
-          <div class="device-link">
-            VOCAL CHAIN →
-          </div>
-
-        </div>
-
-      </a>
-
-
-    </div>
 
   </div>
 
 </section>
 
 
-<!-- MIDI -->
 
-<section id="midi-routing" class="section">
+<!-- ==================================================
+     STUDIO SETUP
+================================================== -->
 
-  <div class="container">
+<section id="studio-setup"
+         class="section">
 
-    <div class="section-header">
-
-      <div class="section-number">
-        02 / MIDI ROUTING
-      </div>
-
-      <h2 class="section-title">
-        MIDI Control.
-      </h2>
-
-      <p class="section-description">
-        Organize the communication between
-        the MC-707, TR-8S, Akai Force,
-        MX-1, Cubase and the rest of the studio.
-      </p>
-
-    </div>
+<div class="container">
 
 
-    <div class="routing-grid">
+<div class="section-header">
 
-      <div class="routing-card">
+  <div class="section-number">
+    01 / STUDIO SETUP
+  </div>
 
-        <div class="routing-icon">↔</div>
+  <h2 class="section-title">
+    Your Studio.
+  </h2>
 
-        <h3>MIDI Clock</h3>
+  <p class="section-description">
 
-        <p>
-          Define the master clock and keep
-          all machines synchronized.
-        </p>
+    Your complete studio configuration.
+    Hardware, production machines,
+    mixing, vocal processing and
+    recording equipment.
 
-      </div>
+  </p>
 
-
-      <div class="routing-card">
-
-        <div class="routing-icon">🎹</div>
-
-        <h3>Controllers</h3>
-
-        <p>
-          Control instruments and software
-          from your MIDI controllers.
-        </p>
-
-      </div>
+</div>
 
 
-      <div class="routing-card">
 
-        <div class="routing-icon">⚡</div>
+<div class="devices">
 
-        <h3>Sync</h3>
 
-        <p>
-          Build a reliable synchronization
-          system for production and live work.
-        </p>
+<!-- ==================================================
+     MC-707
+================================================== -->
 
-      </div>
+<a href="#midi-routing"
+   class="device">
 
+  <div class="device-top">
+
+    <div class="device-status">
+      CONNECTED
     </div>
 
   </div>
 
-</section>
+
+  <div class="device-image">
+
+    <img
+      src="https://www.atpress.ne.jp/releases/192015/img_192015_5.jpg"
+      alt="Roland MC-707">
+
+    <div class="device-overlay"></div>
+
+  </div>
 
 
-<!-- AUDIO -->
+  <div class="device-info">
 
-<section id="audio-routing" class="section">
+    <h3>
+      Roland MC-707
+    </h3>
 
-  <div class="container">
+    <p>
+      Groovebox / MIDI / Audio
+    </p>
 
-    <div class="section-header">
-
-      <div class="section-number">
-        03 / AUDIO ROUTING
-      </div>
-
-      <h2 class="section-title">
-        Sound Flow.
-      </h2>
-
-      <p class="section-description">
-        Visualize the path of the audio
-        from the hardware through the MX-1,
-        into Cubase and finally to monitoring.
-      </p>
-
-    </div>
-
-
-    <div class="routing-grid">
-
-      <div class="routing-card">
-
-        <div class="routing-icon">🎛</div>
-
-        <h3>Hardware</h3>
-
-        <p>
-          MC-707, TR-8S and Akai Force
-          generate and manipulate the musical material.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">🎚</div>
-
-        <h3>MX-1 Mixing</h3>
-
-        <p>
-          The MX-1 acts as the central mixer,
-          handling levels, effects, audio and synchronization.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">🎧</div>
-
-        <h3>Monitoring</h3>
-
-        <p>
-          Send the final mix toward
-          your studio monitoring and headphones.
-        </p>
-
-      </div>
-
+    <div class="device-link">
+      MIDI & AUDIO ROUTING →
     </div>
 
   </div>
 
-</section>
+</a>
 
 
-<!-- WORKFLOW -->
 
-<section id="workflow" class="section">
+<!-- ==================================================
+     TR-8S
+================================================== -->
 
-  <div class="container">
+<a href="#audio-routing"
+   class="device">
 
-    <div class="section-header">
+  <div class="device-top">
 
-      <div class="section-number">
-        04 / CREATIVE WORKFLOW
-      </div>
-
-      <h2 class="section-title">
-        Create.
-      </h2>
-
-      <p class="section-description">
-        A simple production path from
-        the first idea to the finished track.
-      </p>
-
-    </div>
-
-
-    <div class="workflow-grid">
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 01
-        </div>
-
-        <h3>Idea</h3>
-
-        <p>
-          Start with a rhythm, bassline,
-          melody or sound.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 02
-        </div>
-
-        <h3>Build</h3>
-
-        <p>
-          Develop the arrangement
-          and add musical variation.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 03
-        </div>
-
-        <h3>Record</h3>
-
-        <p>
-          Capture hardware and vocals
-          into the DAW.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 04
-        </div>
-
-        <h3>Finish</h3>
-
-        <p>
-          Mix, master and prepare
-          the final production.
-        </p>
-
-      </div>
-
+    <div class="device-status">
+      CONNECTED
     </div>
 
   </div>
 
-</section>
+
+  <div class="device-image">
+
+    <img
+      src="https://www.woodbrass.com/images/SQUARE400/woodbrass/2ROLAND+TR8S.JPG"
+      alt="Roland TR-8S">
+
+    <div class="device-overlay"></div>
+
+  </div>
 
 
-<!-- PROJECTS -->
+  <div class="device-info">
 
-<section id="projects" class="section">
+    <h3>
+      Roland TR-8S
+    </h3>
 
-  <div class="container">
+    <p>
+      Rhythm Performer / Drum Machine
+    </p>
 
-    <div class="section-header">
-
-      <div class="section-number">
-        05 / PROJECTS
-      </div>
-
-      <h2 class="section-title">
-        Music.
-      </h2>
-
-    </div>
-
-
-    <div class="project-panel">
-
-      <h3>
-        Haerviu Productions
-      </h3>
-
-      <p>
-        Centralize your current productions,
-        ideas, stems, arrangements and
-        finished tracks.
-      </p>
-
-      <div class="project-buttons">
-
-        <a href="#studio-setup" class="button button-secondary">
-          Studio Setup →
-        </a>
-
-        <a href="#workflow" class="button button-secondary">
-          Workflow →
-        </a>
-
-      </div>
-
+    <div class="device-link">
+      AUDIO ROUTING →
     </div>
 
   </div>
 
+</a>
+
+
+
+<!-- ==================================================
+     AKAI FORCE
+================================================== -->
+
+<a href="#workflow"
+   class="device">
+
+  <div class="device-top">
+
+    <div class="device-status">
+      READY
+    </div>
+
+  </div>
+
+
+  <div class="device-image">
+
+    <img
+      src="https://www.gear4music.com/media/74UZ/akai-professional-force-standalone-music-production-system-ex-demo-main.jpg"
+      alt="Akai Force"
+      onerror="this.src='https://www.akaipro.com/cdn/shop/files/Force_01.jpg';">
+
+    <div class="device-overlay"></div>
+
+  </div>
+
+
+  <div class="device-info">
+
+    <h3>
+      Akai Force
+    </h3>
+
+    <p>
+      Production / Sampling / Performance
+    </p>
+
+    <div class="device-link">
+      CREATIVE WORKFLOW →
+    </div>
+
+  </div>
+
+</a>
+
+
+
+<!-- ==================================================
+     ROLAND MX-1
+================================================== -->
+
+<a href="#audio-routing"
+   class="device">
+
+  <div class="device-top">
+
+    <div class="device-status">
+      CONNECTED
+    </div>
+
+  </div>
+
+
+  <div class="device-image">
+
+    <img
+      src="https://r2.gear4music.com/media/112/1123010/600/preview.jpg"
+      alt="Roland AIRA MX-1">
+
+    <div class="device-overlay"></div>
+
+  </div>
+
+
+  <div class="device-info">
+
+    <h3>
+      Roland MX-1
+    </h3>
+
+    <p>
+      Performance Mixer / Audio Interface
+    </p>
+
+    <div class="device-link">
+      MIXING & AUDIO ROUTING →
+    </div>
+
+  </div>
+
+</a>
+
+
+
+<!-- ==================================================
+     ROLAND VT-4
+================================================== -->
+
+<a href="#vocal-chain"
+   class="device">
+
+  <div class="device-top">
+
+    <div class="device-status">
+      CONNECTED
+    </div>
+
+  </div>
+
+
+  <div class="device-image">
+
+    <img
+      src="https://static.roland.com/assets/images/products/gallery/vt-4_top_gal.jpg"
+      alt="Roland VT-4"
+      onerror="this.src='https://in.roland.com/cdn-cgi/image/format=auto,onerror=redirect,quality=90,width=1200/https://static.roland.com/assets/images/products/gallery/vt-4_top_gal.jpg';">
+
+    <div class="device-overlay"></div>
+
+  </div>
+
+
+  <div class="device-info">
+
+    <h3>
+      Roland VT-4
+    </h3>
+
+    <p>
+      Voice Transformer / Vocal Effects
+    </p>
+
+    <div class="device-link">
+      VOCAL CHAIN →
+    </div>
+
+  </div>
+
+</a>
+
+
+
+<!-- ==================================================
+     RØDE NT1
+================================================== -->
+
+<a href="#vocal-chain"
+   class="device">
+
+  <div class="device-top">
+
+    <div class="device-status">
+      READY
+    </div>
+
+  </div>
+
+
+  <div class="device-image">
+
+    <img
+      src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/561426.jpg"
+      alt="RØDE NT1">
+
+    <div class="device-overlay"></div>
+
+  </div>
+
+
+  <div class="device-info">
+
+    <h3>
+      RØDE NT1
+    </h3>
+
+    <p>
+      Studio Microphone / Vocal Recording
+    </p>
+
+    <div class="device-link">
+      VOCAL CHAIN →
+    </div>
+
+  </div>
+
+</a>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+
+<!-- ==================================================
+     MIDI ROUTING
+================================================== -->
+
+<section id="midi-routing"
+         class="section routing">
+
+<div class="container">
+
+
+<div class="section-header">
+
+  <div class="section-number">
+    02 / MIDI ROUTING
+  </div>
+
+  <h2 class="section-title">
+    MIDI Control.
+  </h2>
+
+  <p class="section-description">
+
+    Organize the communication between
+    the MC-707, TR-8S, Akai Force,
+    MX-1, controllers and Cubase.
+
+  </p>
+
+</div>
+
+
+
+<div class="routing-grid">
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    ↔
+  </div>
+
+  <h3>
+    MIDI Clock
+  </h3>
+
+  <p>
+    Define the master clock and keep
+    the machines synchronized.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎹
+  </div>
+
+  <h3>
+    Controllers
+  </h3>
+
+  <p>
+    Control instruments and software
+    from your MIDI controllers.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    ⚡
+  </div>
+
+  <h3>
+    Sync
+  </h3>
+
+  <p>
+    Build a reliable synchronization
+    system for production and live work.
+  </p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     AUDIO ROUTING
+================================================== -->
+
+<section id="audio-routing"
+         class="section routing">
+
+<div class="container">
+
+
+<div class="section-header">
+
+  <div class="section-number">
+    03 / AUDIO ROUTING
+  </div>
+
+  <h2 class="section-title">
+    Sound Flow.
+  </h2>
+
+  <p class="section-description">
+
+    Visualize the path of the audio
+    from your hardware into the MX-1,
+    DAW and monitoring system.
+
+  </p>
+
+</div>
+
+
+
+<div class="routing-grid">
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎛
+  </div>
+
+  <h3>
+    Hardware
+  </h3>
+
+  <p>
+    MC-707, TR-8S and Akai Force
+    generate and process the musical material.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎚
+  </div>
+
+  <h3>
+    MX-1
+  </h3>
+
+  <p>
+    The MX-1 acts as the central
+    performance mixer and audio hub.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎧
+  </div>
+
+  <h3>
+    Monitoring
+  </h3>
+
+  <p>
+    Send the final mix toward
+    the studio monitoring system.
+  </p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     VOCAL CHAIN
+================================================== -->
+
+<section id="vocal-chain"
+         class="section routing">
+
+<div class="container">
+
+
+<div class="section-header">
+
+  <div class="section-number">
+    04 / VOCAL CHAIN
+  </div>
+
+  <h2 class="section-title">
+    Voice.
+  </h2>
+
+  <p class="section-description">
+
+    Record the voice with the RØDE NT1,
+    process it through the VT-4,
+    then capture the result in the studio.
+
+  </p>
+
+</div>
+
+
+
+<div class="routing-grid">
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎙
+  </div>
+
+  <h3>
+    RØDE NT1
+  </h3>
+
+  <p>
+    Clean studio microphone for
+    recording vocals and spoken parts.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    ◉
+  </div>
+
+  <h3>
+    VT-4
+  </h3>
+
+  <p>
+    Shape the voice with pitch,
+    formant, harmony, vocoder and effects.
+  </p>
+
+</div>
+
+
+
+<div class="routing-card">
+
+  <div class="routing-icon">
+    🎧
+  </div>
+
+  <h3>
+    Record
+  </h3>
+
+  <p>
+    Capture the processed vocal
+    inside the production workflow.
+  </p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     WORKFLOW
+================================================== -->
+
+<section id="workflow"
+         class="section workflow">
+
+<div class="container">
+
+
+<div class="section-header">
+
+  <div class="section-number">
+    05 / CREATIVE WORKFLOW
+  </div>
+
+  <h2 class="section-title">
+    Create.
+  </h2>
+
+  <p class="section-description">
+
+    A simple production path from
+    the first idea to the finished track.
+
+  </p>
+
+</div>
+
+
+
+<div class="workflow-grid">
+
+
+<div class="workflow-step">
+
+  <div class="step-number">
+    STEP 01
+  </div>
+
+  <h3>
+    Idea
+  </h3>
+
+  <p>
+    Start with a rhythm, bassline,
+    melody or sound.
+  </p>
+
+</div>
+
+
+
+<div class="workflow-step">
+
+  <div class="step-number">
+    STEP 02
+  </div>
+
+  <h3>
+    Build
+  </h3>
+
+  <p>
+    Develop the arrangement
+    and add musical variation.
+  </p>
+
+</div>
+
+
+
+<div class="workflow-step">
+
+  <div class="step-number">
+    STEP 03
+  </div>
+
+  <h3>
+    Record
+  </h3>
+
+  <p>
+    Capture hardware and vocals
+    into the DAW.
+  </p>
+
+</div>
+
+
+
+<div class="workflow-step">
+
+  <div class="step-number">
+    STEP 04
+  </div>
+
+  <h3>
+    Finish
+  </h3>
+
+  <p>
+    Mix, master and prepare
+    the final production.
+  </p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PROJECTS
+================================================== -->
+
+<section id="projects"
+         class="section projects">
+
+<div class="container">
+
+
+<div class="section-header">
+
+  <div class="section-number">
+    06 / PROJECTS
+  </div>
+
+  <h2 class="section-title">
+    Music.
+  </h2>
+
+</div>
+
+
+
+<div class="project-panel">
+
+  <h3>
+    Haerviu Productions
+  </h3>
+
+  <p>
+
+    Centralize your current productions,
+    ideas, stems, arrangements and
+    finished tracks.
+
+  </p>
+
+
+  <div class="project-buttons">
+
+    <a href="#studio-setup"
+       class="button button-secondary">
+
+      Studio Setup →
+
+    </a>
+
+
+    <a href="#workflow"
+       class="button button-secondary">
+
+      Workflow →
+
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+
+</section>
+
 
 </main>
+
 
 
 <footer>
@@ -1554,6 +1556,7 @@ footer{
   </span>
 
 </footer>
+
 
 </body>
 </html>
