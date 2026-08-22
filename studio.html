@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Haerviu Engine — Studio</title>
 
 <style>
-
 :root{
     --bg:#07080d;
     --line:rgba(255,255,255,.13);
     --text:#f4f4f7;
     --muted:#858997;
-    --green:#6ee7a0;
 }
 
 *{
@@ -29,16 +26,8 @@ html{
 body{
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     background:
-        radial-gradient(
-            circle at 82% 18%,
-            rgba(90,110,180,.13),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 12% 70%,
-            rgba(70,80,120,.10),
-            transparent 30%
-        ),
+        radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
+        radial-gradient(circle at 12% 70%,rgba(70,80,120,.10),transparent 30%),
         var(--bg);
     color:var(--text);
     min-height:100vh;
@@ -53,7 +42,6 @@ body::before{
     border-radius:50%;
     transform:rotate(-18deg);
     pointer-events:none;
-    z-index:0;
 }
 
 a{
@@ -61,9 +49,7 @@ a{
     color:inherit;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     height:104px;
@@ -76,7 +62,7 @@ header{
 
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:10;
 
     background:rgba(7,8,13,.88);
     backdrop-filter:blur(18px);
@@ -92,7 +78,6 @@ header{
 .logo{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
     border-radius:17px;
 
@@ -112,33 +97,24 @@ header{
 .menu{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
     border-radius:17px;
 
-    background:transparent;
-    color:white;
+    display:grid;
+    place-items:center;
 
     font-size:24px;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
-    position:relative;
-    z-index:1;
-
     max-width:1320px;
     margin:auto;
-
     padding:72px 6vw 120px;
+    position:relative;
+    z-index:1;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .kicker{
     color:#8e92a2;
@@ -152,9 +128,7 @@ main{
     font-size:clamp(58px,9vw,128px);
     line-height:.88;
     letter-spacing:-.065em;
-
     max-width:900px;
-
     margin-bottom:42px;
 }
 
@@ -164,18 +138,13 @@ main{
 
 .hero p{
     max-width:680px;
-
     color:#b7bac6;
-
     font-size:20px;
     line-height:1.65;
-
     margin-bottom:62px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .grid{
     display:grid;
@@ -187,36 +156,25 @@ main{
     display:block;
 
     min-height:300px;
-
     padding:34px;
 
     border:1px solid var(--line);
     border-radius:28px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+    );
 
     position:relative;
     overflow:hidden;
 
-    cursor:pointer;
-
-    -webkit-tap-highlight-color:transparent;
-    touch-action:manipulation;
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease;
+    transition:.35s ease;
 }
 
 .card::before{
     content:"";
-
     position:absolute;
 
     width:280px;
@@ -228,22 +186,12 @@ main{
     right:-110px;
     bottom:-130px;
 
-    transition:.5s ease;
-
     pointer-events:none;
 }
 
 .card:hover{
     transform:translateY(-7px);
     border-color:rgba(255,255,255,.3);
-}
-
-.card:hover::before{
-    transform:scale(1.25);
-}
-
-.card:active{
-    transform:scale(.985);
 }
 
 .number{
@@ -256,22 +204,14 @@ main{
 .card h2{
     font-size:34px;
     letter-spacing:-.035em;
-
     margin-top:72px;
     margin-bottom:18px;
-
-    position:relative;
-    z-index:2;
 }
 
 .card p{
     color:#858a99;
     line-height:1.6;
-
     max-width:470px;
-
-    position:relative;
-    z-index:2;
 }
 
 .arrow{
@@ -290,120 +230,21 @@ main{
     place-items:center;
 
     font-size:20px;
-
-    transition:.35s;
-
-    z-index:3;
 }
 
-.card:hover .arrow{
-    background:white;
-    color:#08090d;
-    transform:rotate(-45deg);
-}
-
-/* =========================
-   PANELS
-========================= */
-
-.panel{
-    display:none;
-
-    margin-top:20px;
-
-    padding:34px;
-
-    border:1px solid var(--line);
-    border-radius:24px;
-
-    background:rgba(255,255,255,.035);
-
-    scroll-margin-top:130px;
-}
-
-/*
-IMPORTANT:
-Les panneaux s'ouvrent grâce à :target.
-Aucun JavaScript nécessaire.
-*/
-
-.panel:target{
-    display:block;
-
-    animation:appear .35s ease;
-}
-
-.panel h3{
-    font-size:26px;
-    margin-bottom:14px;
-}
-
-.panel p{
-    color:var(--muted);
-    line-height:1.7;
-    margin-bottom:22px;
-}
-
-.chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.chip{
-    border:1px solid var(--line);
-    border-radius:999px;
-
-    padding:11px 16px;
-
-    color:#d5d7df;
-
-    font-size:13px;
-}
-
-/* =========================
-   BACK BUTTON
-========================= */
-
-.back{
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:12px 18px;
-
-    border:1px solid var(--line);
-    border-radius:999px;
-
-    color:#d5d7df;
-
-    font-size:13px;
-
-    transition:.25s ease;
-}
-
-.back:hover{
-    background:white;
-    color:#08090d;
-}
-
-/* =========================
-   STATUS
-========================= */
+/* STATUS */
 
 .status{
     margin-top:55px;
 
     display:flex;
     align-items:center;
-
     gap:12px;
 
     color:#737887;
 
     font-size:12px;
     font-weight:700;
-
     letter-spacing:.25em;
 }
 
@@ -411,50 +252,24 @@ Aucun JavaScript nécessaire.
     width:8px;
     height:8px;
 
-    background:var(--green);
-
+    background:#6ee7a0;
     border-radius:50%;
 
-    box-shadow:0 0 18px var(--green);
+    box-shadow:0 0 18px #6ee7a0;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     border-top:1px solid rgba(255,255,255,.08);
-
     padding:32px 6vw;
 
     color:#626674;
-
     font-size:12px;
-
     letter-spacing:.12em;
 }
 
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes appear{
-
-    from{
-        opacity:0;
-        transform:translateY(12px);
-    }
-
-    to{
-        opacity:1;
-        transform:none;
-    }
-
-}
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -505,442 +320,161 @@ footer{
         font-size:29px;
         margin-top:62px;
     }
-
-    .panel{
-        padding:28px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
-    <a class="brand" href="index.html">
+<a class="brand" href="index.html">
+    <div class="logo">H</div>
+    <div class="brand-name">HAERVIU ENGINE</div>
+</a>
 
-        <div class="logo">
-            H
-        </div>
-
-        <div class="brand-name">
-            HAERVIU ENGINE
-        </div>
-
-    </a>
-
-    <button class="menu" type="button" aria-label="Menu">
-        ☰
-    </button>
+<div class="menu">☰</div>
 
 </header>
 
 
-
 <main>
-
 
 <section class="hero">
 
-    <div class="kicker">
-        HAERVIU ENGINE / STUDIO
-    </div>
+<div class="kicker">
+HAERVIU ENGINE / STUDIO
+</div>
 
-    <h1>
-        Everything you<br>
-        <span>need to create.</span>
-    </h1>
+<h1>
+Everything you<br>
+<span>need to create.</span>
+</h1>
 
-    <p>
-        A creative control space for electronic musicians,
-        producers and creators. Configure your setup,
-        shape your workflow and turn ideas into finished music.
-    </p>
+<p>
+A creative control space for electronic musicians,
+producers and creators. Configure your setup,
+shape your workflow and turn your ideas into music.
+</p>
 
 </section>
-
 
 
 <section class="grid">
 
 
-<!-- =========================
-     STUDIO SETUP
-========================= -->
+<!-- STUDIO SETUP -->
 
-<a
-    class="card"
-    href="#setup"
-    aria-label="Open Studio Setup"
->
+<a class="card" href="setup.html">
 
-    <div class="number">
-        01 / SETUP
-    </div>
+<div class="number">
+01 / SETUP
+</div>
 
-    <div class="arrow">
-        ↗
-    </div>
+<div class="arrow">
+↗
+</div>
 
-    <h2>
-        Studio Setup
-    </h2>
+<h2>
+Studio Setup
+</h2>
 
-    <p>
-        Organize instruments, connections, MIDI
-        and audio routing.
-    </p>
+<p>
+Organize instruments, connections, MIDI
+and audio routing.
+</p>
 
 </a>
 
 
+<!-- WORKFLOW -->
 
-<!-- =========================
-     WORKFLOW
-========================= -->
+<a class="card" href="#">
 
-<a
-    class="card"
-    href="#workflow"
-    aria-label="Open Creative Workflow"
->
+<div class="number">
+02 / WORKFLOW
+</div>
 
-    <div class="number">
-        02 / WORKFLOW
-    </div>
+<div class="arrow">
+↗
+</div>
 
-    <div class="arrow">
-        ↗
-    </div>
+<h2>
+Creative Workflow
+</h2>
 
-    <h2>
-        Creative Workflow
-    </h2>
-
-    <p>
-        Build efficient workflows for production,
-        recording and live work.
-    </p>
+<p>
+Build efficient workflows for production,
+recording and live work.
+</p>
 
 </a>
 
 
+<!-- CREATE -->
 
-<!-- =========================
-     CREATE
-========================= -->
+<a class="card" href="#">
 
-<a
-    class="card"
-    href="#create"
-    aria-label="Open Create"
->
+<div class="number">
+03 / CREATE
+</div>
 
-    <div class="number">
-        03 / CREATE
-    </div>
+<div class="arrow">
+↗
+</div>
 
-    <div class="arrow">
-        ↗
-    </div>
+<h2>
+Create
+</h2>
 
-    <h2>
-        Create
-    </h2>
-
-    <p>
-        Turn ideas into tracks, arrangements
-        and finished productions.
-    </p>
+<p>
+Turn ideas into tracks, arrangements
+and finished productions.
+</p>
 
 </a>
 
 
+<!-- PROJECTS -->
 
-<!-- =========================
-     PROJECTS
-========================= -->
+<a class="card" href="#">
 
-<a
-    class="card"
-    href="#projects"
-    aria-label="Open Projects"
->
+<div class="number">
+04 / PROJECTS
+</div>
 
-    <div class="number">
-        04 / PROJECTS
-    </div>
+<div class="arrow">
+↗
+</div>
 
-    <div class="arrow">
-        ↗
-    </div>
+<h2>
+Projects
+</h2>
 
-    <h2>
-        Projects
-    </h2>
-
-    <p>
-        Keep your productions organized
-        and ready to continue.
-    </p>
+<p>
+Keep your productions organized
+and ready to continue.
+</p>
 
 </a>
 
 </section>
-
-
-
-<!-- =========================
-     SETUP PANEL
-========================= -->
-
-<section
-    id="setup"
-    class="panel"
->
-
-    <h3>
-        Studio Setup
-    </h3>
-
-    <p>
-        Centralize the equipment and routing
-        you use every day.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip">
-            Roland MC-707
-        </span>
-
-        <span class="chip">
-            Roland TR-8S
-        </span>
-
-        <span class="chip">
-            Akai Force
-        </span>
-
-        <span class="chip">
-            Roland VT-4
-        </span>
-
-        <span class="chip">
-            RØDE NT1
-        </span>
-
-        <span class="chip">
-            MIDI
-        </span>
-
-        <span class="chip">
-            Audio Routing
-        </span>
-
-        <span class="chip">
-            DAW
-        </span>
-
-    </div>
-
-    <a
-        href="#"
-        class="back"
-    >
-        ← Back
-    </a>
-
-</section>
-
-
-
-<!-- =========================
-     WORKFLOW PANEL
-========================= -->
-
-<section
-    id="workflow"
-    class="panel"
->
-
-    <h3>
-        Creative Workflow
-    </h3>
-
-    <p>
-        Design repeatable production flows
-        while keeping room for experimentation.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip">
-            Idea
-        </span>
-
-        <span class="chip">
-            Sketch
-        </span>
-
-        <span class="chip">
-            Arrangement
-        </span>
-
-        <span class="chip">
-            Recording
-        </span>
-
-        <span class="chip">
-            Mix
-        </span>
-
-        <span class="chip">
-            Export
-        </span>
-
-    </div>
-
-    <a
-        href="#"
-        class="back"
-    >
-        ← Back
-    </a>
-
-</section>
-
-
-
-<!-- =========================
-     CREATE PANEL
-========================= -->
-
-<section
-    id="create"
-    class="panel"
->
-
-    <h3>
-        Create
-    </h3>
-
-    <p>
-        Build music from the first idea
-        through the final production.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip">
-            New Idea
-        </span>
-
-        <span class="chip">
-            Beat
-        </span>
-
-        <span class="chip">
-            Bass
-        </span>
-
-        <span class="chip">
-            Melody
-        </span>
-
-        <span class="chip">
-            Vocals
-        </span>
-
-        <span class="chip">
-            Arrangement
-        </span>
-
-    </div>
-
-    <a
-        href="#"
-        class="back"
-    >
-        ← Back
-    </a>
-
-</section>
-
-
-
-<!-- =========================
-     PROJECTS PANEL
-========================= -->
-
-<section
-    id="projects"
-    class="panel"
->
-
-    <h3>
-        Projects
-    </h3>
-
-    <p>
-        Keep productions organized and accessible
-        from the same creative workspace.
-    </p>
-
-    <div class="chips">
-
-        <span class="chip">
-            New Project
-        </span>
-
-        <span class="chip">
-            Recent
-        </span>
-
-        <span class="chip">
-            Templates
-        </span>
-
-        <span class="chip">
-            Archive
-        </span>
-
-    </div>
-
-    <a
-        href="#"
-        class="back"
-    >
-        ← Back
-    </a>
-
-</section>
-
 
 
 <div class="status">
 
-    <span class="dot"></span>
+<span class="dot"></span>
 
-    SYSTEM READY
+SYSTEM READY
 
 </div>
-
 
 </main>
 
 
-
 <footer>
-
-    HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
-
+HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 </footer>
-
 
 </body>
 </html>
