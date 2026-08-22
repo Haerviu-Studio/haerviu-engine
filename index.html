@@ -21,8 +21,14 @@ html{
 body{
   background:#07080c;
   color:#f5f5f7;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
-  "SF Pro Text",Inter,Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    Inter,
+    Arial,
+    sans-serif;
   overflow-x:hidden;
 }
 
@@ -49,8 +55,16 @@ body::before{
   z-index:-2;
   pointer-events:none;
   background:
-    radial-gradient(circle at 80% 10%,rgba(90,110,180,.16),transparent 32%),
-    radial-gradient(circle at 10% 70%,rgba(90,70,150,.12),transparent 35%);
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(90,110,180,.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(90,70,150,.12),
+      transparent 35%
+    );
 }
 
 body::after{
@@ -65,6 +79,10 @@ body::after{
   border-radius:50%;
   pointer-events:none;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   height:82px;
@@ -113,6 +131,10 @@ header{
   background:rgba(255,255,255,.035);
   font-size:21px;
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   min-height:calc(100vh - 82px);
@@ -213,6 +235,10 @@ header{
   box-shadow:0 0 18px var(--green);
 }
 
+/* =========================
+   SECTIONS
+========================= */
+
 .section{
   padding:120px 0;
 }
@@ -249,7 +275,7 @@ header{
 }
 
 /* =========================
-   DEVICE CARDS
+   DEVICE GRID
 ========================= */
 
 .devices{
@@ -284,14 +310,20 @@ header{
   justify-content:center;
   padding:35px;
   background:
-    radial-gradient(circle at center,rgba(100,120,190,.12),transparent 65%);
+    radial-gradient(
+      circle at center,
+      rgba(100,120,190,.12),
+      transparent 65%
+    );
 }
 
 .device-image img{
   width:100%;
   height:100%;
   object-fit:contain;
-  filter:drop-shadow(0 25px 30px rgba(0,0,0,.55));
+  filter:drop-shadow(
+    0 25px 30px rgba(0,0,0,.55)
+  );
   transition:.45s;
 }
 
@@ -302,13 +334,15 @@ header{
 .device-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    transparent 35%,
-    rgba(7,8,12,.15) 50%,
-    rgba(7,8,12,.96) 78%,
-    #07080c 100%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 35%,
+      rgba(7,8,12,.15) 50%,
+      rgba(7,8,12,.96) 78%,
+      #07080c 100%
+    );
+  pointer-events:none;
 }
 
 .device-info{
@@ -436,11 +470,12 @@ header{
   padding:27px;
   border:1px solid var(--line);
   border-radius:22px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.05),
-    rgba(255,255,255,.015)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.015)
+    );
 }
 
 .step-number{
@@ -474,7 +509,11 @@ header{
   border:1px solid var(--line);
   border-radius:30px;
   background:
-    radial-gradient(circle at 80% 20%,rgba(100,120,200,.12),transparent 35%),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(100,120,200,.12),
+      transparent 35%
+    ),
     rgba(255,255,255,.025);
 }
 
@@ -497,6 +536,10 @@ header{
   gap:14px;
   margin-top:32px;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
   padding:45px 6vw;
@@ -632,19 +675,28 @@ footer{
 <header>
 
   <a href="#home" class="logo">
-    <div class="logo-mark">H</div>
+
+    <div class="logo-mark">
+      H
+    </div>
+
     HAERVIU ENGINE
+
   </a>
 
-  <div class="menu">☰</div>
+  <div class="menu">
+    ☰
+  </div>
 
 </header>
 
+
 <main>
 
-<!-- =========================
+
+<!-- =====================================================
      HOME
-========================= -->
+===================================================== -->
 
 <section id="home" class="hero">
 
@@ -653,26 +705,44 @@ footer{
   </div>
 
   <h1>
-    <span class="outline">CONNECT.</span>
-    <span class="white">CONFIGURE.</span>
-    <span class="outline">CREATE.</span>
+
+    <span class="outline">
+      CONNECT.
+    </span>
+
+    <span class="white">
+      CONFIGURE.
+    </span>
+
+    <span class="outline">
+      CREATE.
+    </span>
+
   </h1>
 
   <p class="hero-text">
+
     A central workspace for your studio.
     Organize your instruments, MIDI,
     audio routing and production workflow
     in one place.
+
   </p>
 
   <div class="hero-actions">
 
-    <a href="#studio-setup" class="button button-primary">
+    <a
+      href="#studio-setup"
+      class="button button-primary"
+    >
       Studio Setup
       <span>→</span>
     </a>
 
-    <a href="#workflow" class="button button-secondary">
+    <a
+      href="#workflow"
+      class="button button-secondary"
+    >
       Explore Workflow
       <span>→</span>
     </a>
@@ -680,18 +750,24 @@ footer{
   </div>
 
   <div class="system-status">
+
     <span class="status-dot"></span>
+
     SYSTEM READY
+
   </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      STUDIO SETUP
-========================= -->
+===================================================== -->
 
-<section id="studio-setup" class="section">
+<section
+  id="studio-setup"
+  class="section"
+>
 
   <div class="container">
 
@@ -706,9 +782,11 @@ footer{
       </h2>
 
       <p class="section-description">
+
         Your complete studio configuration.
         Hardware, production machines,
-        controllers and vocal equipment.
+        mixing, controllers and vocal equipment.
+
       </p>
 
     </div>
@@ -717,14 +795,19 @@ footer{
     <div class="devices">
 
 
-      <!-- MC-707 -->
+      <!-- ================= MC-707 ================= -->
 
-      <a href="#midi-routing" class="device">
+      <a
+        href="#midi-routing"
+        class="device"
+      >
 
         <div class="device-top">
+
           <div class="device-status">
             CONNECTED
           </div>
+
         </div>
 
         <div class="device-image">
@@ -757,14 +840,19 @@ footer{
       </a>
 
 
-      <!-- TR-8S -->
+      <!-- ================= TR-8S ================= -->
 
-      <a href="#audio-routing" class="device">
+      <a
+        href="#audio-routing"
+        class="device"
+      >
 
         <div class="device-top">
+
           <div class="device-status">
             CONNECTED
           </div>
+
         </div>
 
         <div class="device-image">
@@ -797,14 +885,19 @@ footer{
       </a>
 
 
-      <!-- AKAI FORCE -->
+      <!-- ================= AKAI FORCE ================= -->
 
-      <a href="#workflow" class="device">
+      <a
+        href="#workflow"
+        class="device"
+      >
 
         <div class="device-top">
+
           <div class="device-status">
             READY
           </div>
+
         </div>
 
         <div class="device-image">
@@ -812,12 +905,27 @@ footer{
           <img
             src="https://www.akaipro.com/cdn/shop/files/Force_01.jpg"
             alt="Akai Force"
-            onerror="this.style.display='none';this.parentElement.classList.add('force-fallback')"
+            onerror="
+              this.style.display='none';
+              this.nextElementSibling.style.display='flex';
+            "
           >
 
-          <div class="force-fallback-text">
-            AKAI<br>
-            FORCE
+          <div
+            style="
+              display:none;
+              position:absolute;
+              inset:0;
+              align-items:center;
+              justify-content:center;
+              color:#777c89;
+              font-size:32px;
+              font-weight:900;
+              letter-spacing:5px;
+              text-align:center;
+            "
+          >
+            AKAI<br>FORCE
           </div>
 
           <div class="device-overlay"></div>
@@ -843,14 +951,85 @@ footer{
       </a>
 
 
-      <!-- RODE NT1 -->
+      <!-- ================= MX-1 ================= -->
 
-      <a href="#audio-routing" class="device">
+      <a
+        href="#audio-routing"
+        class="device"
+      >
 
         <div class="device-top">
+
+          <div class="device-status">
+            CONNECTED
+          </div>
+
+        </div>
+
+        <div class="device-image">
+
+          <img
+            src="https://www.woodbrass.com/images/SQUARE400/woodbrass/ROLAND+MX1.JPG"
+            alt="Roland MX-1"
+            onerror="
+              this.style.display='none';
+              this.nextElementSibling.style.display='flex';
+            "
+          >
+
+          <div
+            style="
+              display:none;
+              position:absolute;
+              inset:0;
+              align-items:center;
+              justify-content:center;
+              color:#777c89;
+              font-size:32px;
+              font-weight:900;
+              letter-spacing:5px;
+              text-align:center;
+            "
+          >
+            ROLAND<br>MX-1
+          </div>
+
+          <div class="device-overlay"></div>
+
+        </div>
+
+        <div class="device-info">
+
+          <h3>
+            Roland MX-1
+          </h3>
+
+          <p>
+            Performance Mixer / Audio Routing
+          </p>
+
+          <div class="device-link">
+            AUDIO ROUTING →
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- ================= RØDE NT1 ================= -->
+
+      <a
+        href="#audio-routing"
+        class="device"
+      >
+
+        <div class="device-top">
+
           <div class="device-status">
             READY
           </div>
+
         </div>
 
         <div class="device-image">
@@ -890,11 +1069,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      MIDI ROUTING
-========================= -->
+===================================================== -->
 
-<section id="midi-routing" class="section routing">
+<section
+  id="midi-routing"
+  class="section routing"
+>
 
   <div class="container">
 
@@ -909,15 +1091,18 @@ footer{
       </h2>
 
       <p class="section-description">
+
         Organize the communication between
         the MC-707, TR-8S, Akai Force,
         Cubase and the rest of the studio.
+
       </p>
 
     </div>
 
 
     <div class="routing-grid">
+
 
       <div class="routing-card">
 
@@ -972,6 +1157,7 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
@@ -979,11 +1165,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      AUDIO ROUTING
-========================= -->
+===================================================== -->
 
-<section id="audio-routing" class="section routing">
+<section
+  id="audio-routing"
+  class="section routing"
+>
 
   <div class="container">
 
@@ -998,15 +1187,18 @@ footer{
       </h2>
 
       <p class="section-description">
+
         Visualize the path of the audio
-        from your hardware into the mixer,
+        from your hardware into the MX-1,
         DAW and monitoring system.
+
       </p>
 
     </div>
 
 
     <div class="routing-grid">
+
 
       <div class="routing-card">
 
@@ -1019,8 +1211,9 @@ footer{
         </h3>
 
         <p>
-          MC-707 and TR-8S generate the
-          main electronic elements of the setup.
+          MC-707, TR-8S and Akai Force
+          generate the main elements
+          of the studio.
         </p>
 
       </div>
@@ -1033,12 +1226,13 @@ footer{
         </div>
 
         <h3>
-          Mixing
+          Roland MX-1
         </h3>
 
         <p>
-          Route and balance your sources
-          before recording or performance.
+          Central performance mixer for
+          routing, balancing and combining
+          the studio hardware.
         </p>
 
       </div>
@@ -1061,6 +1255,7 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
@@ -1068,11 +1263,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      WORKFLOW
-========================= -->
+===================================================== -->
 
-<section id="workflow" class="section workflow">
+<section
+  id="workflow"
+  class="section workflow"
+>
 
   <div class="container">
 
@@ -1087,14 +1285,17 @@ footer{
       </h2>
 
       <p class="section-description">
+
         A simple production path from
         the first idea to the finished track.
+
       </p>
 
     </div>
 
 
     <div class="workflow-grid">
+
 
       <div class="workflow-step">
 
@@ -1167,6 +1368,7 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
@@ -1174,11 +1376,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      PROJECTS
-========================= -->
+===================================================== -->
 
-<section id="projects" class="section projects">
+<section
+  id="projects"
+  class="section projects"
+>
 
   <div class="container">
 
@@ -1202,18 +1407,27 @@ footer{
       </h3>
 
       <p>
+
         Centralize your current productions,
         ideas, stems, arrangements and
         finished tracks.
+
       </p>
+
 
       <div class="project-buttons">
 
-        <a href="#studio-setup" class="button button-secondary">
+        <a
+          href="#studio-setup"
+          class="button button-secondary"
+        >
           Studio Setup →
         </a>
 
-        <a href="#workflow" class="button button-secondary">
+        <a
+          href="#workflow"
+          class="button button-secondary"
+        >
           Workflow →
         </a>
 
@@ -1225,8 +1439,13 @@ footer{
 
 </section>
 
+
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -1239,6 +1458,7 @@ footer{
   </span>
 
 </footer>
+
 
 </body>
 </html>
