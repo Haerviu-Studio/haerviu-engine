@@ -474,3 +474,122 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+/* =========================================
+   MENU MOBILE — HAERVIU ENGINE
+   ========================================= */
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease,
+              background 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.menu-toggle:active {
+  transform: scale(0.96);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .nav {
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    display: flex;
+    animation: mobileMenuIn 0.2s ease-out;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 10px;
+  }
+
+  .nav-links a:hover {
+    background: var(--surface-2);
+  }
+}
+
+@keyframes mobileMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
