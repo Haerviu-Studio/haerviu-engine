@@ -1,346 +1,506 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Haerviu Engine — Studio</title>
 
 <style>
 
-:root{
---bg:#07080d;
---line:rgba(255,255,255,.13);
---text:#f4f4f7;
---muted:#858997;
-}
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:
-radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
-radial-gradient(circle at 12% 70%,rgba(70,80,120,.10),transparent 30%),
-var(--bg);
-color:var(--text);
-min-height:100vh;
-overflow-x:hidden;
-}
-
-body:before{
-content:"";
-position:fixed;
-inset:-20%;
-border:1px solid rgba(255,255,255,.055);
-border-radius:50%;
-transform:rotate(-18deg);
-pointer-events:none;
+    background:#07080d;
+    color:#f4f4f7;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    overflow-x:hidden;
 }
 
 a{
-text-decoration:none;
-color:inherit;
+    color:inherit;
+    text-decoration:none;
 }
 
+/* ================= HEADER ================= */
+
 header{
-height:104px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 6vw;
-border-bottom:1px solid rgba(255,255,255,.09);
-position:sticky;
-top:0;
-z-index:20;
-background:rgba(7,8,13,.82);
-backdrop-filter:blur(18px);
+    height:90px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 26px;
+
+    border-bottom:1px solid rgba(255,255,255,.10);
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    background:rgba(7,8,13,.94);
+    backdrop-filter:blur(18px);
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:20px;
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
 .logo{
-width:58px;
-height:58px;
-border:1px solid var(--line);
-border-radius:17px;
-display:grid;
-place-items:center;
-font-family:Georgia,serif;
-font-size:28px;
+    width:52px;
+    height:52px;
+
+    border:1px solid rgba(255,255,255,.20);
+    border-radius:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:Georgia,serif;
+    font-size:27px;
 }
 
 .brand-name{
-font-size:17px;
-font-weight:800;
-letter-spacing:.22em;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.20em;
 }
 
 .menu{
-width:58px;
-height:58px;
-border:1px solid var(--line);
-border-radius:17px;
-background:transparent;
-color:white;
-font-size:24px;
+    width:52px;
+    height:52px;
+
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
 }
+
+/* ================= MAIN ================= */
 
 main{
-max-width:1320px;
-margin:auto;
-padding:72px 6vw 120px;
+    width:100%;
+    max-width:1100px;
+
+    margin:0 auto;
+
+    padding:55px 25px 100px;
 }
+
+/* ================= HERO ================= */
 
 .kicker{
-color:#8e92a2;
-letter-spacing:.35em;
-font-size:12px;
-font-weight:700;
-margin-bottom:35px;
+    color:#858997;
+
+    font-size:12px;
+    font-weight:800;
+
+    letter-spacing:.30em;
+
+    margin-bottom:34px;
 }
 
-.hero h1{
-font-size:clamp(58px,9vw,128px);
-line-height:.88;
-letter-spacing:-.065em;
-max-width:900px;
-margin-bottom:42px;
+h1{
+    font-size:clamp(58px,10vw,110px);
+
+    line-height:.88;
+
+    letter-spacing:-.065em;
+
+    margin-bottom:35px;
 }
 
-.hero h1 span{
-color:#666b7a;
+h1 span{
+    color:#676c7b;
 }
 
-.hero p{
-max-width:680px;
-color:#b7bac6;
-font-size:20px;
-line-height:1.65;
-margin-bottom:62px;
+.hero-text{
+    max-width:650px;
+
+    color:#b6bac6;
+
+    font-size:19px;
+
+    line-height:1.65;
+
+    margin-bottom:55px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-}
+/* ================= CARDS ================= */
 
-/* CARDS */
+.cards{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
 
 .card{
-min-height:300px;
-padding:34px;
-border:1px solid var(--line);
-border-radius:28px;
-background:linear-gradient(
-145deg,
-rgba(255,255,255,.055),
-rgba(255,255,255,.018)
-);
-position:relative;
-overflow:hidden;
-display:block;
-transition:.35s ease;
-cursor:pointer;
+    display:block;
+
+    min-height:280px;
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.14);
+
+    border-radius:27px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
 }
 
-.card:before{
-content:"";
-position:absolute;
-width:280px;
-height:280px;
-border:1px solid rgba(255,255,255,.08);
-border-radius:50%;
-right:-110px;
-bottom:-130px;
-transition:.5s ease;
-pointer-events:none;
+.card:active{
+    background:rgba(255,255,255,.09);
 }
 
-.card:hover{
-transform:translateY(-7px);
-border-color:rgba(255,255,255,.3);
+.card-number{
+    color:#777c8b;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:.30em;
 }
 
-.card:hover:before{
-transform:scale(1.25);
-}
+.card-arrow{
+    float:right;
 
-.number{
-font-size:11px;
-letter-spacing:.3em;
-color:#747988;
-font-weight:700;
+    width:42px;
+    height:42px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
 }
 
 .card h2{
-font-size:34px;
-letter-spacing:-.035em;
-margin-top:72px;
-margin-bottom:18px;
+    clear:both;
+
+    padding-top:65px;
+
+    font-size:32px;
+
+    letter-spacing:-.04em;
+
+    margin-bottom:18px;
 }
 
 .card p{
-color:#858a99;
-line-height:1.6;
-max-width:470px;
+    color:#858997;
+
+    font-size:16px;
+
+    line-height:1.6;
 }
 
-.arrow{
-position:absolute;
-right:30px;
-top:30px;
-width:44px;
-height:44px;
-border:1px solid var(--line);
-border-radius:50%;
-display:grid;
-place-items:center;
-transition:.35s;
+/* ================= SETUP ================= */
+
+#setup{
+    scroll-margin-top:115px;
 }
 
-.card:hover .arrow{
-background:white;
-color:#08090d;
-transform:rotate(-45deg);
+.setup{
+    margin-top:70px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    overflow:hidden;
 }
 
-/* PANELS */
+.setup-header{
+    padding:28px;
 
-.panel{
-margin-top:20px;
-padding:34px;
-border:1px solid var(--line);
-border-radius:24px;
-background:rgba(255,255,255,.035);
-scroll-margin-top:125px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
 }
 
-.panel h3{
-font-size:26px;
-margin-bottom:14px;
+.setup-title{
+    font-size:24px;
+
+    font-weight:800;
+
+    letter-spacing:.05em;
 }
 
-.panel p{
-color:var(--muted);
-line-height:1.7;
-margin-bottom:22px;
+.online{
+    color:#6ee7a0;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:.20em;
+}
+
+.online::before{
+    content:"";
+
+    display:inline-block;
+
+    width:9px;
+    height:9px;
+
+    margin-right:9px;
+
+    border-radius:50%;
+
+    background:#6ee7a0;
+
+    box-shadow:0 0 15px #6ee7a0;
+}
+
+/* ================= INSTRUMENTS ================= */
+
+.instruments{
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.instrument{
+    min-height:145px;
+
+    padding:24px;
+
+    border:1px solid rgba(255,255,255,.13);
+
+    border-radius:23px;
+
+    background:rgba(255,255,255,.025);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.instrument-picture{
+    width:72px;
+    height:72px;
+
+    flex-shrink:0;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    background:#191b22;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:31px;
+}
+
+.instrument-name{
+    font-size:21px;
+
+    font-weight:800;
+
+    margin-bottom:6px;
+}
+
+.instrument-type{
+    color:#858997;
+
+    font-size:14px;
+
+    margin-bottom:16px;
+}
+
+.connected{
+    color:#6ee7a0;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+}
+
+.connected::before{
+    content:"";
+
+    display:inline-block;
+
+    width:8px;
+    height:8px;
+
+    margin-right:8px;
+
+    border-radius:50%;
+
+    background:#6ee7a0;
+}
+
+/* ================= OTHER SECTIONS ================= */
+
+.info{
+    margin-top:70px;
+
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.13);
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.025);
+
+    scroll-margin-top:115px;
+}
+
+.info h2{
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.info p{
+    color:#858997;
+
+    line-height:1.7;
+
+    max-width:700px;
 }
 
 .chips{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:25px;
 }
 
 .chip{
-border:1px solid var(--line);
-border-radius:999px;
-padding:11px 16px;
-color:#d5d7df;
-font-size:13px;
+    padding:10px 15px;
+
+    border:1px solid rgba(255,255,255,.13);
+
+    border-radius:50px;
+
+    color:#d6d8df;
+
+    font-size:13px;
 }
 
-/* STATUS */
-
-.status{
-margin-top:55px;
-display:flex;
-align-items:center;
-gap:12px;
-color:#737887;
-font-size:12px;
-font-weight:700;
-letter-spacing:.25em;
-}
-
-.dot{
-width:8px;
-height:8px;
-background:#6ee7a0;
-border-radius:50%;
-box-shadow:0 0 18px #6ee7a0;
-}
-
-/* FOOTER */
-
-footer{
-border-top:1px solid rgba(255,255,255,.08);
-padding:32px 6vw;
-color:#626674;
-font-size:12px;
-letter-spacing:.12em;
-}
-
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
-header{
-height:88px;
-padding:0 26px;
-}
+    header{
+        height:88px;
 
-.logo{
-width:50px;
-height:50px;
-}
+        padding:0 25px;
+    }
 
-.brand-name{
-font-size:14px;
-letter-spacing:.18em;
-}
+    .brand-name{
+        font-size:14px;
+    }
 
-.menu{
-width:50px;
-height:50px;
-}
+    main{
+        padding:50px 25px 80px;
+    }
 
-main{
-padding:52px 26px 90px;
-}
+    h1{
+        font-size:58px;
+    }
 
-.hero h1{
-font-size:58px;
-line-height:.9;
-}
+    .hero-text{
+        font-size:17px;
+    }
 
-.hero p{
-font-size:17px;
-margin-bottom:44px;
-}
+    .cards{
+        grid-template-columns:1fr;
+    }
 
-.grid{
-grid-template-columns:1fr;
-}
+    .card{
+        min-height:260px;
+    }
 
-.card{
-min-height:270px;
-padding:28px;
-}
+    .card h2{
+        font-size:29px;
+    }
 
-.card h2{
-font-size:29px;
-margin-top:62px;
-}
+    .setup-header{
+        padding:25px;
+    }
 
-.panel{
-scroll-margin-top:105px;
-}
+    .setup-title{
+        font-size:21px;
+    }
+
+    .instruments{
+        padding:18px;
+    }
+
+    .instrument{
+        padding:20px;
+    }
+
+    .instrument-picture{
+        width:65px;
+        height:65px;
+    }
+
+    .instrument-name{
+        font-size:19px;
+    }
 
 }
 
@@ -348,13 +508,17 @@ scroll-margin-top:105px;
 
 </head>
 
+
 <body>
+
 
 <header>
 
-<a class="brand" href="index.html">
+<a href="index.html" class="brand">
 
-<div class="logo">H</div>
+<div class="logo">
+H
+</div>
 
 <div class="brand-name">
 HAERVIU ENGINE
@@ -362,9 +526,9 @@ HAERVIU ENGINE
 
 </a>
 
-<button class="menu" aria-label="Menu">
+<div class="menu">
 ☰
-</button>
+</div>
 
 </header>
 
@@ -372,7 +536,9 @@ HAERVIU ENGINE
 <main>
 
 
-<section class="hero">
+<!-- HERO -->
+
+<section>
 
 <div class="kicker">
 HAERVIU ENGINE / STUDIO
@@ -383,9 +549,10 @@ Everything you<br>
 <span>need to create.</span>
 </h1>
 
-<p>
-A creative control space for electronic musicians, producers and creators.
-Configure your setup, shape your workflow and turn ideas into finished music.
+<p class="hero-text">
+A creative control space for electronic musicians,
+producers and creators. Configure your setup,
+shape your workflow and turn ideas into finished music.
 </p>
 
 </section>
@@ -393,17 +560,19 @@ Configure your setup, shape your workflow and turn ideas into finished music.
 
 <!-- CARDS -->
 
-<section class="grid">
+<section class="cards">
 
 
-<a class="card" href="#setup">
+<!-- STUDIO SETUP -->
 
-<div class="number">
+<a href="#setup" class="card">
+
+<div class="card-number">
 01 / SETUP
 </div>
 
-<div class="arrow">
-↗
+<div class="card-arrow">
+↓
 </div>
 
 <h2>
@@ -411,195 +580,319 @@ Studio Setup
 </h2>
 
 <p>
-Organize instruments, connections, MIDI and audio routing.
+Organize instruments, connections,
+MIDI and audio routing.
 </p>
 
 </a>
-
-
-<a class="card" href="#workflow">
-
-<div class="number">
-02 / WORKFLOW
-</div>
-
-<div class="arrow">
-↗
-</div>
-
-<h2>
-Creative Workflow
-</h2>
-
-<p>
-Build efficient workflows for production, recording and live creation.
-</p>
-
-</a>
-
-
-<a class="card" href="#tools">
-
-<div class="number">
-03 / TOOLS
-</div>
-
-<div class="arrow">
-↗
-</div>
-
-<h2>
-Tools
-</h2>
-
-<p>
-Keep your essential studio utilities, references and resources in one place.
-</p>
-
-</a>
-
-
-<a class="card" href="#projects">
-
-<div class="number">
-04 / PROJECTS
-</div>
-
-<div class="arrow">
-↗
-</div>
-
-<h2>
-Projects
-</h2>
-
-<p>
-Move from an idea to a structured production without losing the creative flow.
-</p>
-
-</a>
-
-
-</section>
-
-
-<!-- SETUP -->
-
-<section id="setup" class="panel">
-
-<h3>
-Studio Setup
-</h3>
-
-<p>
-Centralize the equipment and routing you use every day.
-</p>
-
-<div class="chips">
-
-<span class="chip">MIDI</span>
-<span class="chip">Audio Routing</span>
-<span class="chip">Synths</span>
-<span class="chip">Drums</span>
-<span class="chip">DAW</span>
-<span class="chip">Monitoring</span>
-
-</div>
-
-</section>
 
 
 <!-- WORKFLOW -->
 
-<section id="workflow" class="panel">
+<a href="#workflow" class="card">
 
-<h3>
-Creative Workflow
-</h3>
-
-<p>
-Design repeatable production flows while keeping room for experimentation.
-</p>
-
-<div class="chips">
-
-<span class="chip">Idea → Sketch</span>
-<span class="chip">Arrangement</span>
-<span class="chip">Recording</span>
-<span class="chip">Mix</span>
-<span class="chip">Export</span>
-
+<div class="card-number">
+02 / WORKFLOW
 </div>
 
-</section>
+<div class="card-arrow">
+↓
+</div>
+
+<h2>
+Creative Workflow
+</h2>
+
+<p>
+Build efficient workflows for production,
+recording and live work.
+</p>
+
+</a>
 
 
 <!-- TOOLS -->
 
-<section id="tools" class="panel">
+<a href="#tools" class="card">
 
-<h3>
-Tools
-</h3>
-
-<p>
-A future home for calculators, routing helpers, references and production utilities.
-</p>
-
-<div class="chips">
-
-<span class="chip">BPM</span>
-<span class="chip">MIDI</span>
-<span class="chip">Routing</span>
-<span class="chip">Templates</span>
-
+<div class="card-number">
+03 / TOOLS
 </div>
 
-</section>
+<div class="card-arrow">
+↓
+</div>
+
+<h2>
+Tools
+</h2>
+
+<p>
+Keep your essential studio utilities,
+references and resources in one place.
+</p>
+
+</a>
 
 
 <!-- PROJECTS -->
 
-<section id="projects" class="panel">
+<a href="#projects" class="card">
 
-<h3>
+<div class="card-number">
+04 / PROJECTS
+</div>
+
+<div class="card-arrow">
+↓
+</div>
+
+<h2>
 Projects
-</h3>
+</h2>
 
 <p>
-Keep productions organized and accessible from the same creative workspace.
+Move from an idea to a structured production
+without losing the creative flow.
 </p>
 
-<div class="chips">
+</a>
 
-<span class="chip">New Project</span>
-<span class="chip">Recent</span>
-<span class="chip">Templates</span>
-<span class="chip">Archive</span>
+
+</section>
+
+
+<!-- =========================
+     STUDIO SETUP
+========================= -->
+
+<section id="setup" class="setup">
+
+
+<div class="setup-header">
+
+<div class="setup-title">
+STUDIO SETUP
+</div>
+
+<div class="online">
+ONLINE
+</div>
+
+</div>
+
+
+<div class="instruments">
+
+
+<!-- MC-707 -->
+
+<div class="instrument">
+
+<div class="instrument-picture">
+🎛️
+</div>
+
+<div>
+
+<div class="instrument-name">
+Roland MC-707
+</div>
+
+<div class="instrument-type">
+Groovebox / MIDI / Audio
+</div>
+
+<div class="connected">
+CONNECTED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TR-8S -->
+
+<div class="instrument">
+
+<div class="instrument-picture">
+🥁
+</div>
+
+<div>
+
+<div class="instrument-name">
+Roland TR-8S
+</div>
+
+<div class="instrument-type">
+Drum Machine
+</div>
+
+<div class="connected">
+CONNECTED
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AKAI FORCE -->
+
+<div class="instrument">
+
+<div class="instrument-picture">
+🎚️
+</div>
+
+<div>
+
+<div class="instrument-name">
+Akai Force
+</div>
+
+<div class="instrument-type">
+Production / Performance
+</div>
+
+<div class="connected">
+READY
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VOCAL -->
+
+<div class="instrument">
+
+<div class="instrument-picture">
+🎙️
+</div>
+
+<div>
+
+<div class="instrument-name">
+Vocal Chain
+</div>
+
+<div class="instrument-type">
+Microphone / Voice Processing
+</div>
+
+<div class="connected">
+READY
+</div>
+
+</div>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<div class="status">
+<!-- =========================
+     WORKFLOW
+========================= -->
 
-<span class="dot"></span>
+<section id="workflow" class="info">
 
-SYSTEM READY
+<h2>
+Creative Workflow
+</h2>
+
+<p>
+Design repeatable production flows while keeping
+room for experimentation and creative decisions.
+</p>
+
+<div class="chips">
+
+<div class="chip">Idea → Sketch</div>
+
+<div class="chip">Arrangement</div>
+
+<div class="chip">Recording</div>
+
+<div class="chip">Mix</div>
+
+<div class="chip">Export</div>
 
 </div>
+
+</section>
+
+
+<!-- =========================
+     TOOLS
+========================= -->
+
+<section id="tools" class="info">
+
+<h2>
+Tools
+</h2>
+
+<p>
+A future home for calculators, routing helpers,
+references and production utilities.
+</p>
+
+<div class="chips">
+
+<div class="chip">BPM</div>
+
+<div class="chip">MIDI</div>
+
+<div class="chip">Routing</div>
+
+<div class="chip">Templates</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects" class="info">
+
+<h2>
+Projects
+</h2>
+
+<p>
+Keep productions organized and accessible from
+the same creative workspace.
+</p>
+
+<div class="chips">
+
+<div class="chip">New Project</div>
+
+<div class="chip">Recent</div>
+
+<div class="chip">Templates</div>
+
+<div class="chip">Archive</div>
+
+</div>
+
+</section>
 
 
 </main>
 
 
-<footer>
-
-HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
-
-</footer>
-
-
 </body>
+
 </html>
