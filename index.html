@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine — Creative Studio</title>
+<title>Haerviu Engine — Studio System</title>
+
+<meta name="description" content="Haerviu Engine — le système central du studio Haerviu. Hardware, MIDI, audio, sampling, voix et production.">
 
 <style>
-
-/* =========================================================
-   HAERVIU ENGINE — V2
-========================================================= */
 
 *{
   margin:0;
@@ -23,23 +21,23 @@ html{
 }
 
 :root{
-  --bg:#040509;
-  --panel:#0b0d13;
-  --panel2:#11141c;
-  --white:#f5f7fb;
-  --soft:#b5bac8;
-  --muted:#707685;
+  --bg:#05060a;
+  --panel:#0b0e14;
+  --panel2:#10141d;
+  --white:#f6f7fb;
+  --soft:#b4bac7;
+  --muted:#747b8b;
   --line:rgba(255,255,255,.11);
-  --line2:rgba(255,255,255,.24);
-
-  --green:#70e0a0;
+  --line2:rgba(255,255,255,.22);
+  --green:#73e5a5;
   --blue:#718cff;
-  --purple:#9b7cff;
-  --cyan:#5fd5df;
 }
 
 body{
-  background:var(--bg);
+  background:
+    radial-gradient(circle at 82% 4%,rgba(92,112,255,.16),transparent 28%),
+    radial-gradient(circle at 4% 42%,rgba(125,76,210,.10),transparent 30%),
+    #05060a;
   color:var(--white);
   font-family:
     -apple-system,
@@ -52,57 +50,24 @@ body{
   overflow-x:hidden;
 }
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-body::before{
+body:before{
   content:"";
   position:fixed;
   inset:0;
-  z-index:-5;
   pointer-events:none;
-  background:
-    radial-gradient(
-      circle at 78% 8%,
-      rgba(91,112,255,.20),
-      transparent 27%
-    ),
-    radial-gradient(
-      circle at 8% 42%,
-      rgba(135,72,220,.13),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 92% 80%,
-      rgba(40,170,185,.09),
-      transparent 28%
-    );
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-4;
-  pointer-events:none;
-  opacity:.22;
+  z-index:-1;
+  opacity:.25;
   background-image:
     linear-gradient(
-      rgba(255,255,255,.025) 1px,
+      rgba(255,255,255,.018) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(255,255,255,.025) 1px,
+      rgba(255,255,255,.018) 1px,
       transparent 1px
     );
-  background-size:80px 80px;
-  mask-image:linear-gradient(
-    to bottom,
-    black,
-    transparent 80%
-  );
+  background-size:70px 70px;
 }
 
 a{
@@ -110,29 +75,9 @@ a{
   text-decoration:none;
 }
 
-/* =========================================================
-   CURSOR GLOW
-========================================================= */
-
-.cursor-glow{
-  position:fixed;
-  width:380px;
-  height:380px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:-1;
-  background:radial-gradient(
-    circle,
-    rgba(104,125,255,.08),
-    transparent 68%
-  );
-  transform:translate(-50%,-50%);
-  transition:opacity:.3s;
-}
-
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 header{
   height:82px;
@@ -140,190 +85,115 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  background:rgba(5,6,10,.72);
+  background:rgba(5,6,10,.78);
   border-bottom:1px solid var(--line);
-
-  backdrop-filter:blur(28px);
-  -webkit-backdrop-filter:blur(28px);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
 }
 
 .logo{
   display:flex;
   align-items:center;
   gap:15px;
-
   font-size:14px;
-  font-weight:950;
+  font-weight:900;
   letter-spacing:5px;
 }
 
 .logo-mark{
-  width:47px;
-  height:47px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:1px solid rgba(255,255,255,.28);
+  width:48px;
+  height:48px;
+  border:1px solid rgba(255,255,255,.27);
   border-radius:15px;
-
-  font-family:Georgia,serif;
-  font-size:24px;
-
-  background:
-    radial-gradient(
-      circle at 30% 20%,
-      rgba(255,255,255,.08),
-      transparent 60%
-    );
-
-  box-shadow:
-    0 0 35px rgba(100,120,255,.08),
-    inset 0 0 20px rgba(255,255,255,.025);
+  display:grid;
+  place-items:center;
+  font:26px Georgia,serif;
+  box-shadow:0 0 35px rgba(100,120,255,.10);
 }
 
 .menu{
-  width:49px;
-  height:49px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
+  width:50px;
+  height:50px;
   border:1px solid var(--line);
   border-radius:15px;
-
   background:rgba(255,255,255,.035);
+  display:grid;
+  place-items:center;
+  font-size:21px;
+  color:white;
+  cursor:pointer;
+}
 
-  font-size:20px;
+/* =========================
+   MENU
+========================= */
 
+.drawer{
+  position:fixed;
+  right:20px;
+  top:92px;
+  width:min(330px,calc(100% - 40px));
+  padding:18px;
+  border:1px solid var(--line2);
+  border-radius:22px;
+  background:rgba(12,15,22,.96);
+  backdrop-filter:blur(25px);
+  z-index:1200;
+  transform:translateY(-12px);
+  opacity:0;
+  pointer-events:none;
   transition:.3s;
 }
 
-.menu:hover{
-  border-color:var(--line2);
-  background:rgba(255,255,255,.08);
-  transform:rotate(90deg);
+.drawer.open{
+  transform:none;
+  opacity:1;
+  pointer-events:auto;
 }
 
-/* =========================================================
+.drawer a{
+  display:block;
+  padding:15px;
+  border-radius:12px;
+  color:#cbd0da;
+  font-weight:800;
+}
+
+.drawer a:hover{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
   min-height:calc(100vh - 82px);
-
-  padding:90px 6vw 80px;
-
+  padding:100px 6vw 90px;
   display:flex;
   flex-direction:column;
   justify-content:center;
-
   position:relative;
-  overflow:hidden;
-}
-
-.hero-orb{
-  position:absolute;
-
-  width:600px;
-  height:600px;
-
-  right:-220px;
-  top:-80px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(105,125,255,.18),
-      transparent 65%
-    );
-
-  filter:blur(5px);
-
-  animation:
-    orbFloat 8s ease-in-out infinite;
-}
-
-@keyframes orbFloat{
-  0%,100%{
-    transform:translate(0,0) scale(1);
-  }
-  50%{
-    transform:translate(-30px,25px) scale(1.08);
-  }
-}
-
-.hero-ring{
-  position:absolute;
-
-  width:520px;
-  height:520px;
-
-  right:-110px;
-  top:80px;
-
-  border:1px solid rgba(255,255,255,.045);
-  border-radius:50%;
-
-  animation:spin 30s linear infinite;
-}
-
-.hero-ring::before,
-.hero-ring::after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.035);
-}
-
-.hero-ring::before{
-  inset:55px;
-}
-
-.hero-ring::after{
-  inset:120px;
-}
-
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
 }
 
 .kicker{
-  margin-bottom:32px;
-
-  color:#858b9b;
-
+  margin-bottom:30px;
+  color:#858c9b;
   font-size:11px;
   font-weight:900;
   letter-spacing:5px;
-
-  animation:fadeUp .9s ease both;
 }
 
 .hero h1{
   max-width:1100px;
-
-  font-size:clamp(70px,11vw,165px);
+  font-size:clamp(68px,11vw,160px);
   line-height:.82;
-
   letter-spacing:-8px;
   font-weight:950;
-
-  position:relative;
-  z-index:2;
-
-  animation:fadeUp 1s .08s ease both;
 }
 
 .hero h1 span{
@@ -333,186 +203,87 @@ header{
 .outline{
   color:transparent;
   -webkit-text-stroke:1px rgba(225,230,245,.38);
-
-  transition:.5s;
-}
-
-.hero h1:hover .outline{
-  -webkit-text-stroke-color:rgba(130,150,255,.7);
-}
-
-.white{
-  color:var(--white);
 }
 
 .hero-text{
-  max-width:680px;
-
-  margin-top:55px;
-
+  max-width:690px;
+  margin-top:52px;
   color:var(--soft);
-
   font-size:20px;
   line-height:1.65;
-
-  animation:fadeUp 1s .2s ease both;
 }
 
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
-
-  gap:15px;
-
-  margin-top:38px;
-
-  animation:fadeUp 1s .3s ease both;
+  gap:14px;
+  margin-top:36px;
 }
 
 .button{
-  min-width:220px;
-  min-height:62px;
-
-  padding:0 28px;
-
+  min-width:215px;
+  min-height:60px;
+  padding:0 26px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:20px;
-
-  border-radius:16px;
-
+  gap:18px;
+  border-radius:15px;
   font-size:14px;
   font-weight:900;
-
-  transition:.35s;
-
-  position:relative;
-  overflow:hidden;
-}
-
-.button::before{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent,
-      rgba(255,255,255,.20),
-      transparent
-    );
-
-  transform:translateX(-120%);
-  transition:.6s;
-}
-
-.button:hover::before{
-  transform:translateX(120%);
+  transition:.3s;
 }
 
 .button:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
 }
 
-.button-primary{
-  background:var(--white);
+.primary{
+  background:#f6f7fb;
   color:#08090d;
-
-  box-shadow:
-    0 20px 45px rgba(255,255,255,.06);
 }
 
-.button-secondary{
+.secondary{
   border:1px solid var(--line2);
   background:rgba(255,255,255,.035);
 }
 
-.button-secondary:hover{
-  border-color:rgba(120,140,255,.55);
-  box-shadow:
-    0 15px 40px rgba(70,90,220,.12);
-}
-
-.system-status{
-  margin-top:48px;
-
+.status{
+  margin-top:44px;
   display:flex;
   align-items:center;
   gap:10px;
-
-  color:#747a89;
-
+  color:#7b8290;
   font-size:10px;
   font-weight:900;
   letter-spacing:3px;
-
-  animation:fadeUp 1s .4s ease both;
 }
 
-.status-dot{
+.dot{
   width:8px;
   height:8px;
-
   border-radius:50%;
-
   background:var(--green);
-
-  box-shadow:
-    0 0 20px var(--green);
-
+  box-shadow:0 0 20px var(--green);
   animation:pulse 2s infinite;
 }
 
 @keyframes pulse{
-  0%,100%{
-    opacity:1;
-    transform:scale(1);
-  }
 
   50%{
-    opacity:.45;
+    opacity:.4;
     transform:scale(.75);
   }
+
 }
 
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(25px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.reveal{
-  opacity:0;
-  transform:translateY(45px);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* =========================================================
+/* =========================
    SECTIONS
-========================================================= */
+========================= */
 
 .section{
   padding:125px 0;
+  border-top:1px solid var(--line);
 }
 
 .container{
@@ -520,333 +291,208 @@ header{
   margin:auto;
 }
 
-.section-header{
-  margin-bottom:58px;
-}
-
 .section-number{
-  margin-bottom:18px;
-
-  color:#707685;
-
+  color:#707786;
   font-size:10px;
   font-weight:900;
   letter-spacing:5px;
+  margin-bottom:18px;
 }
 
 .section-title{
   font-size:clamp(50px,7vw,92px);
   line-height:.9;
-
   letter-spacing:-5px;
 }
 
 .section-description{
   max-width:730px;
-
-  margin-top:25px;
-
+  margin-top:24px;
   color:var(--soft);
-
   font-size:18px;
   line-height:1.65;
 }
 
-/* =========================================================
-   STUDIO LIVE BAR
-========================================================= */
-
-.live-panel{
-  margin-bottom:35px;
-
-  padding:20px 24px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-
-  border:1px solid var(--line);
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.012)
-    );
-
-  overflow:hidden;
+.section-header{
+  margin-bottom:55px;
 }
 
-.live-left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-
-  color:#9ea4b3;
-
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.live-dot{
-  width:8px;
-  height:8px;
-
-  border-radius:50%;
-
-  background:var(--green);
-
-  box-shadow:0 0 16px var(--green);
-}
-
-.levels{
-  display:flex;
-  align-items:flex-end;
-  gap:4px;
-  height:25px;
-}
-
-.levels span{
-  width:3px;
-  border-radius:5px;
-  background:var(--green);
-
-  animation:level 1s ease-in-out infinite alternate;
-}
-
-.levels span:nth-child(1){height:8px;animation-delay:.1s}
-.levels span:nth-child(2){height:18px;animation-delay:.3s}
-.levels span:nth-child(3){height:12px;animation-delay:.5s}
-.levels span:nth-child(4){height:23px;animation-delay:.2s}
-.levels span:nth-child(5){height:15px;animation-delay:.4s}
-.levels span:nth-child(6){height:20px;animation-delay:.1s}
-.levels span:nth-child(7){height:10px;animation-delay:.6s}
-.levels span:nth-child(8){height:17px;animation-delay:.3s}
-
-@keyframes level{
-  from{transform:scaleY(.35)}
-  to{transform:scaleY(1)}
-}
-
-/* =========================================================
+/* =========================
    DEVICES
-========================================================= */
+========================= */
 
 .devices{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:20px;
+  gap:18px;
 }
 
 .device{
-  min-height:510px;
-
   position:relative;
+  min-height:540px;
   overflow:hidden;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-
   border:1px solid var(--line);
   border-radius:30px;
 
   background:
     radial-gradient(
-      circle at 50% 25%,
-      rgba(90,110,190,.11),
-      transparent 55%
+      circle at 50% 20%,
+      rgba(89,111,210,.12),
+      transparent 42%
     ),
-    #0b0d12;
-
-  transition:
-    transform .45s,
-    border-color .45s,
-    box-shadow .45s;
-}
-
-.device::after{
-  content:"";
-
-  position:absolute;
-  inset:-1px;
-
-  border-radius:30px;
-
-  background:
     linear-gradient(
-      120deg,
-      transparent 35%,
-      rgba(120,140,255,.10),
-      transparent 65%
+      145deg,
+      #0e1118,
+      #07090d
     );
 
-  opacity:0;
-  transition:.5s;
-
-  pointer-events:none;
+  transition:.45s;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
 }
 
 .device:hover{
-  transform:translateY(-10px);
-
-  border-color:rgba(255,255,255,.27);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.42),
-    0 0 50px rgba(75,95,220,.06);
+  transform:translateY(-8px);
+  border-color:var(--line2);
+  box-shadow:0 35px 80px rgba(0,0,0,.42);
 }
 
-.device:hover::after{
-  opacity:1;
-}
-
-.device-image{
+.device:after{
+  content:"";
   position:absolute;
-  inset:0 0 165px 0;
+  inset:auto 10% 22%;
+  height:80px;
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(100,125,255,.20),
+      transparent 68%
+    );
+  filter:blur(20px);
+  pointer-events:none;
+}
+
+.badge{
+  position:absolute;
+  right:24px;
+  top:23px;
+  z-index:5;
+
+  color:var(--green);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
 
   display:flex;
   align-items:center;
-  justify-content:center;
-
-  padding:40px;
-
-  transition:.5s;
+  gap:8px;
 }
 
-.device-image svg{
-  width:100%;
-  max-width:580px;
-  max-height:300px;
+.badge:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 14px var(--green);
+}
+
+.device-image{
+  height:350px;
+  padding:35px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.device-image:before{
+  content:"";
+  position:absolute;
+  width:72%;
+  height:70%;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(95,116,230,.14),
+      transparent 68%
+    );
+
+  filter:blur(10px);
+}
+
+.device-image img{
+  position:relative;
+  max-width:100%;
+  max-height:310px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
 
   filter:
-    drop-shadow(0 30px 30px rgba(0,0,0,.65));
+    drop-shadow(
+      0 28px 25px rgba(0,0,0,.7)
+    );
 
   transition:.55s;
 }
 
-.device:hover .device-image{
-  transform:translateY(-5px);
-}
-
-.device:hover .device-image svg{
-  transform:scale(1.045);
-}
-
-.device-overlay{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 25%,
-      rgba(7,8,12,.05) 42%,
-      rgba(7,8,12,.80) 70%,
-      #07080c 100%
-    );
-}
-
-.device-top{
-  position:absolute;
-
-  top:25px;
-  left:25px;
-  right:25px;
-
-  z-index:5;
-
-  display:flex;
-  justify-content:flex-end;
-}
-
-.device-status{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  color:var(--green);
-
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.device-status::before{
-  content:"";
-
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:var(--green);
-
-  box-shadow:0 0 15px var(--green);
+.device:hover .device-image img{
+  transform:scale(1.045) translateY(-6px);
 }
 
 .device-info{
   position:relative;
   z-index:4;
+  padding:28px 30px 30px;
 
-  padding:30px;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(5,6,10,.72) 18%,
+      #080a0f 55%
+    );
 }
 
 .device h3{
-  font-size:31px;
+  font-size:30px;
   letter-spacing:-1px;
 }
 
 .device p{
-  margin-top:8px;
-
-  color:#858b99;
-  font-size:15px;
+  margin-top:7px;
+  color:#858c9b;
+  font-size:14px;
 }
 
 .device-link{
-  margin-top:23px;
-
-  color:#b9beca;
-
+  margin-top:21px;
+  color:#c4c9d3;
   font-size:11px;
   font-weight:900;
   letter-spacing:2px;
-
-  transition:.3s;
 }
 
-.device:hover .device-link{
-  color:var(--white);
-  transform:translateX(7px);
-}
+/* =========================
+   CARDS
+========================= */
 
-/* =========================================================
-   ROUTING
-========================================================= */
-
-.routing,
-.workflow,
-.projects{
-  border-top:1px solid var(--line);
-}
-
-.routing-grid{
+.flow-grid,
+.cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:17px;
 }
 
-.routing-card{
-  min-height:285px;
-
-  padding:30px;
-
+.card,
+.flow-card,
+.step{
   border:1px solid var(--line);
-  border-radius:25px;
+  border-radius:24px;
 
   background:
     linear-gradient(
@@ -855,381 +501,182 @@ header{
       rgba(255,255,255,.012)
     );
 
-  transition:.4s;
-
-  position:relative;
-  overflow:hidden;
+  transition:.35s;
 }
 
-.routing-card::before{
-  content:"";
-
-  position:absolute;
-
-  width:180px;
-  height:180px;
-
-  right:-90px;
-  top:-90px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(105,125,255,.12),
-      transparent 70%
-    );
-
-  transition:.5s;
+.card{
+  min-height:270px;
+  padding:30px;
 }
 
-.routing-card:hover::before{
-  transform:scale(1.6);
-}
-
-.routing-card:hover{
-  transform:translateY(-8px);
-
+.card:hover,
+.flow-card:hover,
+.step:hover{
+  transform:translateY(-6px);
   border-color:var(--line2);
-
-  background:rgba(255,255,255,.055);
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.22);
 }
 
-.routing-icon{
+.icon{
   width:54px;
   height:54px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
   border:1px solid var(--line);
   border-radius:15px;
-
   background:rgba(255,255,255,.045);
-
-  font-size:23px;
-
-  transition:.4s;
+  display:grid;
+  place-items:center;
+  font-size:22px;
 }
 
-.routing-card:hover .routing-icon{
-  transform:scale(1.08) rotate(-4deg);
-
-  border-color:rgba(115,135,255,.45);
-
-  box-shadow:
-    0 0 30px rgba(90,110,255,.12);
+.card h3{
+  margin-top:40px;
+  font-size:24px;
 }
 
-.routing-card h3{
-  margin-top:45px;
-  font-size:25px;
-}
-
-.routing-card p{
-  margin-top:12px;
-
-  color:#858a97;
-
+.card p{
+  margin-top:11px;
+  color:#858b98;
   line-height:1.6;
 }
 
-/* =========================================================
-   SIGNAL FLOW
-========================================================= */
+/* =========================
+   AUDIO FLOW
+========================= */
 
-.flow{
-  display:grid;
+.flow-grid{
   grid-template-columns:1fr 1fr;
-  gap:18px;
 }
 
 .flow-card{
-  padding:35px;
-  min-height:220px;
-
-  border:1px solid var(--line);
-  border-radius:25px;
-
-  background:#0d0f15;
-
-  position:relative;
-  overflow:hidden;
-}
-
-.flow-card::after{
-  content:"";
-
-  position:absolute;
-  width:250px;
-  height:250px;
-
-  right:-120px;
-  bottom:-140px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(100,120,255,.12),
-      transparent 70%
-    );
-}
-
-.flow-card h3{
-  font-size:23px;
+  padding:32px;
+  min-height:210px;
 }
 
 .flow-line{
   display:flex;
-  align-items:center;
   flex-wrap:wrap;
-
-  gap:10px;
-
-  margin-top:28px;
-}
-
-.flow-node{
-  padding:12px 15px;
-
-  border:1px solid var(--line);
-  border-radius:12px;
-
-  color:#c8ccd6;
-
-  background:rgba(255,255,255,.035);
-
-  font-size:12px;
-  font-weight:800;
-
-  transition:.3s;
-}
-
-.flow-node:hover{
-  border-color:rgba(115,135,255,.5);
-  transform:translateY(-3px);
-}
-
-.flow-arrow{
-  color:#6f7788;
-}
-
-/* =========================================================
-   VOCAL FEATURE
-========================================================= */
-
-.vocal-chain{
-  margin-top:30px;
-
-  padding:30px;
-
-  display:flex;
   align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-
-  gap:14px;
-
-  border:1px solid var(--line);
-  border-radius:25px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(105,125,255,.08),
-      transparent 60%
-    );
+  gap:9px;
+  margin-top:27px;
 }
 
-.vocal-node{
-  padding:17px 22px;
-
-  border:1px solid var(--line2);
-  border-radius:14px;
-
+.node{
+  padding:11px 14px;
+  border:1px solid var(--line);
+  border-radius:11px;
   background:rgba(255,255,255,.035);
-
-  font-size:12px;
+  font-size:11px;
   font-weight:900;
-  letter-spacing:1px;
-
-  transition:.3s;
 }
 
-.vocal-node:hover{
-  transform:scale(1.05);
-  border-color:var(--green);
+.arrow{
+  color:#697183;
 }
 
-.vocal-arrow{
-  color:#656d7d;
-  font-size:20px;
-}
-
-/* =========================================================
+/* =========================
    WORKFLOW
-========================================================= */
+========================= */
 
-.workflow-grid{
+.steps{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  gap:14px;
 }
 
-.workflow-step{
-  min-height:245px;
-
+.step{
+  min-height:235px;
   padding:27px;
-
-  border:1px solid var(--line);
-  border-radius:22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.012)
-    );
-
-  transition:.4s;
-
-  position:relative;
 }
 
-.workflow-step:hover{
-  transform:translateY(-8px);
-
-  border-color:rgba(255,255,255,.25);
-
-  box-shadow:
-    0 25px 55px rgba(0,0,0,.25);
-}
-
-.step-number{
-  color:#707685;
-
+.step-no{
   font-size:10px;
+  color:#707786;
   font-weight:900;
   letter-spacing:3px;
 }
 
-.workflow-step h3{
-  margin-top:62px;
-
-  font-size:23px;
+.step h3{
+  margin-top:58px;
+  font-size:22px;
 }
 
-.workflow-step p{
-  margin-top:12px;
-
-  color:#858a97;
-
+.step p{
+  margin-top:10px;
+  color:#858b98;
   line-height:1.55;
 }
 
-/* =========================================================
+/* =========================
    PROJECT
-========================================================= */
+========================= */
 
-.project-panel{
-  padding:58px;
-
+.project{
+  padding:55px;
   border:1px solid var(--line);
   border-radius:30px;
 
   background:
     radial-gradient(
-      circle at 80% 20%,
-      rgba(100,120,220,.16),
-      transparent 35%
+      circle at 82% 15%,
+      rgba(100,120,220,.14),
+      transparent 36%
     ),
     rgba(255,255,255,.025);
-
-  position:relative;
-  overflow:hidden;
 }
 
-.project-panel::before{
-  content:"HAERVIU";
-
-  position:absolute;
-
-  right:-30px;
-  bottom:-75px;
-
-  font-size:160px;
-  font-weight:950;
-  letter-spacing:-10px;
-
-  color:rgba(255,255,255,.018);
-
-  pointer-events:none;
-}
-
-.project-panel h3{
-  font-size:48px;
+.project h3{
+  font-size:46px;
   letter-spacing:-2px;
-
-  position:relative;
-  z-index:2;
 }
 
-.project-panel p{
+.project p{
   max-width:700px;
-
-  margin-top:20px;
-
+  margin-top:18px;
   color:var(--soft);
-
   font-size:18px;
   line-height:1.6;
-
-  position:relative;
-  z-index:2;
 }
 
 .project-buttons{
   display:flex;
   flex-wrap:wrap;
-
-  gap:14px;
-
-  margin-top:32px;
-
-  position:relative;
-  z-index:2;
+  gap:13px;
+  margin-top:30px;
 }
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
-  padding:45px 6vw;
-
+  padding:42px 6vw;
+  border-top:1px solid var(--line);
   display:flex;
-  align-items:center;
   justify-content:space-between;
 
-  border-top:1px solid var(--line);
-
-  color:#646a78;
-
+  color:#646b79;
   font-size:10px;
   font-weight:900;
   letter-spacing:4px;
 }
 
-/* =========================================================
+/* =========================
+   ANIMATION
+========================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.8s;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:850px){
 
@@ -1239,9 +686,9 @@ footer{
   }
 
   .logo{
-    gap:12px;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:3px;
+    gap:11px;
   }
 
   .logo-mark{
@@ -1260,7 +707,7 @@ footer{
   }
 
   .hero-text{
-    margin-top:42px;
+    margin-top:40px;
     font-size:18px;
   }
 
@@ -1294,74 +741,60 @@ footer{
   }
 
   .device{
-    min-height:450px;
+    min-height:480px;
   }
 
   .device-image{
+    height:315px;
     padding:25px;
   }
 
-  .device-image svg{
-    max-height:250px;
+  .device-image img{
+    max-height:270px;
   }
 
-  .routing-grid{
+  .cards,
+  .flow-grid{
     grid-template-columns:1fr;
   }
 
-  .workflow-grid{
+  .steps{
     grid-template-columns:1fr 1fr;
   }
 
-  .flow{
-    grid-template-columns:1fr;
-  }
-
-  .project-panel{
+  .project{
     padding:30px;
   }
 
-  .project-panel h3{
+  .project h3{
     font-size:36px;
   }
 
   footer{
     padding:35px 24px;
     flex-direction:column;
+    gap:14px;
     align-items:flex-start;
-    gap:15px;
   }
 
-  .live-panel{
-    align-items:flex-start;
-    flex-direction:column;
-  }
 }
 
 @media(max-width:500px){
 
-  .workflow-grid{
+  .steps{
     grid-template-columns:1fr;
   }
 
   .device{
-    min-height:430px;
+    min-height:455px;
+  }
+
+  .device-image{
+    height:295px;
   }
 
   .device h3{
     font-size:27px;
-  }
-
-  .device-image{
-    inset:0 0 150px 0;
-  }
-
-  .vocal-chain{
-    justify-content:flex-start;
-  }
-
-  .vocal-arrow{
-    transform:rotate(90deg);
   }
 
 }
@@ -1369,38 +802,67 @@ footer{
 </style>
 </head>
 
-
 <body>
-
-<div class="cursor-glow" id="cursorGlow"></div>
-
 
 <header>
 
 <a href="#home" class="logo">
 
-  <div class="logo-mark">H</div>
+<div class="logo-mark">
+H
+</div>
 
-  HAERVIU ENGINE
+HAERVIU ENGINE
 
 </a>
 
-<div class="menu">☰</div>
+<button
+class="menu"
+id="menuBtn"
+aria-label="Menu">
+
+☰
+
+</button>
 
 </header>
 
 
-<main>
+<nav class="drawer" id="drawer">
+
+<a href="#studio">
+01 / Studio Setup
+</a>
+
+<a href="#midi">
+02 / MIDI Control
+</a>
+
+<a href="#audio">
+03 / Audio System
+</a>
+
+<a href="#vocal">
+04 / Vocal Chain
+</a>
+
+<a href="#workflow">
+05 / Creative Workflow
+</a>
+
+<a href="#projects">
+06 / Productions
+</a>
+
+</nav>
 
 
-<!-- ======================================================
-     HERO
-====================================================== -->
+<main id="home">
 
-<section id="home" class="hero">
 
-<div class="hero-orb"></div>
-<div class="hero-ring"></div>
+<!-- HERO -->
+
+<section class="hero">
 
 <div class="kicker">
 HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
@@ -1412,7 +874,7 @@ HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
 CONNECT.
 </span>
 
-<span class="white">
+<span>
 CONFIGURE.
 </span>
 
@@ -1422,20 +884,20 @@ CREATE.
 
 </h1>
 
-
 <p class="hero-text">
 
 The central nervous system of the Haerviu studio.
 Hardware, sequencing, sampling, MIDI, audio,
-vocals and production workflow — designed as one system.
+vocals and production workflow — designed as one
+living system.
 
 </p>
 
-
 <div class="hero-actions">
 
-<a href="#studio-setup"
-class="button button-primary">
+<a
+class="button primary"
+href="#studio">
 
 ENTER STUDIO
 
@@ -1443,9 +905,9 @@ ENTER STUDIO
 
 </a>
 
-
-<a href="#signal-flow"
-class="button button-secondary">
+<a
+class="button secondary"
+href="#audio">
 
 SIGNAL FLOW
 
@@ -1455,10 +917,9 @@ SIGNAL FLOW
 
 </div>
 
+<div class="status">
 
-<div class="system-status">
-
-<span class="status-dot"></span>
+<span class="dot"></span>
 
 STUDIO SYSTEM READY
 
@@ -1467,18 +928,15 @@ STUDIO SYSTEM READY
 </section>
 
 
+<!-- STUDIO -->
 
-<!-- ======================================================
-     STUDIO
-====================================================== -->
-
-<section id="studio-setup"
-class="section reveal">
+<section
+id="studio"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 01 / STUDIO SETUP
@@ -1490,168 +948,35 @@ Your Studio.
 
 <p class="section-description">
 
-Every important machine in the Haerviu production
-environment. Production, rhythm, sampling,
-mixing and vocals — connected as one creative system.
+Les machines réelles qui composent le système Haerviu.
+Chaque élément est présenté comme une pièce du studio,
+pas comme une simple icône.
 
 </p>
 
 </div>
 
 
-<div class="live-panel">
-
-<div class="live-left">
-
-<span class="live-dot"></span>
-
-SYSTEM LIVE
-
-</div>
-
-
-<div class="levels">
-
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-</div>
-
-
-
 <div class="devices">
 
 
-<!-- MC707 -->
+<!-- MC-707 -->
 
-<a href="#midi"
-class="device">
+<a
+class="device reveal"
+href="#midi">
 
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 CONNECTED
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<defs>
-
-<linearGradient id="mcbody"
-x1="0"
-x2="1">
-
-<stop offset="0"
-stop-color="#151821"/>
-
-<stop offset="1"
-stop-color="#05060a"/>
-
-</linearGradient>
-
-</defs>
-
-
-<rect
-x="70"
-y="55"
-width="560"
-height="235"
-rx="18"
-fill="url(#mcbody)"
-stroke="#596171"/>
-
-
-<text
-x="470"
-y="78"
-fill="#aeb5c5"
-font-size="14"
-font-weight="bold">
-
-GROOVEBOX
-
-</text>
-
-
-<text
-x="530"
-y="100"
-fill="#d9dde7"
-font-size="22"
-font-weight="bold">
-
-MC-707
-
-</text>
-
-
-<rect
-x="470"
-y="120"
-width="110"
-height="55"
-rx="4"
-fill="#171d2b"
-stroke="#58627a"/>
-
-
-<g fill="#303748">
-
-<circle cx="120" cy="105" r="14"/>
-<circle cx="170" cy="105" r="14"/>
-<circle cx="220" cy="105" r="14"/>
-<circle cx="270" cy="105" r="14"/>
-<circle cx="320" cy="105" r="14"/>
-<circle cx="370" cy="105" r="14"/>
-
-</g>
-
-
-<g stroke="#8992a6"
-stroke-width="4">
-
-<line x1="115" y1="130" x2="115" y2="220"/>
-<line x1="165" y1="130" x2="165" y2="220"/>
-<line x1="215" y1="130" x2="215" y2="220"/>
-<line x1="265" y1="130" x2="265" y2="220"/>
-<line x1="315" y1="130" x2="315" y2="220"/>
-<line x1="365" y1="130" x2="365" y2="220"/>
-
-</g>
-
-
-<g>
-
-<rect x="100" y="235" width="38" height="22" rx="4" fill="#54bd7e"/>
-<rect x="145" y="235" width="38" height="22" rx="4" fill="#6c82da"/>
-<rect x="190" y="235" width="38" height="22" rx="4" fill="#805fd0"/>
-<rect x="235" y="235" width="38" height="22" rx="4" fill="#53bfc4"/>
-<rect x="280" y="235" width="38" height="22" rx="4" fill="#73c97e"/>
-<rect x="325" y="235" width="38" height="22" rx="4" fill="#aa658e"/>
-<rect x="370" y="235" width="38" height="22" rx="4" fill="#5c87d8"/>
-
-</g>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://cdn.shoplightspeed.com/shops/642375/files/72929174/roland-mc-707-open-box.jpg"
+alt="Roland MC-707">
 
 </div>
-
 
 <div class="device-info">
 
@@ -1672,116 +997,23 @@ MIDI CONTROL →
 </a>
 
 
+<!-- TR-8S -->
 
-<!-- TR8S -->
+<a
+class="device reveal"
+href="#audio">
 
-<a href="#audio"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 CONNECTED
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<rect
-x="70"
-y="55"
-width="560"
-height="235"
-rx="18"
-fill="#14171d"
-stroke="#596171"/>
-
-
-<text
-x="500"
-y="90"
-fill="#dce0e7"
-font-size="24"
-font-weight="bold">
-
-TR-8S
-
-</text>
-
-
-<g
-fill="#242932"
-stroke="#727b8d">
-
-<circle cx="120" cy="105" r="19"/>
-<circle cx="170" cy="105" r="19"/>
-<circle cx="220" cy="105" r="19"/>
-<circle cx="270" cy="105" r="19"/>
-<circle cx="320" cy="105" r="19"/>
-<circle cx="370" cy="105" r="19"/>
-<circle cx="420" cy="105" r="19"/>
-
-</g>
-
-
-<g fill="#26302e">
-
-<rect x="105" y="145" width="32" height="80"/>
-<rect x="150" y="145" width="32" height="80"/>
-<rect x="195" y="145" width="32" height="80"/>
-<rect x="240" y="145" width="32" height="80"/>
-<rect x="285" y="145" width="32" height="80"/>
-<rect x="330" y="145" width="32" height="80"/>
-<rect x="375" y="145" width="32" height="80"/>
-<rect x="420" y="145" width="32" height="80"/>
-
-</g>
-
-
-<g fill="#d69b45">
-
-<rect x="105" y="235" width="32" height="20" rx="3"/>
-<rect x="150" y="235" width="32" height="20" rx="3"/>
-<rect x="195" y="235" width="32" height="20" rx="3"/>
-<rect x="240" y="235" width="32" height="20" rx="3"/>
-<rect x="285" y="235" width="32" height="20" rx="3"/>
-<rect x="330" y="235" width="32" height="20" rx="3"/>
-<rect x="375" y="235" width="32" height="20" rx="3"/>
-<rect x="420" y="235" width="32" height="20" rx="3"/>
-
-</g>
-
-
-<rect
-x="490"
-y="125"
-width="105"
-height="45"
-rx="4"
-fill="#202b27"
-stroke="#64786f"/>
-
-
-<text
-x="505"
-y="154"
-fill="#83d89c"
-font-size="16">
-
-125.0
-
-</text>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://www.straitmusic.com/cdn/shop/files/TR8S-top-800x800_grande.jpg?v=1762033097"
+alt="Roland TR-8S">
 
 </div>
-
 
 <div class="device-info">
 
@@ -1802,153 +1034,23 @@ RHYTHM ENGINE →
 </a>
 
 
+<!-- AKAI FORCE -->
 
-<!-- FORCE -->
+<a
+class="device reveal"
+href="#workflow">
 
-<a href="#workflow"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 READY
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 390">
-
-<defs>
-
-<linearGradient
-id="force"
-x1="0"
-y1="0"
-x2="0"
-y2="1">
-
-<stop offset="0"
-stop-color="#292d35"/>
-
-<stop offset="1"
-stop-color="#090b0f"/>
-
-</linearGradient>
-
-</defs>
-
-
-<polygon
-points="90,45 610,45 650,335 50,335"
-fill="url(#force)"
-stroke="#687080"
-stroke-width="2"/>
-
-
-<rect
-x="235"
-y="70"
-width="230"
-height="105"
-rx="7"
-fill="#101722"
-stroke="#737d93"/>
-
-
-<rect
-x="250"
-y="83"
-width="200"
-height="78"
-rx="4"
-fill="#263b55"/>
-
-
-<path
-d="M260 140 L285 122 L310 132 L340 105 L365 118 L395 93 L440 125"
-fill="none"
-stroke="#71a5ff"
-stroke-width="4"/>
-
-
-<text
-x="105"
-y="80"
-fill="#bfc5d1"
-font-size="17"
-font-weight="bold">
-
-AKAI PROFESSIONAL
-
-</text>
-
-
-<text
-x="500"
-y="80"
-fill="#dfe3eb"
-font-size="18"
-font-weight="bold">
-
-FORCE
-
-</text>
-
-
-<g>
-
-<rect x="115" y="205" width="42" height="32" rx="4" fill="#ed574f"/>
-<rect x="165" y="205" width="42" height="32" rx="4" fill="#6ad99c"/>
-<rect x="215" y="205" width="42" height="32" rx="4" fill="#64b8e9"/>
-<rect x="265" y="205" width="42" height="32" rx="4" fill="#6577e8"/>
-<rect x="315" y="205" width="42" height="32" rx="4" fill="#8e63e8"/>
-<rect x="365" y="205" width="42" height="32" rx="4" fill="#d05fc0"/>
-<rect x="415" y="205" width="42" height="32" rx="4" fill="#6bd4ca"/>
-<rect x="465" y="205" width="42" height="32" rx="4" fill="#8bd76c"/>
-
-<rect x="115" y="245" width="42" height="32" rx="4" fill="#d94749"/>
-<rect x="165" y="245" width="42" height="32" rx="4" fill="#67c991"/>
-<rect x="215" y="245" width="42" height="32" rx="4" fill="#4ca8dc"/>
-<rect x="265" y="245" width="42" height="32" rx="4" fill="#596fdf"/>
-<rect x="315" y="245" width="42" height="32" rx="4" fill="#795bdd"/>
-<rect x="365" y="245" width="42" height="32" rx="4" fill="#bf5bb4"/>
-<rect x="415" y="245" width="42" height="32" rx="4" fill="#5cc4bb"/>
-<rect x="465" y="245" width="42" height="32" rx="4" fill="#72c95f"/>
-
-</g>
-
-
-<g fill="#161a20"
-stroke="#737b89">
-
-<circle cx="125" cy="150" r="14"/>
-<circle cx="170" cy="150" r="14"/>
-<circle cx="520" cy="150" r="14"/>
-<circle cx="565" cy="150" r="14"/>
-
-</g>
-
-
-<text
-x="270"
-y="310"
-fill="#dce0e7"
-font-size="22"
-font-weight="bold">
-
-FORCE
-
-</text>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://musiquedepot.ca/media/catalog/product/cache/87bed38dc02717d041161add1f41901f/p/r/products1007974-1200x1200--1230994164.jpg"
+alt="Akai Force">
 
 </div>
-
 
 <div class="device-info">
 
@@ -1969,136 +1071,23 @@ CREATIVE WORKSTATION →
 </a>
 
 
+<!-- MX-1 -->
 
-<!-- MX1 -->
+<a
+class="device reveal"
+href="#audio">
 
-<a href="#audio"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 CONNECTED
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<rect
-x="55"
-y="50"
-width="590"
-height="245"
-rx="14"
-fill="#111419"
-stroke="#677080"/>
-
-
-<text
-x="495"
-y="78"
-fill="#aeb4c1"
-font-size="15">
-
-MIX PERFORMER
-
-</text>
-
-
-<g>
-
-<rect x="90" y="75" width="27" height="25" rx="3" fill="#cbd0d8"/>
-<rect x="123" y="75" width="27" height="25" rx="3" fill="#5cd3e0"/>
-<rect x="156" y="75" width="27" height="25" rx="3" fill="#6689e7"/>
-<rect x="189" y="75" width="27" height="25" rx="3" fill="#7b6ee8"/>
-<rect x="222" y="75" width="27" height="25" rx="3" fill="#62c9d5"/>
-<rect x="255" y="75" width="27" height="25" rx="3" fill="#72d2a1"/>
-<rect x="288" y="75" width="27" height="25" rx="3" fill="#5d91e5"/>
-<rect x="321" y="75" width="27" height="25" rx="3" fill="#6b77d8"/>
-<rect x="354" y="75" width="27" height="25" rx="3" fill="#75c8d2"/>
-<rect x="387" y="75" width="27" height="25" rx="3" fill="#6cd1a1"/>
-
-</g>
-
-
-<circle
-cx="350"
-cy="135"
-r="32"
-fill="#20262f"
-stroke="#818b9b"
-stroke-width="3"/>
-
-
-<circle
-cx="350"
-cy="135"
-r="8"
-fill="#6cda9a"/>
-
-
-<g
-fill="#1b2028"
-stroke="#697283">
-
-<circle cx="105" cy="145" r="15"/>
-<circle cx="155" cy="145" r="15"/>
-<circle cx="205" cy="145" r="15"/>
-<circle cx="255" cy="145" r="15"/>
-<circle cx="445" cy="145" r="15"/>
-<circle cx="495" cy="145" r="15"/>
-<circle cx="545" cy="145" r="15"/>
-
-</g>
-
-
-<g stroke="#8c94a3" stroke-width="5">
-
-<line x1="105" y1="175" x2="105" y2="255"/>
-<line x1="155" y1="175" x2="155" y2="255"/>
-<line x1="205" y1="175" x2="205" y2="255"/>
-<line x1="255" y1="175" x2="255" y2="255"/>
-<line x1="445" y1="175" x2="445" y2="255"/>
-<line x1="495" y1="175" x2="495" y2="255"/>
-<line x1="545" y1="175" x2="545" y2="255"/>
-
-</g>
-
-
-<g fill="#4dd58f">
-
-<rect x="96" y="220" width="18" height="35"/>
-<rect x="146" y="205" width="18" height="50"/>
-<rect x="196" y="215" width="18" height="40"/>
-<rect x="246" y="195" width="18" height="60"/>
-<rect x="436" y="210" width="18" height="45"/>
-<rect x="486" y="200" width="18" height="55"/>
-<rect x="536" y="218" width="18" height="37"/>
-
-</g>
-
-
-<text
-x="82"
-y="282"
-fill="#dce1e9"
-font-size="20"
-font-weight="bold">
-
-ROLAND MX-1
-
-</text>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://media.sweetwater.com/images/items/750/MX1-large.jpg"
+alt="Roland MX-1">
 
 </div>
-
 
 <div class="device-info">
 
@@ -2119,110 +1108,23 @@ MASTER MIX →
 </a>
 
 
+<!-- VT-4 -->
 
-<!-- VT4 -->
+<a
+class="device reveal"
+href="#vocal">
 
-<a href="#vocal"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 READY
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<rect
-x="130"
-y="55"
-width="440"
-height="225"
-rx="18"
-fill="#151820"
-stroke="#687080"
-stroke-width="2"/>
-
-
-<text
-x="170"
-y="90"
-fill="#d9dee7"
-font-size="24"
-font-weight="bold">
-
-VT-4
-
-</text>
-
-
-<text
-x="170"
-y="110"
-fill="#777f8e"
-font-size="11">
-
-VOICE TRANSFORMER
-
-</text>
-
-
-<g
-fill="#202630"
-stroke="#727c8e">
-
-<circle cx="220" cy="150" r="28"/>
-<circle cx="295" cy="150" r="28"/>
-<circle cx="370" cy="150" r="28"/>
-<circle cx="445" cy="150" r="28"/>
-
-</g>
-
-
-<g fill="#6873e4">
-
-<circle cx="220" cy="150" r="9"/>
-<circle cx="295" cy="150" r="9"/>
-
-</g>
-
-
-<g
-stroke="#a0a8b8"
-stroke-width="5">
-
-<line x1="205" y1="215" x2="205" y2="255"/>
-<line x1="255" y1="215" x2="255" y2="255"/>
-<line x1="305" y1="215" x2="305" y2="255"/>
-<line x1="355" y1="215" x2="355" y2="255"/>
-<line x1="405" y1="215" x2="405" y2="255"/>
-<line x1="455" y1="215" x2="455" y2="255"/>
-
-</g>
-
-
-<g fill="#79d99d">
-
-<rect x="198" y="225" width="14" height="30" rx="3"/>
-<rect x="248" y="210" width="14" height="45" rx="3"/>
-<rect x="298" y="230" width="14" height="25" rx="3"/>
-<rect x="348" y="218" width="14" height="37" rx="3"/>
-<rect x="398" y="228" width="14" height="27" rx="3"/>
-<rect x="448" y="205" width="14" height="50" rx="3"/>
-
-</g>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/451024.jpg"
+alt="Roland VT-4">
 
 </div>
-
 
 <div class="device-info">
 
@@ -2243,123 +1145,23 @@ VOCAL PROCESSING →
 </a>
 
 
+<!-- RODE NT1 -->
 
-<!-- NT1 -->
+<a
+class="device reveal"
+href="#vocal">
 
-<a href="#vocal"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 READY
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<defs>
-
-<linearGradient
-id="mic"
-x1="0"
-x2="1">
-
-<stop offset="0"
-stop-color="#6d737e"/>
-
-<stop offset=".5"
-stop-color="#d5d8de"/>
-
-<stop offset="1"
-stop-color="#555b66"/>
-
-</linearGradient>
-
-</defs>
-
-
-<rect
-x="310"
-y="45"
-width="80"
-height="185"
-rx="40"
-fill="url(#mic)"
-stroke="#9097a4"/>
-
-
-<path
-d="M325 65 Q350 45 375 65 L375 170 Q350 190 325 170Z"
-fill="#171a20"/>
-
-
-<g
-stroke="#7e8592"
-stroke-width="3">
-
-<line x1="335" y1="70" x2="335" y2="165"/>
-<line x1="350" y1="62" x2="350" y2="173"/>
-<line x1="365" y1="70" x2="365" y2="165"/>
-
-</g>
-
-
-<rect
-x="290"
-y="220"
-width="120"
-height="25"
-rx="12"
-fill="#151820"
-stroke="#6b7382"/>
-
-
-<path
-d="M350 245 L350 285"
-stroke="#8c93a0"
-stroke-width="6"/>
-
-
-<path
-d="M290 285 Q350 265 410 285"
-fill="none"
-stroke="#7b8290"
-stroke-width="6"/>
-
-
-<text
-x="455"
-y="135"
-fill="#d9dde5"
-font-size="28"
-font-weight="bold">
-
-RØDE
-
-</text>
-
-
-<text
-x="455"
-y="165"
-fill="#8d95a4"
-font-size="20">
-
-NT1
-
-</text>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/561427.jpg"
+alt="RØDE NT1">
 
 </div>
-
 
 <div class="device-info">
 
@@ -2380,104 +1182,23 @@ RECORDING CHAIN →
 </a>
 
 
-
 <!-- ARTURIA -->
 
-<a href="#workflow"
-class="device">
+<a
+class="device reveal"
+href="#workflow">
 
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 READY
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<rect
-x="65"
-y="70"
-width="570"
-height="200"
-rx="15"
-fill="#17191e"
-stroke="#747b88"/>
-
-
-<text
-x="95"
-y="100"
-fill="#dce0e7"
-font-size="18"
-font-weight="bold">
-
-ARTURIA
-
-</text>
-
-
-<text
-x="500"
-y="100"
-fill="#b9bec9"
-font-size="16">
-
-ESSENTIAL 88
-
-</text>
-
-
-<g
-fill="#eeeeee"
-stroke="#777">
-
-<rect x="100" y="145" width="28" height="95"/>
-<rect x="130" y="145" width="28" height="95"/>
-<rect x="160" y="145" width="28" height="95"/>
-<rect x="190" y="145" width="28" height="95"/>
-<rect x="220" y="145" width="28" height="95"/>
-<rect x="250" y="145" width="28" height="95"/>
-<rect x="280" y="145" width="28" height="95"/>
-<rect x="310" y="145" width="28" height="95"/>
-<rect x="340" y="145" width="28" height="95"/>
-<rect x="370" y="145" width="28" height="95"/>
-<rect x="400" y="145" width="28" height="95"/>
-<rect x="430" y="145" width="28" height="95"/>
-<rect x="460" y="145" width="28" height="95"/>
-<rect x="490" y="145" width="28" height="95"/>
-<rect x="520" y="145" width="28" height="95"/>
-<rect x="550" y="145" width="28" height="95"/>
-
-</g>
-
-
-<g fill="#111">
-
-<rect x="120" y="145" width="17" height="58"/>
-<rect x="150" y="145" width="17" height="58"/>
-<rect x="210" y="145" width="17" height="58"/>
-<rect x="240" y="145" width="17" height="58"/>
-<rect x="270" y="145" width="17" height="58"/>
-<rect x="330" y="145" width="17" height="58"/>
-<rect x="360" y="145" width="17" height="58"/>
-<rect x="420" y="145" width="17" height="58"/>
-<rect x="450" y="145" width="17" height="58"/>
-<rect x="480" y="145" width="17" height="58"/>
-<rect x="540" y="145" width="17" height="58"/>
-
-</g>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/586185.jpg"
+alt="Arturia KeyLab Essential 88">
 
 </div>
-
 
 <div class="device-info">
 
@@ -2498,88 +1219,23 @@ MIDI PERFORMANCE →
 </a>
 
 
+<!-- YAMAHA HS8 -->
 
-<!-- HS8 -->
+<a
+class="device reveal"
+href="#audio">
 
-<a href="#audio"
-class="device">
-
-<div class="device-top">
-
-<div class="device-status">
+<span class="badge">
 MONITORING
-</div>
-
-</div>
-
+</span>
 
 <div class="device-image">
 
-<svg viewBox="0 0 700 330">
-
-<rect
-x="170"
-y="35"
-width="360"
-height="260"
-rx="20"
-fill="#17191e"
-stroke="#666e7d"/>
-
-
-<circle
-cx="350"
-cy="115"
-r="55"
-fill="#0b0d11"
-stroke="#59616f"
-stroke-width="5"/>
-
-
-<circle
-cx="350"
-cy="115"
-r="23"
-fill="#202630"/>
-
-
-<circle
-cx="350"
-cy="225"
-r="30"
-fill="#080a0e"
-stroke="#59616f"
-stroke-width="5"/>
-
-
-<text
-x="195"
-y="75"
-fill="#dfe3ea"
-font-size="20"
-font-weight="bold">
-
-YAMAHA
-
-</text>
-
-
-<text
-x="425"
-y="75"
-fill="#9ba2b0"
-font-size="18">
-
-HS8
-
-</text>
-
-</svg>
-
-<div class="device-overlay"></div>
+<img
+src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/313037.jpg"
+alt="Yamaha HS8">
 
 </div>
-
 
 <div class="device-info">
 
@@ -2607,18 +1263,15 @@ MONITORING SYSTEM →
 </section>
 
 
+<!-- MIDI -->
 
-<!-- ======================================================
-     MIDI
-====================================================== -->
-
-<section id="midi"
-class="section routing reveal">
+<section
+id="midi"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 02 / MIDI CONTROL
@@ -2630,20 +1283,20 @@ MIDI.
 
 <p class="section-description">
 
-The control layer connecting the machines,
-controllers and software.
+La couche de contrôle qui relie les machines,
+les claviers et le logiciel.
 
 </p>
 
 </div>
 
 
-<div class="routing-grid">
+<div class="cards">
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 ↔
 </div>
 
@@ -2653,17 +1306,17 @@ MIDI Clock
 
 <p>
 
-Keep the MC-707, TR-8S, Force and DAW
-locked to the same tempo and timing.
+MC-707, TR-8S, Force et DAW restent
+verrouillés sur le même tempo et le même timing.
 
 </p>
 
 </div>
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 ⌁
 </div>
 
@@ -2673,17 +1326,17 @@ Controllers
 
 <p>
 
-Use the Arturia keyboard and hardware
-controllers to play and control the system.
+Le clavier Arturia devient une vraie interface
+de jeu pour piloter les instruments et les logiciels.
 
 </p>
 
 </div>
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 ⚡
 </div>
 
@@ -2693,8 +1346,8 @@ Synchronization
 
 <p>
 
-Build a stable studio system where every
-machine knows when to start, stop and follow.
+Un système où chaque machine sait quand
+démarrer, s'arrêter et suivre le reste du studio.
 
 </p>
 
@@ -2708,18 +1361,15 @@ machine knows when to start, stop and follow.
 </section>
 
 
+<!-- AUDIO -->
 
-<!-- ======================================================
-     AUDIO
-====================================================== -->
-
-<section id="audio"
-class="section routing reveal">
+<section
+id="audio"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 03 / AUDIO SYSTEM
@@ -2731,19 +1381,18 @@ Sound Flow.
 
 <p class="section-description">
 
-From hardware to the MX-1, through processing,
-recording and monitoring.
+Le chemin du son, du hardware au mix,
+puis vers le DAW et le monitoring.
 
 </p>
 
 </div>
 
 
-<div id="signal-flow"
-class="flow">
+<div class="flow-grid">
 
 
-<div class="flow-card">
+<div class="flow-card reveal">
 
 <h3>
 Hardware → Mix
@@ -2751,32 +1400,32 @@ Hardware → Mix
 
 <div class="flow-line">
 
-<div class="flow-node">
+<span class="node">
 MC-707
-</div>
+</span>
 
-<div class="flow-arrow">
+<span class="arrow">
 →
-</div>
+</span>
 
-<div class="flow-node">
+<span class="node">
 TR-8S
-</div>
+</span>
 
-<div class="flow-arrow">
+<span class="arrow">
 →
-</div>
+</span>
 
-<div class="flow-node">
+<span class="node">
 MX-1
-</div>
+</span>
 
 </div>
 
 </div>
 
 
-<div class="flow-card">
+<div class="flow-card reveal">
 
 <h3>
 Mix → DAW
@@ -2784,25 +1433,25 @@ Mix → DAW
 
 <div class="flow-line">
 
-<div class="flow-node">
+<span class="node">
 MX-1
-</div>
+</span>
 
-<div class="flow-arrow">
+<span class="arrow">
 →
-</div>
+</span>
 
-<div class="flow-node">
+<span class="node">
 Cubase
-</div>
+</span>
 
-<div class="flow-arrow">
+<span class="arrow">
 →
-</div>
+</span>
 
-<div class="flow-node">
-Master
-</div>
+<span class="node">
+MASTER
+</span>
 
 </div>
 
@@ -2816,18 +1465,15 @@ Master
 </section>
 
 
+<!-- VOCAL -->
 
-<!-- ======================================================
-     VOCAL
-====================================================== -->
-
-<section id="vocal"
-class="section routing reveal">
+<section
+id="vocal"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 04 / VOCAL CHAIN
@@ -2839,20 +1485,20 @@ Your Voice.
 
 <p class="section-description">
 
-The vocal chain designed around the RØDE NT1
-and Roland VT-4.
+La chaîne vocale construite autour
+du RØDE NT1 et du Roland VT-4.
 
 </p>
 
 </div>
 
 
-<div class="routing-grid">
+<div class="cards">
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 🎙
 </div>
 
@@ -2862,17 +1508,17 @@ Capture
 
 <p>
 
-RØDE NT1 captures the clean studio vocal
-before creative processing.
+Le NT1 capture une voix propre et détaillée
+avant toute transformation créative.
 
 </p>
 
 </div>
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 ◉
 </div>
 
@@ -2882,18 +1528,17 @@ Transform
 
 <p>
 
-The VT-4 provides pitch, formant,
-vocoder, harmony, delay and creative
-vocal processing.
+Le VT-4 apporte pitch, formant, vocoder,
+harmonies, delay, reverb et traitements créatifs.
 
 </p>
 
 </div>
 
 
-<div class="routing-card">
+<div class="card reveal">
 
-<div class="routing-icon">
+<div class="icon">
 🎚
 </div>
 
@@ -2903,8 +1548,8 @@ Return
 
 <p>
 
-Processed vocals return to the MX-1
-and DAW for arrangement and final mix.
+La voix traitée revient dans le système
+de mixage et le DAW pour l'arrangement final.
 
 </p>
 
@@ -2913,57 +1558,20 @@ and DAW for arrangement and final mix.
 
 </div>
 
-
-<div class="vocal-chain">
-
-<div class="vocal-node">
-RØDE NT1
-</div>
-
-<div class="vocal-arrow">
-→
-</div>
-
-<div class="vocal-node">
-VT-4
-</div>
-
-<div class="vocal-arrow">
-→
-</div>
-
-<div class="vocal-node">
-MX-1
-</div>
-
-<div class="vocal-arrow">
-→
-</div>
-
-<div class="vocal-node">
-CUBASE
-</div>
-
-</div>
-
-
 </div>
 
 </section>
 
 
+<!-- WORKFLOW -->
 
-<!-- ======================================================
-     WORKFLOW
-====================================================== -->
-
-<section id="workflow"
-class="section workflow reveal">
+<section
+id="workflow"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 05 / CREATIVE WORKFLOW
@@ -2975,19 +1583,20 @@ Create.
 
 <p class="section-description">
 
-From the first beat to the finished Haerviu production.
+De la première idée jusqu'à
+la production Haerviu terminée.
 
 </p>
 
 </div>
 
 
-<div class="workflow-grid">
+<div class="steps">
 
 
-<div class="workflow-step">
+<div class="step reveal">
 
-<div class="step-number">
+<div class="step-no">
 STEP 01
 </div>
 
@@ -2996,18 +1605,16 @@ Idea
 </h3>
 
 <p>
-
-Start with rhythm, melody, bass,
-sound design or a vocal idea.
-
+Rythme, mélodie, basse,
+sound design ou idée vocale.
 </p>
 
 </div>
 
 
-<div class="workflow-step">
+<div class="step reveal">
 
-<div class="step-number">
+<div class="step-no">
 STEP 02
 </div>
 
@@ -3016,18 +1623,16 @@ Build
 </h3>
 
 <p>
-
-Use the MC-707, TR-8S and Force
-to develop the musical structure.
-
+MC-707, TR-8S et Force
+construisent la matière musicale.
 </p>
 
 </div>
 
 
-<div class="workflow-step">
+<div class="step reveal">
 
-<div class="step-number">
+<div class="step-no">
 STEP 03
 </div>
 
@@ -3036,18 +1641,16 @@ Record
 </h3>
 
 <p>
-
-Capture hardware and vocals into
-the DAW through the studio system.
-
+Hardware et voix sont
+capturés dans le DAW.
 </p>
 
 </div>
 
 
-<div class="workflow-step">
+<div class="step reveal">
 
-<div class="step-number">
+<div class="step-no">
 STEP 04
 </div>
 
@@ -3056,10 +1659,8 @@ Finish
 </h3>
 
 <p>
-
-Mix, automate, master and prepare
-the final Haerviu release.
-
+Mix, automation, mastering
+et préparation de la sortie.
 </p>
 
 </div>
@@ -3072,18 +1673,15 @@ the final Haerviu release.
 </section>
 
 
+<!-- PROJECTS -->
 
-<!-- ======================================================
-     PRODUCTIONS
-====================================================== -->
-
-<section id="projects"
-class="section projects reveal">
+<section
+id="projects"
+class="section">
 
 <div class="container">
 
-
-<div class="section-header">
+<div class="section-header reveal">
 
 <div class="section-number">
 06 / HAERVIU PRODUCTIONS
@@ -3096,7 +1694,7 @@ Music.
 </div>
 
 
-<div class="project-panel">
+<div class="project reveal">
 
 <h3>
 Haerviu Productions
@@ -3104,27 +1702,25 @@ Haerviu Productions
 
 <p>
 
-One creative environment for your tracks,
-stems, arrangements, vocals, hardware sessions
-and finished productions.
+Un environnement unique pour tes morceaux,
+stems, arrangements, voix, sessions hardware
+et productions finales.
 
 </p>
-
 
 <div class="project-buttons">
 
 <a
-href="#studio-setup"
-class="button button-secondary">
+class="button secondary"
+href="#studio">
 
 Studio Setup →
 
 </a>
 
-
 <a
-href="#workflow"
-class="button button-secondary">
+class="button secondary"
+href="#workflow">
 
 Creative Workflow →
 
@@ -3138,9 +1734,7 @@ Creative Workflow →
 
 </section>
 
-
 </main>
-
 
 
 <footer>
@@ -3156,170 +1750,81 @@ CONNECT · CONFIGURE · CREATE
 </footer>
 
 
-
 <script>
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+const btn = document.getElementById("menuBtn");
+
+const drawer = document.getElementById("drawer");
+
+btn.addEventListener(
+  "click",
+  () => drawer.classList.toggle("open")
+);
+
+drawer
+  .querySelectorAll("a")
+  .forEach(
+    a =>
+      a.addEventListener(
+        "click",
+        () => drawer.classList.remove("open")
+      )
+  );
+
 
 const observer =
 new IntersectionObserver(
+  entries => {
 
-(entries)=>{
+    entries.forEach(
+      e => {
 
-entries.forEach(entry=>{
+        if(e.isIntersecting){
 
-if(entry.isIntersecting){
+          e.target.classList.add("visible");
 
-entry.target.classList.add("visible");
+        }
 
-}
+      }
+    );
 
-});
-
-},
-
-{
-threshold:.12
-}
-
+  },
+  {
+    threshold:.08
+  }
 );
 
 
 document
-.querySelectorAll(".reveal")
-.forEach(element=>{
+  .querySelectorAll(".reveal")
+  .forEach(
+    el => observer.observe(el)
+  );
 
-observer.observe(element);
-
-});
-
-
-
-/* =========================================================
-   CURSOR LIGHT
-========================================================= */
-
-const glow =
-document.getElementById("cursorGlow");
-
-
-document.addEventListener(
-"mousemove",
-(event)=>{
-
-glow.style.left =
-event.clientX + "px";
-
-glow.style.top =
-event.clientY + "px";
-
-}
-);
-
-
-
-/* =========================================================
-   DEVICE PARALLAX
-========================================================= */
 
 document
-.querySelectorAll(".device")
-.forEach(card=>{
+  .querySelectorAll(".device img")
+  .forEach(
+    img => {
 
-card.addEventListener(
-"mousemove",
-(event)=>{
+      img.addEventListener(
+        "error",
+        () => {
 
-const rect =
-card.getBoundingClientRect();
+          img.style.display="none";
 
-const x =
-(event.clientX - rect.left)
-/
-rect.width
-- .5;
+          img.parentElement.insertAdjacentHTML(
+            "beforeend",
+            '<div style="position:relative;text-align:center;color:#777f90;font-weight:900;letter-spacing:3px;font-size:12px">HAERVIU<br>STUDIO HARDWARE</div>'
+          );
 
-const y =
-(event.clientY - rect.top)
-/
-rect.height
-- .5;
+        }
+      );
 
-const svg =
-card.querySelector("svg");
-
-if(svg){
-
-svg.style.transform =
-`perspective(800px)
- rotateY(${x * 4}deg)
- rotateX(${y * -4}deg)
- scale(1.04)`;
-
-}
-
-}
-);
-
-
-card.addEventListener(
-"mouseleave",
-()=>{
-
-const svg =
-card.querySelector("svg");
-
-if(svg){
-
-svg.style.transform =
-"perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)";
-
-}
-
-}
-);
-
-});
-
-
-
-/* =========================================================
-   SMOOTH ANCHOR
-========================================================= */
-
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(link=>{
-
-link.addEventListener(
-"click",
-function(event){
-
-const target =
-document.querySelector(
-this.getAttribute("href")
-);
-
-if(target){
-
-event.preventDefault();
-
-target.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
-}
-);
-
-});
+    }
+  );
 
 </script>
-
 
 </body>
 </html>
