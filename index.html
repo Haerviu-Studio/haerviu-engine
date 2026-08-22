@@ -21,14 +21,8 @@ html{
 body{
   background:#07080c;
   color:#f5f5f7;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "SF Pro Text",
-    Inter,
-    Arial,
-    sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "SF Pro Text",Inter,Arial,sans-serif;
   overflow-x:hidden;
 }
 
@@ -44,8 +38,9 @@ a{
   --soft:#b7bbc6;
   --muted:#737886;
   --line:rgba(255,255,255,.13);
-  --line2:rgba(255,255,255,.25);
+  --line2:rgba(255,255,255,.28);
   --green:#70d89b;
+  --blue:#7ea8ff;
 }
 
 body::before{
@@ -55,16 +50,8 @@ body::before{
   z-index:-2;
   pointer-events:none;
   background:
-    radial-gradient(
-      circle at 80% 10%,
-      rgba(90,110,180,.16),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 10% 70%,
-      rgba(90,70,150,.12),
-      transparent 35%
-    );
+    radial-gradient(circle at 80% 10%,rgba(90,110,180,.16),transparent 32%),
+    radial-gradient(circle at 10% 70%,rgba(90,70,150,.12),transparent 35%);
 }
 
 body::after{
@@ -80,9 +67,7 @@ body::after{
   pointer-events:none;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
   height:82px;
@@ -132,9 +117,7 @@ header{
   font-size:21px;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   min-height:calc(100vh - 82px);
@@ -235,12 +218,11 @@ header{
   box-shadow:0 0 18px var(--green);
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 .section{
   padding:120px 0;
+  border-top:1px solid var(--line);
 }
 
 .container{
@@ -274,9 +256,7 @@ header{
   line-height:1.65;
 }
 
-/* =========================
-   DEVICE GRID
-========================= */
+/* DEVICE GRID */
 
 .devices{
   display:grid;
@@ -284,8 +264,10 @@ header{
   gap:20px;
 }
 
+/* DEVICE CARD */
+
 .device{
-  min-height:460px;
+  min-height:470px;
   overflow:hidden;
   position:relative;
   display:flex;
@@ -302,7 +284,7 @@ header{
   border-color:var(--line2);
 }
 
-.device-image{
+.device-visual{
   position:absolute;
   inset:0 0 150px 0;
   display:flex;
@@ -312,23 +294,242 @@ header{
   background:
     radial-gradient(
       circle at center,
-      rgba(100,120,190,.12),
-      transparent 65%
+      rgba(100,120,190,.14),
+      transparent 68%
     );
 }
 
-.device-image img{
+/* IMAGE EXTERNE */
+
+.device-visual img{
   width:100%;
   height:100%;
   object-fit:contain;
-  filter:drop-shadow(
-    0 25px 30px rgba(0,0,0,.55)
-  );
+  filter:drop-shadow(0 25px 30px rgba(0,0,0,.6));
   transition:.45s;
 }
 
-.device:hover .device-image img{
+.device:hover .device-visual img{
   transform:scale(1.045);
+}
+
+/* FALLBACK VISUEL */
+
+.visual-fallback{
+  width:82%;
+  height:72%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:22px;
+  background:
+    linear-gradient(
+      145deg,
+      #1b1e27,
+      #090a0e
+    );
+  box-shadow:
+    0 35px 55px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.visual-fallback::before{
+  content:"";
+  position:absolute;
+  inset:12%;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+}
+
+.visual-label{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  font-weight:900;
+  letter-spacing:5px;
+  font-size:28px;
+  color:#e9ebf2;
+}
+
+.visual-sub{
+  margin-top:10px;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#737886;
+}
+
+/* SPECIAL DEVICE VISUALS */
+
+.force-visual{
+  width:86%;
+  height:67%;
+  position:relative;
+  padding:22px;
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      #242832,
+      #0b0d11
+    );
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 35px 60px rgba(0,0,0,.65);
+  transform:perspective(800px) rotateX(4deg);
+}
+
+.force-screen{
+  position:absolute;
+  left:20%;
+  top:13%;
+  width:30%;
+  height:30%;
+  border:2px solid #5e6675;
+  border-radius:5px;
+  background:
+    linear-gradient(
+      135deg,
+      #252d3b,
+      #11151c
+    );
+  box-shadow:inset 0 0 25px rgba(80,120,190,.2);
+}
+
+.force-pads{
+  position:absolute;
+  left:8%;
+  bottom:12%;
+  width:42%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.force-pads span{
+  aspect-ratio:1;
+  border-radius:4px;
+  background:#292e37;
+  border:1px solid #424956;
+}
+
+.force-knobs{
+  position:absolute;
+  right:9%;
+  top:13%;
+  width:35%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.force-knobs span{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#444a55;
+  border:1px solid #646b77;
+}
+
+.force-name{
+  position:absolute;
+  right:10%;
+  bottom:13%;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:#c9cdd5;
+}
+
+.mx1-visual{
+  width:88%;
+  height:63%;
+  position:relative;
+  padding:18px;
+  border-radius:16px;
+  background:
+    linear-gradient(
+      145deg,
+      #15171c,
+      #050609
+    );
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 35px 60px rgba(0,0,0,.7);
+  transform:perspective(800px) rotateX(3deg);
+}
+
+.mx1-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#c9cdd5;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.mx1-display{
+  margin:12px auto;
+  width:42%;
+  height:32px;
+  border:1px solid #363c46;
+  border-radius:4px;
+  background:#080a0d;
+  box-shadow:inset 0 0 12px rgba(100,150,255,.15);
+}
+
+.mx1-channels{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  height:65%;
+}
+
+.mx1-channel{
+  position:relative;
+  border-radius:4px;
+  background:#0b0d11;
+  border:1px solid #282d35;
+}
+
+.mx1-channel::before{
+  content:"";
+  position:absolute;
+  top:10px;
+  left:50%;
+  width:8px;
+  height:8px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:#6d7581;
+}
+
+.mx1-channel::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:8px;
+  height:62%;
+  transform:translateX(-50%);
+  border-radius:4px;
+  background:
+    linear-gradient(
+      to top,
+      #383e48 0 70%,
+      #747c88 70% 73%,
+      #181b21 73%
+    );
+}
+
+.mx1-name{
+  position:absolute;
+  right:18px;
+  bottom:12px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:4px;
+  color:#c9cdd5;
 }
 
 .device-overlay{
@@ -337,9 +538,9 @@ header{
   background:
     linear-gradient(
       to bottom,
-      transparent 35%,
-      rgba(7,8,12,.15) 50%,
-      rgba(7,8,12,.96) 78%,
+      transparent 30%,
+      rgba(7,8,12,.12) 48%,
+      rgba(7,8,12,.96) 79%,
       #07080c 100%
     );
   pointer-events:none;
@@ -347,7 +548,7 @@ header{
 
 .device-info{
   position:relative;
-  z-index:2;
+  z-index:3;
   padding:28px;
 }
 
@@ -356,7 +557,7 @@ header{
   top:25px;
   left:25px;
   right:25px;
-  z-index:3;
+  z-index:4;
   display:flex;
   justify-content:flex-end;
 }
@@ -399,13 +600,7 @@ header{
   letter-spacing:.5px;
 }
 
-/* =========================
-   ROUTING
-========================= */
-
-.routing{
-  border-top:1px solid var(--line);
-}
+/* ROUTING */
 
 .routing-grid{
   display:grid;
@@ -451,13 +646,7 @@ header{
   line-height:1.6;
 }
 
-/* =========================
-   WORKFLOW
-========================= */
-
-.workflow{
-  border-top:1px solid var(--line);
-}
+/* WORKFLOW */
 
 .workflow-grid{
   display:grid;
@@ -496,13 +685,7 @@ header{
   line-height:1.55;
 }
 
-/* =========================
-   PROJECT
-========================= */
-
-.projects{
-  border-top:1px solid var(--line);
-}
+/* PROJECTS */
 
 .project-panel{
   padding:55px;
@@ -537,9 +720,7 @@ header{
   margin-top:32px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   padding:45px 6vw;
@@ -553,9 +734,7 @@ footer{
   letter-spacing:3px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:850px){
 
@@ -657,13 +836,22 @@ footer{
     min-height:400px;
   }
 
-  .device-image{
+  .device-visual{
     inset:0 0 145px 0;
     padding:25px;
   }
 
   .device h3{
     font-size:27px;
+  }
+
+  .visual-label{
+    font-size:22px;
+  }
+
+  .force-visual,
+  .mx1-visual{
+    width:94%;
   }
 }
 
@@ -675,28 +863,17 @@ footer{
 <header>
 
   <a href="#home" class="logo">
-
-    <div class="logo-mark">
-      H
-    </div>
-
+    <div class="logo-mark">H</div>
     HAERVIU ENGINE
-
   </a>
 
-  <div class="menu">
-    ☰
-  </div>
+  <div class="menu">☰</div>
 
 </header>
 
-
 <main>
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- HOME -->
 
 <section id="home" class="hero">
 
@@ -705,44 +882,26 @@ footer{
   </div>
 
   <h1>
-
-    <span class="outline">
-      CONNECT.
-    </span>
-
-    <span class="white">
-      CONFIGURE.
-    </span>
-
-    <span class="outline">
-      CREATE.
-    </span>
-
+    <span class="outline">CONNECT.</span>
+    <span class="white">CONFIGURE.</span>
+    <span class="outline">CREATE.</span>
   </h1>
 
   <p class="hero-text">
-
     A central workspace for your studio.
     Organize your instruments, MIDI,
     audio routing and production workflow
     in one place.
-
   </p>
 
   <div class="hero-actions">
 
-    <a
-      href="#studio-setup"
-      class="button button-primary"
-    >
+    <a href="#studio-setup" class="button button-primary">
       Studio Setup
       <span>→</span>
     </a>
 
-    <a
-      href="#workflow"
-      class="button button-secondary"
-    >
+    <a href="#workflow" class="button button-secondary">
       Explore Workflow
       <span>→</span>
     </a>
@@ -750,24 +909,16 @@ footer{
   </div>
 
   <div class="system-status">
-
     <span class="status-dot"></span>
-
     SYSTEM READY
-
   </div>
 
 </section>
 
 
-<!-- =====================================================
-     STUDIO SETUP
-===================================================== -->
+<!-- STUDIO -->
 
-<section
-  id="studio-setup"
-  class="section"
->
+<section id="studio-setup" class="section">
 
   <div class="container">
 
@@ -782,11 +933,9 @@ footer{
       </h2>
 
       <p class="section-description">
-
         Your complete studio configuration.
         Hardware, production machines,
-        mixing, controllers and vocal equipment.
-
+        mixing, synchronization and vocal recording.
       </p>
 
     </div>
@@ -795,27 +944,28 @@ footer{
     <div class="devices">
 
 
-      <!-- ================= MC-707 ================= -->
+      <!-- MC-707 -->
 
-      <a
-        href="#midi-routing"
-        class="device"
-      >
+      <a href="#midi-routing" class="device">
 
         <div class="device-top">
-
-          <div class="device-status">
-            CONNECTED
-          </div>
-
+          <div class="device-status">CONNECTED</div>
         </div>
 
-        <div class="device-image">
+        <div class="device-visual">
 
           <img
             src="https://www.atpress.ne.jp/releases/192015/img_192015_5.jpg"
             alt="Roland MC-707"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
           >
+
+          <div class="visual-fallback" style="display:none">
+            <div>
+              <div class="visual-label">MC-707</div>
+              <div class="visual-sub">ROLAND GROOVEBOX</div>
+            </div>
+          </div>
 
           <div class="device-overlay"></div>
 
@@ -823,9 +973,7 @@ footer{
 
         <div class="device-info">
 
-          <h3>
-            Roland MC-707
-          </h3>
+          <h3>Roland MC-707</h3>
 
           <p>
             Groovebox / MIDI / Audio
@@ -840,27 +988,28 @@ footer{
       </a>
 
 
-      <!-- ================= TR-8S ================= -->
+      <!-- TR-8S -->
 
-      <a
-        href="#audio-routing"
-        class="device"
-      >
+      <a href="#audio-routing" class="device">
 
         <div class="device-top">
-
-          <div class="device-status">
-            CONNECTED
-          </div>
-
+          <div class="device-status">CONNECTED</div>
         </div>
 
-        <div class="device-image">
+        <div class="device-visual">
 
           <img
             src="https://www.woodbrass.com/images/SQUARE400/woodbrass/2ROLAND+TR8S.JPG"
             alt="Roland TR-8S"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
           >
+
+          <div class="visual-fallback" style="display:none">
+            <div>
+              <div class="visual-label">TR-8S</div>
+              <div class="visual-sub">ROLAND RHYTHM PERFORMER</div>
+            </div>
+          </div>
 
           <div class="device-overlay"></div>
 
@@ -868,9 +1017,7 @@ footer{
 
         <div class="device-info">
 
-          <h3>
-            Roland TR-8S
-          </h3>
+          <h3>Roland TR-8S</h3>
 
           <p>
             Rhythm Performer / Drum Machine
@@ -885,47 +1032,46 @@ footer{
       </a>
 
 
-      <!-- ================= AKAI FORCE ================= -->
+      <!-- AKAI FORCE -->
 
-      <a
-        href="#workflow"
-        class="device"
-      >
+      <a href="#workflow" class="device">
 
         <div class="device-top">
-
-          <div class="device-status">
-            READY
-          </div>
-
+          <div class="device-status">READY</div>
         </div>
 
-        <div class="device-image">
+        <div class="device-visual">
 
-          <img
-            src="https://www.akaipro.com/cdn/shop/files/Force_01.jpg"
-            alt="Akai Force"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='flex';
-            "
-          >
+          <div class="force-visual">
 
-          <div
-            style="
-              display:none;
-              position:absolute;
-              inset:0;
-              align-items:center;
-              justify-content:center;
-              color:#777c89;
-              font-size:32px;
-              font-weight:900;
-              letter-spacing:5px;
-              text-align:center;
-            "
-          >
-            AKAI<br>FORCE
+            <div class="force-screen"></div>
+
+            <div class="force-pads">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="force-knobs">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="force-name">
+              AKAI FORCE
+            </div>
+
           </div>
 
           <div class="device-overlay"></div>
@@ -934,9 +1080,7 @@ footer{
 
         <div class="device-info">
 
-          <h3>
-            Akai Force
-          </h3>
+          <h3>Akai Force</h3>
 
           <p>
             Production / Sampling / Performance
@@ -951,47 +1095,40 @@ footer{
       </a>
 
 
-      <!-- ================= MX-1 ================= -->
+      <!-- MX-1 -->
 
-      <a
-        href="#audio-routing"
-        class="device"
-      >
+      <a href="#audio-routing" class="device">
 
         <div class="device-top">
-
-          <div class="device-status">
-            CONNECTED
-          </div>
-
+          <div class="device-status">CONNECTED</div>
         </div>
 
-        <div class="device-image">
+        <div class="device-visual">
 
-          <img
-            src="https://www.woodbrass.com/images/SQUARE400/woodbrass/ROLAND+MX1.JPG"
-            alt="Roland MX-1"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='flex';
-            "
-          >
+          <div class="mx1-visual">
 
-          <div
-            style="
-              display:none;
-              position:absolute;
-              inset:0;
-              align-items:center;
-              justify-content:center;
-              color:#777c89;
-              font-size:32px;
-              font-weight:900;
-              letter-spacing:5px;
-              text-align:center;
-            "
-          >
-            ROLAND<br>MX-1
+            <div class="mx1-top">
+              <span>ROLAND</span>
+              <span>MIX PERFORMER</span>
+            </div>
+
+            <div class="mx1-display"></div>
+
+            <div class="mx1-channels">
+
+              <div class="mx1-channel"></div>
+              <div class="mx1-channel"></div>
+              <div class="mx1-channel"></div>
+              <div class="mx1-channel"></div>
+              <div class="mx1-channel"></div>
+              <div class="mx1-channel"></div>
+
+            </div>
+
+            <div class="mx1-name">
+              MX-1
+            </div>
+
           </div>
 
           <div class="device-overlay"></div>
@@ -1000,16 +1137,14 @@ footer{
 
         <div class="device-info">
 
-          <h3>
-            Roland MX-1
-          </h3>
+          <h3>Roland MX-1</h3>
 
           <p>
-            Performance Mixer / Audio Routing
+            Performance Mixer / Audio / MIDI / Sync
           </p>
 
           <div class="device-link">
-            AUDIO ROUTING →
+            MIXING & AUDIO ROUTING →
           </div>
 
         </div>
@@ -1017,27 +1152,28 @@ footer{
       </a>
 
 
-      <!-- ================= RØDE NT1 ================= -->
+      <!-- NT1 -->
 
-      <a
-        href="#audio-routing"
-        class="device"
-      >
+      <a href="#audio-routing" class="device">
 
         <div class="device-top">
-
-          <div class="device-status">
-            READY
-          </div>
-
+          <div class="device-status">READY</div>
         </div>
 
-        <div class="device-image">
+        <div class="device-visual">
 
           <img
             src="https://thumbs.static-thomann.de/thumb//bdbmagic/pics/prod/561426.jpg"
-            alt="RØDE NT1"
+            alt="Rode NT1"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
           >
+
+          <div class="visual-fallback" style="display:none">
+            <div>
+              <div class="visual-label">NT1</div>
+              <div class="visual-sub">RØDE STUDIO MICROPHONE</div>
+            </div>
+          </div>
 
           <div class="device-overlay"></div>
 
@@ -1045,12 +1181,52 @@ footer{
 
         <div class="device-info">
 
-          <h3>
-            RØDE NT1
-          </h3>
+          <h3>RØDE NT1</h3>
 
           <p>
             Studio Microphone / Vocal Recording
+          </p>
+
+          <div class="device-link">
+            VOCAL CHAIN →
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- VT-4 -->
+
+      <a href="#audio-routing" class="device">
+
+        <div class="device-top">
+          <div class="device-status">READY</div>
+        </div>
+
+        <div class="device-visual">
+
+          <div class="visual-fallback">
+
+            <div>
+              <div class="visual-label">VT-4</div>
+              <div class="visual-sub">
+                ROLAND VOICE TRANSFORMER
+              </div>
+            </div>
+
+          </div>
+
+          <div class="device-overlay"></div>
+
+        </div>
+
+        <div class="device-info">
+
+          <h3>Roland VT-4</h3>
+
+          <p>
+            Voice Transformer / Vocal Processing
           </p>
 
           <div class="device-link">
@@ -1069,14 +1245,9 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     MIDI ROUTING
-===================================================== -->
+<!-- MIDI -->
 
-<section
-  id="midi-routing"
-  class="section routing"
->
+<section id="midi-routing" class="section">
 
   <div class="container">
 
@@ -1091,11 +1262,9 @@ footer{
       </h2>
 
       <p class="section-description">
-
         Organize the communication between
         the MC-707, TR-8S, Akai Force,
-        Cubase and the rest of the studio.
-
+        MX-1, Cubase and the rest of the studio.
       </p>
 
     </div>
@@ -1103,20 +1272,15 @@ footer{
 
     <div class="routing-grid">
 
-
       <div class="routing-card">
 
-        <div class="routing-icon">
-          ↔
-        </div>
+        <div class="routing-icon">↔</div>
 
-        <h3>
-          MIDI Clock
-        </h3>
+        <h3>MIDI Clock</h3>
 
         <p>
           Define the master clock and keep
-          the machines synchronized.
+          all machines synchronized.
         </p>
 
       </div>
@@ -1124,13 +1288,9 @@ footer{
 
       <div class="routing-card">
 
-        <div class="routing-icon">
-          🎹
-        </div>
+        <div class="routing-icon">🎹</div>
 
-        <h3>
-          Controllers
-        </h3>
+        <h3>Controllers</h3>
 
         <p>
           Control instruments and software
@@ -1142,13 +1302,9 @@ footer{
 
       <div class="routing-card">
 
-        <div class="routing-icon">
-          ⚡
-        </div>
+        <div class="routing-icon">⚡</div>
 
-        <h3>
-          Sync
-        </h3>
+        <h3>Sync</h3>
 
         <p>
           Build a reliable synchronization
@@ -1157,7 +1313,6 @@ footer{
 
       </div>
 
-
     </div>
 
   </div>
@@ -1165,14 +1320,9 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     AUDIO ROUTING
-===================================================== -->
+<!-- AUDIO -->
 
-<section
-  id="audio-routing"
-  class="section routing"
->
+<section id="audio-routing" class="section">
 
   <div class="container">
 
@@ -1187,11 +1337,9 @@ footer{
       </h2>
 
       <p class="section-description">
-
         Visualize the path of the audio
-        from your hardware into the MX-1,
-        DAW and monitoring system.
-
+        from the hardware through the MX-1,
+        into Cubase and finally to monitoring.
       </p>
 
     </div>
@@ -1199,21 +1347,15 @@ footer{
 
     <div class="routing-grid">
 
-
       <div class="routing-card">
 
-        <div class="routing-icon">
-          🎛
-        </div>
+        <div class="routing-icon">🎛</div>
 
-        <h3>
-          Hardware
-        </h3>
+        <h3>Hardware</h3>
 
         <p>
           MC-707, TR-8S and Akai Force
-          generate the main elements
-          of the studio.
+          generate and manipulate the musical material.
         </p>
 
       </div>
@@ -1221,18 +1363,13 @@ footer{
 
       <div class="routing-card">
 
-        <div class="routing-icon">
-          🎚
-        </div>
+        <div class="routing-icon">🎚</div>
 
-        <h3>
-          Roland MX-1
-        </h3>
+        <h3>MX-1 Mixing</h3>
 
         <p>
-          Central performance mixer for
-          routing, balancing and combining
-          the studio hardware.
+          The MX-1 acts as the central mixer,
+          handling levels, effects, audio and synchronization.
         </p>
 
       </div>
@@ -1240,21 +1377,16 @@ footer{
 
       <div class="routing-card">
 
-        <div class="routing-icon">
-          🎧
-        </div>
+        <div class="routing-icon">🎧</div>
 
-        <h3>
-          Monitoring
-        </h3>
+        <h3>Monitoring</h3>
 
         <p>
-          Send the final mix to your studio
-          monitoring and headphones.
+          Send the final mix toward
+          your studio monitoring and headphones.
         </p>
 
       </div>
-
 
     </div>
 
@@ -1263,14 +1395,9 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     WORKFLOW
-===================================================== -->
+<!-- WORKFLOW -->
 
-<section
-  id="workflow"
-  class="section workflow"
->
+<section id="workflow" class="section">
 
   <div class="container">
 
@@ -1285,10 +1412,8 @@ footer{
       </h2>
 
       <p class="section-description">
-
         A simple production path from
         the first idea to the finished track.
-
       </p>
 
     </div>
@@ -1296,16 +1421,13 @@ footer{
 
     <div class="workflow-grid">
 
-
       <div class="workflow-step">
 
         <div class="step-number">
           STEP 01
         </div>
 
-        <h3>
-          Idea
-        </h3>
+        <h3>Idea</h3>
 
         <p>
           Start with a rhythm, bassline,
@@ -1321,9 +1443,7 @@ footer{
           STEP 02
         </div>
 
-        <h3>
-          Build
-        </h3>
+        <h3>Build</h3>
 
         <p>
           Develop the arrangement
@@ -1339,12 +1459,10 @@ footer{
           STEP 03
         </div>
 
-        <h3>
-          Record
-        </h3>
+        <h3>Record</h3>
 
         <p>
-          Capture the hardware and vocals
+          Capture hardware and vocals
           into the DAW.
         </p>
 
@@ -1357,17 +1475,14 @@ footer{
           STEP 04
         </div>
 
-        <h3>
-          Finish
-        </h3>
+        <h3>Finish</h3>
 
         <p>
-          Mix, master and prepare the
-          final production.
+          Mix, master and prepare
+          the final production.
         </p>
 
       </div>
-
 
     </div>
 
@@ -1376,14 +1491,9 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
+<!-- PROJECTS -->
 
-<section
-  id="projects"
-  class="section projects"
->
+<section id="projects" class="section">
 
   <div class="container">
 
@@ -1407,27 +1517,18 @@ footer{
       </h3>
 
       <p>
-
         Centralize your current productions,
         ideas, stems, arrangements and
         finished tracks.
-
       </p>
-
 
       <div class="project-buttons">
 
-        <a
-          href="#studio-setup"
-          class="button button-secondary"
-        >
+        <a href="#studio-setup" class="button button-secondary">
           Studio Setup →
         </a>
 
-        <a
-          href="#workflow"
-          class="button button-secondary"
-        >
+        <a href="#workflow" class="button button-secondary">
           Workflow →
         </a>
 
@@ -1439,13 +1540,8 @@ footer{
 
 </section>
 
-
 </main>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
 <footer>
 
@@ -1458,7 +1554,6 @@ footer{
   </span>
 
 </footer>
-
 
 </body>
 </html>
