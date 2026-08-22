@@ -1,634 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Haerviu Engine — Studio</title>
 
 <style>
 
 :root{
 --bg:#07080d;
---surface:#101218;
---surface2:#151821;
 --line:rgba(255,255,255,.13);
---line-soft:rgba(255,255,255,.07);
 --text:#f4f4f7;
 --muted:#858997;
---soft:#b7bac6;
 --green:#6ee7a0;
 }
 
 *{
 box-sizing:border-box;
 margin:0;
-padding:0;
+padding:0
 }
 
 html{
-scroll-behavior:smooth;
+scroll-behavior:smooth
 }
 
 body{
-font-family:
-Inter,
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-sans-serif;
-
+font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 background:
-radial-gradient(
-circle at 82% 18%,
-rgba(90,110,180,.14),
-transparent 28%
-),
-radial-gradient(
-circle at 12% 70%,
-rgba(70,80,120,.11),
-transparent 30%
-),
-linear-gradient(
-180deg,
-#08090f 0%,
-#07080d 100%
-);
-
+radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
+radial-gradient(circle at 12% 70%,rgba(70,80,120,.1),transparent 30%),
+var(--bg);
 color:var(--text);
 min-height:100vh;
-overflow-x:hidden;
+overflow-x:hidden
 }
 
 body:before{
 content:"";
 position:fixed;
 inset:-20%;
-border:1px solid rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.055);
 border-radius:50%;
 transform:rotate(-18deg);
-pointer-events:none;
+pointer-events:none
 }
 
 a{
-color:inherit;
 text-decoration:none;
+color:inherit
 }
-
-
-/* =========================
-HEADER
-========================= */
 
 header{
 height:104px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:0 6vw;
-
-border-bottom:
-1px solid rgba(255,255,255,.09);
-
+border-bottom:1px solid rgba(255,255,255,.09);
 position:sticky;
 top:0;
-z-index:50;
-
-background:
-rgba(7,8,13,.84);
-
+z-index:20;
+background:rgba(7,8,13,.82);
 backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px)
 }
 
 .brand{
 display:flex;
 align-items:center;
-gap:20px;
+gap:20px
 }
 
 .logo{
 width:58px;
 height:58px;
-
 border:1px solid var(--line);
 border-radius:17px;
-
 display:grid;
 place-items:center;
-
 font-family:Georgia,serif;
-font-size:28px;
-
-background:
-rgba(255,255,255,.025);
+font-size:28px
 }
 
 .brand-name{
 font-size:17px;
 font-weight:800;
-letter-spacing:.22em;
+letter-spacing:.22em
 }
 
 .menu{
 width:58px;
 height:58px;
-
 border:1px solid var(--line);
 border-radius:17px;
-
 background:transparent;
 color:white;
-
-font-size:24px;
-cursor:pointer;
+font-size:24px
 }
-
-
-/* =========================
-MAIN
-========================= */
 
 main{
 max-width:1320px;
 margin:auto;
-
-padding:
-72px 6vw 120px;
+padding:72px 6vw 120px
 }
 
 .kicker{
 color:#8e92a2;
-
 letter-spacing:.35em;
-
 font-size:12px;
 font-weight:700;
-
-margin-bottom:35px;
+margin-bottom:35px
 }
 
 .hero h1{
-font-size:
-clamp(58px,9vw,128px);
-
+font-size:clamp(58px,9vw,128px);
 line-height:.88;
-
 letter-spacing:-.065em;
-
-max-width:1000px;
-
-margin-bottom:42px;
+max-width:900px;
+margin-bottom:42px
 }
 
 .hero h1 span{
-color:#666b7a;
+color:#666b7a
 }
 
 .hero p{
 max-width:680px;
-
-color:var(--soft);
-
+color:#b7bac6;
 font-size:20px;
-
 line-height:1.65;
-
-margin-bottom:62px;
+margin-bottom:62px
 }
-
-
-/* =========================
-CARDS
-========================= */
 
 .grid{
 display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
-gap:20px;
+grid-template-columns:repeat(2,1fr);
+gap:20px
 }
 
 .card{
 min-height:300px;
-
 padding:34px;
-
 border:1px solid var(--line);
-
 border-radius:28px;
-
-background:
-linear-gradient(
+background:linear-gradient(
 145deg,
 rgba(255,255,255,.055),
 rgba(255,255,255,.018)
 );
-
 position:relative;
-
 overflow:hidden;
-
-transition:
-transform .4s ease,
-border-color .4s ease;
-
-cursor:pointer;
-
-display:block;
+transition:.45s ease;
+cursor:pointer
 }
 
 .card:before{
 content:"";
-
 position:absolute;
-
 width:280px;
 height:280px;
-
-border:
-1px solid rgba(255,255,255,.08);
-
+border:1px solid rgba(255,255,255,.08);
 border-radius:50%;
-
 right:-110px;
 bottom:-130px;
-
-transition:.5s ease;
+transition:.5s ease
 }
 
 .card:hover{
 transform:translateY(-7px);
-
-border-color:
-rgba(255,255,255,.3);
+border-color:rgba(255,255,255,.3)
 }
 
 .card:hover:before{
-transform:scale(1.25);
+transform:scale(1.25)
 }
 
 .number{
 font-size:11px;
-
 letter-spacing:.3em;
-
 color:#747988;
-
-font-weight:700;
+font-weight:700
 }
 
 .card h2{
 font-size:34px;
-
 letter-spacing:-.035em;
-
 margin-top:72px;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 .card p{
 color:#858a99;
-
 line-height:1.6;
-
-max-width:470px;
+max-width:470px
 }
 
 .arrow{
 position:absolute;
-
 right:30px;
 top:30px;
-
 width:44px;
 height:44px;
-
 border:1px solid var(--line);
-
 border-radius:50%;
-
 display:grid;
 place-items:center;
-
-transition:.35s;
+transition:.35s
 }
 
 .card:hover .arrow{
 background:white;
 color:#08090d;
-
-transform:rotate(-45deg);
+transform:rotate(-45deg)
 }
 
-
-/* =========================
-PANELS
-========================= */
+/* PANELS */
 
 .panel{
 display:none;
-
 margin-top:20px;
-
 padding:34px;
-
 border:1px solid var(--line);
-
-border-radius:28px;
-
-background:
-rgba(255,255,255,.035);
-
-scroll-margin-top:125px;
+border-radius:24px;
+background:rgba(255,255,255,.035);
+scroll-margin-top:125px
 }
 
 .panel:target{
 display:block;
-
-animation:
-appear .4s ease;
+animation:appear .35s ease
 }
 
 .panel h3{
-font-size:34px;
-
-letter-spacing:-.045em;
-
-margin-bottom:12px;
+font-size:30px;
+margin-bottom:14px
 }
 
-.panel > p{
+.panel p{
 color:var(--muted);
-
 line-height:1.7;
-
-max-width:700px;
-
-margin-bottom:28px;
+margin-bottom:22px
 }
 
+/* STUDIO SETUP */
 
-/* =========================
-SETUP INTRO
-========================= */
-
-.setup-label{
+.setup-title{
 font-size:11px;
-
 letter-spacing:.3em;
-
 font-weight:800;
-
-color:#777d8d;
-
-margin-bottom:12px;
+color:#747988;
+margin-bottom:12px
 }
-
-
-/* =========================
-EQUIPMENT
-========================= */
 
 .equipment-grid{
 display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
+grid-template-columns:repeat(2,1fr);
 gap:18px;
-
-margin-top:30px;
+margin-top:30px
 }
 
 .equipment{
-min-height:440px;
-
+min-height:390px;
 position:relative;
-
 overflow:hidden;
-
 border:1px solid var(--line);
-
-border-radius:28px;
-
+border-radius:26px;
 background:
 radial-gradient(
 circle at 50% 20%,
-rgba(120,140,220,.09),
-transparent 42%
+rgba(120,140,220,.10),
+transparent 45%
 ),
 linear-gradient(
 145deg,
 #151923,
 #0b0d13
 );
-
-transition:
-transform .4s ease,
-border-color .4s ease,
-box-shadow .4s ease;
+transition:.4s ease
 }
 
 .equipment:hover{
-transform:translateY(-7px);
-
-border-color:
-rgba(255,255,255,.28);
-
-box-shadow:
-0 30px 80px rgba(0,0,0,.38);
+transform:translateY(-6px);
+border-color:rgba(255,255,255,.28);
+box-shadow:0 25px 70px rgba(0,0,0,.35)
 }
-
-
-/* =========================
-EQUIPMENT HEADER
-========================= */
 
 .equipment-top{
 position:absolute;
-
 top:24px;
-left:26px;
-right:26px;
-
+left:25px;
+right:25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-
-z-index:5;
+z-index:3
 }
 
 .manufacturer{
 font-size:10px;
-
 font-weight:800;
-
 letter-spacing:.28em;
-
-color:#777d8d;
+color:#777d8d
 }
 
 .connection{
-display:flex;
-align-items:center;
-
-gap:8px;
-
 font-size:9px;
-
 font-weight:800;
-
 letter-spacing:.18em;
-
-color:#8b91a0;
+color:#8b91a0
 }
 
-.connection-dot{
+.connection:before{
+content:"";
+display:inline-block;
 width:7px;
 height:7px;
-
 border-radius:50%;
-
 background:var(--green);
-
-box-shadow:
-0 0 14px
-rgba(110,231,160,.8);
+box-shadow:0 0 14px var(--green);
+margin-right:7px
 }
 
-
-/* =========================
-DEVICE VISUAL
-========================= */
-
-.equipment-visual{
-height:250px;
-
-margin:
-65px 24px 0;
-
+.device-area{
+height:220px;
+margin:65px 25px 0;
 display:flex;
-
 align-items:center;
 justify-content:center;
-
-position:relative;
+position:relative
 }
 
-.equipment-visual:before{
+.device-area:before{
 content:"";
-
 position:absolute;
-
 width:75%;
 height:35%;
-
-bottom:5px;
-
-background:
-rgba(0,0,0,.7);
-
+bottom:10px;
+background:rgba(0,0,0,.7);
 filter:blur(28px);
-
-border-radius:50%;
+border-radius:50%
 }
 
 .device{
 position:relative;
-
 z-index:2;
-
-width:86%;
-height:150px;
-
+width:88%;
+height:135px;
 border-radius:15px;
-
-border:
-1px solid rgba(255,255,255,.16);
-
-background:
-linear-gradient(
+border:1px solid rgba(255,255,255,.16);
+background:linear-gradient(
 145deg,
 #303641,
-#0c0f15
+#0b0e14
 );
-
 box-shadow:
 0 25px 40px rgba(0,0,0,.5),
 inset 0 1px rgba(255,255,255,.12);
-
-transform:
-perspective(700px)
-rotateX(9deg)
-rotateY(-4deg);
-
-transition:.5s;
+transform:perspective(700px) rotateX(8deg) rotateY(-4deg);
+transition:.5s
 }
 
 .equipment:hover .device{
-transform:
-perspective(700px)
-rotateX(4deg)
-rotateY(0deg)
-scale(1.035);
+transform:perspective(700px) rotateX(3deg) rotateY(0deg) scale(1.04)
 }
 
-
-/* =========================
-MC-707
-========================= */
-
-.mc707 .device{
-background:
-linear-gradient(
-145deg,
-#343a45,
-#0b0e14
-);
-}
+/* MC-707 */
 
 .mc707 .device:before{
 content:"";
-
 position:absolute;
-
 left:15px;
 right:15px;
 top:15px;
-
-height:55px;
-
+height:50px;
 border-radius:5px;
-
 background:
 linear-gradient(
 90deg,
 #10141a 0 30%,
-#272d36 30% 31%,
+#292f39 30% 31%,
 #10141a 31% 100%
 );
-
-border:
-1px solid rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.08)
 }
 
 .mc707 .device:after{
 content:"";
-
 position:absolute;
-
 left:18px;
 right:18px;
-bottom:16px;
-
-height:48px;
-
+bottom:15px;
+height:42px;
 background:
 radial-gradient(
 circle,
@@ -636,35 +399,26 @@ circle,
 transparent 4px
 )
 0 0/22px 22px;
-
-opacity:.8;
+opacity:.8
 }
 
-
-/* =========================
-TR-8S
-========================= */
+/* TR-8S */
 
 .tr8s .device{
-background:
-linear-gradient(
+background:linear-gradient(
 145deg,
 #252a32,
 #080a0e
-);
+)
 }
 
 .tr8s .device:before{
 content:"";
-
 position:absolute;
-
 left:18px;
 right:18px;
 top:18px;
-
-height:35px;
-
+height:32px;
 background:
 linear-gradient(
 90deg,
@@ -678,22 +432,16 @@ transparent 30% 38%,
 #2b3038 38% 40%,
 transparent 40%
 );
-
-border-bottom:
-1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.08)
 }
 
 .tr8s .device:after{
 content:"";
-
 position:absolute;
-
 left:18px;
 right:18px;
 bottom:18px;
-
-height:40px;
-
+height:38px;
 background:
 linear-gradient(
 90deg,
@@ -710,333 +458,181 @@ transparent 36% 40%,
 #c8a04d 40% 44%,
 transparent 44%
 );
-
-opacity:.75;
+opacity:.75
 }
-
-
-/* =========================
-EQUIPMENT INFO
-========================= */
 
 .equipment-info{
 position:absolute;
-
-left:26px;
-right:26px;
-bottom:25px;
-
-z-index:5;
+left:25px;
+right:25px;
+bottom:24px
 }
 
 .equipment-type{
 font-size:10px;
-
 font-weight:800;
-
 letter-spacing:.22em;
-
 color:#73798a;
-
-margin-bottom:6px;
+margin-bottom:7px
 }
 
 .equipment-name{
-font-size:34px;
-
+font-size:33px;
 font-weight:850;
-
 letter-spacing:-.055em;
-
-margin-bottom:10px;
-}
-
-.equipment-meta{
-display:flex;
-
-flex-wrap:wrap;
-
-gap:8px;
+margin-bottom:10px
 }
 
 .meta{
-padding:
-7px 10px;
-
-border:
-1px solid var(--line-soft);
-
+display:inline-block;
+border:1px solid rgba(255,255,255,.08);
 border-radius:999px;
-
+padding:7px 10px;
 font-size:10px;
-
 letter-spacing:.08em;
-
 color:#a5a9b5;
-
-background:
-rgba(255,255,255,.025);
+margin-right:6px
 }
-
-
-/* =========================
-CHIPS
-========================= */
 
 .chips{
 display:flex;
-
 flex-wrap:wrap;
-
 gap:10px;
-
-margin-top:25px;
+margin-top:24px
 }
 
 .chip{
-border:
-1px solid var(--line);
-
+border:1px solid var(--line);
 border-radius:999px;
-
-padding:
-11px 16px;
-
+padding:11px 16px;
 color:#d5d7df;
-
-font-size:13px;
-
-background:
-rgba(255,255,255,.025);
+font-size:13px
 }
-
-
-/* =========================
-STATUS
-========================= */
 
 .status{
 margin-top:55px;
-
 display:flex;
-
 align-items:center;
-
 gap:12px;
-
 color:#737887;
-
 font-size:12px;
-
 font-weight:700;
-
-letter-spacing:.25em;
+letter-spacing:.25em
 }
 
 .dot{
 width:8px;
 height:8px;
-
 background:var(--green);
-
 border-radius:50%;
-
-box-shadow:
-0 0 18px var(--green);
+box-shadow:0 0 18px var(--green)
 }
-
-
-/* =========================
-FOOTER
-========================= */
 
 footer{
-border-top:
-1px solid rgba(255,255,255,.08);
-
-padding:
-32px 6vw;
-
+border-top:1px solid rgba(255,255,255,.08);
+padding:32px 6vw;
 color:#626674;
-
 font-size:12px;
-
-letter-spacing:.12em;
+letter-spacing:.12em
 }
-
-
-/* =========================
-ANIMATION
-========================= */
 
 @keyframes appear{
-
 from{
 opacity:0;
-transform:translateY(15px);
+transform:translateY(10px)
 }
-
 to{
 opacity:1;
-transform:none;
+transform:none
 }
-
 }
-
-
-/* =========================
-TABLET
-========================= */
-
-@media(max-width:900px){
-
-.equipment-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-
-/* =========================
-MOBILE
-========================= */
 
 @media(max-width:700px){
 
 header{
 height:88px;
-
-padding:
-0 26px;
+padding:0 26px
 }
 
 .logo{
 width:50px;
-height:50px;
+height:50px
 }
 
 .brand-name{
 font-size:14px;
-
-letter-spacing:.18em;
+letter-spacing:.18em
 }
 
 .menu{
 width:50px;
-height:50px;
+height:50px
 }
 
 main{
-padding:
-52px 26px 90px;
+padding:52px 26px 90px
 }
 
 .hero h1{
 font-size:58px;
-
-line-height:.9;
+line-height:.9
 }
 
 .hero p{
 font-size:17px;
-
-margin-bottom:44px;
+margin-bottom:44px
 }
 
 .grid{
-grid-template-columns:1fr;
+grid-template-columns:1fr
 }
 
 .card{
 min-height:270px;
-
-padding:28px;
+padding:28px
 }
 
 .card h2{
 font-size:29px;
-
-margin-top:62px;
+margin-top:62px
 }
 
 .panel{
-padding:24px;
-
-border-radius:22px;
+padding:24px
 }
 
-.panel h3{
-font-size:30px;
+.equipment-grid{
+grid-template-columns:1fr
 }
 
 .equipment{
-min-height:420px;
-
-border-radius:24px;
+min-height:400px
 }
 
-.equipment-visual{
-height:230px;
-
-margin-top:62px;
+.device-area{
+height:220px
 }
 
 .device{
-width:90%;
-}
-
-.equipment-info{
-left:22px;
-right:22px;
-bottom:22px;
+width:92%
 }
 
 .equipment-name{
-font-size:30px;
-}
-
-}
-
-
-/* =========================
-SMALL PHONE
-========================= */
-
-@media(max-width:380px){
-
-main{
-padding-left:20px;
-padding-right:20px;
-}
-
-.hero h1{
-font-size:52px;
-}
-
-.equipment-name{
-font-size:27px;
+font-size:30px
 }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
 
-<a
-class="brand"
-href="index.html"
->
+<a class="brand" href="index.html">
 
-<div class="logo">
-H
-</div>
+<div class="logo">H</div>
 
 <div class="brand-name">
 HAERVIU ENGINE
@@ -1044,20 +640,13 @@ HAERVIU ENGINE
 
 </a>
 
-
-<button
-class="menu"
-type="button"
-aria-label="Menu"
->
+<button class="menu" type="button" aria-label="Menu">
 ☰
 </button>
 
 </header>
 
-
 <main>
-
 
 <section class="hero">
 
@@ -1065,26 +654,14 @@ aria-label="Menu"
 HAERVIU ENGINE / STUDIO
 </div>
 
-
 <h1>
-
 Everything you<br>
-
-<span>
-need to create.
-</span>
-
+<span>need to create.</span>
 </h1>
 
-
 <p>
-
-A creative control space for electronic musicians,
-producers and creators.
-
-Configure your setup, shape your workflow
-and turn ideas into finished music.
-
+A creative control space for electronic musicians, producers and creators.
+Configure your setup, shape your workflow and turn ideas into finished music.
 </p>
 
 </section>
@@ -1092,15 +669,7 @@ and turn ideas into finished music.
 
 <section class="grid">
 
-
-<!-- =========================
-STUDIO SETUP
-========================= -->
-
-<a
-class="card"
-href="#setup"
->
+<a class="card" href="#setup">
 
 <div class="number">
 01 / SETUP
@@ -1115,21 +684,13 @@ Studio Setup
 </h2>
 
 <p>
-Organize instruments, connections,
-MIDI and audio routing.
+Organize instruments, connections, MIDI and audio routing.
 </p>
 
 </a>
 
 
-<!-- =========================
-WORKFLOW
-========================= -->
-
-<a
-class="card"
-href="#workflow"
->
+<a class="card" href="#workflow">
 
 <div class="number">
 02 / WORKFLOW
@@ -1144,21 +705,13 @@ Creative Workflow
 </h2>
 
 <p>
-Build efficient workflows for production,
-recording and live creation.
+Build efficient workflows for production, recording and live creation.
 </p>
 
 </a>
 
 
-<!-- =========================
-TOOLS
-========================= -->
-
-<a
-class="card"
-href="#tools"
->
+<a class="card" href="#tools">
 
 <div class="number">
 03 / TOOLS
@@ -1173,21 +726,13 @@ Tools
 </h2>
 
 <p>
-Keep your essential studio utilities,
-references and resources in one place.
+Keep your essential studio utilities, references and resources in one place.
 </p>
 
 </a>
 
 
-<!-- =========================
-PROJECTS
-========================= -->
-
-<a
-class="card"
-href="#projects"
->
+<a class="card" href="#projects">
 
 <div class="number">
 04 / PROJECTS
@@ -1202,51 +747,33 @@ Projects
 </h2>
 
 <p>
-Move from an idea to a structured production
-without losing the creative flow.
+Move from an idea to a structured production without losing the creative flow.
 </p>
 
 </a>
 
-
 </section>
 
 
-<!-- =========================
-STUDIO SETUP PANEL
-========================= -->
+<section id="setup" class="panel">
 
-<section
-id="setup"
-class="panel"
->
-
-
-<div class="setup-label">
+<div class="setup-title">
 CONNECTED HARDWARE
 </div>
-
 
 <h3>
 Studio Setup
 </h3>
 
-
 <p>
-
-Your instruments, controllers and production
-hardware — organized in one creative control space.
-
+Your instruments and production hardware, organized in one creative control space.
 </p>
 
 
 <div class="equipment-grid">
 
 
-<!-- MC-707 -->
-
 <article class="equipment mc707">
-
 
 <div class="equipment-top">
 
@@ -1255,22 +782,16 @@ ROLAND
 </div>
 
 <div class="connection">
-
-<span class="connection-dot"></span>
-
 CONNECTED
-
 </div>
 
 </div>
 
-
-<div class="equipment-visual">
+<div class="device-area">
 
 <div class="device"></div>
 
 </div>
-
 
 <div class="equipment-info">
 
@@ -1281,8 +802,6 @@ GROOVEBOX
 <div class="equipment-name">
 MC-707
 </div>
-
-<div class="equipment-meta">
 
 <span class="meta">
 8 TRACKS
@@ -1298,16 +817,10 @@ USB AUDIO
 
 </div>
 
-</div>
-
-
 </article>
 
 
-<!-- TR-8S -->
-
 <article class="equipment tr8s">
-
 
 <div class="equipment-top">
 
@@ -1316,22 +829,16 @@ ROLAND
 </div>
 
 <div class="connection">
-
-<span class="connection-dot"></span>
-
 CONNECTED
-
 </div>
 
 </div>
 
-
-<div class="equipment-visual">
+<div class="device-area">
 
 <div class="device"></div>
 
 </div>
-
 
 <div class="equipment-info">
 
@@ -1342,8 +849,6 @@ RHYTHM PERFORMER
 <div class="equipment-name">
 TR-8S
 </div>
-
-<div class="equipment-meta">
 
 <span class="meta">
 11 PARTS
@@ -1359,11 +864,7 @@ USB AUDIO
 
 </div>
 
-</div>
-
-
 </article>
-
 
 </div>
 
@@ -1396,30 +897,18 @@ Monitoring
 
 </div>
 
-
 </section>
 
 
-<!-- =========================
-WORKFLOW PANEL
-========================= -->
-
-<section
-id="workflow"
-class="panel"
->
+<section id="workflow" class="panel">
 
 <h3>
 Creative Workflow
 </h3>
 
 <p>
-
-Design repeatable production flows
-while keeping room for experimentation.
-
+Design repeatable production flows while keeping room for experimentation.
 </p>
-
 
 <div class="chips">
 
@@ -1448,27 +937,15 @@ Export
 </section>
 
 
-<!-- =========================
-TOOLS PANEL
-========================= -->
-
-<section
-id="tools"
-class="panel"
->
+<section id="tools" class="panel">
 
 <h3>
 Tools
 </h3>
 
 <p>
-
-A future home for calculators,
-routing helpers, references
-and production utilities.
-
+A future home for calculators, routing helpers, references and production utilities.
 </p>
-
 
 <div class="chips">
 
@@ -1493,26 +970,15 @@ Templates
 </section>
 
 
-<!-- =========================
-PROJECTS PANEL
-========================= -->
-
-<section
-id="projects"
-class="panel"
->
+<section id="projects" class="panel">
 
 <h3>
 Projects
 </h3>
 
 <p>
-
-Keep productions organized and accessible
-from the same creative workspace.
-
+Keep productions organized and accessible from the same creative workspace.
 </p>
-
 
 <div class="chips">
 
@@ -1545,7 +1011,6 @@ SYSTEM READY
 
 </div>
 
-
 </main>
 
 
@@ -1554,7 +1019,6 @@ SYSTEM READY
 HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 
 </footer>
-
 
 </body>
 </html>
