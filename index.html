@@ -7,10 +7,16 @@
 <title>Haerviu Engine</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
+:root{
+  --bg:#07080c;
+  --panel:#101218;
+  --white:#f5f5f7;
+  --soft:#b7bbc6;
+  --muted:#737886;
+  --line:rgba(255,255,255,.13);
+  --line2:rgba(255,255,255,.25);
+  --green:#70d89b;
+}
 
 *{
   margin:0;
@@ -23,17 +29,22 @@ html{
 }
 
 body{
-  background:#07080c;
-  color:#f5f5f7;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "SF Pro Text",
-    Inter,
-    Arial,
-    sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+  "SF Pro Text",Inter,Arial,sans-serif;
   overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(90,110,180,.15),transparent 32%),
+    radial-gradient(circle at 15% 70%,rgba(90,70,150,.10),transparent 35%);
 }
 
 a{
@@ -45,80 +56,17 @@ button{
   font:inherit;
 }
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-  --bg:#07080c;
-  --panel:#101218;
-  --panel2:#151821;
-  --white:#f5f5f7;
-  --soft:#b7bbc6;
-  --muted:#737886;
-  --line:rgba(255,255,255,.13);
-  --line2:rgba(255,255,255,.24);
-  --green:#70d89b;
-  --blue:#7ea8ff;
-}
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-
-  background:
-    radial-gradient(
-      circle at 80% 15%,
-      rgba(90,110,180,.15),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 15% 70%,
-      rgba(90,70,150,.10),
-      transparent 35%
-    );
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  width:750px;
-  height:750px;
-  left:-350px;
-  top:420px;
-  z-index:-1;
-  pointer-events:none;
-
-  border:1px solid rgba(255,255,255,.05);
-  border-radius:50%;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
 header{
   height:82px;
   padding:0 42px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   position:sticky;
   top:0;
   z-index:1000;
-
   background:rgba(7,8,12,.86);
   border-bottom:1px solid var(--line);
-
   backdrop-filter:blur(22px);
   -webkit-backdrop-filter:blur(22px);
 }
@@ -127,7 +75,6 @@ header{
   display:flex;
   align-items:center;
   gap:16px;
-
   font-size:16px;
   font-weight:900;
   letter-spacing:4px;
@@ -136,14 +83,11 @@ header{
 .logo-mark{
   width:48px;
   height:48px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border:1px solid rgba(255,255,255,.28);
   border-radius:14px;
-
   font-family:Georgia,serif;
   font-size:23px;
 }
@@ -151,58 +95,27 @@ header{
 .menu{
   width:50px;
   height:50px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border:1px solid var(--line);
   border-radius:15px;
-
   background:rgba(255,255,255,.035);
   color:white;
-
   font-size:21px;
 }
 
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-.page{
-  width:100%;
-}
-
-.container{
-  width:min(1400px,90%);
-  margin:auto;
-}
-
-section{
-  scroll-margin-top:100px;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
 .hero{
   min-height:calc(100vh - 82px);
-
   display:flex;
   flex-direction:column;
   justify-content:center;
-
   padding:90px 6vw 100px;
-
-  position:relative;
 }
 
 .kicker{
   margin-bottom:32px;
-
   color:#9297a5;
-
   font-size:12px;
   font-weight:900;
   letter-spacing:5px;
@@ -210,7 +123,6 @@ section{
 
 .hero h1{
   max-width:1050px;
-
   font-size:clamp(65px,11vw,160px);
   line-height:.83;
   letter-spacing:-7px;
@@ -232,11 +144,8 @@ section{
 
 .hero-text{
   max-width:700px;
-
   margin-top:55px;
-
   color:var(--soft);
-
   font-size:21px;
   line-height:1.65;
 }
@@ -245,26 +154,20 @@ section{
   display:flex;
   flex-wrap:wrap;
   gap:16px;
-
   margin-top:38px;
 }
 
 .button{
   min-width:230px;
   min-height:64px;
-
   display:flex;
   align-items:center;
   justify-content:center;
   gap:20px;
-
   padding:0 28px;
-
   border-radius:16px;
-
   font-size:16px;
   font-weight:800;
-
   transition:.3s;
 }
 
@@ -284,13 +187,10 @@ section{
 
 .system-status{
   margin-top:50px;
-
   display:flex;
   align-items:center;
   gap:10px;
-
   color:#777c89;
-
   font-size:11px;
   font-weight:900;
   letter-spacing:3px;
@@ -299,19 +199,20 @@ section{
 .status-dot{
   width:8px;
   height:8px;
-
   border-radius:50%;
-
   background:var(--green);
   box-shadow:0 0 18px var(--green);
 }
 
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
 .section{
   padding:120px 0;
+  border-top:1px solid var(--line);
+  scroll-margin-top:100px;
+}
+
+.container{
+  width:min(1400px,90%);
+  margin:auto;
 }
 
 .section-header{
@@ -320,9 +221,7 @@ section{
 
 .section-number{
   margin-bottom:18px;
-
   color:#777c89;
-
   font-size:11px;
   font-weight:900;
   letter-spacing:4px;
@@ -336,22 +235,13 @@ section{
 
 .section-description{
   max-width:700px;
-
   margin-top:22px;
-
   color:var(--soft);
-
   font-size:19px;
   line-height:1.65;
 }
 
-/* =========================================================
-   STUDIO SETUP
-========================================================= */
-
-.setup{
-  border-top:1px solid var(--line);
-}
+/* DEVICES */
 
 .devices{
   display:grid;
@@ -360,24 +250,14 @@ section{
 }
 
 .device{
-  min-height:300px;
-
-  padding:28px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
+  min-height:390px;
   border:1px solid var(--line);
   border-radius:25px;
-
+  overflow:hidden;
   background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.065),
-      rgba(255,255,255,.015)
-    );
-
+    linear-gradient(145deg,
+    rgba(255,255,255,.065),
+    rgba(255,255,255,.015));
   transition:.35s;
 }
 
@@ -386,83 +266,77 @@ section{
   border-color:var(--line2);
 }
 
-.device-top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-}
-
-.device-icon{
-  width:62px;
-  height:62px;
-
+.device-image{
+  height:220px;
+  background:#0c0e13;
   display:flex;
   align-items:center;
   justify-content:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
 
-  border:1px solid var(--line);
-  border-radius:17px;
+.device-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:22px;
+  transition:.4s;
+}
 
-  background:rgba(255,255,255,.06);
+.device:hover .device-image img{
+  transform:scale(1.05);
+}
 
+.device-info{
+  padding:25px 28px 28px;
+}
+
+.device-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.device h3{
   font-size:28px;
+  letter-spacing:-1px;
 }
 
 .device-status{
   display:flex;
   align-items:center;
-  gap:8px;
-
+  gap:7px;
   color:var(--green);
-
-  font-size:10px;
+  font-size:9px;
   font-weight:900;
   letter-spacing:2px;
 }
 
-.device-status::before{
+.device-status:before{
   content:"";
-
   width:7px;
   height:7px;
-
   border-radius:50%;
-
   background:var(--green);
-  box-shadow:0 0 12px var(--green);
-}
-
-.device h3{
-  margin-top:50px;
-
-  font-size:30px;
-  letter-spacing:-1px;
+  box-shadow:0 0 10px var(--green);
 }
 
 .device p{
-  margin-top:10px;
-
+  margin-top:9px;
   color:#858a97;
-
-  font-size:15px;
+  font-size:14px;
 }
 
 .device-link{
-  margin-top:25px;
-
+  margin-top:17px;
   color:#9aa0ad;
-
-  font-size:13px;
+  font-size:12px;
   font-weight:800;
 }
 
-/* =========================================================
-   ROUTING
-========================================================= */
-
-.routing{
-  border-top:1px solid var(--line);
-}
+/* ROUTING */
 
 .routing-grid{
   display:grid;
@@ -471,15 +345,11 @@ section{
 }
 
 .routing-card{
-  min-height:270px;
-
+  min-height:260px;
   padding:30px;
-
   border:1px solid var(--line);
   border-radius:24px;
-
   background:rgba(255,255,255,.025);
-
   transition:.35s;
 }
 
@@ -492,40 +362,27 @@ section{
 .routing-icon{
   width:52px;
   height:52px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border:1px solid var(--line);
   border-radius:14px;
-
   background:rgba(255,255,255,.06);
-
   font-size:22px;
 }
 
 .routing-card h3{
   margin-top:45px;
-
   font-size:25px;
 }
 
 .routing-card p{
   margin-top:12px;
-
   color:#858a97;
-
   line-height:1.6;
 }
 
-/* =========================================================
-   WORKFLOW
-========================================================= */
-
-.workflow{
-  border-top:1px solid var(--line);
-}
+/* WORKFLOW */
 
 .workflow-grid{
   display:grid;
@@ -535,23 +392,16 @@ section{
 
 .workflow-step{
   min-height:230px;
-
   padding:27px;
-
   border:1px solid var(--line);
   border-radius:22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.015)
-    );
+  background:linear-gradient(145deg,
+  rgba(255,255,255,.05),
+  rgba(255,255,255,.015));
 }
 
 .step-number{
   color:#707582;
-
   font-size:11px;
   font-weight:900;
   letter-spacing:3px;
@@ -559,38 +409,25 @@ section{
 
 .workflow-step h3{
   margin-top:60px;
-
   font-size:23px;
 }
 
 .workflow-step p{
   margin-top:12px;
-
   color:#858a97;
-
   line-height:1.55;
 }
 
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.projects{
-  border-top:1px solid var(--line);
-}
+/* PROJECTS */
 
 .project-panel{
   padding:55px;
-
   border:1px solid var(--line);
   border-radius:30px;
-
   background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(100,120,200,.12),
-      transparent 35%
-    ),
+    radial-gradient(circle at 80% 20%,
+    rgba(100,120,200,.12),
+    transparent 35%),
     rgba(255,255,255,.025);
 }
 
@@ -601,11 +438,8 @@ section{
 
 .project-panel p{
   max-width:700px;
-
   margin-top:20px;
-
   color:var(--soft);
-
   font-size:18px;
   line-height:1.6;
 }
@@ -614,33 +448,19 @@ section{
   display:flex;
   flex-wrap:wrap;
   gap:14px;
-
   margin-top:32px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
 footer{
   padding:45px 6vw;
-
   display:flex;
-  align-items:center;
   justify-content:space-between;
-
   border-top:1px solid var(--line);
-
   color:#666b77;
-
   font-size:11px;
   font-weight:800;
   letter-spacing:3px;
 }
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:850px){
 
@@ -696,10 +516,6 @@ footer{
     letter-spacing:-3px;
   }
 
-  .section-description{
-    font-size:18px;
-  }
-
   .devices{
     grid-template-columns:1fr;
   }
@@ -723,7 +539,6 @@ footer{
   footer{
     padding:35px 24px;
     flex-direction:column;
-    align-items:flex-start;
     gap:15px;
   }
 }
@@ -734,698 +549,474 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .device{
-    min-height:260px;
+  .device-image{
+    height:200px;
   }
 
   .device h3{
-    font-size:27px;
+    font-size:25px;
   }
 }
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
 
 <header>
 
-  <a href="#home" class="logo">
+<a href="#home" class="logo">
+  <div class="logo-mark">H</div>
+  HAERVIU ENGINE
+</a>
 
-    <div class="logo-mark">
-      H
-    </div>
-
-    HAERVIU ENGINE
-
-  </a>
-
-  <div class="menu">
-    ☰
-  </div>
+<div class="menu">☰</div>
 
 </header>
 
-
 <main>
-
-
-<!-- =======================================================
-     HOME
-======================================================= -->
 
 <section id="home" class="hero">
 
-  <div class="kicker">
-    HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
-  </div>
+<div class="kicker">
+HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
+</div>
 
-  <h1>
+<h1>
+<span class="outline">CONNECT.</span>
+<span class="white">CONFIGURE.</span>
+<span class="outline">CREATE.</span>
+</h1>
 
-    <span class="outline">
-      CONNECT.
-    </span>
+<p class="hero-text">
+A central workspace for your studio.
+Organize your instruments, MIDI, audio routing
+and production workflow in one place.
+</p>
 
-    <span class="white">
-      CONFIGURE.
-    </span>
+<div class="hero-actions">
 
-    <span class="outline">
-      CREATE.
-    </span>
+<a href="#studio-setup" class="button button-primary">
+Studio Setup →
+</a>
 
-  </h1>
+<a href="#workflow" class="button button-secondary">
+Explore Workflow →
+</a>
 
-  <p class="hero-text">
+</div>
 
-    A central workspace for your studio.
-    Organize your instruments, MIDI,
-    audio routing and production workflow
-    in one place.
-
-  </p>
-
-  <div class="hero-actions">
-
-    <!-- VRAI LIEN -->
-    <a
-      href="#studio-setup"
-      class="button button-primary"
-    >
-      Studio Setup
-      <span>→</span>
-    </a>
-
-    <!-- VRAI LIEN -->
-    <a
-      href="#workflow"
-      class="button button-secondary"
-    >
-      Explore Workflow
-      <span>→</span>
-    </a>
-
-  </div>
-
-  <div class="system-status">
-
-    <span class="status-dot"></span>
-
-    SYSTEM READY
-
-  </div>
+<div class="system-status">
+<span class="status-dot"></span>
+SYSTEM READY
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     STUDIO SETUP
-======================================================= -->
+<section id="studio-setup" class="section">
 
-<section
-  id="studio-setup"
-  class="section setup"
->
+<div class="container">
 
-  <div class="container">
+<div class="section-header">
 
-    <div class="section-header">
+<div class="section-number">
+01 / STUDIO SETUP
+</div>
 
-      <div class="section-number">
-        01 / STUDIO SETUP
-      </div>
+<h2 class="section-title">
+Your Studio.
+</h2>
 
-      <h2 class="section-title">
-        Your Studio.
-      </h2>
+<p class="section-description">
+Your complete studio configuration.
+Hardware, production machines,
+controllers and vocal equipment.
+</p>
 
-      <p class="section-description">
+</div>
 
-        Your complete studio configuration.
-        Hardware, production machines,
-        controllers and vocal equipment.
 
-      </p>
+<div class="devices">
 
-    </div>
 
+<a href="#midi-routing" class="device">
 
-    <div class="devices">
+<div class="device-image">
+<img src="images/mc707.jpg"
+alt="Roland MC-707">
+</div>
 
+<div class="device-info">
 
-      <!-- MC-707 -->
+<div class="device-top">
 
-      <a
-        href="#midi-routing"
-        class="device"
-      >
+<h3>Roland MC-707</h3>
 
-        <div class="device-top">
+<div class="device-status">
+CONNECTED
+</div>
 
-          <div class="device-icon">
-            🎛️
-          </div>
+</div>
 
-          <div class="device-status">
-            CONNECTED
-          </div>
+<p>
+Groovebox / MIDI / Audio
+</p>
 
-        </div>
+<div class="device-link">
+MIDI & AUDIO ROUTING →
+</div>
 
-        <div>
+</div>
 
-          <h3>
-            Roland MC-707
-          </h3>
+</a>
 
-          <p>
-            Groovebox / MIDI / Audio
-          </p>
 
-          <div class="device-link">
-            MIDI & AUDIO ROUTING →
-          </div>
+<a href="#audio-routing" class="device">
 
-        </div>
+<div class="device-image">
+<img src="images/tr8s.jpg"
+alt="Roland TR-8S">
+</div>
 
-      </a>
+<div class="device-info">
 
+<div class="device-top">
 
-      <!-- TR-8S -->
+<h3>Roland TR-8S</h3>
 
-      <a
-        href="#audio-routing"
-        class="device"
-      >
+<div class="device-status">
+CONNECTED
+</div>
 
-        <div class="device-top">
+</div>
 
-          <div class="device-icon">
-            🥁
-          </div>
+<p>
+Rhythm Performer / Drum Machine
+</p>
 
-          <div class="device-status">
-            CONNECTED
-          </div>
+<div class="device-link">
+AUDIO ROUTING →
+</div>
 
-        </div>
+</div>
 
-        <div>
+</a>
 
-          <h3>
-            Roland TR-8S
-          </h3>
 
-          <p>
-            Rhythm Performer / Drum Machine
-          </p>
+<a href="#workflow" class="device">
 
-          <div class="device-link">
-            AUDIO ROUTING →
-          </div>
+<div class="device-image">
+<img src="images/akai-force.jpg"
+alt="Akai Force">
+</div>
 
-        </div>
+<div class="device-info">
 
-      </a>
+<div class="device-top">
 
+<h3>Akai Force</h3>
 
-      <!-- AKAI -->
+<div class="device-status">
+READY
+</div>
 
-      <a
-        href="#workflow"
-        class="device"
-      >
+</div>
 
-        <div class="device-top">
+<p>
+Production / Sampling / Performance
+</p>
 
-          <div class="device-icon">
-            🎚️
-          </div>
+<div class="device-link">
+CREATIVE WORKFLOW →
+</div>
 
-          <div class="device-status">
-            READY
-          </div>
+</div>
 
-        </div>
+</a>
 
-        <div>
 
-          <h3>
-            Akai Force
-          </h3>
+<a href="#audio-routing" class="device">
 
-          <p>
-            Production / Sampling / Performance
-          </p>
+<div class="device-image">
+<img src="images/nt1.jpg"
+alt="RØDE NT1">
+</div>
 
-          <div class="device-link">
-            CREATIVE WORKFLOW →
-          </div>
+<div class="device-info">
 
-        </div>
+<div class="device-top">
 
-      </a>
+<h3>RØDE NT1</h3>
 
+<div class="device-status">
+READY
+</div>
 
-      <!-- MICROPHONE -->
+</div>
 
-      <a
-        href="#audio-routing"
-        class="device"
-      >
+<p>
+Studio Microphone / Vocal Recording
+</p>
 
-        <div class="device-top">
+<div class="device-link">
+VOCAL AUDIO CHAIN →
+</div>
 
-          <div class="device-icon">
-            🎙️
-          </div>
+</div>
 
-          <div class="device-status">
-            READY
-          </div>
+</a>
 
-        </div>
+</div>
 
-        <div>
-
-          <h3>
-            Vocal Studio
-          </h3>
-
-          <p>
-            Microphone / Voice Processing
-          </p>
-
-          <div class="device-link">
-            AUDIO CHAIN →
-          </div>
-
-        </div>
-
-      </a>
-
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     MIDI ROUTING
-======================================================= -->
+<section id="midi-routing" class="section">
 
-<section
-  id="midi-routing"
-  class="section routing"
->
+<div class="container">
 
-  <div class="container">
+<div class="section-header">
 
-    <div class="section-header">
+<div class="section-number">
+02 / MIDI ROUTING
+</div>
 
-      <div class="section-number">
-        02 / MIDI ROUTING
-      </div>
+<h2 class="section-title">
+MIDI Control.
+</h2>
 
-      <h2 class="section-title">
-        MIDI Control.
-      </h2>
+<p class="section-description">
+Organize communication between the MC-707,
+TR-8S, Akai Force, Cubase and the rest
+of the studio.
+</p>
 
-      <p class="section-description">
+</div>
 
-        Organize the communication between
-        the MC-707, TR-8S, Akai Force,
-        Cubase and the rest of the studio.
+<div class="routing-grid">
 
-      </p>
+<div class="routing-card">
+<div class="routing-icon">↔</div>
+<h3>MIDI Clock</h3>
+<p>
+Define the master clock and keep
+the machines synchronized.
+</p>
+</div>
 
-    </div>
+<div class="routing-card">
+<div class="routing-icon">⌁</div>
+<h3>Controllers</h3>
+<p>
+Control instruments and software
+from your MIDI controllers.
+</p>
+</div>
 
+<div class="routing-card">
+<div class="routing-icon">⚡</div>
+<h3>Sync</h3>
+<p>
+Build a reliable synchronization
+system for production and live work.
+</p>
+</div>
 
-    <div class="routing-grid">
+</div>
 
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          ↔
-        </div>
-
-        <h3>
-          MIDI Clock
-        </h3>
-
-        <p>
-          Define the master clock and keep
-          the machines synchronized.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          🎹
-        </div>
-
-        <h3>
-          Controllers
-        </h3>
-
-        <p>
-          Control instruments and software
-          from your MIDI controllers.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          ⚡
-        </div>
-
-        <h3>
-          Sync
-        </h3>
-
-        <p>
-          Build a reliable synchronization
-          system for production and live work.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     AUDIO ROUTING
-======================================================= -->
+<section id="audio-routing" class="section">
 
-<section
-  id="audio-routing"
-  class="section routing"
->
+<div class="container">
 
-  <div class="container">
+<div class="section-header">
 
-    <div class="section-header">
+<div class="section-number">
+03 / AUDIO ROUTING
+</div>
 
-      <div class="section-number">
-        03 / AUDIO ROUTING
-      </div>
+<h2 class="section-title">
+Sound Flow.
+</h2>
 
-      <h2 class="section-title">
-        Sound Flow.
-      </h2>
+<p class="section-description">
+Visualize the path of the audio from
+your hardware into the mixer, DAW
+and monitoring system.
+</p>
 
-      <p class="section-description">
+</div>
 
-        Visualize the path of the audio
-        from your hardware into the mixer,
-        DAW and monitoring system.
+<div class="routing-grid">
 
-      </p>
+<div class="routing-card">
+<div class="routing-icon">🎛</div>
+<h3>Hardware</h3>
+<p>
+MC-707 and TR-8S generate
+the main electronic elements.
+</p>
+</div>
 
-    </div>
+<div class="routing-card">
+<div class="routing-icon">◉</div>
+<h3>Mixing</h3>
+<p>
+Route and balance your sources
+before recording or performance.
+</p>
+</div>
 
+<div class="routing-card">
+<div class="routing-icon">🎧</div>
+<h3>Monitoring</h3>
+<p>
+Send the final mix to your studio
+monitoring and headphones.
+</p>
+</div>
 
-    <div class="routing-grid">
+</div>
 
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          🎛
-        </div>
-
-        <h3>
-          Hardware
-        </h3>
-
-        <p>
-          MC-707 and TR-8S generate the
-          main electronic elements of the setup.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          🎚
-        </div>
-
-        <h3>
-          Mixing
-        </h3>
-
-        <p>
-          Route and balance your sources
-          before recording or performance.
-        </p>
-
-      </div>
-
-
-      <div class="routing-card">
-
-        <div class="routing-icon">
-          🎧
-        </div>
-
-        <h3>
-          Monitoring
-        </h3>
-
-        <p>
-          Send the final mix to your studio
-          monitoring and headphones.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     WORKFLOW
-======================================================= -->
+<section id="workflow" class="section">
 
-<section
-  id="workflow"
-  class="section workflow"
->
+<div class="container">
 
-  <div class="container">
+<div class="section-header">
 
-    <div class="section-header">
+<div class="section-number">
+04 / CREATIVE WORKFLOW
+</div>
 
-      <div class="section-number">
-        04 / CREATIVE WORKFLOW
-      </div>
+<h2 class="section-title">
+Create.
+</h2>
 
-      <h2 class="section-title">
-        Create.
-      </h2>
+<p class="section-description">
+A simple production path from
+the first idea to the finished track.
+</p>
 
-      <p class="section-description">
+</div>
 
-        A simple production path from
-        the first idea to the finished track.
+<div class="workflow-grid">
 
-      </p>
+<div class="workflow-step">
+<div class="step-number">STEP 01</div>
+<h3>Idea</h3>
+<p>
+Start with a rhythm, bassline,
+melody or sound.
+</p>
+</div>
 
-    </div>
+<div class="workflow-step">
+<div class="step-number">STEP 02</div>
+<h3>Build</h3>
+<p>
+Develop the arrangement
+and add musical variation.
+</p>
+</div>
 
+<div class="workflow-step">
+<div class="step-number">STEP 03</div>
+<h3>Record</h3>
+<p>
+Capture hardware and vocals
+into the DAW.
+</p>
+</div>
 
-    <div class="workflow-grid">
+<div class="workflow-step">
+<div class="step-number">STEP 04</div>
+<h3>Finish</h3>
+<p>
+Mix, master and prepare
+the final production.
+</p>
+</div>
 
+</div>
 
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 01
-        </div>
-
-        <h3>
-          Idea
-        </h3>
-
-        <p>
-          Start with a rhythm, bassline,
-          melody or sound.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 02
-        </div>
-
-        <h3>
-          Build
-        </h3>
-
-        <p>
-          Develop the arrangement
-          and add musical variation.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 03
-        </div>
-
-        <h3>
-          Record
-        </h3>
-
-        <p>
-          Capture the hardware and vocals
-          into the DAW.
-        </p>
-
-      </div>
-
-
-      <div class="workflow-step">
-
-        <div class="step-number">
-          STEP 04
-        </div>
-
-        <h3>
-          Finish
-        </h3>
-
-        <p>
-          Mix, master and prepare the
-          final production.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     PROJECTS
-======================================================= -->
+<section id="projects" class="section">
 
-<section
-  id="projects"
-  class="section projects"
->
+<div class="container">
 
-  <div class="container">
+<div class="section-header">
 
-    <div class="section-header">
+<div class="section-number">
+05 / PROJECTS
+</div>
 
-      <div class="section-number">
-        05 / PROJECTS
-      </div>
+<h2 class="section-title">
+Music.
+</h2>
 
-      <h2 class="section-title">
-        Music.
-      </h2>
+</div>
 
-    </div>
+<div class="project-panel">
 
+<h3>
+Haerviu Productions
+</h3>
 
-    <div class="project-panel">
+<p>
+Centralize your current productions,
+ideas, stems, arrangements and
+finished tracks.
+</p>
 
-      <h3>
-        Haerviu Productions
-      </h3>
+<div class="project-buttons">
 
-      <p>
+<a href="#studio-setup"
+class="button button-secondary">
+Studio Setup →
+</a>
 
-        Centralize your current productions,
-        ideas, stems, arrangements and
-        finished tracks.
+<a href="#workflow"
+class="button button-secondary">
+Workflow →
+</a>
 
-      </p>
+</div>
 
+</div>
 
-      <div class="project-buttons">
-
-        <a
-          href="#studio-setup"
-          class="button button-secondary"
-        >
-          Studio Setup →
-        </a>
-
-        <a
-          href="#workflow"
-          class="button button-secondary"
-        >
-          Workflow →
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
-
 
 </main>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
 <footer>
 
-  <span>
-    HAERVIU ENGINE
-  </span>
+<span>
+HAERVIU ENGINE
+</span>
 
-  <span>
-    CONNECT · CONFIGURE · CREATE
-  </span>
+<span>
+CONNECT · CONFIGURE · CREATE
+</span>
 
 </footer>
-
 
 </body>
 </html>
