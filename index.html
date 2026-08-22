@@ -8,14 +8,17 @@
 
 <style>
 :root{
-  --bg:#08090d;
-  --panel:#101219;
-  --panel2:#151821;
+  --bg:#07080c;
+  --panel:#0e1016;
+  --panel2:#141720;
+  --panel3:#191c25;
   --white:#f5f5f7;
-  --soft:#b7bac5;
-  --muted:#6f7380;
-  --line:rgba(255,255,255,.13);
-  --glow:rgba(255,255,255,.08);
+  --soft:#b7bbc6;
+  --muted:#707582;
+  --line:rgba(255,255,255,.12);
+  --line2:rgba(255,255,255,.20);
+  --green:#70d89b;
+  --blue:#78a9ff;
 }
 
 *{
@@ -31,111 +34,160 @@ html{
 body{
   background:var(--bg);
   color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    Inter,
+    Arial,
+    sans-serif;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
+button,
+a{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 body:before{
   content:"";
   position:fixed;
   inset:0;
+  z-index:-2;
   pointer-events:none;
   background:
-    radial-gradient(circle at 80% 20%,rgba(90,110,160,.12),transparent 30%),
-    radial-gradient(circle at 15% 75%,rgba(80,90,130,.10),transparent 35%);
-  z-index:-2;
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(90,110,180,.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 75%,
+      rgba(100,90,160,.10),
+      transparent 35%
+    );
 }
 
 body:after{
   content:"";
   position:fixed;
-  width:700px;
-  height:700px;
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:50%;
-  left:-280px;
-  top:300px;
-  pointer-events:none;
+  width:720px;
+  height:720px;
+  left:-330px;
+  top:330px;
   z-index:-1;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.055);
+  border-radius:50%;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
   height:88px;
+  padding:0 42px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 42px;
   border-bottom:1px solid var(--line);
-  background:rgba(8,9,13,.78);
-  backdrop-filter:blur(18px);
+  background:rgba(7,8,12,.80);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:100;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:17px;
+  font-size:17px;
   font-weight:800;
   letter-spacing:4px;
-  font-size:18px;
 }
 
 .logo-mark{
   width:48px;
   height:48px;
-  border:1px solid rgba(255,255,255,.3);
-  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:14px;
   font-family:Georgia,serif;
   font-size:22px;
-  transition:.4s;
+  transition:.35s;
 }
 
 .logo:hover .logo-mark{
-  transform:rotate(-8deg);
-  background:white;
+  background:#fff;
   color:#08090d;
+  transform:rotate(-7deg);
 }
 
 .menu{
   width:52px;
   height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border:1px solid var(--line);
   border-radius:15px;
-  background:rgba(255,255,255,.03);
-  color:white;
-  font-size:23px;
+  background:rgba(255,255,255,.035);
+  color:#fff;
+  font-size:22px;
   cursor:pointer;
+  transition:.3s;
 }
 
-/* HERO */
+.menu:hover{
+  background:rgba(255,255,255,.09);
+}
+
+/* =========================================================
+   HOME
+========================================================= */
+
+#home{
+  min-height:calc(100vh - 88px);
+}
 
 .hero{
   min-height:calc(100vh - 88px);
   padding:100px 6vw 80px;
-  position:relative;
   display:flex;
   flex-direction:column;
   justify-content:center;
+  position:relative;
+  overflow:hidden;
 }
 
 .eyebrow{
   display:flex;
   align-items:center;
   gap:20px;
-  color:#aeb2c0;
-  font-size:14px;
+  margin-bottom:38px;
+  color:#aeb2bf;
+  font-size:13px;
   font-weight:800;
   letter-spacing:5px;
-  margin-bottom:38px;
 }
 
 .eyebrow:before{
@@ -146,8 +198,7 @@ header{
 }
 
 .hero-title{
-  position:relative;
-  max-width:1000px;
+  max-width:1100px;
   font-size:clamp(76px,14vw,190px);
   line-height:.78;
   letter-spacing:-7px;
@@ -159,15 +210,13 @@ header{
   display:block;
 }
 
-.hero-title .outline{
+.outline{
   color:transparent;
-  -webkit-text-stroke:1px rgba(210,215,230,.35);
+  -webkit-text-stroke:1px rgba(210,215,230,.36);
 }
 
-.hero-title .solid{
+.solid{
   color:#f4f4f7;
-  position:relative;
-  z-index:2;
 }
 
 .description{
@@ -176,7 +225,6 @@ header{
   color:#b8bbc5;
   font-size:22px;
   line-height:1.65;
-  font-weight:500;
 }
 
 .actions{
@@ -190,15 +238,15 @@ header{
   min-width:250px;
   height:76px;
   padding:0 30px;
-  border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:24px;
-  text-decoration:none;
+  border-radius:18px;
   font-size:17px;
   font-weight:800;
-  transition:.35s ease;
+  cursor:pointer;
+  transition:.35s;
 }
 
 .btn-primary{
@@ -212,9 +260,9 @@ header{
 }
 
 .btn-secondary{
-  border:1px solid rgba(255,255,255,.18);
+  border:1px solid var(--line2);
   background:rgba(255,255,255,.025);
-  color:white;
+  color:#fff;
 }
 
 .btn-secondary:hover{
@@ -226,15 +274,13 @@ header{
   font-size:25px;
 }
 
-/* STATUS */
-
 .status{
   display:flex;
   align-items:center;
   gap:12px;
   margin-top:65px;
   color:#858996;
-  font-size:13px;
+  font-size:12px;
   font-weight:800;
   letter-spacing:3px;
 }
@@ -243,11 +289,282 @@ header{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:#75d59b;
-  box-shadow:0 0 18px #75d59b;
+  background:var(--green);
+  box-shadow:0 0 18px var(--green);
 }
 
-/* TOOLS */
+/* =========================================================
+   ENGINE
+========================================================= */
+
+#engine{
+  display:none;
+  min-height:calc(100vh - 88px);
+  padding:55px 5vw 100px;
+}
+
+#engine.active{
+  display:block;
+  animation:engineIn .55s ease both;
+}
+
+.engine-top{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:30px;
+}
+
+.engine-kicker{
+  color:#8b909d;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:4px;
+  margin-bottom:15px;
+}
+
+.engine-title{
+  font-size:clamp(48px,7vw,86px);
+  line-height:.9;
+  letter-spacing:-4px;
+}
+
+.engine-intro{
+  max-width:560px;
+  margin-top:20px;
+  color:var(--soft);
+  line-height:1.65;
+}
+
+.back-button{
+  height:48px;
+  padding:0 18px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  color:var(--soft);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.back-button:hover{
+  color:#fff;
+  background:rgba(255,255,255,.08);
+}
+
+/* ENGINE GRID */
+
+.engine-grid{
+  max-width:1400px;
+  margin:55px auto 0;
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:20px;
+}
+
+.engine-panel{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.012)
+    );
+  box-shadow:0 25px 70px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+
+.panel-head{
+  min-height:76px;
+  padding:20px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+}
+
+.panel-title{
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.panel-status{
+  color:var(--green);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+/* SETUP */
+
+.setup-body{
+  padding:25px;
+}
+
+.setup-list{
+  display:grid;
+  gap:12px;
+}
+
+.setup-item{
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:rgba(255,255,255,.025);
+  transition:.3s;
+}
+
+.setup-item:hover{
+  border-color:var(--line2);
+  background:rgba(255,255,255,.055);
+  transform:translateX(3px);
+}
+
+.setup-left{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.setup-icon{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--line);
+  font-size:19px;
+}
+
+.setup-name{
+  font-weight:800;
+}
+
+.setup-desc{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.connected{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--green);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.connected:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+
+/* QUICK ACTIONS */
+
+.quick-body{
+  padding:25px;
+}
+
+.quick-grid{
+  display:grid;
+  gap:11px;
+}
+
+.quick-button{
+  width:100%;
+  min-height:60px;
+  padding:15px 17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  color:#fff;
+  cursor:pointer;
+  text-align:left;
+  transition:.3s;
+}
+
+.quick-button:hover{
+  background:rgba(255,255,255,.08);
+  border-color:var(--line2);
+  transform:translateY(-2px);
+}
+
+.quick-main{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.quick-icon{
+  width:32px;
+  height:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:rgba(255,255,255,.07);
+}
+
+.quick-arrow{
+  color:#777c88;
+}
+
+/* METRICS */
+
+.metrics{
+  max-width:1400px;
+  margin:20px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.metric{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+}
+
+.metric-label{
+  color:#737884;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.metric-value{
+  margin-top:12px;
+  font-size:25px;
+  font-weight:800;
+}
+
+.metric-small{
+  margin-top:5px;
+  color:#6f7480;
+  font-size:12px;
+}
+
+/* TOOLS SECTION */
 
 .tools{
   padding:110px 6vw;
@@ -263,10 +580,10 @@ header{
 }
 
 .section-title{
+  max-width:850px;
   font-size:clamp(45px,7vw,90px);
   line-height:.95;
   letter-spacing:-4px;
-  max-width:850px;
 }
 
 .tool-grid{
@@ -281,11 +598,12 @@ header{
   padding:32px;
   border:1px solid var(--line);
   border-radius:24px;
-  background:linear-gradient(
-    145deg,
-    rgba(255,255,255,.055),
-    rgba(255,255,255,.015)
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
+    );
   transition:.4s;
 }
 
@@ -316,17 +634,20 @@ header{
 
 footer{
   padding:50px 6vw;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
   border-top:1px solid var(--line);
   color:#686c77;
   font-size:12px;
   letter-spacing:2px;
-  display:flex;
-  justify-content:space-between;
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media(max-width:800px){
+@media(max-width:850px){
 
   header{
     height:82px;
@@ -334,7 +655,7 @@ footer{
   }
 
   .logo{
-    font-size:15px;
+    font-size:14px;
     letter-spacing:3px;
   }
 
@@ -349,23 +670,23 @@ footer{
   }
 
   .eyebrow{
-    font-size:12px;
+    font-size:11px;
     letter-spacing:4px;
     margin-bottom:30px;
   }
 
   .eyebrow:before{
-    width:55px;
+    width:50px;
   }
 
   .hero-title{
-    font-size:clamp(68px,17vw,110px);
-    letter-spacing:-4px;
+    font-size:clamp(65px,17vw,110px);
     line-height:.82;
+    letter-spacing:-4px;
   }
 
   .description{
-    margin-top:55px;
+    margin-top:52px;
     font-size:19px;
     line-height:1.55;
   }
@@ -385,13 +706,34 @@ footer{
     margin-top:48px;
   }
 
+  #engine{
+    padding:42px 22px 75px;
+  }
+
+  .engine-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .engine-title{
+    font-size:56px;
+  }
+
+  .engine-grid{
+    grid-template-columns:1fr;
+    margin-top:38px;
+  }
+
+  .metrics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
   .tools{
-    padding:85px 26px;
+    padding:80px 26px;
   }
 
   .section-title{
     font-size:52px;
-    letter-spacing:-3px;
   }
 
   .tool-grid{
@@ -406,16 +748,52 @@ footer{
   footer{
     padding:35px 26px;
     flex-direction:column;
-    gap:15px;
   }
 }
 
-/* ANIMATION */
+@media(max-width:500px){
+
+  .setup-item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .connected{
+    margin-left:62px;
+  }
+
+  .metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .metric{
+    padding:17px;
+  }
+
+  .metric-value{
+    font-size:21px;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 @keyframes fadeUp{
   from{
     opacity:0;
     transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes engineIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
   }
   to{
     opacity:1;
@@ -438,54 +816,363 @@ footer{
 <body>
 
 <header>
+
   <div class="logo">
     <div class="logo-mark">H</div>
     HAERVIU ENGINE
   </div>
 
   <button class="menu" aria-label="Menu">☰</button>
+
 </header>
+
 
 <main>
 
-<section class="hero">
+<!-- =======================================================
+     HOME
+======================================================= -->
 
-  <div class="eyebrow">
-    CREATIVE MUSIC SYSTEM
-  </div>
+<section id="home">
 
-  <h1 class="hero-title">
-    <span class="outline">CONNECT.</span>
-    <span class="solid">CONFIGURE.</span>
-    <span class="outline">CREATE.</span>
-  </h1>
+  <div class="hero">
 
-  <p class="description">
-    A creative workspace for electronic musicians,
-    producers and creators. Build your setup,
-    explore your workflow and turn your ideas into music.
-  </p>
+    <div class="eyebrow">
+      CREATIVE MUSIC SYSTEM
+    </div>
 
-  <div class="actions">
+    <h1 class="hero-title">
+      <span class="outline">CONNECT.</span>
+      <span class="solid">CONFIGURE.</span>
+      <span class="outline">CREATE.</span>
+    </h1>
 
-    <a href="#tools" class="btn btn-primary">
-      Enter Engine
-      <span class="arrow">→</span>
-    </a>
+    <p class="description">
+      A creative workspace for electronic musicians,
+      producers and creators. Build your setup,
+      explore your workflow and turn your ideas into music.
+    </p>
 
-    <a href="#tools" class="btn btn-secondary">
-      Explore Studio
-    </a>
+    <div class="actions">
 
-  </div>
+      <button
+        class="btn btn-primary"
+        onclick="openEngine()"
+      >
+        Enter Engine
+        <span class="arrow">→</span>
+      </button>
 
-  <div class="status">
-    <span class="status-dot"></span>
-    SYSTEM READY
+      <button
+        class="btn btn-secondary"
+        onclick="document.getElementById('tools').scrollIntoView()"
+      >
+        Explore Studio
+      </button>
+
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      SYSTEM READY
+    </div>
+
   </div>
 
 </section>
 
+
+<!-- =======================================================
+     ENGINE
+======================================================= -->
+
+<section id="engine">
+
+  <div class="engine-top">
+
+    <div>
+
+      <div class="engine-kicker">
+        HAERVIU ENGINE / CONTROL CENTER
+      </div>
+
+      <h2 class="engine-title">
+        Your Studio.
+      </h2>
+
+      <p class="engine-intro">
+        One central workspace to organize your instruments,
+        connections, routing and creative workflow.
+      </p>
+
+    </div>
+
+    <button
+      class="back-button"
+      onclick="closeEngine()"
+    >
+      ← Back to Home
+    </button>
+
+  </div>
+
+
+  <div class="engine-grid">
+
+    <!-- SETUP -->
+
+    <div class="engine-panel">
+
+      <div class="panel-head">
+
+        <div class="panel-title">
+          STUDIO SETUP
+        </div>
+
+        <div class="panel-status">
+          ● ONLINE
+        </div>
+
+      </div>
+
+      <div class="setup-body">
+
+        <div class="setup-list">
+
+          <div class="setup-item">
+
+            <div class="setup-left">
+
+              <div class="setup-icon">
+                🎛
+              </div>
+
+              <div>
+                <div class="setup-name">
+                  Roland MC-707
+                </div>
+
+                <div class="setup-desc">
+                  Groovebox / MIDI / Audio
+                </div>
+              </div>
+
+            </div>
+
+            <div class="connected">
+              CONNECTED
+            </div>
+
+          </div>
+
+
+          <div class="setup-item">
+
+            <div class="setup-left">
+
+              <div class="setup-icon">
+                🥁
+              </div>
+
+              <div>
+                <div class="setup-name">
+                  Roland TR-8S
+                </div>
+
+                <div class="setup-desc">
+                  Drum Machine
+                </div>
+              </div>
+
+            </div>
+
+            <div class="connected">
+              CONNECTED
+            </div>
+
+          </div>
+
+
+          <div class="setup-item">
+
+            <div class="setup-left">
+
+              <div class="setup-icon">
+                🎚
+              </div>
+
+              <div>
+                <div class="setup-name">
+                  Akai Force
+                </div>
+
+                <div class="setup-desc">
+                  Production / Performance
+                </div>
+              </div>
+
+            </div>
+
+            <div class="connected">
+              READY
+            </div>
+
+          </div>
+
+
+          <div class="setup-item">
+
+            <div class="setup-left">
+
+              <div class="setup-icon">
+                🎙
+              </div>
+
+              <div>
+                <div class="setup-name">
+                  Vocal Chain
+                </div>
+
+                <div class="setup-desc">
+                  Microphone / Voice Processing
+                </div>
+              </div>
+
+            </div>
+
+            <div class="connected">
+              READY
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="engine-panel">
+
+      <div class="panel-head">
+
+        <div class="panel-title">
+          QUICK ACTIONS
+        </div>
+
+      </div>
+
+      <div class="quick-body">
+
+        <div class="quick-grid">
+
+          <button class="quick-button" onclick="showMessage('Studio Setup')">
+
+            <div class="quick-main">
+              <span class="quick-icon">⚙</span>
+              <span>Studio Setup</span>
+            </div>
+
+            <span class="quick-arrow">→</span>
+
+          </button>
+
+
+          <button class="quick-button" onclick="showMessage('MIDI Routing')">
+
+            <div class="quick-main">
+              <span class="quick-icon">↔</span>
+              <span>MIDI Routing</span>
+            </div>
+
+            <span class="quick-arrow">→</span>
+
+          </button>
+
+
+          <button class="quick-button" onclick="showMessage('Audio Routing')">
+
+            <div class="quick-main">
+              <span class="quick-icon">◉</span>
+              <span>Audio Routing</span>
+            </div>
+
+            <span class="quick-arrow">→</span>
+
+          </button>
+
+
+          <button class="quick-button" onclick="showMessage('Workflow')">
+
+            <div class="quick-main">
+              <span class="quick-icon">✦</span>
+              <span>Creative Workflow</span>
+            </div>
+
+            <span class="quick-arrow">→</span>
+
+          </button>
+
+
+          <button class="quick-button" onclick="showMessage('Projects')">
+
+            <div class="quick-main">
+              <span class="quick-icon">□</span>
+              <span>Projects</span>
+            </div>
+
+            <span class="quick-arrow">→</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- METRICS -->
+
+  <div class="metrics">
+
+    <div class="metric">
+      <div class="metric-label">DEVICES</div>
+      <div class="metric-value">04</div>
+      <div class="metric-small">Studio hardware</div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">MIDI</div>
+      <div class="metric-value">READY</div>
+      <div class="metric-small">Routing available</div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">AUDIO</div>
+      <div class="metric-value">ONLINE</div>
+      <div class="metric-small">Audio system</div>
+    </div>
+
+    <div class="metric">
+      <div class="metric-label">ENGINE</div>
+      <div class="metric-value">1.0</div>
+      <div class="metric-small">Creative workspace</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     TOOLS
+======================================================= -->
 
 <section class="tools" id="tools">
 
@@ -498,33 +1185,60 @@ footer{
     to create.
   </h2>
 
+
   <div class="tool-grid">
 
     <div class="card">
-      <div class="card-number">01 / SETUP</div>
-      <h3>Studio Setup</h3>
+
+      <div class="card-number">
+        01 / SETUP
+      </div>
+
+      <h3>
+        Studio Setup
+      </h3>
+
       <p>
         Organize instruments, connections,
         MIDI and audio routing.
       </p>
+
     </div>
 
+
     <div class="card">
-      <div class="card-number">02 / WORKFLOW</div>
-      <h3>Creative Workflow</h3>
+
+      <div class="card-number">
+        02 / WORKFLOW
+      </div>
+
+      <h3>
+        Creative Workflow
+      </h3>
+
       <p>
         Build efficient workflows for
         production, recording and live work.
       </p>
+
     </div>
 
+
     <div class="card">
-      <div class="card-number">03 / CREATE</div>
-      <h3>Music Creation</h3>
+
+      <div class="card-number">
+        03 / CREATE
+      </div>
+
+      <h3>
+        Music Creation
+      </h3>
+
       <p>
         Develop ideas, experiment with sound
         and transform sketches into tracks.
       </p>
+
     </div>
 
   </div>
@@ -533,10 +1247,76 @@ footer{
 
 </main>
 
+
 <footer>
-  <span>HAERVIU ENGINE</span>
-  <span>CONNECT · CONFIGURE · CREATE</span>
+
+  <span>
+    HAERVIU ENGINE
+  </span>
+
+  <span>
+    CONNECT · CONFIGURE · CREATE
+  </span>
+
 </footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+function openEngine(){
+
+  const home =
+    document.getElementById("home");
+
+  const engine =
+    document.getElementById("engine");
+
+  home.style.display = "none";
+
+  engine.classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function closeEngine(){
+
+  const home =
+    document.getElementById("home");
+
+  const engine =
+    document.getElementById("engine");
+
+  engine.classList.remove("active");
+
+  home.style.display = "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function showMessage(name){
+
+  alert(
+    name +
+    " module ready for the next stage."
+  );
+
+}
+
+</script>
 
 </body>
 </html>
