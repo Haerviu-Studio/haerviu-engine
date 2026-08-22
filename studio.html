@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Haerviu Engine — Studio</title>
+
+<style>
+:root{
+--bg:#07080d;
+--line:rgba(255,255,255,.13);
+--text:#f4f4f7;
+--muted:#858997
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:
+radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
+radial-gradient(circle at 12% 70%,rgba(70,80,120,.1),transparent 30%),
+var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:-20%;
+border:1px solid rgba(255,255,255,.055);
+border-radius:50%;
+transform:rotate(-18deg);
+pointer-events:none
+}
+
+a{
+text-decoration:none;
+color:inherit
+}
+
+header{
+height:104px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6vw;
+border-bottom:1px solid rgba(255,255,255,.09);
+position:sticky;
+top:0;
+z-index:20;
+background:rgba(7,8,13,.82);
+backdrop-filter:blur(18px)
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:20px
+}
+
+.logo{
+width:58px;
+height:58px;
+border:1px solid var(--line);
+border-radius:17px;
+display:grid;
+place-items:center;
+font-family:Georgia,serif;
+font-size:28px
+}
+
+.brand-name{
+font-size:17px;
+font-weight:800;
+letter-spacing:.22em
+}
+
+.menu{
+width:58px;
+height:58px;
+border:1px solid var(--line);
+border-radius:17px;
+background:transparent;
+color:white;
+font-size:24px;
+cursor:pointer
+}
+
+main{
+max-width:1320px;
+margin:auto;
+padding:72px 6vw 120px
+}
+
+.kicker{
+color:#8e92a2;
+letter-spacing:.35em;
+font-size:12px;
+font-weight:700;
+margin-bottom:35px
+}
+
+.hero h1{
+font-size:clamp(58px,9vw,128px);
+line-height:.88;
+letter-spacing:-.065em;
+max-width:900px;
+margin-bottom:42px
+}
+
+.hero h1 span{
+color:#666b7a
+}
+
+.hero p{
+max-width:680px;
+color:#b7bac6;
+font-size:20px;
+line-height:1.65;
+margin-bottom:62px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px
+}
+
+.card{
+min-height:300px;
+padding:34px;
+border:1px solid var(--line);
+border-radius:28px;
+background:linear-gradient(
+145deg,
+rgba(255,255,255,.055),
+rgba(255,255,255,.018)
+);
+position:relative;
+overflow:hidden;
+transition:.45s ease;
+cursor:pointer
+}
+
+.card:before{
+content:"";
+position:absolute;
+width:280px;
+height:280px;
+border:1px solid rgba(255,255,255,.08);
+border-radius:50%;
+right:-110px;
+bottom:-130px;
+transition:.5s ease
+}
+
+.card:hover{
+transform:translateY(-7px);
+border-color:rgba(255,255,255,.3)
+}
+
+.card:hover:before{
+transform:scale(1.25)
+}
+
+.number{
+font-size:11px;
+letter-spacing:.3em;
+color:#747988;
+font-weight:700
+}
+
+.card h2{
+font-size:34px;
+letter-spacing:-.035em;
+margin-top:72px;
+margin-bottom:18px
+}
+
+.card p{
+color:#858a99;
+line-height:1.6;
+max-width:470px
+}
+
+.arrow{
+position:absolute;
+right:30px;
+top:30px;
+width:44px;
+height:44px;
+border:1px solid var(--line);
+border-radius:50%;
+display:grid;
+place-items:center;
+transition:.35s
+}
+
+.card:hover .arrow{
+background:white;
+color:#08090d;
+transform:rotate(-45deg)
+}
+
+.panel{
+display:none;
+margin-top:20px;
+padding:34px;
+border:1px solid var(--line);
+border-radius:24px;
+background:rgba(255,255,255,.035)
+}
+
+.panel.active{
+display:block;
+animation:appear .35s ease
+}
+
+.panel h3{
+font-size:26px;
+margin-bottom:14px
+}
+
+.panel p{
+color:var(--muted);
+line-height:1.7;
+margin-bottom:22px
+}
+
+.chips{
+display:flex;
+flex-wrap:wrap;
+gap:10px
+}
+
+.chip{
+border:1px solid var(--line);
+border-radius:999px;
+padding:11px 16px;
+color:#d5d7df;
+font-size:13px
+}
+
+.status{
+margin-top:55px;
+display:flex;
+align-items:center;
+gap:12px;
+color:#737887;
+font-size:12px;
+font-weight:700;
+letter-spacing:.25em
+}
+
+.dot{
+width:8px;
+height:8px;
+background:#6ee7a0;
+border-radius:50%;
+box-shadow:0 0 18px #6ee7a0
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,.08);
+padding:32px 6vw;
+color:#626674;
+font-size:12px;
+letter-spacing:.12em
+}
+
+@keyframes appear{
+from{
+opacity:0;
+transform:translateY(10px)
+}
+to{
+opacity:1;
+transform:none
+}
+}
+
+@media(max-width:700px){
+
+header{
+height:88px;
+padding:0 26px
+}
+
+.logo{
+width:50px;
+height:50px
+}
+
+.brand-name{
+font-size:14px;
+letter-spacing:.18em
+}
+
+.menu{
+width:50px;
+height:50px
+}
+
+main{
+padding:52px 26px 90px
+}
+
+.hero h1{
+font-size:58px;
+line-height:.9
+}
+
+.hero p{
+font-size:17px;
+margin-bottom:44px
+}
+
+.grid{
+grid-template-columns:1fr
+}
+
+.card{
+min-height:270px;
+padding:28px
+}
+
+.card h2{
+font-size:29px;
+margin-top:62px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="brand" href="index.html">
+<div class="logo">H</div>
+<div class="brand-name">HAERVIU ENGINE</div>
+</a>
+
+<button class="menu" aria-label="Menu">☰</button>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="kicker">
+HAERVIU ENGINE / STUDIO
+</div>
+
+<h1>
+Everything you<br>
+<span>need to create.</span>
+</h1>
+
+<p>
+A creative control space for electronic musicians, producers and creators.
+Configure your setup, shape your workflow and turn ideas into finished music.
+</p>
+
+</section>
+
+<section class="grid">
+
+<article class="card" onclick="openPanel('setup')">
+
+<div class="number">
+01 / SETUP
+</div>
+
+<div class="arrow">
+↗
+</div>
+
+<h2>
+Studio Setup
+</h2>
+
+<p>
+Organize instruments, connections, MIDI and audio routing.
+</p>
+
+</article>
+
+
+<article class="card" onclick="openPanel('workflow')">
+
+<div class="number">
+02 / WORKFLOW
+</div>
+
+<div class="arrow">
+↗
+</div>
+
+<h2>
+Creative Workflow
+</h2>
+
+<p>
+Build efficient workflows for production, recording and live creation.
+</p>
+
+</article>
+
+
+<article class="card" onclick="openPanel('tools')">
+
+<div class="number">
+03 / TOOLS
+</div>
+
+<div class="arrow">
+↗
+</div>
+
+<h2>
+Tools
+</h2>
+
+<p>
+Keep your essential studio utilities, references and resources in one place.
+</p>
+
+</article>
+
+
+<article class="card" onclick="openPanel('projects')">
+
+<div class="number">
+04 / PROJECTS
+</div>
+
+<div class="arrow">
+↗
+</div>
+
+<h2>
+Projects
+</h2>
+
+<p>
+Move from an idea to a structured production without losing the creative flow.
+</p>
+
+</article>
+
+</section>
+
+
+<section id="setup" class="panel">
+
+<h3>
+Studio Setup
+</h3>
+
+<p>
+Centralize the equipment and routing you use every day.
+</p>
+
+<div class="chips">
+
+<span class="chip">MIDI</span>
+<span class="chip">Audio Routing</span>
+<span class="chip">Synths</span>
+<span class="chip">Drums</span>
+<span class="chip">DAW</span>
+<span class="chip">Monitoring</span>
+
+</div>
+
+</section>
+
+
+<section id="workflow" class="panel">
+
+<h3>
+Creative Workflow
+</h3>
+
+<p>
+Design repeatable production flows while keeping room for experimentation.
+</p>
+
+<div class="chips">
+
+<span class="chip">Idea → Sketch</span>
+<span class="chip">Arrangement</span>
+<span class="chip">Recording</span>
+<span class="chip">Mix</span>
+<span class="chip">Export</span>
+
+</div>
+
+</section>
+
+
+<section id="tools" class="panel">
+
+<h3>
+Tools
+</h3>
+
+<p>
+A future home for calculators, routing helpers, references and production utilities.
+</p>
+
+<div class="chips">
+
+<span class="chip">BPM</span>
+<span class="chip">MIDI</span>
+<span class="chip">Routing</span>
+<span class="chip">Templates</span>
+
+</div>
+
+</section>
+
+
+<section id="projects" class="panel">
+
+<h3>
+Projects
+</h3>
+
+<p>
+Keep productions organized and accessible from the same creative workspace.
+</p>
+
+<div class="chips">
+
+<span class="chip">New Project</span>
+<span class="chip">Recent</span>
+<span class="chip">Templates</span>
+<span class="chip">Archive</span>
+
+</div>
+
+</section>
+
+
+<div class="status">
+
+<span class="dot"></span>
+SYSTEM READY
+
+</div>
+
+</main>
+
+<footer>
+HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+</footer>
+
+
+<script>
+
+function openPanel(id){
+
+document
+.querySelectorAll('.panel')
+.forEach(p=>p.classList.remove('active'));
+
+const panel=document.getElementById(id);
+
+panel.classList.add('active');
+
+setTimeout(
+()=>{
+panel.scrollIntoView({
+behavior:'smooth',
+block:'center'
+})
+},
+50
+);
+
+}
+
+</script>
+
+</body>
+</html>
