@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HAERVIU ENGINE — Studio System</title>
+<title>HAERVIU ENGINE — Studio</title>
 
 <meta name="description"
-content="HAERVIU ENGINE — Creative music studio system. Hardware, MIDI, audio, vocals, workflow and productions.">
+content="HAERVIU ENGINE — Studio setup, hardware, workflow, music creation, vocal chain and signal architecture.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
    HAERVIU ENGINE
-   PREMIUM STUDIO SYSTEM
-   INDEX.HTML
+   INDEX — MASTER STYLES
 ========================================================= */
 
 :root{
-
     --bg:#05060a;
-    --bg-soft:#080a10;
-    --panel:#0c0f16;
-    --panel-2:#10141d;
-    --panel-3:#141923;
+    --bg2:#080a10;
+    --panel:#0b0e15;
+    --panel2:#10141d;
+    --panel3:#151a25;
 
-    --white:#f5f7fb;
-    --soft:#c0c6d2;
-    --muted:#7d8595;
-    --muted-2:#5e6676;
+    --white:#f7f8fc;
+    --text:#e9ebf2;
+    --soft:#b5bccb;
+    --muted:#727b8e;
+    --dim:#4f5768;
 
     --line:rgba(255,255,255,.095);
-    --line-soft:rgba(255,255,255,.055);
-    --line-strong:rgba(255,255,255,.20);
+    --line2:rgba(255,255,255,.15);
 
-    --green:#70e0a0;
-    --blue:#7286ff;
-    --purple:#9b7cff;
+    --blue:#7383ff;
+    --blue2:#5669ff;
+    --green:#62f3a5;
 
-    --radius:28px;
-    --max:1420px;
-
+    --radius:30px;
+    --max:1440px;
 }
 
 *{
@@ -55,59 +55,51 @@ html{
 }
 
 body{
-
     min-height:100vh;
-
     background:
         radial-gradient(
-            circle at 78% 5%,
-            rgba(92,111,255,.13),
-            transparent 30%
+            circle at 70% -10%,
+            rgba(89,105,255,.18),
+            transparent 34%
         ),
         radial-gradient(
-            circle at 4% 42%,
-            rgba(122,72,190,.08),
+            circle at 10% 45%,
+            rgba(80,95,180,.07),
             transparent 30%
         ),
-        var(--bg);
-
-    color:var(--white);
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        Arial,
-        sans-serif;
-
+        linear-gradient(
+            180deg,
+            #05060a 0%,
+            #070914 45%,
+            #05060a 100%
+        );
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
-
 }
 
 body::before{
-
     content:"";
-
     position:fixed;
-
     inset:0;
-
-    z-index:-2;
-
     pointer-events:none;
-
-    background:
+    opacity:.22;
+    background-image:
         linear-gradient(
-            rgba(255,255,255,.012) 1px,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
             transparent 1px
         );
-
-    background-size:100% 80px;
-
-    opacity:.45;
-
+    background-size:80px 80px;
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
 }
 
 a{
@@ -115,19 +107,20 @@ a{
     text-decoration:none;
 }
 
+button{
+    font:inherit;
+}
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 header{
-
-    height:84px;
-
     position:sticky;
     top:0;
-
     z-index:1000;
+
+    height:84px;
 
     display:flex;
     align-items:center;
@@ -135,465 +128,501 @@ header{
 
     padding:0 5vw;
 
-    background:rgba(5,6,10,.82);
+    background:rgba(5,6,10,.84);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
 
     border-bottom:1px solid var(--line);
-
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-
 }
 
 .brand{
-
     display:flex;
     align-items:center;
-
-    gap:15px;
-
+    gap:18px;
 }
 
-.logo-mark{
-
-    width:48px;
-    height:48px;
+.logo{
+    width:50px;
+    height:50px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border:1px solid rgba(255,255,255,.22);
-
-    border-radius:15px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:16px;
 
     background:
         linear-gradient(
             145deg,
-            #181c27,
-            #080a0f
+            #1a1e29,
+            #08090d
         );
 
-    font-family:Georgia,serif;
-
-    font-size:25px;
-
     box-shadow:
-        inset 0 0 25px rgba(255,255,255,.035),
-        0 15px 40px rgba(0,0,0,.35);
+        inset 0 0 25px rgba(255,255,255,.04),
+        0 12px 35px rgba(0,0,0,.4);
 
+    font-family:Georgia,serif;
+    font-size:27px;
 }
 
 .brand-name{
-
-    font-size:13px;
-
-    font-weight:900;
-
-    letter-spacing:.32em;
-
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.34em;
+    color:#f4f5f9;
 }
 
-nav{
-
+.desktop-nav{
     display:flex;
-
     align-items:center;
+    gap:34px;
+}
 
-    gap:30px;
+.desktop-nav a{
+    position:relative;
 
-    color:var(--muted);
+    color:#777f91;
 
     font-size:10px;
-
-    font-weight:900;
-
-    letter-spacing:.18em;
-
+    font-weight:800;
+    letter-spacing:.2em;
     text-transform:uppercase;
 
+    transition:.25s ease;
 }
 
-nav a{
+.desktop-nav a::after{
+    content:"";
 
-    transition:.3s;
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-10px;
 
+    height:1px;
+
+    background:var(--blue);
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    transition:.25s ease;
 }
 
-nav a:hover{
-
-    color:var(--white);
-
+.desktop-nav a:hover{
+    color:white;
 }
 
-.header-status{
+.desktop-nav a:hover::after{
+    transform:scaleX(1);
+}
 
-    display:flex;
+.menu-button{
+    width:48px;
+    height:48px;
+
+    display:none;
 
     align-items:center;
+    justify-content:center;
 
-    gap:9px;
+    border:1px solid var(--line2);
+    border-radius:15px;
 
-    color:var(--green);
+    background:rgba(255,255,255,.025);
+    color:white;
 
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.2em;
-
+    cursor:pointer;
 }
 
-.status-light{
+.menu-button span,
+.menu-button span::before,
+.menu-button span::after{
+    width:18px;
+    height:2px;
 
-    width:7px;
-    height:7px;
+    display:block;
 
-    border-radius:50%;
+    background:white;
 
-    background:var(--green);
-
-    box-shadow:0 0 16px var(--green);
-
+    transition:.25s ease;
 }
 
+.menu-button span{
+    position:relative;
+}
+
+.menu-button span::before,
+.menu-button span::after{
+    content:"";
+    position:absolute;
+    left:0;
+}
+
+.menu-button span::before{
+    top:-6px;
+}
+
+.menu-button span::after{
+    top:6px;
+}
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+.mobile-nav{
+    position:fixed;
+    z-index:999;
+
+    top:84px;
+    left:0;
+    right:0;
+
+    display:none;
+
+    padding:20px;
+
+    background:rgba(5,6,10,.96);
+    backdrop-filter:blur(24px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.mobile-nav.open{
+    display:block;
+}
+
+.mobile-nav a{
+    display:block;
+
+    padding:18px 10px;
+
+    border-bottom:1px solid var(--line);
+
+    color:#aeb5c4;
+
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
 
 /* =========================================================
    GLOBAL
 ========================================================= */
 
 .container{
-
-    width:min(var(--max),90%);
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
 
     margin:auto;
-
 }
 
 .section{
-
-    padding:125px 0;
-
-    border-top:1px solid var(--line);
-
+    padding:110px 0;
 }
 
-.section-number{
+.section-label{
+    margin-bottom:20px;
 
-    margin-bottom:18px;
-
-    color:var(--muted-2);
+    color:#666f82;
 
     font-size:10px;
-
-    font-weight:900;
-
+    font-weight:800;
     letter-spacing:.38em;
-
+    text-transform:uppercase;
 }
 
 .section-title{
-
     font-size:clamp(
-        52px,
-        7vw,
-        96px
+        46px,
+        6vw,
+        86px
     );
 
-    line-height:.88;
+    line-height:.92;
 
-    letter-spacing:-.065em;
-
+    letter-spacing:-.07em;
     font-weight:900;
 
+    color:var(--white);
 }
 
 .section-description{
+    max-width:560px;
 
-    max-width:720px;
+    margin-top:28px;
 
-    margin-top:27px;
+    color:var(--muted);
 
-    color:var(--soft);
-
-    font-size:17px;
-
-    line-height:1.7;
-
+    font-size:15px;
+    line-height:1.8;
 }
 
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+
+    gap:60px;
+
+    margin-bottom:55px;
+}
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
-
-    min-height:calc(100vh - 84px);
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
     position:relative;
 
-    padding:110px 0 130px;
+    min-height:760px;
 
+    display:flex;
+    align-items:center;
+
+    padding:120px 0 130px;
+
+    overflow:hidden;
 }
 
 .hero::after{
-
     content:"";
 
     position:absolute;
 
-    width:600px;
-    height:600px;
+    width:700px;
+    height:700px;
 
-    right:-250px;
-    top:50px;
+    right:-300px;
+    top:40px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(105,125,255,.15),
-            transparent 68%
+            rgba(94,109,255,.18),
+            transparent 65%
         );
 
-    pointer-events:none;
+    filter:blur(10px);
 
+    pointer-events:none;
 }
 
-.eyebrow{
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-    margin-bottom:30px;
+.hero-label{
+    margin-bottom:28px;
 
-    color:#737b8d;
+    color:#737c90;
 
-    font-size:10px;
-
-    font-weight:900;
-
-    letter-spacing:.42em;
-
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.4em;
+    text-transform:uppercase;
 }
 
 .hero h1{
-
-    max-width:1050px;
+    max-width:950px;
 
     font-size:clamp(
-        72px,
-        11vw,
-        158px
+        70px,
+        10vw,
+        148px
     );
 
-    line-height:.80;
+    line-height:.82;
 
     letter-spacing:-.085em;
 
-    font-weight:950;
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.hero h1 .outline{
-
-    display:block;
-
-    color:transparent;
-
-    -webkit-text-stroke:1px rgba(232,236,246,.40);
-
-}
-
-.hero h1 .solid{
-
-    display:block;
-
-    color:var(--white);
-
-}
-
-.hero-text{
-
-    max-width:680px;
-
-    margin-top:55px;
-
-    color:var(--soft);
-
-    font-size:19px;
-
-    line-height:1.7;
-
-}
-
-.hero-actions{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:14px;
-
-    margin-top:38px;
-
-}
-
-.button{
-
-    min-height:58px;
-
-    padding:0 25px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:20px;
-
-    border-radius:15px;
-
-    font-size:11px;
-
     font-weight:900;
-
-    letter-spacing:.12em;
-
-    transition:.35s;
-
 }
 
-.button:hover{
-
-    transform:translateY(-4px);
-
+.hero h1 .blue{
+    color:var(--blue);
 }
 
-.button-primary{
-
-    min-width:220px;
-
-    background:var(--white);
-
-    color:#08090d;
-
-}
-
-.button-secondary{
-
-    border:1px solid var(--line-strong);
-
-    background:rgba(255,255,255,.035);
-
-}
-
-.hero-status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
+.hero-description{
+    max-width:720px;
 
     margin-top:45px;
 
+    color:#b8bfcd;
+
+    font-size:19px;
+    line-height:1.7;
+}
+
+.hero-status{
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    margin-top:48px;
+
     color:var(--green);
 
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.3em;
-
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.34em;
 }
 
+.status-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 10px var(--green),
+        0 0 28px rgba(98,243,165,.4);
+}
 
 /* =========================================================
-   STUDIO HARDWARE
+   HERO SYSTEM PANEL
 ========================================================= */
 
-.hardware-header{
+.hero-system{
+    position:relative;
+
+    margin-top:100px;
+
+    min-height:330px;
+
+    border:1px solid var(--line);
+    border-radius:34px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(93,108,255,.13),
+            transparent 55%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(18,22,34,.92),
+            rgba(7,9,14,.96)
+        );
+
+    overflow:hidden;
+}
+
+.hero-system::before{
+    content:"";
+
+    position:absolute;
+    inset:20px;
+
+    border:1px solid rgba(255,255,255,.035);
+    border-radius:25px;
+}
+
+.system-top{
+    position:absolute;
+
+    top:28px;
+    left:32px;
+    right:32px;
 
     display:flex;
-
     justify-content:space-between;
 
-    align-items:flex-end;
+    color:#656e80;
 
-    gap:50px;
-
-    margin-bottom:60px;
-
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.3em;
 }
 
-.hardware-header-copy{
+.system-display{
+    position:absolute;
 
-    max-width:760px;
+    left:50%;
+    top:50%;
 
+    transform:translate(-50%,-50%);
+
+    width:min(620px,75%);
+
+    height:120px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(120,135,255,.25);
+    border-radius:22px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(81,101,255,.14),
+            transparent 70%
+        ),
+        #080a11;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4),
+        inset 0 0 60px rgba(89,105,255,.05);
 }
 
-.hardware-header-side{
+.system-display span{
+    color:#7885b8;
 
-    max-width:400px;
-
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.7;
-
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.45em;
 }
 
+/* =========================================================
+   HARDWARE
+========================================================= */
 
-/* GRID */
+.hardware-section{
+    padding-top:80px;
+}
 
 .hardware-grid{
-
     display:grid;
 
     grid-template-columns:
         repeat(2,minmax(0,1fr));
 
-    gap:22px;
-
+    gap:24px;
 }
 
-
-/* DEVICE */
+/* =========================================================
+   DEVICE CARD
+========================================================= */
 
 .device{
-
     position:relative;
+
+    min-height:610px;
 
     overflow:hidden;
 
-    min-height:590px;
-
-    display:flex;
-
-    flex-direction:column;
-
     border:1px solid var(--line);
-
-    border-radius:30px;
+    border-radius:32px;
 
     background:
-
         radial-gradient(
             circle at 50% 20%,
-            rgba(87,108,220,.13),
-            transparent 42%
+            rgba(89,105,255,.10),
+            transparent 38%
         ),
-
         linear-gradient(
             145deg,
             #0d1119,
@@ -604,188 +633,318 @@ nav a:hover{
         transform .45s ease,
         border-color .45s ease,
         box-shadow .45s ease;
-
 }
 
 .device:hover{
-
     transform:translateY(-8px);
 
-    border-color:var(--line-strong);
+    border-color:rgba(255,255,255,.2);
 
     box-shadow:
-        0 35px 90px rgba(0,0,0,.45);
-
+        0 40px 100px rgba(0,0,0,.45);
 }
 
-
-/* IMAGE AREA */
-
 .device-image{
-
-    height:375px;
-
     position:relative;
 
+    height:390px;
+
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
-    padding:45px;
-
-    overflow:hidden;
-
+    padding:42px;
 }
 
 .device-image::before{
-
     content:"";
 
     position:absolute;
 
-    width:75%;
+    width:72%;
+    height:45%;
 
-    height:55%;
-
-    left:12.5%;
-    top:20%;
-
-    border-radius:50%;
+    left:14%;
+    bottom:25px;
 
     background:
         radial-gradient(
             ellipse,
-            rgba(91,110,255,.13),
+            rgba(93,110,255,.20),
             transparent 70%
         );
 
-    filter:blur(20px);
-
-}
-
-.device-image::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:15%;
-    right:15%;
-
-    bottom:20px;
-
-    height:60px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(0,0,0,.8),
-            transparent 70%
-        );
-
-    filter:blur(15px);
-
+    filter:blur(25px);
 }
 
 .device-image img{
-
     position:relative;
+    z-index:2;
 
-    z-index:3;
+    display:block;
 
     width:100%;
+    height:100%;
 
-    max-width:560px;
-
-    height:310px;
+    max-width:100%;
+    max-height:330px;
 
     object-fit:contain;
 
     filter:
         drop-shadow(
-            0 35px 28px rgba(0,0,0,.70)
+            0 35px 30px rgba(0,0,0,.7)
         );
 
     transition:
-        transform .5s ease,
-        filter .5s ease;
-
+        transform .5s ease;
 }
 
 .device:hover .device-image img{
-
-    transform:
-        scale(1.045)
-        translateY(-5px);
-
-    filter:
-        drop-shadow(
-            0 42px 35px rgba(0,0,0,.72)
-        );
-
+    transform:scale(1.035);
 }
 
+/* fallback if image missing */
 
-/* DEVICE INFO */
+.device-image.image-missing{
+    background:
+        radial-gradient(
+            circle,
+            rgba(89,105,255,.15),
+            transparent 55%
+        );
+}
+
+.device-image.image-missing::after{
+    content:"IMAGE À AJOUTER";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    color:#4e5870;
+
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.28em;
+
+    z-index:4;
+}
 
 .device-info{
+    position:relative;
+    z-index:5;
 
-    flex:1;
+    padding:27px 34px 34px;
 
-    padding:27px 32px 32px;
-
-    border-top:1px solid var(--line-soft);
-
+    border-top:1px solid rgba(255,255,255,.07);
 }
 
 .device-top{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:18px;
-
 }
 
 .device-number{
+    color:#626b7d;
 
-    color:var(--muted-2);
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.35em;
-
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.3em;
 }
 
-.device-status{
-
+.connected{
     display:flex;
-
     align-items:center;
-
     gap:8px;
 
     color:var(--green);
 
-    font-size:8px;
-
-    font-weight:900;
-
+    font-size:9px;
+    font-weight:800;
     letter-spacing:.25em;
-
 }
 
-.device-status::before{
+.connected i{
+    width:6px;
+    height:6px;
 
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+}
+
+.device h3{
+    margin-bottom:10px;
+
+    color:#f5f6fa;
+
+    font-size:31px;
+    line-height:1;
+
+    letter-spacing:-.045em;
+}
+
+.device p{
+    color:#818a9d;
+
+    font-size:13px;
+    line-height:1.6;
+}
+
+.device-role{
+    margin-top:20px;
+
+    color:#b0b7c5;
+
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   FEATURED DEVICE
+========================================================= */
+
+.device.featured{
+    grid-column:span 2;
+
+    min-height:660px;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+}
+
+.device.featured .device-image{
+    height:100%;
+    min-height:660px;
+}
+
+.device.featured .device-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:55px;
+
+    border-top:0;
+    border-left:1px solid rgba(255,255,255,.07);
+}
+
+.device.featured h3{
+    font-size:48px;
+}
+
+.device.featured p{
+    font-size:16px;
+    max-width:420px;
+}
+
+/* =========================================================
+   VOCAL SECTION
+========================================================= */
+
+.vocal-section{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.vocal-panel{
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    min-height:620px;
+
+    border:1px solid var(--line);
+    border-radius:34px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(93,108,255,.14),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #0d1018,
+            #07090e
+        );
+}
+
+.vocal-copy{
+    position:relative;
+    z-index:2;
+
+    padding:70px 60px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.vocal-copy h3{
+    max-width:500px;
+
+    font-size:clamp(
+        42px,
+        5vw,
+        70px
+    );
+
+    line-height:.95;
+
+    letter-spacing:-.065em;
+}
+
+.vocal-copy p{
+    max-width:500px;
+
+    margin-top:28px;
+
+    color:#929aaa;
+
+    font-size:15px;
+    line-height:1.8;
+}
+
+.vocal-list{
+    margin-top:35px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.vocal-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    color:#c7ccd6;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.vocal-item::before{
     content:"";
 
     width:6px;
@@ -795,971 +954,830 @@ nav a:hover{
 
     background:var(--green);
 
-    box-shadow:
-        0 0 14px var(--green);
-
+    box-shadow:0 0 12px var(--green);
 }
 
-.device h3{
-
-    font-size:30px;
-
-    line-height:1;
-
-    letter-spacing:-.045em;
-
-}
-
-.device-subtitle{
-
-    margin-top:10px;
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    line-height:1.55;
-
-}
-
-.device-role{
-
-    margin-top:20px;
-
-    color:#aeb5c4;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.20em;
-
-    text-transform:uppercase;
-
-}
-
-.device-arrow{
-
-    margin-top:25px;
-
-    color:#777f91;
-
-    font-size:10px;
-
-    font-weight:900;
-
-    letter-spacing:.12em;
-
-}
-
-
-/* =========================================================
-   MIDI
-========================================================= */
-
-.midi{
-
-    background:
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(111,130,255,.07),
-            transparent 35%
-        );
-
-}
-
-.midi-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-
-    gap:18px;
-
-    margin-top:58px;
-
-}
-
-.info-card{
-
-    min-height:285px;
-
-    padding:30px;
-
-    border:1px solid var(--line);
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
-
-    transition:.35s;
-
-}
-
-.info-card:hover{
-
-    transform:translateY(-7px);
-
-    border-color:var(--line-strong);
-
-}
-
-.info-icon{
-
-    width:52px;
-    height:52px;
+.vocal-visual{
+    position:relative;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    border:1px solid var(--line);
+    min-height:620px;
 
-    border-radius:15px;
-
-    background:rgba(255,255,255,.035);
-
-    color:#bfc6d5;
-
-    font-size:20px;
-
-}
-
-.info-card h3{
-
-    margin-top:42px;
-
-    font-size:24px;
-
-    letter-spacing:-.03em;
-
-}
-
-.info-card p{
-
-    margin-top:12px;
-
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.65;
-
-}
-
-
-/* =========================================================
-   AUDIO
-========================================================= */
-
-.audio-flow{
-
-    margin-top:58px;
-
-    padding:50px;
-
-    border:1px solid var(--line);
-
-    border-radius:30px;
+    border-left:1px solid rgba(255,255,255,.07);
 
     background:
-
         radial-gradient(
             circle at 50% 50%,
-            rgba(99,119,255,.10),
-            transparent 52%
-        ),
-
-        #080b11;
-
-}
-
-.flow-label{
-
-    margin-bottom:40px;
-
-    color:#747c8e;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.3em;
-
-}
-
-.flow-row{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:13px;
-
-}
-
-.flow-node{
-
-    min-width:170px;
-
-    padding:22px;
-
-    border:1px solid var(--line);
-
-    border-radius:16px;
-
-    background:#10141d;
-
-}
-
-.flow-node small{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    color:#697183;
-
-    font-size:8px;
-
-    font-weight:900;
-
-    letter-spacing:.22em;
-
-}
-
-.flow-node strong{
-
-    font-size:14px;
-
-}
-
-.flow-arrow{
-
-    color:#555f73;
-
-    font-size:19px;
-
-}
-
-.audio-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    gap:18px;
-
-    margin-top:18px;
-
-}
-
-.audio-card{
-
-    padding:32px;
-
-    border:1px solid var(--line);
-
-    border-radius:24px;
-
-    background:#0c0f16;
-
-}
-
-.audio-card h3{
-
-    font-size:24px;
-
-}
-
-.audio-card p{
-
-    margin-top:13px;
-
-    color:var(--muted);
-
-    line-height:1.65;
-
-}
-
-
-/* =========================================================
-   VOCAL
-========================================================= */
-
-.vocal{
-
-    background:
-        radial-gradient(
-            circle at 10% 50%,
-            rgba(153,124,255,.07),
-            transparent 30%
+            rgba(95,111,255,.18),
+            transparent 55%
         );
-
 }
 
 .vocal-chain{
-
-    margin-top:58px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-
-    gap:18px;
-
-}
-
-.vocal-card{
-
     position:relative;
 
-    min-height:300px;
+    width:min(470px,80%);
+}
 
-    padding:32px;
+.chain-card{
+    position:relative;
 
-    border:1px solid var(--line);
+    padding:26px;
 
-    border-radius:25px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
+            rgba(27,31,43,.95),
+            rgba(9,11,17,.95)
         );
 
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
 }
 
-.vocal-card::after{
+.chain-card + .chain-card{
+    margin-top:18px;
+}
 
-    content:"";
+.chain-card small{
+    display:block;
 
+    margin-bottom:9px;
+
+    color:#667086;
+
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.3em;
+}
+
+.chain-card strong{
+    color:#f3f5fa;
+
+    font-size:17px;
+}
+
+.chain-line{
     position:absolute;
 
-    left:32px;
-    right:32px;
-    bottom:30px;
+    left:50%;
 
-    height:1px;
+    width:1px;
+    height:18px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.12),
-            transparent
-        );
+    background:rgba(98,243,165,.45);
 
+    transform:translateX(-50%);
 }
-
-.vocal-number{
-
-    color:var(--muted-2);
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.3em;
-
-}
-
-.vocal-card h3{
-
-    margin-top:70px;
-
-    font-size:26px;
-
-    letter-spacing:-.04em;
-
-}
-
-.vocal-card p{
-
-    margin-top:12px;
-
-    color:var(--muted);
-
-    line-height:1.65;
-
-    font-size:14px;
-
-}
-
-.vocal-chain-line{
-
-    margin-top:20px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-}
-
-.vocal-node{
-
-    padding:10px 13px;
-
-    border:1px solid var(--line);
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,.025);
-
-    color:#b8bfcc;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.1em;
-
-}
-
 
 /* =========================================================
    WORKFLOW
 ========================================================= */
 
-.workflow{
-
-    background:
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(105,125,255,.07),
-            transparent 32%
-        );
-
-}
-
 .workflow-grid{
-
     display:grid;
 
     grid-template-columns:
-        repeat(4,minmax(0,1fr));
+        repeat(3,1fr);
 
-    gap:15px;
-
-    margin-top:58px;
-
+    gap:20px;
 }
 
-.workflow-step{
+.workflow-card{
+    position:relative;
 
-    min-height:270px;
+    min-height:300px;
 
-    padding:28px;
+    padding:34px;
 
     border:1px solid var(--line);
-
-    border-radius:23px;
+    border-radius:28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.01)
+            rgba(18,22,31,.9),
+            rgba(8,10,15,.96)
         );
-
-}
-
-.step-number{
-
-    color:var(--muted-2);
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.3em;
-
-}
-
-.workflow-step h3{
-
-    margin-top:65px;
-
-    font-size:24px;
-
-    letter-spacing:-.035em;
-
-}
-
-.workflow-step p{
-
-    margin-top:12px;
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    line-height:1.6;
-
-}
-
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.projects{
-
-    padding-bottom:150px;
-
-}
-
-.project-panel{
-
-    margin-top:58px;
-
-    padding:60px;
-
-    position:relative;
 
     overflow:hidden;
 
-    border:1px solid var(--line);
-
-    border-radius:30px;
-
-    background:
-
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(99,120,255,.13),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            145deg,
-            #0d1119,
-            #080a0f
-        );
-
+    transition:.35s ease;
 }
 
-.project-panel::before{
+.workflow-card:hover{
+    transform:translateY(-5px);
 
-    content:"";
+    border-color:rgba(255,255,255,.18);
 
-    position:absolute;
-
-    width:450px;
-    height:450px;
-
-    right:-250px;
-    bottom:-300px;
-
-    border:1px solid rgba(255,255,255,.05);
-
-    border-radius:50%;
-
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.35);
 }
 
-.project-kicker{
-
-    color:#737b8c;
+.workflow-number{
+    color:#596276;
 
     font-size:9px;
-
-    font-weight:900;
-
+    font-weight:800;
     letter-spacing:.3em;
-
 }
 
-.project-panel h3{
+.workflow-icon{
+    width:54px;
+    height:54px;
 
-    margin-top:22px;
-
-    font-size:clamp(
-        38px,
-        5vw,
-        62px
-    );
-
-    line-height:.95;
-
-    letter-spacing:-.06em;
-
-}
-
-.project-panel p{
-
-    max-width:700px;
-
-    margin-top:20px;
-
-    color:var(--soft);
-
-    font-size:17px;
-
-    line-height:1.7;
-
-}
-
-.project-actions{
+    margin:48px 0 28px;
 
     display:flex;
+    align-items:center;
+    justify-content:center;
 
-    flex-wrap:wrap;
+    border:1px solid rgba(113,132,255,.25);
+    border-radius:17px;
 
-    gap:13px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(113,132,255,.18),
+            transparent 70%
+        );
 
-    margin-top:35px;
+    color:#8b99ff;
 
+    font-size:19px;
 }
 
+.workflow-card h3{
+    font-size:23px;
+
+    letter-spacing:-.035em;
+}
+
+.workflow-card p{
+    margin-top:12px;
+
+    color:#7f889b;
+
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   MUSIC CREATION
+========================================================= */
+
+.creation{
+    position:relative;
+
+    padding:75px;
+
+    border:1px solid var(--line);
+    border-radius:34px;
+
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(92,108,255,.14),
+            transparent 40%
+        ),
+        #080b12;
+}
+
+.creation-grid{
+    display:grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.creation-copy h3{
+    max-width:600px;
+
+    font-size:clamp(
+        44px,
+        5vw,
+        72px
+    );
+
+    line-height:.93;
+
+    letter-spacing:-.065em;
+}
+
+.creation-copy p{
+    max-width:530px;
+
+    margin-top:28px;
+
+    color:#858e9f;
+
+    font-size:15px;
+    line-height:1.8;
+}
+
+.creation-stages{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+}
+
+.stage{
+    padding:25px;
+
+    min-height:130px;
+
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:20px;
+
+    background:#10141d;
+}
+
+.stage span{
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#687186;
+
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.25em;
+}
+
+.stage strong{
+    color:#eef0f5;
+
+    font-size:14px;
+}
+
+/* =========================================================
+   SIGNAL ARCHITECTURE
+========================================================= */
+
+.signal-panel{
+    position:relative;
+
+    padding:65px;
+
+    border:1px solid var(--line);
+    border-radius:34px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(89,105,255,.10),
+            transparent 52%
+        ),
+        #080b12;
+}
+
+.signal-title{
+    margin-bottom:45px;
+
+    color:#8d96aa;
+
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.28em;
+}
+
+.signal-flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.signal-node{
+    min-width:190px;
+
+    padding:24px;
+
+    border:1px solid rgba(255,255,255,.11);
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11151f,
+            #0b0e15
+        );
+}
+
+.signal-node small{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#626c80;
+
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.22em;
+}
+
+.signal-node strong{
+    color:#f1f3f8;
+
+    font-size:14px;
+}
+
+.signal-arrow{
+    color:#555f73;
+
+    font-size:20px;
+}
+
+/* =========================================================
+   SYSTEM METRICS
+========================================================= */
+
+.metrics{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    margin-top:24px;
+
+    border:1px solid var(--line);
+    border-radius:28px;
+
+    overflow:hidden;
+
+    background:#080a10;
+}
+
+.metric{
+    min-height:150px;
+
+    padding:30px;
+
+    border-right:1px solid var(--line);
+}
+
+.metric:last-child{
+    border-right:0;
+}
+
+.metric-number{
+    color:#f3f5fa;
+
+    font-size:34px;
+    font-weight:900;
+
+    letter-spacing:-.06em;
+}
+
+.metric-label{
+    margin-top:9px;
+
+    color:#697286;
+
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
+    margin-top:80px;
 
     border-top:1px solid var(--line);
-
-    padding:55px 0;
-
 }
 
 .footer-inner{
-
-    width:min(var(--max),90%);
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
 
     margin:auto;
 
+    padding:80px 0 45px;
+}
+
+.footer-main{
     display:flex;
 
     justify-content:space-between;
 
-    align-items:center;
-
+    gap:50px;
 }
 
 .footer-brand{
-
-    font-size:12px;
-
+    font-size:30px;
     font-weight:900;
 
-    letter-spacing:.3em;
-
+    letter-spacing:-.05em;
 }
 
-.footer-right{
+.footer-tagline{
+    max-width:380px;
 
-    color:#5e6676;
+    margin-top:16px;
+
+    color:#697286;
+
+    font-size:13px;
+    line-height:1.7;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:50px;
+}
+
+.footer-links a{
+    color:#70798c;
+
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+
+    transition:.25s ease;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:80px;
+    padding-top:25px;
+
+    border-top:1px solid var(--line);
+
+    color:#4f586a;
 
     font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.18em;
-
+    font-weight:700;
+    letter-spacing:.16em;
 }
 
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1050px){
+@media(max-width:1100px){
 
-    .hardware-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .midi-grid{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
-    .vocal-chain{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .workflow-grid{
-
-        grid-template-columns:1fr 1fr;
-
-    }
-
-}
-
-@media(max-width:760px){
-
-    header{
-
-        height:74px;
-
-        padding:0 20px;
-
-    }
-
-    .brand-name{
-
-        font-size:10px;
-
-        letter-spacing:.25em;
-
-    }
-
-    .logo-mark{
-
-        width:43px;
-        height:43px;
-
-    }
-
-    nav{
-
+    .desktop-nav{
         display:none;
-
     }
 
-    .header-status{
-
-        display:none;
-
-    }
-
-    .container{
-
-        width:88%;
-
+    .menu-button{
+        display:flex;
     }
 
     .hero{
-
-        min-height:calc(100vh - 74px);
-
-        padding:
-            85px 0
-            80px;
-
+        min-height:auto;
+        padding:110px 0;
     }
 
-    .hero h1{
-
-        font-size:
-            clamp(
-                62px,
-                17vw,
-                100px
-            );
-
+    .hardware-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero-text{
-
-        margin-top:40px;
-
-        font-size:17px;
-
-    }
-
-    .hero-actions{
-
-        flex-direction:column;
-
-    }
-
-    .button{
-
-        width:100%;
-
-    }
-
-    .section{
-
-        padding:90px 0;
-
-    }
-
-    .section-title{
-
-        font-size:56px;
-
-    }
-
-    .hardware-header{
-
-        display:block;
-
-    }
-
-    .hardware-header-side{
-
-        margin-top:25px;
-
-    }
-
-    .device{
-
-        min-height:0;
-
-    }
-
-    .device-image{
-
-        height:310px;
-
-        padding:25px;
-
-    }
-
-    .device-image img{
-
-        height:255px;
-
-    }
-
-    .device-info{
-
-        padding:
-            25px
-            25px
-            30px;
-
-    }
-
-    .device h3{
-
-        font-size:27px;
-
-    }
-
-    .midi-grid{
+    .device.featured{
+        grid-column:span 1;
 
         grid-template-columns:1fr;
-
     }
 
-    .audio-flow{
-
-        padding:28px 20px;
-
+    .device.featured .device-image{
+        min-height:420px;
+        height:420px;
     }
 
-    .flow-row{
-
-        flex-direction:column;
-
-        align-items:stretch;
-
+    .device.featured .device-info{
+        padding:35px;
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.07);
     }
 
-    .flow-node{
-
-        min-width:0;
-
-    }
-
-    .flow-arrow{
-
-        text-align:center;
-
-        transform:rotate(90deg);
-
-    }
-
-    .audio-grid{
-
+    .vocal-panel{
         grid-template-columns:1fr;
+    }
 
+    .vocal-visual{
+        min-height:500px;
+        border-left:0;
+        border-top:1px solid rgba(255,255,255,.07);
     }
 
     .workflow-grid{
-
         grid-template-columns:1fr;
-
     }
 
-    .project-panel{
-
-        padding:32px 25px;
-
+    .creation-grid{
+        grid-template-columns:1fr;
+        gap:50px;
     }
 
-    .footer-inner{
+    .metrics{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 
-        width:88%;
+    .metric:nth-child(2){
+        border-right:0;
+    }
 
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:18px;
-
+    .metric:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
     }
 
 }
 
+@media(max-width:700px){
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media(max-width:450px){
-
-    .hero h1{
-
-        font-size:58px;
-
+    header{
+        height:72px;
+        padding:0 20px;
     }
 
-    .section-title{
+    .logo{
+        width:44px;
+        height:44px;
+        border-radius:14px;
+        font-size:24px;
+    }
 
-        font-size:50px;
+    .brand{
+        gap:13px;
+    }
 
+    .brand-name{
+        font-size:10px;
+        letter-spacing:.27em;
+    }
+
+    .menu-button{
+        width:44px;
+        height:44px;
+    }
+
+    .mobile-nav{
+        top:72px;
+    }
+
+    .container,
+    .footer-inner{
+        width:calc(100% - 40px);
+    }
+
+    .section{
+        padding:75px 0;
+    }
+
+    .section-head{
+        display:block;
+        margin-bottom:38px;
+    }
+
+    .section-description{
+        margin-top:22px;
+    }
+
+    .hero{
+        padding:90px 0 80px;
+    }
+
+    .hero-label{
+        font-size:9px;
+        letter-spacing:.3em;
+    }
+
+    .hero h1{
+        font-size:clamp(
+            62px,
+            19vw,
+            100px
+        );
+    }
+
+    .hero-description{
+        margin-top:32px;
+
+        font-size:16px;
+        line-height:1.7;
+    }
+
+    .hero-status{
+        margin-top:35px;
+    }
+
+    .hero-system{
+        min-height:260px;
+        margin-top:65px;
+        border-radius:25px;
+    }
+
+    .system-display{
+        width:78%;
+        height:90px;
+    }
+
+    .system-display span{
+        font-size:9px;
+        letter-spacing:.3em;
+    }
+
+    .hardware-section{
+        padding-top:45px;
+    }
+
+    .device{
+        min-height:0;
+        border-radius:25px;
     }
 
     .device-image{
-
-        height:275px;
-
+        height:285px;
+        padding:28px;
     }
 
     .device-image img{
+        max-height:240px;
+    }
 
-        height:230px;
+    .device-info{
+        padding:24px;
+    }
 
+    .device h3{
+        font-size:27px;
+    }
+
+    .device.featured .device-image{
+        min-height:300px;
+        height:300px;
+    }
+
+    .device.featured .device-info{
+        padding:27px;
+    }
+
+    .device.featured h3{
+        font-size:36px;
+    }
+
+    .vocal-panel{
+        border-radius:25px;
+    }
+
+    .vocal-copy{
+        padding:38px 27px;
+    }
+
+    .vocal-visual{
+        min-height:420px;
+    }
+
+    .vocal-chain{
+        width:78%;
+    }
+
+    .chain-card{
+        padding:20px;
+    }
+
+    .workflow-card{
+        min-height:260px;
+        padding:28px;
+        border-radius:24px;
+    }
+
+    .creation{
+        padding:35px 25px;
+        border-radius:25px;
+    }
+
+    .creation-stages{
+        grid-template-columns:1fr;
+    }
+
+    .signal-panel{
+        padding:30px 20px;
+        border-radius:25px;
+    }
+
+    .signal-flow{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .signal-node{
+        min-width:0;
+    }
+
+    .signal-arrow{
+        text-align:center;
+        transform:rotate(90deg);
+    }
+
+    .metrics{
+        grid-template-columns:1fr;
+        border-radius:24px;
+    }
+
+    .metric{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+    }
+
+    .metric:last-child{
+        border-bottom:0;
+    }
+
+    .footer-main{
+        display:block;
+    }
+
+    .footer-links{
+        margin-top:40px;
+
+        display:grid;
+        grid-template-columns:1fr 1fr;
+
+        gap:22px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:13px;
+
+        margin-top:55px;
+    }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        transition:none !important;
+        animation:none !important;
     }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <!-- =======================================================
      HEADER
@@ -1767,11 +1785,9 @@ footer{
 
 <header>
 
-    <a href="#home" class="brand">
+    <a href="#studio" class="brand">
 
-        <div class="logo-mark">
-            H
-        </div>
+        <div class="logo">H</div>
 
         <div class="brand-name">
             HAERVIU ENGINE
@@ -1779,131 +1795,108 @@ footer{
 
     </a>
 
+    <nav class="desktop-nav">
 
-    <nav>
+        <a href="#studio">Studio</a>
 
-        <a href="#studio">
-            Studio
-        </a>
+        <a href="#hardware">Hardware</a>
 
-        <a href="#hardware">
-            Hardware
-        </a>
+        <a href="#workflow">Workflow</a>
 
-        <a href="#midi">
-            MIDI
-        </a>
+        <a href="#creation">Create</a>
 
-        <a href="#audio">
-            Audio
-        </a>
+        <a href="#vocals">Vocals</a>
 
-        <a href="#vocal">
-            Vocal
-        </a>
-
-        <a href="#workflow">
-            Workflow
-        </a>
+        <a href="#signal">Signal</a>
 
     </nav>
 
-
-    <div class="header-status">
-
-        <span class="status-light"></span>
-
-        SYSTEM ONLINE
-
-    </div>
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+        <span></span>
+    </button>
 
 </header>
 
 
+<!-- =======================================================
+     MOBILE NAV
+======================================================= -->
+
+<nav class="mobile-nav" id="mobileNav">
+
+    <a href="#studio">Studio</a>
+
+    <a href="#hardware">Hardware</a>
+
+    <a href="#workflow">Workflow</a>
+
+    <a href="#creation">Music Creation</a>
+
+    <a href="#vocals">Vocal Chain</a>
+
+    <a href="#signal">Signal Architecture</a>
+
+</nav>
+
 
 <main>
 
-
 <!-- =======================================================
-     01 / HERO
+     01 — STUDIO
 ======================================================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section class="hero" id="studio">
 
-    <div class="container">
+    <div class="container hero-content">
 
-        <div class="eyebrow">
-
-            HAERVIU ENGINE
-            /
-            CREATIVE MUSIC SYSTEM
-
+        <div class="hero-label">
+            HAERVIU ENGINE / 01
         </div>
-
 
         <h1>
-
-            <span class="outline">
-                CONNECT.
-            </span>
-
-            <span class="solid">
-                CONFIGURE.
-            </span>
-
-            <span class="outline">
-                CREATE.
-            </span>
-
+            The<br>
+            <span class="blue">Studio.</span>
         </h1>
 
-
-        <p class="hero-text">
-
-            The central nervous system of the Haerviu studio.
-            Hardware, sequencing, sampling, MIDI, audio,
-            vocals and production workflow — designed as
-            one connected creative system.
-
+        <p class="hero-description">
+            A connected creative environment built around
+            rhythm, production, sampling, synthesis, mixing
+            and vocal processing.
+            Every machine has a specific role.
+            Every signal has a destination.
         </p>
-
-
-        <div class="hero-actions">
-
-            <a
-                href="#hardware"
-                class="button button-primary"
-            >
-
-                ENTER STUDIO
-
-                <span>→</span>
-
-            </a>
-
-
-            <a
-                href="#audio"
-                class="button button-secondary"
-            >
-
-                SIGNAL FLOW
-
-                <span>→</span>
-
-            </a>
-
-        </div>
-
 
         <div class="hero-status">
 
-            <span class="status-light"></span>
+            <span class="status-dot"></span>
 
-            STUDIO SYSTEM READY
+            SYSTEM ONLINE
+
+        </div>
+
+
+        <div class="hero-system reveal">
+
+            <div class="system-top">
+
+                <span>HAERVIU ENGINE</span>
+
+                <span>STUDIO / CORE</span>
+
+            </div>
+
+            <div class="system-display">
+
+                <span>
+                    STUDIO CONTROL SYSTEM
+                </span>
+
+            </div>
 
         </div>
 
@@ -1912,55 +1905,39 @@ footer{
 </section>
 
 
-
 <!-- =======================================================
-     02 / STUDIO HARDWARE
+     02 — HARDWARE
 ======================================================= -->
 
 <section
-    class="section"
+    class="section hardware-section"
     id="hardware"
 >
 
     <div class="container">
 
+        <div class="section-head reveal">
 
-        <div class="hardware-header">
+            <div>
 
-
-            <div class="hardware-header-copy">
-
-                <div class="section-number">
-                    01 / STUDIO SETUP
+                <div class="section-label">
+                    02 / STUDIO HARDWARE
                 </div>
 
                 <h2 class="section-title">
-                    Your Studio.
+                    The Hardware.
                 </h2>
 
-                <p class="section-description">
-
-                    Every important machine in the
-                    Haerviu production environment.
-                    Rhythm, production, sampling,
-                    mixing, vocals and monitoring.
-
-                </p>
-
             </div>
 
-
-            <div class="hardware-header-side">
-
-                Eight core pieces of hardware.
-                Each one has a specific role inside
-                the Haerviu Engine.
-
-            </div>
-
+            <p class="section-description">
+                The complete Haerviu production environment.
+                Rhythm machines, production hardware,
+                sampling, mixing, vocal processing,
+                MIDI control and studio monitoring.
+            </p>
 
         </div>
-
 
 
         <div class="hardware-grid">
@@ -1970,302 +1947,235 @@ footer{
                  MC-707
             ================================================== -->
 
-            <article class="device">
+            <article class="device featured reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/mc-707.webp"
-                        alt="Roland MC-707 Groovebox"
+                        alt="Roland MC-707"
+                        loading="eager"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            01 / HARDWARE
+                            01 / GROOVEBOX
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             CONNECTED
                         </span>
 
                     </div>
 
-
                     <h3>
                         Roland MC-707
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Groovebox · MIDI · Audio ·
-                        Sequencing · Sampling
-
+                    <p>
+                        Groovebox · MIDI · Audio · Sampling
                     </p>
 
-
                     <div class="device-role">
-
-                        Production / Sequencing /
-                        MIDI Control
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        GROOVEBOX ENGINE →
+                        Production / Sequencing / MIDI Control
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  TR-8S
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/tr-8s.webp"
-                        alt="Roland TR-8S Rhythm Performer"
+                        alt="Roland TR-8S"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            02 / HARDWARE
+                            02
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             CONNECTED
                         </span>
 
                     </div>
 
-
                     <h3>
                         Roland TR-8S
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Rhythm Performer · Drum Machine ·
-                        Sequencing · Samples
-
+                    <p>
+                        Rhythm Performer · Drum Machine · Sequencing
                     </p>
 
-
                     <div class="device-role">
-
                         Rhythm Engine / Percussion
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        RHYTHM ENGINE →
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  AKAI FORCE
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/akai-force.webp"
                         alt="Akai Force"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            03 / HARDWARE
+                            03
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             READY
                         </span>
 
                     </div>
 
-
                     <h3>
                         Akai Force
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Production · Sampling ·
-                        Clips · Performance
-
+                    <p>
+                        Production · Sampling · Performance
                     </p>
 
-
                     <div class="device-role">
-
-                        Creative Workstation /
-                        Sampling / Performance
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        CREATIVE WORKSTATION →
+                        Production / Sampling / Performance
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  MX-1
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/mx-1.webp"
-                        alt="Roland MX-1 Mix Performer"
+                        alt="Roland MX-1"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            04 / HARDWARE
+                            04
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             CONNECTED
                         </span>
 
                     </div>
 
-
                     <h3>
                         Roland MX-1
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Mix Performer · Audio Hub ·
-                        USB Audio · FX
-
+                    <p>
+                        Mix Performer · Audio Hub · FX
                     </p>
 
-
                     <div class="device-role">
-
                         Master Mix / Audio Routing
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        MIX ENGINE →
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  VT-4
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/vt-4.webp"
-                        alt="Roland VT-4 Voice Transformer"
+                        alt="Roland VT-4"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            05 / HARDWARE
+                            05
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             READY
                         </span>
 
                     </div>
-
 
                     <h3>
                         Roland VT-4
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Voice Transformer ·
-                        Pitch · Vocoder · Vocal FX
-
+                    <p>
+                        Voice Transformer · Vocal FX · Pitch
                     </p>
 
-
                     <div class="device-role">
-
-                        Vocal Processing /
-                        Creative Voice FX
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        VOCAL PROCESSING →
+                        Vocal Processing / Voice FX
                     </div>
 
                 </div>
@@ -2273,185 +2183,143 @@ footer{
             </article>
 
 
-
             <!-- =================================================
-                 RØDE NT1
+                 RODE NT1
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/rode-nt1.webp"
-                        alt="RØDE NT1 Studio Microphone"
+                        alt="RØDE NT1"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            06 / HARDWARE
+                            06
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             READY
                         </span>
 
                     </div>
 
-
                     <h3>
                         RØDE NT1
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Studio Microphone ·
-                        Vocal Recording
-
+                    <p>
+                        Studio Microphone · Vocal Recording
                     </p>
 
-
                     <div class="device-role">
-
-                        Vocal Capture /
-                        Studio Recording
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        RECORDING CHAIN →
+                        Vocal Capture / Studio Recording
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  ARTURIA
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/arturia-essential-88.webp"
-                        alt="Arturia Essential 88 MIDI Keyboard"
+                        alt="Arturia Essential 88"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            07 / HARDWARE
+                            07
                         </span>
 
-                        <span class="device-status">
+                        <span class="connected">
+                            <i></i>
                             READY
                         </span>
 
                     </div>
 
-
                     <h3>
                         Arturia Essential 88
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        MIDI Keyboard ·
-                        Instrument Control
-
+                    <p>
+                        MIDI Keyboard · Instrument Control
                     </p>
 
-
                     <div class="device-role">
-
-                        MIDI Performance /
-                        Instrument Control
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        MIDI PERFORMANCE →
+                        MIDI Performance / Instrument Control
                     </div>
 
                 </div>
 
             </article>
-
 
 
             <!-- =================================================
                  YAMAHA HS8
             ================================================== -->
 
-            <article class="device">
+            <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
                         src="assets/yamaha-hs8.webp"
-                        alt="Yamaha HS8 Studio Monitor"
+                        alt="Yamaha HS8"
+                        loading="lazy"
                     >
 
                 </div>
-
 
                 <div class="device-info">
 
                     <div class="device-top">
 
                         <span class="device-number">
-                            08 / HARDWARE
+                            08
                         </span>
 
-                        <span class="device-status">
-                            MONITORING
+                        <span class="connected">
+                            <i></i>
+                            READY
                         </span>
 
                     </div>
-
 
                     <h3>
                         Yamaha HS8
                     </h3>
 
-
-                    <p class="device-subtitle">
-
-                        Studio Monitoring ·
-                        Reference Speaker
-
+                    <p>
+                        Studio Monitoring · Reference
                     </p>
 
-
                     <div class="device-role">
-
-                        Monitoring /
-                        Critical Listening
-
-                    </div>
-
-
-                    <div class="device-arrow">
-                        MONITORING SYSTEM →
+                        Monitoring / Critical Listening
                     </div>
 
                 </div>
@@ -2466,153 +2334,427 @@ footer{
 </section>
 
 
-
 <!-- =======================================================
-     03 / MIDI CONTROL
-======================================================= -->
-
-<section
-    class="section midi"
-    id="midi"
->
-
-    <div class="container">
-
-
-        <div class="section-number">
-            02 / MIDI CONTROL
-        </div>
-
-
-        <h2 class="section-title">
-            MIDI.
-        </h2>
-
-
-        <p class="section-description">
-
-            The control layer connecting the
-            machines, controllers and software.
-
-        </p>
-
-
-        <div class="midi-grid">
-
-
-            <article class="info-card">
-
-                <div class="info-icon">
-                    ↔
-                </div>
-
-                <h3>
-                    MIDI Clock
-                </h3>
-
-                <p>
-
-                    Keep the MC-707, TR-8S,
-                    Akai Force and DAW locked
-                    to the same tempo and timing.
-
-                </p>
-
-            </article>
-
-
-            <article class="info-card">
-
-                <div class="info-icon">
-                    ⌁
-                </div>
-
-                <h3>
-                    Controllers
-                </h3>
-
-                <p>
-
-                    Use the Arturia keyboard
-                    and hardware controllers
-                    to play and control the system.
-
-                </p>
-
-            </article>
-
-
-            <article class="info-card">
-
-                <div class="info-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Synchronization
-                </h3>
-
-                <p>
-
-                    Build a stable studio system
-                    where every machine knows when
-                    to start, stop and follow.
-
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     04 / AUDIO SYSTEM
+     03 — WORKFLOW
 ======================================================= -->
 
 <section
     class="section"
-    id="audio"
+    id="workflow"
 >
 
     <div class="container">
 
+        <div class="section-head reveal">
 
-        <div class="section-number">
-            03 / AUDIO SYSTEM
+            <div>
+
+                <div class="section-label">
+                    03 / WORKFLOW
+                </div>
+
+                <h2 class="section-title">
+                    Creative Workflow.
+                </h2>
+
+            </div>
+
+            <p class="section-description">
+                From the first rhythm to the final recording,
+                every stage of the Haerviu system is connected.
+            </p>
+
         </div>
 
 
-        <h2 class="section-title">
-            Sound Flow.
-        </h2>
+        <div class="workflow-grid">
 
 
-        <p class="section-description">
+            <article class="workflow-card reveal">
 
-            Hardware, mixing, recording and
-            monitoring connected as one audio system.
+                <div class="workflow-number">
+                    01 / RHYTHM
+                </div>
 
-        </p>
+                <div class="workflow-icon">
+                    01
+                </div>
+
+                <h3>
+                    Build the Groove
+                </h3>
+
+                <p>
+                    TR-8S rhythm programming,
+                    percussion, patterns and
+                    performance variations.
+                </p>
+
+            </article>
 
 
-        <div class="audio-flow">
+            <article class="workflow-card reveal">
+
+                <div class="workflow-number">
+                    02 / PRODUCTION
+                </div>
+
+                <div class="workflow-icon">
+                    02
+                </div>
+
+                <h3>
+                    Shape the Track
+                </h3>
+
+                <p>
+                    MC-707 and Force handle
+                    sequencing, synthesis,
+                    sampling and arrangement.
+                </p>
+
+            </article>
 
 
-            <div class="flow-label">
-                HAERVIU ENGINE / AUDIO ARCHITECTURE
+            <article class="workflow-card reveal">
+
+                <div class="workflow-number">
+                    03 / MIX
+                </div>
+
+                <div class="workflow-icon">
+                    03
+                </div>
+
+                <h3>
+                    Perform the Mix
+                </h3>
+
+                <p>
+                    MX-1 becomes the central
+                    mixing and routing point
+                    for the hardware system.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     04 — MUSIC CREATION
+======================================================= -->
+
+<section
+    class="section"
+    id="creation"
+>
+
+    <div class="container">
+
+        <div class="creation reveal">
+
+            <div class="creation-grid">
+
+                <div class="creation-copy">
+
+                    <div class="section-label">
+                        04 / CREATE
+                    </div>
+
+                    <h3>
+                        Music Creation.
+                    </h3>
+
+                    <p>
+                        Develop ideas, experiment with sound
+                        and transform sketches into complete
+                        productions. The system is designed
+                        for hands-on creation rather than
+                        isolated equipment.
+                    </p>
+
+                </div>
+
+
+                <div class="creation-stages">
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 01
+                        </span>
+
+                        <strong>
+                            Idea
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 02
+                        </span>
+
+                        <strong>
+                            Rhythm
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 03
+                        </span>
+
+                        <strong>
+                            Arrangement
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 04
+                        </span>
+
+                        <strong>
+                            Sound Design
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 05
+                        </span>
+
+                        <strong>
+                            Mix
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stage">
+
+                        <span>
+                            STEP 06
+                        </span>
+
+                        <strong>
+                            Final Recording
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     05 — VOCAL CHAIN
+======================================================= -->
+
+<section
+    class="section vocal-section"
+    id="vocals"
+>
+
+    <div class="container">
+
+        <div class="section-head reveal">
+
+            <div>
+
+                <div class="section-label">
+                    05 / VOCAL SYSTEM
+                </div>
+
+                <h2 class="section-title">
+                    The Vocal Chain.
+                </h2>
+
+            </div>
+
+            <p class="section-description">
+                Voice capture, transformation and processing
+                integrated directly into the studio workflow.
+            </p>
+
+        </div>
+
+
+        <div class="vocal-panel reveal">
+
+
+            <div class="vocal-copy">
+
+                <div class="section-label">
+                    VOCAL PROCESSING
+                </div>
+
+                <h3>
+                    Voice becomes part of the system.
+                </h3>
+
+                <p>
+                    The vocal chain combines the RØDE NT1
+                    microphone with the Roland VT-4,
+                    allowing clean recording, voice
+                    transformation and creative vocal FX.
+                </p>
+
+
+                <div class="vocal-list">
+
+                    <div class="vocal-item">
+                        Studio vocal capture
+                    </div>
+
+                    <div class="vocal-item">
+                        Voice transformation
+                    </div>
+
+                    <div class="vocal-item">
+                        Pitch and character
+                    </div>
+
+                    <div class="vocal-item">
+                        Vocal FX
+                    </div>
+
+                </div>
+
             </div>
 
 
-            <div class="flow-row">
+            <div class="vocal-visual">
+
+                <div class="vocal-chain">
 
 
-                <div class="flow-node">
+                    <div class="chain-card">
+
+                        <small>
+                            SOURCE / 01
+                        </small>
+
+                        <strong>
+                            RØDE NT1
+                        </strong>
+
+                    </div>
+
+
+                    <div class="chain-line"></div>
+
+
+                    <div class="chain-card">
+
+                        <small>
+                            PROCESS / 02
+                        </small>
+
+                        <strong>
+                            ROLAND VT-4
+                        </strong>
+
+                    </div>
+
+
+                    <div class="chain-line"></div>
+
+
+                    <div class="chain-card">
+
+                        <small>
+                            RECORD / 03
+                        </small>
+
+                        <strong>
+                            CUBASE
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     06 — SIGNAL
+======================================================= -->
+
+<section
+    class="section"
+    id="signal"
+>
+
+    <div class="container">
+
+        <div class="section-head reveal">
+
+            <div>
+
+                <div class="section-label">
+                    06 / SIGNAL ARCHITECTURE
+                </div>
+
+                <h2 class="section-title">
+                    The Signal.
+                </h2>
+
+            </div>
+
+            <p class="section-description">
+                Rhythm, production, mixing, vocals and
+                recording operate as one connected system.
+            </p>
+
+        </div>
+
+
+        <div class="signal-panel reveal">
+
+            <div class="signal-title">
+                HAERVIU ENGINE / AUDIO SYSTEM
+            </div>
+
+
+            <div class="signal-flow">
+
+
+                <div class="signal-node">
 
                     <small>
                         RHYTHM
@@ -2625,48 +2767,48 @@ footer{
                 </div>
 
 
-                <div class="flow-arrow">
+                <div class="signal-arrow">
                     →
                 </div>
 
 
-                <div class="flow-node">
+                <div class="signal-node">
 
                     <small>
                         PRODUCTION
                     </small>
 
                     <strong>
-                        MC-707
+                        MC-707 / FORCE
                     </strong>
 
                 </div>
 
 
-                <div class="flow-arrow">
+                <div class="signal-arrow">
                     →
                 </div>
 
 
-                <div class="flow-node">
+                <div class="signal-node">
 
                     <small>
-                        WORKSTATION
+                        VOCALS
                     </small>
 
                     <strong>
-                        AKAI FORCE
+                        NT1 / VT-4
                     </strong>
 
                 </div>
 
 
-                <div class="flow-arrow">
+                <div class="signal-arrow">
                     →
                 </div>
 
 
-                <div class="flow-node">
+                <div class="signal-node">
 
                     <small>
                         MIXING
@@ -2679,12 +2821,12 @@ footer{
                 </div>
 
 
-                <div class="flow-arrow">
+                <div class="signal-arrow">
                     →
                 </div>
 
 
-                <div class="flow-node">
+                <div class="signal-node">
 
                     <small>
                         RECORDING
@@ -2702,427 +2844,64 @@ footer{
         </div>
 
 
-        <div class="audio-grid">
+        <!-- =================================================
+             METRICS
+        ================================================== -->
+
+        <div class="metrics reveal">
 
 
-            <article class="audio-card">
+            <div class="metric">
 
-                <h3>
-                    Hardware → Mix
-                </h3>
-
-                <p>
-
-                    The hardware instruments feed
-                    the studio mixing environment
-                    through the MX-1.
-
-                </p>
-
-            </article>
-
-
-            <article class="audio-card">
-
-                <h3>
-                    Mix → DAW
-                </h3>
-
-                <p>
-
-                    The finished hardware signal
-                    can be captured into Cubase
-                    for arrangement, editing and mix.
-
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     05 / VOCAL CHAIN
-======================================================= -->
-
-<section
-    class="section vocal"
-    id="vocal"
->
-
-    <div class="container">
-
-
-        <div class="section-number">
-            04 / VOCAL CHAIN
-        </div>
-
-
-        <h2 class="section-title">
-            Your Voice.
-        </h2>
-
-
-        <p class="section-description">
-
-            A vocal chain built around the
-            RØDE NT1 and Roland VT-4,
-            with the MX-1 and DAW completing
-            the recording path.
-
-        </p>
-
-
-        <div class="vocal-chain">
-
-
-            <article class="vocal-card">
-
-                <div class="vocal-number">
-                    VOICE / 01
+                <div class="metric-number">
+                    08
                 </div>
 
-
-                <h3>
-                    Capture.
-                </h3>
-
-
-                <p>
-
-                    The RØDE NT1 captures the
-                    clean studio vocal before
-                    creative processing.
-
-                </p>
-
-
-                <div class="vocal-chain-line">
-
-                    <span class="vocal-node">
-                        RØDE NT1
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                    <span class="vocal-node">
-                        INPUT
-                    </span>
-
+                <div class="metric-label">
+                    MC-707 Tracks
                 </div>
 
-            </article>
-
-
-
-            <article class="vocal-card">
-
-                <div class="vocal-number">
-                    VOICE / 02
-                </div>
-
-
-                <h3>
-                    Transform.
-                </h3>
-
-
-                <p>
-
-                    The VT-4 becomes the creative
-                    voice-processing stage for
-                    pitch, formant, vocoder,
-                    harmony and effects.
-
-                </p>
-
-
-                <div class="vocal-chain-line">
-
-                    <span class="vocal-node">
-                        VT-4
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                    <span class="vocal-node">
-                        VOICE FX
-                    </span>
-
-                </div>
-
-            </article>
-
-
-
-            <article class="vocal-card">
-
-                <div class="vocal-number">
-                    VOICE / 03
-                </div>
-
-
-                <h3>
-                    Return.
-                </h3>
-
-
-                <p>
-
-                    The processed vocal returns
-                    to the mixing environment
-                    and then into the DAW for
-                    arrangement and final production.
-
-                </p>
-
-
-                <div class="vocal-chain-line">
-
-                    <span class="vocal-node">
-                        MX-1
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                    <span class="vocal-node">
-                        CUBASE
-                    </span>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     06 / CREATIVE WORKFLOW
-======================================================= -->
-
-<section
-    class="section workflow"
-    id="workflow"
->
-
-    <div class="container">
-
-
-        <div class="section-number">
-            05 / CREATIVE WORKFLOW
-        </div>
-
-
-        <h2 class="section-title">
-            Create.
-        </h2>
-
-
-        <p class="section-description">
-
-            From the first musical idea
-            to the finished Haerviu production.
-
-        </p>
-
-
-        <div class="workflow-grid">
-
-
-            <article class="workflow-step">
-
-                <div class="step-number">
-                    STEP 01
-                </div>
-
-                <h3>
-                    Idea.
-                </h3>
-
-                <p>
-
-                    Start with rhythm, melody,
-                    bass, sound design,
-                    sampling or a vocal idea.
-
-                </p>
-
-            </article>
-
-
-            <article class="workflow-step">
-
-                <div class="step-number">
-                    STEP 02
-                </div>
-
-                <h3>
-                    Build.
-                </h3>
-
-                <p>
-
-                    Use the MC-707, TR-8S
-                    and Force to develop
-                    the musical structure.
-
-                </p>
-
-            </article>
-
-
-            <article class="workflow-step">
-
-                <div class="step-number">
-                    STEP 03
-                </div>
-
-                <h3>
-                    Record.
-                </h3>
-
-                <p>
-
-                    Capture hardware,
-                    stems and vocals into
-                    the DAW through the studio system.
-
-                </p>
-
-            </article>
-
-
-            <article class="workflow-step">
-
-                <div class="step-number">
-                    STEP 04
-                </div>
-
-                <h3>
-                    Finish.
-                </h3>
-
-                <p>
-
-                    Arrange, automate,
-                    mix, master and prepare
-                    the final Haerviu release.
-
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     07 / HAERVIU PRODUCTIONS
-======================================================= -->
-
-<section
-    class="section projects"
-    id="projects"
->
-
-    <div class="container">
-
-
-        <div class="section-number">
-            06 / HAERVIU PRODUCTIONS
-        </div>
-
-
-        <h2 class="section-title">
-            Music.
-        </h2>
-
-
-        <div class="project-panel">
-
-
-            <div class="project-kicker">
-                HAERVIU ENGINE / PRODUCTIONS
             </div>
 
 
-            <h3>
-                One system.
-                <br>
-                Every production.
-            </h3>
+            <div class="metric">
 
+                <div class="metric-number">
+                    16
+                </div>
 
-            <p>
-
-                One creative environment for tracks,
-                stems, arrangements, vocals,
-                hardware sessions and finished
-                Haerviu productions.
-
-            </p>
-
-
-            <div class="project-actions">
-
-
-                <a
-                    href="#hardware"
-                    class="button button-secondary"
-                >
-
-                    STUDIO SETUP
-                    →
-                    
-                </a>
-
-
-                <a
-                    href="#workflow"
-                    class="button button-secondary"
-                >
-
-                    CREATIVE WORKFLOW
-                    →
-
-                </a>
-
-
-                <a
-                    href="#vocal"
-                    class="button button-secondary"
-                >
-
-                    VOCAL CHAIN
-                    →
-
-                </a>
-
+                <div class="metric-label">
+                    TR-8S Steps
+                </div>
 
             </div>
+
+
+            <div class="metric">
+
+                <div class="metric-number">
+                    64
+                </div>
+
+                <div class="metric-label">
+                    Force Pads
+                </div>
+
+            </div>
+
+
+            <div class="metric">
+
+                <div class="metric-number">
+                    01
+                </div>
+
+                <div class="metric-label">
+                    Connected System
+                </div>
+
+            </div>
+
 
         </div>
 
@@ -3134,7 +2913,6 @@ footer{
 </main>
 
 
-
 <!-- =======================================================
      FOOTER
 ======================================================= -->
@@ -3143,28 +2921,274 @@ footer{
 
     <div class="footer-inner">
 
+        <div class="footer-main">
 
-        <div class="footer-brand">
-            HAERVIU ENGINE
+
+            <div>
+
+                <div class="footer-brand">
+                    HAERVIU ENGINE
+                </div>
+
+                <p class="footer-tagline">
+                    A connected creative system for
+                    electronic music production,
+                    performance, vocals and sound design.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#studio">
+                    Studio
+                </a>
+
+                <a href="#hardware">
+                    Hardware
+                </a>
+
+                <a href="#workflow">
+                    Workflow
+                </a>
+
+                <a href="#creation">
+                    Create
+                </a>
+
+                <a href="#vocals">
+                    Vocals
+                </a>
+
+                <a href="#signal">
+                    Signal
+                </a>
+
+            </div>
+
+
         </div>
 
 
-        <div class="footer-right">
+        <div class="footer-bottom">
 
-            CONNECT
-            ·
-            CONFIGURE
-            ·
-            CREATE
+            <span>
+                STUDIO / PRODUCTION SYSTEM
+            </span>
+
+            <span>
+                © 2026 HAERVIU
+            </span>
 
         </div>
-
 
     </div>
 
 </footer>
 
 
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+
+menuButton.addEventListener(
+    "click",
+    function(){
+
+        const isOpen =
+            mobileNav.classList.toggle("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MOBILE MENU ON LINK CLICK
+========================================================= */
+
+document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                mobileNav.classList.remove("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   IMAGE ERROR HANDLING
+========================================================= */
+
+document
+    .querySelectorAll(".device-image img")
+    .forEach(function(image){
+
+        image.addEventListener(
+            "error",
+            function(){
+
+                const parent =
+                    image.closest(".device-image");
+
+                parent.classList.add(
+                    "image-missing"
+                );
+
+                image.style.display = "none";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    function(element){
+
+        revealObserver.observe(element);
+
+    }
+);
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navLinks =
+    document.querySelectorAll(
+        ".desktop-nav a"
+    );
+
+
+const sectionObserver =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        navLinks.forEach(
+                            function(link){
+
+                                link.style.color =
+                                    "#777f91";
+
+                            }
+                        );
+
+
+                        const active =
+                            document.querySelector(
+                                '.desktop-nav a[href="#' +
+                                entry.target.id +
+                                '"]'
+                            );
+
+
+                        if(active){
+
+                            active.style.color =
+                                "#ffffff";
+
+                        }
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            rootMargin:"-35% 0px -55% 0px"
+        }
+    );
+
+
+sections.forEach(
+    function(section){
+
+        sectionObserver.observe(section);
+
+    }
+);
+
+</script>
 
 </body>
 </html>
