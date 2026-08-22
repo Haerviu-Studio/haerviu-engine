@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,14 @@
 
 <style>
 
-:root{
-  --bg:#07080c;
-  --panel:#0e1016;
-  --panel2:#141720;
-  --panel3:#191c25;
-  --white:#f5f5f7;
-  --soft:#b7bbc6;
-  --muted:#707582;
-  --line:rgba(255,255,255,.12);
-  --line2:rgba(255,255,255,.22);
-  --green:#70d89b;
-  --blue:#78a9ff;
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
@@ -33,8 +23,8 @@ html{
 }
 
 body{
-  background:var(--bg);
-  color:var(--white);
+  background:#07080c;
+  color:#f5f5f7;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -46,25 +36,37 @@ body{
   overflow-x:hidden;
 }
 
-button,
-a{
-  font:inherit;
-}
-
-button{
-  border:0;
-}
-
 a{
   color:inherit;
   text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+  --bg:#07080c;
+  --panel:#101218;
+  --panel2:#151821;
+  --white:#f5f5f7;
+  --soft:#b7bbc6;
+  --muted:#737886;
+  --line:rgba(255,255,255,.13);
+  --line2:rgba(255,255,255,.24);
+  --green:#70d89b;
+  --blue:#7ea8ff;
 }
 
 /* =========================================================
    BACKGROUND
 ========================================================= */
 
-body:before{
+body::before{
   content:"";
   position:fixed;
   inset:0;
@@ -74,26 +76,27 @@ body:before{
   background:
     radial-gradient(
       circle at 80% 15%,
-      rgba(90,110,180,.13),
-      transparent 30%
+      rgba(90,110,180,.15),
+      transparent 32%
     ),
     radial-gradient(
-      circle at 10% 75%,
-      rgba(100,90,160,.10),
+      circle at 15% 70%,
+      rgba(90,70,150,.10),
       transparent 35%
     );
 }
 
-body:after{
+body::after{
   content:"";
   position:fixed;
-  width:720px;
-  height:720px;
-  left:-330px;
-  top:330px;
+  width:750px;
+  height:750px;
+  left:-350px;
+  top:420px;
   z-index:-1;
   pointer-events:none;
-  border:1px solid rgba(255,255,255,.055);
+
+  border:1px solid rgba(255,255,255,.05);
   border-radius:50%;
 }
 
@@ -102,32 +105,31 @@ body:after{
 ========================================================= */
 
 header{
-  height:88px;
+  height:82px;
   padding:0 42px;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
-  border-bottom:1px solid var(--line);
-
-  background:rgba(7,8,12,.80);
-
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
+
+  background:rgba(7,8,12,.86);
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:17px;
+  gap:16px;
 
-  font-size:17px;
-  font-weight:800;
+  font-size:16px;
+  font-weight:900;
   letter-spacing:4px;
 }
 
@@ -143,20 +145,12 @@ header{
   border-radius:14px;
 
   font-family:Georgia,serif;
-  font-size:22px;
-
-  transition:.35s;
-}
-
-.logo:hover .logo-mark{
-  background:#fff;
-  color:#08090d;
-  transform:rotate(-7deg);
+  font-size:23px;
 }
 
 .menu{
-  width:52px;
-  height:52px;
+  width:50px;
+  height:50px;
 
   display:flex;
   align-items:center;
@@ -166,167 +160,139 @@ header{
   border-radius:15px;
 
   background:rgba(255,255,255,.035);
-  color:#fff;
+  color:white;
 
-  font-size:22px;
-
-  cursor:pointer;
-  transition:.3s;
-}
-
-.menu:hover{
-  background:rgba(255,255,255,.09);
+  font-size:21px;
 }
 
 /* =========================================================
-   HOME
+   GLOBAL
 ========================================================= */
 
-#home{
-  min-height:calc(100vh - 88px);
+.page{
+  width:100%;
 }
 
-.hero{
-  min-height:calc(100vh - 88px);
+.container{
+  width:min(1400px,90%);
+  margin:auto;
+}
 
-  padding:100px 6vw 80px;
+section{
+  scroll-margin-top:100px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:calc(100vh - 82px);
 
   display:flex;
   flex-direction:column;
   justify-content:center;
 
+  padding:90px 6vw 100px;
+
   position:relative;
-  overflow:hidden;
 }
 
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.kicker{
+  margin-bottom:32px;
 
-  margin-bottom:38px;
+  color:#9297a5;
 
-  color:#aeb2bf;
-
-  font-size:13px;
-  font-weight:800;
+  font-size:12px;
+  font-weight:900;
   letter-spacing:5px;
 }
 
-.eyebrow:before{
-  content:"";
+.hero h1{
+  max-width:1050px;
 
-  width:68px;
-  height:1px;
-
-  background:#858995;
-}
-
-.hero-title{
-  max-width:1100px;
-
-  font-size:clamp(76px,14vw,190px);
-
-  line-height:.78;
+  font-size:clamp(65px,11vw,160px);
+  line-height:.83;
   letter-spacing:-7px;
-
   font-weight:900;
-
-  text-transform:uppercase;
 }
 
-.hero-title span{
+.hero h1 span{
   display:block;
+}
+
+.white{
+  color:#f5f5f7;
 }
 
 .outline{
   color:transparent;
-  -webkit-text-stroke:1px rgba(210,215,230,.36);
+  -webkit-text-stroke:1px rgba(220,225,240,.35);
 }
 
-.solid{
-  color:#f4f4f7;
-}
+.hero-text{
+  max-width:700px;
 
-.description{
-  max-width:720px;
+  margin-top:55px;
 
-  margin-top:65px;
+  color:var(--soft);
 
-  color:#b8bbc5;
-
-  font-size:22px;
+  font-size:21px;
   line-height:1.65;
 }
 
-.actions{
+.hero-actions{
   display:flex;
-  gap:18px;
-
-  margin-top:42px;
-
   flex-wrap:wrap;
+  gap:16px;
+
+  margin-top:38px;
 }
 
-.btn{
-  min-width:250px;
-  height:76px;
-
-  padding:0 30px;
+.button{
+  min-width:230px;
+  min-height:64px;
 
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:24px;
+  gap:20px;
 
-  border-radius:18px;
+  padding:0 28px;
 
-  font-size:17px;
+  border-radius:16px;
+
+  font-size:16px;
   font-weight:800;
 
-  cursor:pointer;
-
-  transition:.35s;
+  transition:.3s;
 }
 
-.btn-primary{
+.button:hover{
+  transform:translateY(-4px);
+}
+
+.button-primary{
   background:#f5f5f7;
-  color:#090a0e;
+  color:#08090d;
 }
 
-.btn-primary:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 45px rgba(255,255,255,.12);
-}
-
-.btn-secondary{
+.button-secondary{
   border:1px solid var(--line2);
-
-  background:rgba(255,255,255,.025);
-
-  color:#fff;
+  background:rgba(255,255,255,.035);
 }
 
-.btn-secondary:hover{
-  background:rgba(255,255,255,.08);
-  transform:translateY(-5px);
-}
+.system-status{
+  margin-top:50px;
 
-.arrow{
-  font-size:25px;
-}
-
-.status{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
 
-  margin-top:65px;
+  color:#777c89;
 
-  color:#858996;
-
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:900;
   letter-spacing:3px;
 }
 
@@ -337,245 +303,124 @@ header{
   border-radius:50%;
 
   background:var(--green);
-
   box-shadow:0 0 18px var(--green);
 }
 
 /* =========================================================
-   ENGINE
+   SECTION HEADER
 ========================================================= */
 
-#engine{
-  display:none;
-
-  min-height:calc(100vh - 88px);
-
-  padding:55px 5vw 100px;
+.section{
+  padding:120px 0;
 }
 
-#engine.active{
-  display:block;
-  animation:engineIn .55s ease both;
+.section-header{
+  margin-bottom:55px;
 }
 
-.engine-top{
-  max-width:1400px;
+.section-number{
+  margin-bottom:18px;
 
-  margin:0 auto;
+  color:#777c89;
 
-  display:flex;
-
-  justify-content:space-between;
-  align-items:flex-end;
-
-  gap:30px;
-}
-
-.engine-kicker{
-  color:#8b909d;
-
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:900;
   letter-spacing:4px;
-
-  margin-bottom:15px;
 }
 
-.engine-title{
-  font-size:clamp(48px,7vw,86px);
-
-  line-height:.9;
+.section-title{
+  font-size:clamp(48px,7vw,90px);
+  line-height:.95;
   letter-spacing:-4px;
 }
 
-.engine-intro{
-  max-width:560px;
+.section-description{
+  max-width:700px;
 
-  margin-top:20px;
+  margin-top:22px;
 
   color:var(--soft);
 
+  font-size:19px;
   line-height:1.65;
 }
 
-.back-button{
-  height:48px;
-
-  padding:0 18px;
-
-  border:1px solid var(--line);
-  border-radius:12px;
-
-  background:rgba(255,255,255,.035);
-
-  color:var(--soft);
-
-  cursor:pointer;
-
-  transition:.3s;
-}
-
-.back-button:hover{
-  color:#fff;
-  background:rgba(255,255,255,.08);
-}
-
 /* =========================================================
-   ENGINE GRID
+   STUDIO SETUP
 ========================================================= */
 
-.engine-grid{
-  max-width:1400px;
-
-  margin:55px auto 0;
-
-  display:grid;
-
-  grid-template-columns:1.35fr .65fr;
-
-  gap:20px;
+.setup{
+  border-top:1px solid var(--line);
 }
 
-.engine-panel{
-  border:1px solid var(--line);
+.devices{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
 
-  border-radius:26px;
+.device{
+  min-height:300px;
+
+  padding:28px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  border:1px solid var(--line);
+  border-radius:25px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,.012)
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.015)
     );
 
-  box-shadow:0 25px 70px rgba(0,0,0,.18);
-
-  overflow:hidden;
+  transition:.35s;
 }
 
-.panel-head{
-  min-height:76px;
-
-  padding:20px 25px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  border-bottom:1px solid var(--line);
-}
-
-.panel-title{
-  font-size:16px;
-  font-weight:800;
-  letter-spacing:1px;
-}
-
-.panel-status{
-  color:var(--green);
-
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-/* =========================================================
-   SETUP
-========================================================= */
-
-.setup-body{
-  padding:25px;
-}
-
-.setup-list{
-  display:grid;
-  gap:12px;
-}
-
-.setup-item{
-  width:100%;
-
-  padding:20px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  gap:20px;
-
-  border:1px solid var(--line);
-
-  border-radius:17px;
-
-  background:rgba(255,255,255,.025);
-
-  transition:.3s;
-}
-
-.setup-item:hover{
+.device:hover{
+  transform:translateY(-7px);
   border-color:var(--line2);
-
-  background:rgba(255,255,255,.055);
-
-  transform:translateX(3px);
 }
 
-.setup-left{
+.device-top{
   display:flex;
-
-  align-items:center;
-
-  gap:16px;
+  align-items:flex-start;
+  justify-content:space-between;
 }
 
-.setup-icon{
-  width:46px;
-  height:46px;
+.device-icon{
+  width:62px;
+  height:62px;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
-  border-radius:13px;
-
-  background:rgba(255,255,255,.07);
-
   border:1px solid var(--line);
+  border-radius:17px;
 
-  font-size:19px;
+  background:rgba(255,255,255,.06);
+
+  font-size:28px;
 }
 
-.setup-name{
-  font-weight:800;
-}
-
-.setup-desc{
-  margin-top:4px;
-
-  color:var(--muted);
-
-  font-size:13px;
-}
-
-.connected{
+.device-status{
   display:flex;
-
   align-items:center;
-
   gap:8px;
 
   color:var(--green);
 
-  font-size:11px;
-  font-weight:800;
-
-  letter-spacing:1px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
 }
 
-.connected:before{
+.device-status::before{
   content:"";
 
   width:7px;
@@ -584,361 +429,193 @@ header{
   border-radius:50%;
 
   background:var(--green);
+  box-shadow:0 0 12px var(--green);
+}
 
-  box-shadow:0 0 10px var(--green);
+.device h3{
+  margin-top:50px;
+
+  font-size:30px;
+  letter-spacing:-1px;
+}
+
+.device p{
+  margin-top:10px;
+
+  color:#858a97;
+
+  font-size:15px;
+}
+
+.device-link{
+  margin-top:25px;
+
+  color:#9aa0ad;
+
+  font-size:13px;
+  font-weight:800;
 }
 
 /* =========================================================
-   QUICK ACTIONS
+   ROUTING
 ========================================================= */
 
-.quick-body{
-  padding:25px;
+.routing{
+  border-top:1px solid var(--line);
 }
 
-.quick-grid{
+.routing-grid{
   display:grid;
-  gap:11px;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.quick-button{
-  width:100%;
+.routing-card{
+  min-height:270px;
 
-  min-height:60px;
-
-  padding:15px 17px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
+  padding:30px;
 
   border:1px solid var(--line);
-
-  border-radius:14px;
+  border-radius:24px;
 
   background:rgba(255,255,255,.025);
 
-  color:#fff;
-
-  cursor:pointer;
-
-  text-align:left;
-
-  transition:.3s;
+  transition:.35s;
 }
 
-.quick-button:hover{
-  background:rgba(255,255,255,.08);
-
+.routing-card:hover{
+  transform:translateY(-6px);
+  background:rgba(255,255,255,.055);
   border-color:var(--line2);
-
-  transform:translateY(-2px);
 }
 
-.quick-main{
-  display:flex;
-
-  align-items:center;
-
-  gap:13px;
-}
-
-.quick-icon{
-  width:32px;
-  height:32px;
+.routing-icon{
+  width:52px;
+  height:52px;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
-  border-radius:9px;
-
-  background:rgba(255,255,255,.07);
-}
-
-.quick-arrow{
-  color:#777c88;
-}
-
-/* =========================================================
-   METRICS
-========================================================= */
-
-.metrics{
-  max-width:1400px;
-
-  margin:20px auto 0;
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:15px;
-}
-
-.metric{
-  padding:22px;
-
   border:1px solid var(--line);
+  border-radius:14px;
 
-  border-radius:18px;
+  background:rgba(255,255,255,.06);
 
-  background:rgba(255,255,255,.025);
+  font-size:22px;
 }
 
-.metric-label{
-  color:#737884;
-
-  font-size:10px;
-
-  font-weight:800;
-
-  letter-spacing:2px;
-}
-
-.metric-value{
-  margin-top:12px;
+.routing-card h3{
+  margin-top:45px;
 
   font-size:25px;
-
-  font-weight:800;
 }
 
-.metric-small{
-  margin-top:5px;
+.routing-card p{
+  margin-top:12px;
 
-  color:#6f7480;
-
-  font-size:12px;
-}
-
-/* =========================================================
-   TOOLS
-========================================================= */
-
-.tools{
-  padding:110px 6vw;
-
-  border-top:1px solid var(--line);
-}
-
-.section-label{
-  color:#8c909c;
-
-  font-size:13px;
-
-  font-weight:800;
-
-  letter-spacing:4px;
-
-  margin-bottom:20px;
-}
-
-.section-title{
-  max-width:850px;
-
-  font-size:clamp(45px,7vw,90px);
-
-  line-height:.95;
-
-  letter-spacing:-4px;
-}
-
-.tool-grid{
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:18px;
-
-  margin-top:60px;
-}
-
-/* =========================================================
-   IMPORTANT:
-   TOOL CARDS ARE REAL BUTTONS
-========================================================= */
-
-.card{
-  width:100%;
-
-  min-height:240px;
-
-  padding:32px;
-
-  border:1px solid var(--line);
-
-  border-radius:24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,.015)
-    );
-
-  color:#fff;
-
-  text-align:left;
-
-  cursor:pointer;
-
-  transition:.4s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-
-  border-color:rgba(255,255,255,.3);
-
-  background:rgba(255,255,255,.075);
-}
-
-.card:active{
-  transform:scale(.98);
-}
-
-.card-number{
-  color:#777b87;
-
-  font-size:12px;
-
-  letter-spacing:3px;
-}
-
-.card h3{
-  margin-top:60px;
-
-  font-size:26px;
-}
-
-.card p{
-  margin-top:14px;
-
-  color:#888c98;
-
-  line-height:1.6;
-}
-
-/* =========================================================
-   MODULE AREA
-========================================================= */
-
-#module-area{
-  display:none;
-
-  padding:80px 6vw;
-
-  border-top:1px solid var(--line);
-}
-
-#module-area.active{
-  display:block;
-
-  animation:fadeUp .5s ease both;
-}
-
-.module-container{
-  max-width:1200px;
-
-  margin:0 auto;
-
-  padding:40px;
-
-  border:1px solid var(--line);
-
-  border-radius:28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,.012)
-    );
-}
-
-.module-kicker{
-  color:#858a98;
-
-  font-size:12px;
-
-  font-weight:800;
-
-  letter-spacing:4px;
-
-  margin-bottom:18px;
-}
-
-.module-title{
-  font-size:clamp(42px,6vw,72px);
-
-  line-height:.95;
-
-  letter-spacing:-3px;
-}
-
-.module-text{
-  max-width:750px;
-
-  margin-top:25px;
-
-  color:var(--soft);
-
-  font-size:18px;
-
-  line-height:1.7;
-}
-
-.module-grid{
-  display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
-  gap:15px;
-
-  margin-top:35px;
-}
-
-.module-card{
-  padding:25px;
-
-  border:1px solid var(--line);
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,.025);
-}
-
-.module-card h4{
-  font-size:18px;
-
-  margin-bottom:10px;
-}
-
-.module-card p{
   color:#858a97;
 
   line-height:1.6;
 }
 
-.module-close{
-  margin-top:30px;
+/* =========================================================
+   WORKFLOW
+========================================================= */
 
-  height:52px;
+.workflow{
+  border-top:1px solid var(--line);
+}
 
-  padding:0 22px;
+.workflow-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
 
-  border:1px solid var(--line2);
+.workflow-step{
+  min-height:230px;
 
-  border-radius:13px;
+  padding:27px;
 
-  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:22px;
 
-  color:#fff;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.05),
+      rgba(255,255,255,.015)
+    );
+}
 
-  cursor:pointer;
+.step-number{
+  color:#707582;
+
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.workflow-step h3{
+  margin-top:60px;
+
+  font-size:23px;
+}
+
+.workflow-step p{
+  margin-top:12px;
+
+  color:#858a97;
+
+  line-height:1.55;
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+  border-top:1px solid var(--line);
+}
+
+.project-panel{
+  padding:55px;
+
+  border:1px solid var(--line);
+  border-radius:30px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(100,120,200,.12),
+      transparent 35%
+    ),
+    rgba(255,255,255,.025);
+}
+
+.project-panel h3{
+  font-size:45px;
+  letter-spacing:-2px;
+}
+
+.project-panel p{
+  max-width:700px;
+
+  margin-top:20px;
+
+  color:var(--soft);
+
+  font-size:18px;
+  line-height:1.6;
+}
+
+.project-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+
+  margin-top:32px;
 }
 
 /* =========================================================
@@ -946,21 +623,19 @@ header{
 ========================================================= */
 
 footer{
-  padding:50px 6vw;
+  padding:45px 6vw;
 
   display:flex;
-
+  align-items:center;
   justify-content:space-between;
-
-  gap:20px;
 
   border-top:1px solid var(--line);
 
-  color:#686c77;
+  color:#666b77;
 
-  font-size:12px;
-
-  letter-spacing:2px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:3px;
 }
 
 /* =========================================================
@@ -970,211 +645,102 @@ footer{
 @media(max-width:850px){
 
   header{
-    height:82px;
-
-    padding:0 24px;
+    height:76px;
+    padding:0 20px;
   }
 
   .logo{
-    font-size:14px;
-
+    gap:12px;
+    font-size:13px;
     letter-spacing:3px;
   }
 
   .logo-mark{
-    width:46px;
-    height:46px;
+    width:44px;
+    height:44px;
   }
 
   .hero{
-    min-height:calc(100vh - 82px);
-
-    padding:85px 26px 70px;
+    min-height:calc(100vh - 76px);
+    padding:75px 24px 70px;
   }
 
-  .eyebrow{
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    margin-bottom:30px;
-  }
-
-  .eyebrow:before{
-    width:50px;
-  }
-
-  .hero-title{
-    font-size:clamp(65px,17vw,110px);
-
-    line-height:.82;
-
+  .hero h1{
+    font-size:clamp(58px,16vw,100px);
     letter-spacing:-4px;
   }
 
-  .description{
-    margin-top:52px;
-
-    font-size:19px;
-
-    line-height:1.55;
+  .hero-text{
+    margin-top:45px;
+    font-size:18px;
   }
 
-  .actions{
-    margin-top:35px;
-
+  .hero-actions{
     flex-direction:column;
   }
 
-  .btn{
+  .button{
     width:100%;
-
-    min-width:0;
-
-    height:70px;
   }
 
-  .status{
-    margin-top:48px;
+  .section{
+    padding:85px 0;
   }
 
-  #engine{
-    padding:42px 22px 75px;
-  }
-
-  .engine-top{
-    align-items:flex-start;
-
-    flex-direction:column;
-  }
-
-  .engine-title{
-    font-size:56px;
-  }
-
-  .engine-grid{
-    grid-template-columns:1fr;
-
-    margin-top:38px;
-  }
-
-  .metrics{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .tools{
-    padding:80px 26px;
+  .container{
+    width:88%;
   }
 
   .section-title{
-    font-size:52px;
+    font-size:53px;
+    letter-spacing:-3px;
   }
 
-  .tool-grid{
-    grid-template-columns:1fr;
-
-    margin-top:42px;
+  .section-description{
+    font-size:18px;
   }
 
-  .card{
-    min-height:210px;
-  }
-
-  .module-grid{
+  .devices{
     grid-template-columns:1fr;
   }
 
-  .module-container{
-    padding:28px;
+  .routing-grid{
+    grid-template-columns:1fr;
+  }
+
+  .workflow-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .project-panel{
+    padding:30px;
+  }
+
+  .project-panel h3{
+    font-size:36px;
   }
 
   footer{
-    padding:35px 26px;
-
+    padding:35px 24px;
     flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
   }
 }
 
 @media(max-width:500px){
 
-  .setup-item{
-    align-items:flex-start;
-
-    flex-direction:column;
+  .workflow-grid{
+    grid-template-columns:1fr;
   }
 
-  .connected{
-    margin-left:62px;
+  .device{
+    min-height:260px;
   }
 
-  .metrics{
-    grid-template-columns:1fr 1fr;
+  .device h3{
+    font-size:27px;
   }
-
-  .metric{
-    padding:17px;
-  }
-
-  .metric-value{
-    font-size:21px;
-  }
-
-}
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-@keyframes fadeUp{
-
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-@keyframes engineIn{
-
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-.hero > *{
-  animation:fadeUp .8s ease both;
-}
-
-.hero .eyebrow{
-  animation-delay:.05s;
-}
-
-.hero .hero-title{
-  animation-delay:.15s;
-}
-
-.hero .description{
-  animation-delay:.25s;
-}
-
-.hero .actions{
-  animation-delay:.35s;
-}
-
-.hero .status{
-  animation-delay:.45s;
 }
 
 </style>
@@ -1183,9 +749,14 @@ footer{
 
 <body>
 
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header>
 
-  <div class="logo">
+  <a href="#home" class="logo">
 
     <div class="logo-mark">
       H
@@ -1193,16 +764,11 @@ footer{
 
     HAERVIU ENGINE
 
-  </div>
+  </a>
 
-
-  <button
-    class="menu"
-    aria-label="Menu"
-    onclick="scrollToTools()"
-  >
+  <div class="menu">
     ☰
-  </button>
+  </div>
 
 </header>
 
@@ -1214,78 +780,64 @@ footer{
      HOME
 ======================================================= -->
 
-<section id="home">
+<section id="home" class="hero">
 
-  <div class="hero">
+  <div class="kicker">
+    HAERVIU ENGINE / CREATIVE MUSIC SYSTEM
+  </div>
 
-    <div class="eyebrow">
-      CREATIVE MUSIC SYSTEM
-    </div>
+  <h1>
 
+    <span class="outline">
+      CONNECT.
+    </span>
 
-    <h1 class="hero-title">
+    <span class="white">
+      CONFIGURE.
+    </span>
 
-      <span class="outline">
-        CONNECT.
-      </span>
+    <span class="outline">
+      CREATE.
+    </span>
 
-      <span class="solid">
-        CONFIGURE.
-      </span>
+  </h1>
 
-      <span class="outline">
-        CREATE.
-      </span>
+  <p class="hero-text">
 
-    </h1>
+    A central workspace for your studio.
+    Organize your instruments, MIDI,
+    audio routing and production workflow
+    in one place.
 
+  </p>
 
-    <p class="description">
+  <div class="hero-actions">
 
-      A creative workspace for electronic musicians,
-      producers and creators. Build your setup,
-      explore your workflow and turn your ideas into music.
+    <!-- VRAI LIEN -->
+    <a
+      href="#studio-setup"
+      class="button button-primary"
+    >
+      Studio Setup
+      <span>→</span>
+    </a>
 
-    </p>
+    <!-- VRAI LIEN -->
+    <a
+      href="#workflow"
+      class="button button-secondary"
+    >
+      Explore Workflow
+      <span>→</span>
+    </a>
 
+  </div>
 
-    <div class="actions">
+  <div class="system-status">
 
-      <button
-        type="button"
-        class="btn btn-primary"
-        onclick="openEngine()"
-      >
+    <span class="status-dot"></span>
 
-        Enter Engine
-
-        <span class="arrow">
-          →
-        </span>
-
-      </button>
-
-
-      <button
-        type="button"
-        class="btn btn-secondary"
-        onclick="scrollToTools()"
-      >
-
-        Explore Studio
-
-      </button>
-
-    </div>
-
-
-    <div class="status">
-
-      <span class="status-dot"></span>
-
-      SYSTEM READY
-
-    </div>
+    SYSTEM READY
 
   </div>
 
@@ -1293,430 +845,193 @@ footer{
 
 
 <!-- =======================================================
-     ENGINE
+     STUDIO SETUP
 ======================================================= -->
 
-<section id="engine">
+<section
+  id="studio-setup"
+  class="section setup"
+>
 
-  <div class="engine-top">
+  <div class="container">
 
-    <div>
+    <div class="section-header">
 
-      <div class="engine-kicker">
-        HAERVIU ENGINE / CONTROL CENTER
+      <div class="section-number">
+        01 / STUDIO SETUP
       </div>
 
-
-      <h2 class="engine-title">
+      <h2 class="section-title">
         Your Studio.
       </h2>
 
+      <p class="section-description">
 
-      <p class="engine-intro">
-
-        One central workspace to organize your instruments,
-        connections, routing and creative workflow.
+        Your complete studio configuration.
+        Hardware, production machines,
+        controllers and vocal equipment.
 
       </p>
 
     </div>
 
 
-    <button
-      type="button"
-      class="back-button"
-      onclick="closeEngine()"
-    >
-
-      ← Back to Home
-
-    </button>
-
-  </div>
+    <div class="devices">
 
 
-  <div class="engine-grid">
+      <!-- MC-707 -->
 
+      <a
+        href="#midi-routing"
+        class="device"
+      >
 
-    <!-- ===================================================
-         STUDIO SETUP
-    =================================================== -->
+        <div class="device-top">
 
-    <div class="engine-panel">
-
-      <div class="panel-head">
-
-        <div class="panel-title">
-          STUDIO SETUP
-        </div>
-
-        <div class="panel-status">
-          ● ONLINE
-        </div>
-
-      </div>
-
-
-      <div class="setup-body">
-
-        <div class="setup-list">
-
-
-          <div class="setup-item">
-
-            <div class="setup-left">
-
-              <div class="setup-icon">
-                🎛
-              </div>
-
-              <div>
-
-                <div class="setup-name">
-                  Roland MC-707
-                </div>
-
-                <div class="setup-desc">
-                  Groovebox / MIDI / Audio
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="connected">
-              CONNECTED
-            </div>
-
+          <div class="device-icon">
+            🎛️
           </div>
 
-
-          <div class="setup-item">
-
-            <div class="setup-left">
-
-              <div class="setup-icon">
-                🥁
-              </div>
-
-              <div>
-
-                <div class="setup-name">
-                  Roland TR-8S
-                </div>
-
-                <div class="setup-desc">
-                  Drum Machine
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="connected">
-              CONNECTED
-            </div>
-
+          <div class="device-status">
+            CONNECTED
           </div>
-
-
-          <div class="setup-item">
-
-            <div class="setup-left">
-
-              <div class="setup-icon">
-                🎚
-              </div>
-
-              <div>
-
-                <div class="setup-name">
-                  Akai Force
-                </div>
-
-                <div class="setup-desc">
-                  Production / Performance
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="connected">
-              READY
-            </div>
-
-          </div>
-
-
-          <div class="setup-item">
-
-            <div class="setup-left">
-
-              <div class="setup-icon">
-                🎙
-              </div>
-
-              <div>
-
-                <div class="setup-name">
-                  Vocal Chain
-                </div>
-
-                <div class="setup-desc">
-                  Microphone / Voice Processing
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="connected">
-              READY
-            </div>
-
-          </div>
-
 
         </div>
 
-      </div>
+        <div>
 
-    </div>
+          <h3>
+            Roland MC-707
+          </h3>
 
+          <p>
+            Groovebox / MIDI / Audio
+          </p>
 
-    <!-- ===================================================
-         QUICK ACTIONS
-    =================================================== -->
-
-    <div class="engine-panel">
-
-      <div class="panel-head">
-
-        <div class="panel-title">
-          QUICK ACTIONS
-        </div>
-
-      </div>
-
-
-      <div class="quick-body">
-
-        <div class="quick-grid">
-
-
-          <button
-            type="button"
-            class="quick-button"
-            onclick="openModule('setup')"
-          >
-
-            <div class="quick-main">
-
-              <span class="quick-icon">
-                ⚙
-              </span>
-
-              <span>
-                Studio Setup
-              </span>
-
-            </div>
-
-            <span class="quick-arrow">
-              →
-            </span>
-
-          </button>
-
-
-          <button
-            type="button"
-            class="quick-button"
-            onclick="openModule('midi')"
-          >
-
-            <div class="quick-main">
-
-              <span class="quick-icon">
-                ↔
-              </span>
-
-              <span>
-                MIDI Routing
-              </span>
-
-            </div>
-
-            <span class="quick-arrow">
-              →
-            </span>
-
-          </button>
-
-
-          <button
-            type="button"
-            class="quick-button"
-            onclick="openModule('audio')"
-          >
-
-            <div class="quick-main">
-
-              <span class="quick-icon">
-                ◉
-              </span>
-
-              <span>
-                Audio Routing
-              </span>
-
-            </div>
-
-            <span class="quick-arrow">
-              →
-            </span>
-
-          </button>
-
-
-          <button
-            type="button"
-            class="quick-button"
-            onclick="openModule('workflow')"
-          >
-
-            <div class="quick-main">
-
-              <span class="quick-icon">
-                ✦
-              </span>
-
-              <span>
-                Creative Workflow
-              </span>
-
-            </div>
-
-            <span class="quick-arrow">
-              →
-            </span>
-
-          </button>
-
-
-          <button
-            type="button"
-            class="quick-button"
-            onclick="openModule('projects')"
-          >
-
-            <div class="quick-main">
-
-              <span class="quick-icon">
-                □
-              </span>
-
-              <span>
-                Projects
-              </span>
-
-            </div>
-
-            <span class="quick-arrow">
-              →
-            </span>
-
-          </button>
-
+          <div class="device-link">
+            MIDI & AUDIO ROUTING →
+          </div>
 
         </div>
 
-      </div>
+      </a>
+
+
+      <!-- TR-8S -->
+
+      <a
+        href="#audio-routing"
+        class="device"
+      >
+
+        <div class="device-top">
+
+          <div class="device-icon">
+            🥁
+          </div>
+
+          <div class="device-status">
+            CONNECTED
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3>
+            Roland TR-8S
+          </h3>
+
+          <p>
+            Rhythm Performer / Drum Machine
+          </p>
+
+          <div class="device-link">
+            AUDIO ROUTING →
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- AKAI -->
+
+      <a
+        href="#workflow"
+        class="device"
+      >
+
+        <div class="device-top">
+
+          <div class="device-icon">
+            🎚️
+          </div>
+
+          <div class="device-status">
+            READY
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3>
+            Akai Force
+          </h3>
+
+          <p>
+            Production / Sampling / Performance
+          </p>
+
+          <div class="device-link">
+            CREATIVE WORKFLOW →
+          </div>
+
+        </div>
+
+      </a>
+
+
+      <!-- MICROPHONE -->
+
+      <a
+        href="#audio-routing"
+        class="device"
+      >
+
+        <div class="device-top">
+
+          <div class="device-icon">
+            🎙️
+          </div>
+
+          <div class="device-status">
+            READY
+          </div>
+
+        </div>
+
+        <div>
+
+          <h3>
+            Vocal Studio
+          </h3>
+
+          <p>
+            Microphone / Voice Processing
+          </p>
+
+          <div class="device-link">
+            AUDIO CHAIN →
+          </div>
+
+        </div>
+
+      </a>
+
 
     </div>
-
-  </div>
-
-
-  <!-- ===================================================
-       METRICS
-  =================================================== -->
-
-  <div class="metrics">
-
-
-    <div class="metric">
-
-      <div class="metric-label">
-        DEVICES
-      </div>
-
-      <div class="metric-value">
-        04
-      </div>
-
-      <div class="metric-small">
-        Studio hardware
-      </div>
-
-    </div>
-
-
-    <div class="metric">
-
-      <div class="metric-label">
-        MIDI
-      </div>
-
-      <div class="metric-value">
-        READY
-      </div>
-
-      <div class="metric-small">
-        Routing available
-      </div>
-
-    </div>
-
-
-    <div class="metric">
-
-      <div class="metric-label">
-        AUDIO
-      </div>
-
-      <div class="metric-value">
-        ONLINE
-      </div>
-
-      <div class="metric-small">
-        Audio system
-      </div>
-
-    </div>
-
-
-    <div class="metric">
-
-      <div class="metric-label">
-        ENGINE
-      </div>
-
-      <div class="metric-value">
-        1.0
-      </div>
-
-      <div class="metric-small">
-        Creative workspace
-      </div>
-
-    </div>
-
 
   </div>
 
@@ -1724,108 +1039,95 @@ footer{
 
 
 <!-- =======================================================
-     TOOLS
+     MIDI ROUTING
 ======================================================= -->
 
 <section
-  class="tools"
-  id="tools"
+  id="midi-routing"
+  class="section routing"
 >
 
-  <div class="section-label">
-    HAERVIU ENGINE / STUDIO
-  </div>
+  <div class="container">
+
+    <div class="section-header">
+
+      <div class="section-number">
+        02 / MIDI ROUTING
+      </div>
+
+      <h2 class="section-title">
+        MIDI Control.
+      </h2>
+
+      <p class="section-description">
+
+        Organize the communication between
+        the MC-707, TR-8S, Akai Force,
+        Cubase and the rest of the studio.
+
+      </p>
+
+    </div>
 
 
-  <h2 class="section-title">
-
-    Everything you need<br>
-
-    to create.
-
-  </h2>
+    <div class="routing-grid">
 
 
-  <div class="tool-grid">
+      <div class="routing-card">
 
+        <div class="routing-icon">
+          ↔
+        </div>
 
-    <!-- STUDIO SETUP -->
+        <h3>
+          MIDI Clock
+        </h3>
 
-    <button
-      type="button"
-      class="card"
-      onclick="openModule('setup')"
-    >
+        <p>
+          Define the master clock and keep
+          the machines synchronized.
+        </p>
 
-      <div class="card-number">
-        01 / SETUP
       </div>
 
 
-      <h3>
-        Studio Setup
-      </h3>
+      <div class="routing-card">
 
+        <div class="routing-icon">
+          🎹
+        </div>
 
-      <p>
-        Organize instruments, connections,
-        MIDI and audio routing.
-      </p>
+        <h3>
+          Controllers
+        </h3>
 
-    </button>
+        <p>
+          Control instruments and software
+          from your MIDI controllers.
+        </p>
 
-
-    <!-- WORKFLOW -->
-
-    <button
-      type="button"
-      class="card"
-      onclick="openModule('workflow')"
-    >
-
-      <div class="card-number">
-        02 / WORKFLOW
       </div>
 
 
-      <h3>
-        Creative Workflow
-      </h3>
+      <div class="routing-card">
 
+        <div class="routing-icon">
+          ⚡
+        </div>
 
-      <p>
-        Build efficient workflows for
-        production, recording and live work.
-      </p>
+        <h3>
+          Sync
+        </h3>
 
-    </button>
+        <p>
+          Build a reliable synchronization
+          system for production and live work.
+        </p>
 
-
-    <!-- MUSIC CREATION -->
-
-    <button
-      type="button"
-      class="card"
-      onclick="openModule('create')"
-    >
-
-      <div class="card-number">
-        03 / CREATE
       </div>
 
 
-      <h3>
-        Music Creation
-      </h3>
-
-
-      <p>
-        Develop ideas, experiment with sound
-        and transform sketches into tracks.
-      </p>
-
-    </button>
-
+    </div>
 
   </div>
 
@@ -1833,93 +1135,89 @@ footer{
 
 
 <!-- =======================================================
-     MODULE AREA
+     AUDIO ROUTING
 ======================================================= -->
 
 <section
-  id="module-area"
+  id="audio-routing"
+  class="section routing"
 >
 
-  <div class="module-container">
+  <div class="container">
 
+    <div class="section-header">
 
-    <div
-      class="module-kicker"
-      id="module-kicker"
-    >
-      HAERVIU ENGINE / STUDIO SETUP
+      <div class="section-number">
+        03 / AUDIO ROUTING
+      </div>
+
+      <h2 class="section-title">
+        Sound Flow.
+      </h2>
+
+      <p class="section-description">
+
+        Visualize the path of the audio
+        from your hardware into the mixer,
+        DAW and monitoring system.
+
+      </p>
+
     </div>
 
 
-    <h2
-      class="module-title"
-      id="module-title"
-    >
-      Studio Setup
-    </h2>
+    <div class="routing-grid">
 
 
-    <p
-      class="module-text"
-      id="module-text"
-    >
-      Organize your instruments, MIDI connections,
-      audio routing and recording chain from one place.
-    </p>
+      <div class="routing-card">
 
+        <div class="routing-icon">
+          🎛
+        </div>
 
-    <div
-      class="module-grid"
-      id="module-grid"
-    >
-
-      <div class="module-card">
-
-        <h4>
-          Roland MC-707
-        </h4>
+        <h3>
+          Hardware
+        </h3>
 
         <p>
-          Groovebox, MIDI control and audio production.
+          MC-707 and TR-8S generate the
+          main electronic elements of the setup.
         </p>
 
       </div>
 
 
-      <div class="module-card">
+      <div class="routing-card">
 
-        <h4>
-          Roland TR-8S
-        </h4>
+        <div class="routing-icon">
+          🎚
+        </div>
+
+        <h3>
+          Mixing
+        </h3>
 
         <p>
-          Drum machine and rhythm section.
+          Route and balance your sources
+          before recording or performance.
         </p>
 
       </div>
 
 
-      <div class="module-card">
+      <div class="routing-card">
 
-        <h4>
-          Akai Force
-        </h4>
+        <div class="routing-icon">
+          🎧
+        </div>
 
-        <p>
-          Production, sampling and live performance.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Vocal Chain
-        </h4>
+        <h3>
+          Monitoring
+        </h3>
 
         <p>
-          Microphone and voice processing setup.
+          Send the final mix to your studio
+          monitoring and headphones.
         </p>
 
       </div>
@@ -1927,17 +1225,182 @@ footer{
 
     </div>
 
+  </div>
 
-    <button
-      type="button"
-      class="module-close"
-      onclick="closeModule()"
-    >
+</section>
 
-      ← Back to Studio
 
-    </button>
+<!-- =======================================================
+     WORKFLOW
+======================================================= -->
 
+<section
+  id="workflow"
+  class="section workflow"
+>
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div class="section-number">
+        04 / CREATIVE WORKFLOW
+      </div>
+
+      <h2 class="section-title">
+        Create.
+      </h2>
+
+      <p class="section-description">
+
+        A simple production path from
+        the first idea to the finished track.
+
+      </p>
+
+    </div>
+
+
+    <div class="workflow-grid">
+
+
+      <div class="workflow-step">
+
+        <div class="step-number">
+          STEP 01
+        </div>
+
+        <h3>
+          Idea
+        </h3>
+
+        <p>
+          Start with a rhythm, bassline,
+          melody or sound.
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <div class="step-number">
+          STEP 02
+        </div>
+
+        <h3>
+          Build
+        </h3>
+
+        <p>
+          Develop the arrangement
+          and add musical variation.
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <div class="step-number">
+          STEP 03
+        </div>
+
+        <h3>
+          Record
+        </h3>
+
+        <p>
+          Capture the hardware and vocals
+          into the DAW.
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <div class="step-number">
+          STEP 04
+        </div>
+
+        <h3>
+          Finish
+        </h3>
+
+        <p>
+          Mix, master and prepare the
+          final production.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
+
+<section
+  id="projects"
+  class="section projects"
+>
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div class="section-number">
+        05 / PROJECTS
+      </div>
+
+      <h2 class="section-title">
+        Music.
+      </h2>
+
+    </div>
+
+
+    <div class="project-panel">
+
+      <h3>
+        Haerviu Productions
+      </h3>
+
+      <p>
+
+        Centralize your current productions,
+        ideas, stems, arrangements and
+        finished tracks.
+
+      </p>
+
+
+      <div class="project-buttons">
+
+        <a
+          href="#studio-setup"
+          class="button button-secondary"
+        >
+          Studio Setup →
+        </a>
+
+        <a
+          href="#workflow"
+          class="button button-secondary"
+        >
+          Workflow →
+        </a>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1947,642 +1410,21 @@ footer{
 </main>
 
 
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
 <footer>
 
   <span>
     HAERVIU ENGINE
   </span>
 
-
   <span>
     CONNECT · CONFIGURE · CREATE
   </span>
 
 </footer>
-
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
-<script>
-
-/* =========================================================
-   ENTER ENGINE
-========================================================= */
-
-function openEngine(){
-
-  const home =
-    document.getElementById("home");
-
-  const engine =
-    document.getElementById("engine");
-
-  const tools =
-    document.getElementById("tools");
-
-  const moduleArea =
-    document.getElementById("module-area");
-
-
-  moduleArea.classList.remove("active");
-
-  home.style.display = "none";
-
-  tools.style.display = "none";
-
-  engine.classList.add("active");
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================================
-   CLOSE ENGINE
-========================================================= */
-
-function closeEngine(){
-
-  const home =
-    document.getElementById("home");
-
-  const engine =
-    document.getElementById("engine");
-
-  const tools =
-    document.getElementById("tools");
-
-  const moduleArea =
-    document.getElementById("module-area");
-
-
-  moduleArea.classList.remove("active");
-
-  engine.classList.remove("active");
-
-  home.style.display = "block";
-
-  tools.style.display = "block";
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================================
-   EXPLORE STUDIO
-========================================================= */
-
-function scrollToTools(){
-
-  const tools =
-    document.getElementById("tools");
-
-
-  document.getElementById("home").style.display = "block";
-
-  document.getElementById("engine").classList.remove("active");
-
-  tools.style.display = "block";
-
-
-  setTimeout(function(){
-
-    tools.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },50);
-
-}
-
-
-/* =========================================================
-   OPEN MODULE
-========================================================= */
-
-function openModule(module){
-
-  const home =
-    document.getElementById("home");
-
-  const engine =
-    document.getElementById("engine");
-
-  const tools =
-    document.getElementById("tools");
-
-  const moduleArea =
-    document.getElementById("module-area");
-
-  const title =
-    document.getElementById("module-title");
-
-  const kicker =
-    document.getElementById("module-kicker");
-
-  const text =
-    document.getElementById("module-text");
-
-  const grid =
-    document.getElementById("module-grid");
-
-
-  /* Hide normal pages */
-
-  home.style.display = "none";
-
-  engine.classList.remove("active");
-
-  tools.style.display = "none";
-
-
-  /* Show module */
-
-  moduleArea.classList.add("active");
-
-
-  /* STUDIO SETUP */
-
-  if(module === "setup"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / STUDIO SETUP";
-
-    title.innerHTML =
-      "Studio Setup";
-
-    text.innerHTML =
-      "Your complete studio configuration. Organize your hardware, MIDI connections, audio routing and vocal chain.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          Roland MC-707
-        </h4>
-
-        <p>
-          Groovebox / MIDI / Audio
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Roland TR-8S
-        </h4>
-
-        <p>
-          Drum Machine
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Akai Force
-        </h4>
-
-        <p>
-          Production / Performance
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Vocal Chain
-        </h4>
-
-        <p>
-          Microphone / Voice Processing
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* MIDI ROUTING */
-
-  if(module === "midi"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / MIDI";
-
-    title.innerHTML =
-      "MIDI Routing";
-
-    text.innerHTML =
-      "Centralize your MIDI connections between the MC-707, TR-8S, Akai Force, keyboard and computer.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          MC-707
-        </h4>
-
-        <p>
-          MIDI controller and groovebox routing.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          TR-8S
-        </h4>
-
-        <p>
-          Drum machine synchronization.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Akai Force
-        </h4>
-
-        <p>
-          Sequencing and performance control.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Keyboard
-        </h4>
-
-        <p>
-          MIDI keyboard input and instrument control.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* AUDIO ROUTING */
-
-  if(module === "audio"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / AUDIO";
-
-    title.innerHTML =
-      "Audio Routing";
-
-    text.innerHTML =
-      "Organize the complete audio path from your hardware to the mixer, DAW and monitoring system.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          MC-707 Audio
-        </h4>
-
-        <p>
-          Groovebox audio routing.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          TR-8S Audio
-        </h4>
-
-        <p>
-          Drum machine audio routing.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Vocal Chain
-        </h4>
-
-        <p>
-          Microphone and voice processing.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Monitoring
-        </h4>
-
-        <p>
-          Studio monitoring and output configuration.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* WORKFLOW */
-
-  if(module === "workflow"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / WORKFLOW";
-
-    title.innerHTML =
-      "Creative Workflow";
-
-    text.innerHTML =
-      "Build a repeatable workflow for composing, recording, arranging, mixing and performing.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          01 — Create
-        </h4>
-
-        <p>
-          Start ideas quickly and develop musical concepts.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          02 — Record
-        </h4>
-
-        <p>
-          Capture hardware and vocal performances.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          03 — Arrange
-        </h4>
-
-        <p>
-          Build complete tracks from sections and stems.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          04 — Perform
-        </h4>
-
-        <p>
-          Prepare the setup for live performance.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* PROJECTS */
-
-  if(module === "projects"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / PROJECTS";
-
-    title.innerHTML =
-      "Projects";
-
-    text.innerHTML =
-      "Your production workspace for tracks, ideas, stems and finished projects.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          Current Project
-        </h4>
-
-        <p>
-          Main production workspace.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Stems
-        </h4>
-
-        <p>
-          Audio stems ready for arrangement and mixing.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Ideas
-        </h4>
-
-        <p>
-          Musical sketches and unfinished concepts.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Finished Tracks
-        </h4>
-
-        <p>
-          Completed productions ready for export.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* MUSIC CREATION */
-
-  if(module === "create"){
-
-    kicker.innerHTML =
-      "HAERVIU ENGINE / CREATE";
-
-    title.innerHTML =
-      "Music Creation";
-
-    text.innerHTML =
-      "Develop musical ideas, experiment with sound and transform sketches into finished tracks.";
-
-    grid.innerHTML = `
-
-      <div class="module-card">
-
-        <h4>
-          Composition
-        </h4>
-
-        <p>
-          Build chords, melodies, basslines and rhythms.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Sound Design
-        </h4>
-
-        <p>
-          Shape synths, drums, effects and textures.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Arrangement
-        </h4>
-
-        <p>
-          Turn loops into complete musical structures.
-        </p>
-
-      </div>
-
-
-      <div class="module-card">
-
-        <h4>
-          Production
-        </h4>
-
-        <p>
-          Prepare the final track for mixing and mastering.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* Scroll to module */
-
-  setTimeout(function(){
-
-    moduleArea.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },50);
-
-}
-
-
-/* =========================================================
-   CLOSE MODULE
-========================================================= */
-
-function closeModule(){
-
-  const moduleArea =
-    document.getElementById("module-area");
-
-  const tools =
-    document.getElementById("tools");
-
-
-  moduleArea.classList.remove("active");
-
-  tools.style.display = "block";
-
-
-  setTimeout(function(){
-
-    tools.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-
-  },50);
-
-}
-
-</script>
 
 
 </body>
