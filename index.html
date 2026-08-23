@@ -14,7 +14,6 @@ content="HAERVIU ENGINE — Studio setup, hardware, workflow, music creation, vo
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --bg:#05060a;
     --panel:#0b0e15;
@@ -345,13 +344,13 @@ header{
     box-shadow:0 0 10px var(--green),0 0 28px rgba(98,243,165,.4);
 }
 
-/* HERO SYSTEM — CLIQUABLE */
+/* HERO SYSTEM */
 
 .hero-system{
     position:relative;
-    display:block;
     margin-top:100px;
     min-height:330px;
+    display:block;
     border:1px solid var(--line);
     border-radius:34px;
     background:
@@ -359,21 +358,6 @@ header{
         linear-gradient(145deg,rgba(18,22,34,.92),rgba(7,9,14,.96));
     overflow:hidden;
     cursor:pointer;
-    transition:
-        border-color .3s ease,
-        box-shadow .3s ease,
-        transform .3s ease;
-}
-
-.hero-system:hover{
-    border-color:rgba(120,135,255,.45);
-    box-shadow:
-        0 0 45px rgba(89,105,255,.12),
-        0 35px 90px rgba(0,0,0,.45);
-}
-
-.hero-system:active{
-    transform:scale(.995);
 }
 
 .hero-system::before{
@@ -416,15 +400,18 @@ header{
     box-shadow:
         0 30px 80px rgba(0,0,0,.4),
         inset 0 0 60px rgba(89,105,255,.05);
-    cursor:pointer;
     transition:.3s ease;
 }
 
-.system-display:hover{
+.hero-system:hover .system-display{
     border-color:rgba(120,135,255,.55);
     box-shadow:
         0 0 40px rgba(89,105,255,.18),
         0 30px 80px rgba(0,0,0,.4);
+}
+
+.hero-system:active .system-display{
+    transform:translate(-50%,-50%) scale(.97);
 }
 
 .system-display span{
@@ -432,7 +419,6 @@ header{
     font-size:13px;
     font-weight:800;
     letter-spacing:.45em;
-    text-align:center;
 }
 
 /* HARDWARE */
@@ -1298,7 +1284,6 @@ footer{
         animation:none !important;
     }
 }
-
 </style>
 </head>
 
@@ -1312,22 +1297,19 @@ footer{
     </a>
 
     <nav class="desktop-nav">
-
         <a href="#studio">Studio</a>
         <a href="#hardware">Hardware</a>
         <a href="#workflow">Workflow</a>
         <a href="#creation">Create</a>
         <a href="#vocals">Vocals</a>
         <a href="#signal">Signal</a>
-
     </nav>
 
     <button
         class="menu-button"
         id="menuButton"
         aria-label="Open menu"
-        aria-expanded="false"
-    >
+        aria-expanded="false">
         <span></span>
     </button>
 
@@ -1345,6 +1327,8 @@ footer{
 </nav>
 
 <main>
+
+<!-- STUDIO -->
 
 <section class="hero" id="studio">
 
@@ -1372,11 +1356,11 @@ footer{
             SYSTEM ONLINE
         </div>
 
-        <a
-            href="#hardware"
-            class="hero-system reveal"
-            aria-label="Go to studio hardware"
-        >
+        <!-- BLOC CENTRAL CLIQUABLE -->
+
+        <a href="#hardware"
+           class="hero-system reveal"
+           aria-label="Go to studio hardware">
 
             <div class="system-top">
                 <span>HAERVIU ENGINE</span>
@@ -1392,6 +1376,8 @@ footer{
     </div>
 
 </section>
+
+<!-- HARDWARE -->
 
 <section class="section hardware-section" id="hardware">
 
@@ -1422,15 +1408,16 @@ footer{
 
         <div class="hardware-grid">
 
+            <!-- 01 MC-707 -->
+
             <article class="device featured reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/mc-707.webp"
+                        src="images/mc-707.webp"
                         alt="Roland MC-707"
-                        loading="eager"
-                    >
+                        loading="eager">
 
                 </div>
 
@@ -1462,26 +1449,29 @@ footer{
 
             </article>
 
+            <!-- 02 TR-8S -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/tr-8s.webp"
+                        src="images/tr-8s.webp"
                         alt="Roland TR-8S"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">02</span>
 
                         <span class="connected">
                             <i></i> CONNECTED
                         </span>
+
                     </div>
 
                     <h3>Roland TR-8S</h3>
@@ -1498,26 +1488,29 @@ footer{
 
             </article>
 
+            <!-- 03 AKAI FORCE -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/akai-force.webp"
+                        src="images/akai-force.webp"
                         alt="Akai Force"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">03</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>Akai Force</h3>
@@ -1534,26 +1527,29 @@ footer{
 
             </article>
 
+            <!-- 04 MX-1 -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/mx-1.webp"
+                        src="images/mx-1.webp"
                         alt="Roland MX-1"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">04</span>
 
                         <span class="connected">
                             <i></i> CONNECTED
                         </span>
+
                     </div>
 
                     <h3>Roland MX-1</h3>
@@ -1570,26 +1566,29 @@ footer{
 
             </article>
 
+            <!-- 05 VT-4 -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/vt-4.webp"
+                        src="images/vt-4.webp"
                         alt="Roland VT-4"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">05</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>Roland VT-4</h3>
@@ -1606,26 +1605,29 @@ footer{
 
             </article>
 
+            <!-- 06 RODE NT1 -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/rode-nt1.webp"
+                        src="images/rode-nt1.webp"
                         alt="RØDE NT1"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">06</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>RØDE NT1</h3>
@@ -1642,29 +1644,32 @@ footer{
 
             </article>
 
+            <!-- 07 KEYLAB -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/arturia-essential-88.webp"
-                        alt="Arturia Essential 88"
-                        loading="lazy"
-                    >
+                        src="images/keylab-mk2-88.webp"
+                        alt="Arturia KeyLab MkII 88"
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">07</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
-                    <h3>Arturia Essential 88</h3>
+                    <h3>Arturia KeyLab MkII 88</h3>
 
                     <p>
                         MIDI Keyboard · Instrument Control
@@ -1678,26 +1683,29 @@ footer{
 
             </article>
 
+            <!-- 08 YAMAHA HS8 -->
+
             <article class="device reveal">
 
                 <div class="device-image">
 
                     <img
-                        src="assets/yamaha-hs8.webp"
+                        src="images/yamaha-hs8.webp"
                         alt="Yamaha HS8"
-                        loading="lazy"
-                    >
+                        loading="lazy">
 
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">08</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>Yamaha HS8</h3>
@@ -1719,6 +1727,8 @@ footer{
     </div>
 
 </section>
+
+<!-- WORKFLOW -->
 
 <section class="section" id="workflow">
 
@@ -1807,6 +1817,8 @@ footer{
 
 </section>
 
+<!-- CREATE -->
+
 <section class="section" id="creation">
 
     <div class="container">
@@ -1874,6 +1886,8 @@ footer{
     </div>
 
 </section>
+
+<!-- VOCALS -->
 
 <section class="section vocal-section" id="vocals">
 
@@ -1973,6 +1987,8 @@ footer{
     </div>
 
 </section>
+
+<!-- SIGNAL -->
 
 <section class="section" id="signal">
 
@@ -2130,20 +2146,16 @@ footer{
 const menuButton = document.getElementById("menuButton");
 const mobileNav = document.getElementById("mobileNav");
 
-if(menuButton && mobileNav){
+menuButton.addEventListener("click",function(){
 
-    menuButton.addEventListener("click",function(){
+    const isOpen = mobileNav.classList.toggle("open");
 
-        const isOpen = mobileNav.classList.toggle("open");
+    menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-    });
-
-}
+});
 
 /* FERME LE MENU APRES CLIC */
 
@@ -2169,43 +2181,33 @@ document
 const revealElements =
     document.querySelectorAll(".reveal");
 
-if("IntersectionObserver" in window){
+const revealObserver =
+    new IntersectionObserver(
+        function(entries){
 
-    const revealObserver =
-        new IntersectionObserver(
-            function(entries){
+            entries.forEach(function(entry){
 
-                entries.forEach(function(entry){
+                if(entry.isIntersecting){
 
-                    if(entry.isIntersecting){
+                    entry.target.classList.add("visible");
 
-                        entry.target.classList.add("visible");
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
+                }
 
-                    }
+            });
 
-                });
+        },
+        {
+            threshold:.12
+        }
+    );
 
-            },
-            {
-                threshold:.12
-            }
-        );
-
-    revealElements.forEach(function(element){
-        revealObserver.observe(element);
-    });
-
-}else{
-
-    revealElements.forEach(function(element){
-        element.classList.add("visible");
-    });
-
-}
+revealElements.forEach(function(element){
+    revealObserver.observe(element);
+});
 
 /* NAVIGATION ACTIVE */
 
@@ -2215,46 +2217,42 @@ const sections =
 const navLinks =
     document.querySelectorAll(".desktop-nav a");
 
-if("IntersectionObserver" in window){
+const sectionObserver =
+    new IntersectionObserver(
+        function(entries){
 
-    const sectionObserver =
-        new IntersectionObserver(
-            function(entries){
+            entries.forEach(function(entry){
 
-                entries.forEach(function(entry){
+                if(entry.isIntersecting){
 
-                    if(entry.isIntersecting){
+                    navLinks.forEach(function(link){
+                        link.classList.remove("active");
+                    });
 
-                        navLinks.forEach(function(link){
-                            link.classList.remove("active");
-                        });
+                    const active =
+                        document.querySelector(
+                            '.desktop-nav a[href="#' +
+                            entry.target.id +
+                            '"]'
+                        );
 
-                        const active =
-                            document.querySelector(
-                                '.desktop-nav a[href="#' +
-                                entry.target.id +
-                                '"]'
-                            );
-
-                        if(active){
-                            active.classList.add("active");
-                        }
-
+                    if(active){
+                        active.classList.add("active");
                     }
 
-                });
+                }
 
-            },
-            {
-                rootMargin:"-35% 0px -55% 0px"
-            }
-        );
+            });
 
-    sections.forEach(function(section){
-        sectionObserver.observe(section);
-    });
+        },
+        {
+            rootMargin:"-35% 0px -55% 0px"
+        }
+    );
 
-}
+sections.forEach(function(section){
+    sectionObserver.observe(section);
+});
 
 </script>
 
