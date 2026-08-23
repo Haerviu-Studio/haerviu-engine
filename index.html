@@ -345,10 +345,11 @@ header{
     box-shadow:0 0 10px var(--green),0 0 28px rgba(98,243,165,.4);
 }
 
-/* HERO SYSTEM */
+/* HERO SYSTEM — CLIQUABLE */
 
 .hero-system{
     position:relative;
+    display:block;
     margin-top:100px;
     min-height:330px;
     border:1px solid var(--line);
@@ -357,6 +358,22 @@ header{
         radial-gradient(circle at 50% 50%,rgba(93,108,255,.13),transparent 55%),
         linear-gradient(145deg,rgba(18,22,34,.92),rgba(7,9,14,.96));
     overflow:hidden;
+    cursor:pointer;
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+.hero-system:hover{
+    border-color:rgba(120,135,255,.45);
+    box-shadow:
+        0 0 45px rgba(89,105,255,.12),
+        0 35px 90px rgba(0,0,0,.45);
+}
+
+.hero-system:active{
+    transform:scale(.995);
 }
 
 .hero-system::before{
@@ -410,15 +427,12 @@ header{
         0 30px 80px rgba(0,0,0,.4);
 }
 
-.system-display:active{
-    transform:translate(-50%,-50%) scale(.97);
-}
-
 .system-display span{
     color:#7885b8;
     font-size:13px;
     font-weight:800;
     letter-spacing:.45em;
+    text-align:center;
 }
 
 /* HARDWARE */
@@ -487,24 +501,6 @@ header{
 
 .device:hover .device-image img{
     transform:scale(1.035);
-}
-
-/* Si une image n'existe pas, on ne laisse plus un énorme bloc vide */
-
-.device-image.image-missing{
-    height:120px;
-    min-height:120px;
-    padding:0;
-    background:none;
-}
-
-.device-image.image-missing::before,
-.device-image.image-missing::after{
-    display:none;
-}
-
-.device-image.image-missing img{
-    display:none;
 }
 
 .device-info{
@@ -1350,8 +1346,6 @@ footer{
 
 <main>
 
-<!-- STUDIO -->
-
 <section class="hero" id="studio">
 
     <div class="container hero-content">
@@ -1378,10 +1372,11 @@ footer{
             SYSTEM ONLINE
         </div>
 
-        <!-- CE BLOC EST MAINTENANT CLIQUABLE -->
-
-        <a href="#hardware" class="hero-system reveal"
-           aria-label="Go to studio hardware">
+        <a
+            href="#hardware"
+            class="hero-system reveal"
+            aria-label="Go to studio hardware"
+        >
 
             <div class="system-top">
                 <span>HAERVIU ENGINE</span>
@@ -1389,11 +1384,7 @@ footer{
             </div>
 
             <div class="system-display">
-
-                <span>
-                    STUDIO CONTROL SYSTEM
-                </span>
-
+                <span>STUDIO CONTROL SYSTEM</span>
             </div>
 
         </a>
@@ -1401,8 +1392,6 @@ footer{
     </div>
 
 </section>
-
-<!-- HARDWARE -->
 
 <section class="section hardware-section" id="hardware">
 
@@ -1731,8 +1720,6 @@ footer{
 
 </section>
 
-<!-- WORKFLOW -->
-
 <section class="section" id="workflow">
 
     <div class="container">
@@ -1820,8 +1807,6 @@ footer{
 
 </section>
 
-<!-- CREATE -->
-
 <section class="section" id="creation">
 
     <div class="container">
@@ -1889,8 +1874,6 @@ footer{
     </div>
 
 </section>
-
-<!-- VOCALS -->
 
 <section class="section vocal-section" id="vocals">
 
@@ -1990,8 +1973,6 @@ footer{
     </div>
 
 </section>
-
-<!-- SIGNAL -->
 
 <section class="section" id="signal">
 
@@ -2149,16 +2130,20 @@ footer{
 const menuButton = document.getElementById("menuButton");
 const mobileNav = document.getElementById("mobileNav");
 
-menuButton.addEventListener("click",function(){
+if(menuButton && mobileNav){
 
-    const isOpen = mobileNav.classList.toggle("open");
+    menuButton.addEventListener("click",function(){
 
-    menuButton.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-    );
+        const isOpen = mobileNav.classList.toggle("open");
 
-});
+        menuButton.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+    });
+
+}
 
 /* FERME LE MENU APRES CLIC */
 
@@ -2179,55 +2164,48 @@ document
 
     });
 
-/* IMAGES MANQUANTES */
-
-document
-    .querySelectorAll(".device-image img")
-    .forEach(function(image){
-
-        image.addEventListener("error",function(){
-
-            const parent =
-                image.closest(".device-image");
-
-            parent.classList.add("image-missing");
-
-        });
-
-    });
-
 /* APPARITION AU SCROLL */
 
 const revealElements =
     document.querySelectorAll(".reveal");
 
-const revealObserver =
-    new IntersectionObserver(
-        function(entries){
+if("IntersectionObserver" in window){
 
-            entries.forEach(function(entry){
+    const revealObserver =
+        new IntersectionObserver(
+            function(entries){
 
-                if(entry.isIntersecting){
+                entries.forEach(function(entry){
 
-                    entry.target.classList.add("visible");
+                    if(entry.isIntersecting){
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                        entry.target.classList.add("visible");
 
-                }
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-            });
+                    }
 
-        },
-        {
-            threshold:.12
-        }
-    );
+                });
 
-revealElements.forEach(function(element){
-    revealObserver.observe(element);
-});
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    revealElements.forEach(function(element){
+        revealObserver.observe(element);
+    });
+
+}else{
+
+    revealElements.forEach(function(element){
+        element.classList.add("visible");
+    });
+
+}
 
 /* NAVIGATION ACTIVE */
 
@@ -2237,42 +2215,46 @@ const sections =
 const navLinks =
     document.querySelectorAll(".desktop-nav a");
 
-const sectionObserver =
-    new IntersectionObserver(
-        function(entries){
+if("IntersectionObserver" in window){
 
-            entries.forEach(function(entry){
+    const sectionObserver =
+        new IntersectionObserver(
+            function(entries){
 
-                if(entry.isIntersecting){
+                entries.forEach(function(entry){
 
-                    navLinks.forEach(function(link){
-                        link.classList.remove("active");
-                    });
+                    if(entry.isIntersecting){
 
-                    const active =
-                        document.querySelector(
-                            '.desktop-nav a[href="#' +
-                            entry.target.id +
-                            '"]'
-                        );
+                        navLinks.forEach(function(link){
+                            link.classList.remove("active");
+                        });
 
-                    if(active){
-                        active.classList.add("active");
+                        const active =
+                            document.querySelector(
+                                '.desktop-nav a[href="#' +
+                                entry.target.id +
+                                '"]'
+                            );
+
+                        if(active){
+                            active.classList.add("active");
+                        }
+
                     }
 
-                }
+                });
 
-            });
+            },
+            {
+                rootMargin:"-35% 0px -55% 0px"
+            }
+        );
 
-        },
-        {
-            rootMargin:"-35% 0px -55% 0px"
-        }
-    );
+    sections.forEach(function(section){
+        sectionObserver.observe(section);
+    });
 
-sections.forEach(function(section){
-    sectionObserver.observe(section);
-});
+}
 
 </script>
 
