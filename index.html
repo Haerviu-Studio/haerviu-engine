@@ -351,14 +351,12 @@ header{
     position:relative;
     margin-top:100px;
     min-height:330px;
-    display:block;
     border:1px solid var(--line);
     border-radius:34px;
     background:
         radial-gradient(circle at 50% 50%,rgba(93,108,255,.13),transparent 55%),
         linear-gradient(145deg,rgba(18,22,34,.92),rgba(7,9,14,.96));
     overflow:hidden;
-    cursor:pointer;
 }
 
 .hero-system::before{
@@ -401,17 +399,18 @@ header{
     box-shadow:
         0 30px 80px rgba(0,0,0,.4),
         inset 0 0 60px rgba(89,105,255,.05);
+    cursor:pointer;
     transition:.3s ease;
 }
 
-.hero-system:hover .system-display{
+.system-display:hover{
     border-color:rgba(120,135,255,.55);
     box-shadow:
         0 0 40px rgba(89,105,255,.18),
         0 30px 80px rgba(0,0,0,.4);
 }
 
-.hero-system:active .system-display{
+.system-display:active{
     transform:translate(-50%,-50%) scale(.97);
 }
 
@@ -444,7 +443,6 @@ header{
         radial-gradient(circle at 50% 20%,rgba(89,105,255,.10),transparent 38%),
         linear-gradient(145deg,#0d1119,#080a0f);
     transition:.45s ease;
-    cursor:pointer;
 }
 
 .device:hover{
@@ -913,140 +911,6 @@ header{
     text-transform:uppercase;
 }
 
-/* =========================
-   HARDWARE MODAL
-========================= */
-
-.hardware-modal{
-    position:fixed;
-    inset:0;
-    z-index:5000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:30px;
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition:.3s ease;
-}
-
-.hardware-modal.open{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-}
-
-.modal-box{
-    position:relative;
-    width:min(900px,100%);
-    max-height:90vh;
-    overflow:auto;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:32px;
-    background:
-        radial-gradient(circle at 70% 15%,rgba(93,108,255,.18),transparent 40%),
-        linear-gradient(145deg,#11151f,#07090e);
-    box-shadow:0 50px 140px rgba(0,0,0,.65);
-    transform:translateY(25px) scale(.97);
-    transition:.3s ease;
-}
-
-.hardware-modal.open .modal-box{
-    transform:none;
-}
-
-.modal-close{
-    position:absolute;
-    top:20px;
-    right:20px;
-    z-index:10;
-    width:46px;
-    height:46px;
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:14px;
-    background:rgba(0,0,0,.35);
-    color:white;
-    font-size:25px;
-    line-height:1;
-    cursor:pointer;
-}
-
-.modal-content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-}
-
-.modal-image{
-    min-height:520px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:50px;
-    border-right:1px solid rgba(255,255,255,.08);
-    background:
-        radial-gradient(circle,rgba(89,105,255,.16),transparent 60%);
-}
-
-.modal-image img{
-    width:100%;
-    max-height:430px;
-    object-fit:contain;
-    filter:drop-shadow(0 35px 35px rgba(0,0,0,.7));
-}
-
-.modal-info{
-    padding:60px 50px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.modal-number{
-    color:#687186;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:.3em;
-    margin-bottom:20px;
-}
-
-.modal-info h3{
-    font-size:clamp(38px,5vw,64px);
-    line-height:.9;
-    letter-spacing:-.065em;
-    color:white;
-}
-
-.modal-info p{
-    margin-top:25px;
-    color:#929aaa;
-    font-size:15px;
-    line-height:1.8;
-}
-
-.modal-role{
-    margin-top:30px;
-    padding-top:22px;
-    border-top:1px solid rgba(255,255,255,.09);
-    color:#c9ced8;
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-}
-
-.modal-hint{
-    margin-top:35px;
-    color:#5f687a;
-    font-size:9px;
-    font-weight:700;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-}
-
 /* FOOTER */
 
 footer{
@@ -1189,24 +1053,6 @@ footer{
 
     .metric:nth-child(-n+2){
         border-bottom:1px solid var(--line);
-    }
-
-    .modal-content{
-        grid-template-columns:1fr;
-    }
-
-    .modal-image{
-        min-height:330px;
-        border-right:0;
-        border-bottom:1px solid rgba(255,255,255,.08);
-    }
-
-    .modal-image img{
-        max-height:260px;
-    }
-
-    .modal-info{
-        padding:40px;
     }
 }
 
@@ -1423,33 +1269,6 @@ footer{
         gap:13px;
         margin-top:55px;
     }
-
-    .hardware-modal{
-        padding:15px;
-    }
-
-    .modal-box{
-        max-height:94vh;
-        border-radius:25px;
-    }
-
-    .modal-image{
-        min-height:250px;
-        padding:30px;
-    }
-
-    .modal-image img{
-        max-height:200px;
-    }
-
-    .modal-info{
-        padding:30px 25px 35px;
-    }
-
-    .modal-close{
-        top:12px;
-        right:12px;
-    }
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -1479,12 +1298,14 @@ footer{
     </a>
 
     <nav class="desktop-nav">
+
         <a href="#studio">Studio</a>
         <a href="#hardware">Hardware</a>
         <a href="#workflow">Workflow</a>
         <a href="#creation">Create</a>
         <a href="#vocals">Vocals</a>
         <a href="#signal">Signal</a>
+
     </nav>
 
     <button
@@ -1510,8 +1331,6 @@ footer{
 </nav>
 
 <main>
-
-<!-- STUDIO -->
 
 <section class="hero" id="studio">
 
@@ -1539,8 +1358,7 @@ footer{
             SYSTEM ONLINE
         </div>
 
-        <a href="#hardware"
-           class="hero-system reveal"
+        <a href="#hardware" class="hero-system reveal"
            aria-label="Go to studio hardware">
 
             <div class="system-top">
@@ -1549,9 +1367,11 @@ footer{
             </div>
 
             <div class="system-display">
+
                 <span>
                     STUDIO CONTROL SYSTEM
                 </span>
+
             </div>
 
         </a>
@@ -1559,8 +1379,6 @@ footer{
     </div>
 
 </section>
-
-<!-- HARDWARE -->
 
 <section class="section hardware-section" id="hardware">
 
@@ -1591,24 +1409,22 @@ footer{
 
         <div class="hardware-grid">
 
-            <article class="device featured reveal"
-                data-device="Roland MC-707"
-                data-number="01 / GROOVEBOX"
-                data-image="assets/mc-707.webp"
-                data-description="Groovebox · MIDI · Audio · Sampling"
-                data-role="Production / Sequencing / MIDI Control">
+            <article class="device featured reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/mc-707.webp"
+                        src="images/mc-707.webp"
                         alt="Roland MC-707"
                         loading="eager"
                     >
+
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">
                             01 / GROOVEBOX
                         </span>
@@ -1616,6 +1432,7 @@ footer{
                         <span class="connected">
                             <i></i> CONNECTED
                         </span>
+
                     </div>
 
                     <h3>Roland MC-707</h3>
@@ -1632,19 +1449,16 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Roland TR-8S"
-                data-number="02 / RHYTHM"
-                data-image="assets/tr-8s.webp"
-                data-description="Rhythm Performer · Drum Machine · Sequencing"
-                data-role="Rhythm Engine / Percussion">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/tr-8s.webp"
+                        src="images/tr-8s.webp"
                         alt="Roland TR-8S"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
@@ -1671,19 +1485,16 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Akai Force"
-                data-number="03 / PRODUCTION"
-                data-image="assets/akai-force.webp"
-                data-description="Production · Sampling · Performance"
-                data-role="Production / Sampling / Performance">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/akai-force.webp"
+                        src="images/akai-force.webp"
                         alt="Akai Force"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
@@ -1710,19 +1521,16 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Roland MX-1"
-                data-number="04 / MIXING"
-                data-image="assets/mx-1.webp"
-                data-description="Mix Performer · Audio Hub · FX"
-                data-role="Master Mix / Audio Routing">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/mx-1.webp"
+                        src="images/mx-1.webp"
                         alt="Roland MX-1"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
@@ -1749,19 +1557,16 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Roland VT-4"
-                data-number="05 / VOCAL FX"
-                data-image="assets/vt-4.webp"
-                data-description="Voice Transformer · Vocal FX · Pitch"
-                data-role="Vocal Processing / Voice FX">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/vt-4.webp"
+                        src="images/vt-4.webp"
                         alt="Roland VT-4"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
@@ -1788,29 +1593,28 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="RØDE NT1"
-                data-number="06 / MICROPHONE"
-                data-image="assets/rode-nt1.webp"
-                data-description="Studio Microphone · Vocal Recording"
-                data-role="Vocal Capture / Studio Recording">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/rode-nt1.webp"
+                        src="images/rode-nt1.webp"
                         alt="RØDE NT1"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">06</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>RØDE NT1</h3>
@@ -1827,32 +1631,31 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Arturia Essential 88"
-                data-number="07 / MIDI"
-                data-image="assets/arturia-essential-88.webp"
-                data-description="MIDI Keyboard · Instrument Control"
-                data-role="MIDI Performance / Instrument Control">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/arturia-essential-88.webp"
-                        alt="Arturia Essential 88"
+                        src="images/keylab-mk2-88.webp"
+                        alt="Arturia KeyLab MkII 88"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">07</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
-                    <h3>Arturia Essential 88</h3>
+                    <h3>Arturia KeyLab MkII 88</h3>
 
                     <p>
                         MIDI Keyboard · Instrument Control
@@ -1866,29 +1669,28 @@ footer{
 
             </article>
 
-            <article class="device reveal"
-                data-device="Yamaha HS8"
-                data-number="08 / MONITORING"
-                data-image="assets/yamaha-hs8.webp"
-                data-description="Studio Monitoring · Reference"
-                data-role="Monitoring / Critical Listening">
+            <article class="device reveal">
 
                 <div class="device-image">
+
                     <img
-                        src="assets/yamaha-hs8.webp"
+                        src="images/yamaha-hs8.webp"
                         alt="Yamaha HS8"
                         loading="lazy"
                     >
+
                 </div>
 
                 <div class="device-info">
 
                     <div class="device-top">
+
                         <span class="device-number">08</span>
 
                         <span class="connected">
                             <i></i> READY
                         </span>
+
                     </div>
 
                     <h3>Yamaha HS8</h3>
@@ -1910,8 +1712,6 @@ footer{
     </div>
 
 </section>
-
-<!-- WORKFLOW -->
 
 <section class="section" id="workflow">
 
@@ -1941,36 +1741,57 @@ footer{
         <div class="workflow-grid">
 
             <article class="workflow-card reveal">
-                <div class="workflow-number">01 / RHYTHM</div>
+
+                <div class="workflow-number">
+                    01 / RHYTHM
+                </div>
+
                 <div class="workflow-icon">01</div>
+
                 <h3>Build the Groove</h3>
+
                 <p>
                     TR-8S rhythm programming,
                     percussion, patterns and
                     performance variations.
                 </p>
+
             </article>
 
             <article class="workflow-card reveal">
-                <div class="workflow-number">02 / PRODUCTION</div>
+
+                <div class="workflow-number">
+                    02 / PRODUCTION
+                </div>
+
                 <div class="workflow-icon">02</div>
+
                 <h3>Shape the Track</h3>
+
                 <p>
                     MC-707 and Force handle
                     sequencing, synthesis,
                     sampling and arrangement.
                 </p>
+
             </article>
 
             <article class="workflow-card reveal">
-                <div class="workflow-number">03 / MIX</div>
+
+                <div class="workflow-number">
+                    03 / MIX
+                </div>
+
                 <div class="workflow-icon">03</div>
+
                 <h3>Perform the Mix</h3>
+
                 <p>
                     MX-1 becomes the central
                     mixing and routing point
                     for the hardware system.
                 </p>
+
             </article>
 
         </div>
@@ -1978,8 +1799,6 @@ footer{
     </div>
 
 </section>
-
-<!-- CREATE -->
 
 <section class="section" id="creation">
 
@@ -2048,8 +1867,6 @@ footer{
     </div>
 
 </section>
-
-<!-- VOCALS -->
 
 <section class="section vocal-section" id="vocals">
 
@@ -2149,8 +1966,6 @@ footer{
     </div>
 
 </section>
-
-<!-- SIGNAL -->
 
 <section class="section" id="signal">
 
@@ -2252,47 +2067,6 @@ footer{
 
 </main>
 
-<!-- HARDWARE MODAL -->
-
-<div class="hardware-modal" id="hardwareModal">
-
-    <div class="modal-box">
-
-        <button
-            class="modal-close"
-            id="modalClose"
-            aria-label="Fermer">
-            ×
-        </button>
-
-        <div class="modal-content">
-
-            <div class="modal-image">
-                <img id="modalImage" src="" alt="">
-            </div>
-
-            <div class="modal-info">
-
-                <div class="modal-number" id="modalNumber"></div>
-
-                <h3 id="modalTitle"></h3>
-
-                <p id="modalDescription"></p>
-
-                <div class="modal-role" id="modalRole"></div>
-
-                <div class="modal-hint">
-                    HAERVIU ENGINE / HARDWARE
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
 <footer>
 
     <div class="footer-inner">
@@ -2344,10 +2118,6 @@ footer{
 
 <script>
 
-/* =========================
-   MENU MOBILE
-========================= */
-
 const menuButton = document.getElementById("menuButton");
 const mobileNav = document.getElementById("mobileNav");
 
@@ -2379,29 +2149,6 @@ document
 
     });
 
-/* =========================
-   IMAGES
-========================= */
-
-document
-    .querySelectorAll(".device-image img")
-    .forEach(function(image){
-
-        image.addEventListener("error",function(){
-
-            console.warn(
-                "Image introuvable :",
-                image.getAttribute("src")
-            );
-
-        });
-
-    });
-
-/* =========================
-   APPARITION AU SCROLL
-========================= */
-
 const revealElements =
     document.querySelectorAll(".reveal");
 
@@ -2432,10 +2179,6 @@ const revealObserver =
 revealElements.forEach(function(element){
     revealObserver.observe(element);
 });
-
-/* =========================
-   NAVIGATION ACTIVE
-========================= */
 
 const sections =
     document.querySelectorAll("section[id]");
@@ -2479,113 +2222,6 @@ const sectionObserver =
 sections.forEach(function(section){
     sectionObserver.observe(section);
 });
-
-/* =========================
-   HARDWARE MODAL
-========================= */
-
-const hardwareModal =
-    document.getElementById("hardwareModal");
-
-const modalClose =
-    document.getElementById("modalClose");
-
-const modalImage =
-    document.getElementById("modalImage");
-
-const modalNumber =
-    document.getElementById("modalNumber");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalDescription =
-    document.getElementById("modalDescription");
-
-const modalRole =
-    document.getElementById("modalRole");
-
-const devices =
-    document.querySelectorAll(".device");
-
-function openHardwareModal(device){
-
-    const title =
-        device.dataset.device;
-
-    const number =
-        device.dataset.number;
-
-    const image =
-        device.dataset.image;
-
-    const description =
-        device.dataset.description;
-
-    const role =
-        device.dataset.role;
-
-    modalNumber.textContent = number;
-    modalTitle.textContent = title;
-    modalDescription.textContent = description;
-    modalRole.textContent = role;
-
-    modalImage.src = image;
-    modalImage.alt = title;
-
-    hardwareModal.classList.add("open");
-
-    document.body.style.overflow = "hidden";
-
-}
-
-function closeHardwareModal(){
-
-    hardwareModal.classList.remove("open");
-
-    document.body.style.overflow = "";
-
-}
-
-devices.forEach(function(device){
-
-    device.addEventListener("click",function(){
-
-        openHardwareModal(device);
-
-    });
-
-});
-
-modalClose.addEventListener(
-    "click",
-    closeHardwareModal
-);
-
-hardwareModal.addEventListener(
-    "click",
-    function(event){
-
-        if(event.target === hardwareModal){
-            closeHardwareModal();
-        }
-
-    }
-);
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key === "Escape" &&
-            hardwareModal.classList.contains("open")
-        ){
-            closeHardwareModal();
-        }
-
-    }
-);
 
 </script>
 
