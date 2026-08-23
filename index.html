@@ -17,24 +17,15 @@ content="HAERVIU ENGINE — Studio setup, hardware, workflow, music creation, vo
 
 :root{
     --bg:#05060a;
-    --bg2:#080a10;
     --panel:#0b0e15;
     --panel2:#10141d;
-    --panel3:#151a25;
-
     --white:#f7f8fc;
     --text:#e9ebf2;
-    --soft:#b5bccb;
     --muted:#727b8e;
-    --dim:#4f5768;
-
     --line:rgba(255,255,255,.095);
     --line2:rgba(255,255,255,.15);
-
     --blue:#7383ff;
-    --blue2:#5669ff;
     --green:#62f3a5;
-
     --radius:30px;
     --max:1440px;
 }
@@ -52,22 +43,9 @@ html{
 body{
     min-height:100vh;
     background:
-        radial-gradient(
-            circle at 70% -10%,
-            rgba(89,105,255,.18),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 10% 45%,
-            rgba(80,95,180,.07),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            #05060a 0%,
-            #070914 45%,
-            #05060a 100%
-        );
+        radial-gradient(circle at 70% -10%,rgba(89,105,255,.18),transparent 34%),
+        radial-gradient(circle at 10% 45%,rgba(80,95,180,.07),transparent 30%),
+        linear-gradient(180deg,#05060a 0%,#070914 45%,#05060a 100%);
     color:var(--text);
     font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
@@ -80,21 +58,10 @@ body::before{
     pointer-events:none;
     opacity:.22;
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
     background-size:80px 80px;
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-    );
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
 }
 
 a{
@@ -106,23 +73,20 @@ button{
     font:inherit;
 }
 
+/* HEADER */
+
 header{
     position:sticky;
     top:0;
     z-index:1000;
-
     height:84px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 5vw;
-
     background:rgba(5,6,10,.84);
     backdrop-filter:blur(24px);
     -webkit-backdrop-filter:blur(24px);
-
     border-bottom:1px solid var(--line);
 }
 
@@ -135,25 +99,15 @@ header{
 .logo{
     width:50px;
     height:50px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border:1px solid rgba(255,255,255,.2);
     border-radius:16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1a1e29,
-            #08090d
-        );
-
+    background:linear-gradient(145deg,#1a1e29,#08090d);
     box-shadow:
         inset 0 0 25px rgba(255,255,255,.04),
         0 12px 35px rgba(0,0,0,.4);
-
     font-family:Georgia,serif;
     font-size:27px;
 }
@@ -162,7 +116,6 @@ header{
     font-size:14px;
     font-weight:800;
     letter-spacing:.34em;
-    color:#f4f5f9;
 }
 
 .desktop-nav{
@@ -181,6 +134,11 @@ header{
     transition:.25s ease;
 }
 
+.desktop-nav a:hover,
+.desktop-nav a.active{
+    color:white;
+}
+
 .desktop-nav a::after{
     content:"";
     position:absolute;
@@ -194,28 +152,21 @@ header{
     transition:.25s ease;
 }
 
-.desktop-nav a:hover{
-    color:white;
-}
-
-.desktop-nav a:hover::after{
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after{
     transform:scaleX(1);
 }
 
 .menu-button{
     width:48px;
     height:48px;
-
     display:none;
     align-items:center;
     justify-content:center;
-
     border:1px solid var(--line2);
     border-radius:15px;
-
     background:rgba(255,255,255,.025);
     color:white;
-
     cursor:pointer;
 }
 
@@ -240,29 +191,21 @@ header{
     left:0;
 }
 
-.menu-button span::before{
-    top:-6px;
-}
+.menu-button span::before{top:-6px;}
+.menu-button span::after{top:6px;}
 
-.menu-button span::after{
-    top:6px;
-}
+/* MOBILE NAV */
 
 .mobile-nav{
     position:fixed;
     z-index:999;
-
     top:84px;
     left:0;
     right:0;
-
     display:none;
-
     padding:20px;
-
-    background:rgba(5,6,10,.96);
+    background:rgba(5,6,10,.97);
     backdrop-filter:blur(24px);
-
     border-bottom:1px solid var(--line);
 }
 
@@ -272,25 +215,19 @@ header{
 
 .mobile-nav a{
     display:block;
-
     padding:18px 10px;
-
     border-bottom:1px solid var(--line);
-
     color:#aeb5c4;
-
     font-size:12px;
     font-weight:800;
     letter-spacing:.18em;
     text-transform:uppercase;
 }
 
-.container{
-    width:min(
-        calc(100% - 10vw),
-        var(--max)
-    );
+/* GLOBAL */
 
+.container{
+    width:min(calc(100% - 10vw),var(--max));
     margin:auto;
 }
 
@@ -300,9 +237,7 @@ header{
 
 .section-label{
     margin-bottom:20px;
-
     color:#666f82;
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.38em;
@@ -310,12 +245,7 @@ header{
 }
 
 .section-title{
-    font-size:clamp(
-        46px,
-        6vw,
-        86px
-    );
-
+    font-size:clamp(46px,6vw,86px);
     line-height:.92;
     letter-spacing:-.07em;
     font-weight:900;
@@ -338,41 +268,27 @@ header{
     margin-bottom:55px;
 }
 
+/* HERO */
+
 .hero{
     position:relative;
-
     min-height:760px;
-
     display:flex;
     align-items:center;
-
     padding:120px 0 130px;
-
     overflow:hidden;
 }
 
 .hero::after{
     content:"";
-
     position:absolute;
-
     width:700px;
     height:700px;
-
     right:-300px;
     top:40px;
-
     border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(94,109,255,.18),
-            transparent 65%
-        );
-
+    background:radial-gradient(circle,rgba(94,109,255,.18),transparent 65%);
     filter:blur(10px);
-
     pointer-events:none;
 }
 
@@ -383,9 +299,7 @@ header{
 
 .hero-label{
     margin-bottom:28px;
-
     color:#737c90;
-
     font-size:11px;
     font-weight:800;
     letter-spacing:.4em;
@@ -394,13 +308,7 @@ header{
 
 .hero h1{
     max-width:950px;
-
-    font-size:clamp(
-        70px,
-        10vw,
-        148px
-    );
-
+    font-size:clamp(70px,10vw,148px);
     line-height:.82;
     letter-spacing:-.085em;
     font-weight:900;
@@ -412,11 +320,8 @@ header{
 
 .hero-description{
     max-width:720px;
-
     margin-top:45px;
-
     color:#b8bfcd;
-
     font-size:19px;
     line-height:1.7;
 }
@@ -425,11 +330,8 @@ header{
     display:flex;
     align-items:center;
     gap:11px;
-
     margin-top:48px;
-
     color:var(--green);
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.34em;
@@ -438,63 +340,42 @@ header{
 .status-dot{
     width:9px;
     height:9px;
-
     border-radius:50%;
-
     background:var(--green);
-
-    box-shadow:
-        0 0 10px var(--green),
-        0 0 28px rgba(98,243,165,.4);
+    box-shadow:0 0 10px var(--green),0 0 28px rgba(98,243,165,.4);
 }
+
+/* HERO SYSTEM */
 
 .hero-system{
     position:relative;
-
     margin-top:100px;
-
     min-height:330px;
-
     border:1px solid var(--line);
     border-radius:34px;
-
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(93,108,255,.13),
-            transparent 55%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(18,22,34,.92),
-            rgba(7,9,14,.96)
-        );
-
+        radial-gradient(circle at 50% 50%,rgba(93,108,255,.13),transparent 55%),
+        linear-gradient(145deg,rgba(18,22,34,.92),rgba(7,9,14,.96));
     overflow:hidden;
 }
 
 .hero-system::before{
     content:"";
-
     position:absolute;
     inset:20px;
-
     border:1px solid rgba(255,255,255,.035);
     border-radius:25px;
+    pointer-events:none;
 }
 
 .system-top{
     position:absolute;
-
     top:28px;
     left:32px;
     right:32px;
-
     display:flex;
     justify-content:space-between;
-
     color:#656e80;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.3em;
@@ -502,43 +383,45 @@ header{
 
 .system-display{
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     width:min(620px,75%);
-
     height:120px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border:1px solid rgba(120,135,255,.25);
     border-radius:22px;
-
     background:
-        radial-gradient(
-            circle,
-            rgba(81,101,255,.14),
-            transparent 70%
-        ),
+        radial-gradient(circle,rgba(81,101,255,.14),transparent 70%),
         #080a11;
-
     box-shadow:
         0 30px 80px rgba(0,0,0,.4),
         inset 0 0 60px rgba(89,105,255,.05);
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.system-display:hover{
+    border-color:rgba(120,135,255,.55);
+    box-shadow:
+        0 0 40px rgba(89,105,255,.18),
+        0 30px 80px rgba(0,0,0,.4);
+}
+
+.system-display:active{
+    transform:translate(-50%,-50%) scale(.97);
 }
 
 .system-display span{
     color:#7885b8;
-
     font-size:13px;
     font-weight:800;
     letter-spacing:.45em;
 }
+
+/* HARDWARE */
 
 .hardware-section{
     padding-top:80px;
@@ -546,144 +429,88 @@ header{
 
 .hardware-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:24px;
 }
 
 .device{
     position:relative;
-
     min-height:610px;
-
     overflow:hidden;
-
     border:1px solid var(--line);
     border-radius:32px;
-
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(89,105,255,.10),
-            transparent 38%
-        ),
-        linear-gradient(
-            145deg,
-            #0d1119,
-            #080a0f
-        );
-
-    transition:
-        transform .45s ease,
-        border-color .45s ease,
-        box-shadow .45s ease;
+        radial-gradient(circle at 50% 20%,rgba(89,105,255,.10),transparent 38%),
+        linear-gradient(145deg,#0d1119,#080a0f);
+    transition:.45s ease;
 }
 
 .device:hover{
     transform:translateY(-8px);
-
     border-color:rgba(255,255,255,.2);
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.45);
+    box-shadow:0 40px 100px rgba(0,0,0,.45);
 }
 
 .device-image{
     position:relative;
-
     height:390px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     padding:42px;
+    overflow:hidden;
 }
 
 .device-image::before{
     content:"";
-
     position:absolute;
-
     width:72%;
     height:45%;
-
     left:14%;
     bottom:25px;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(93,110,255,.20),
-            transparent 70%
-        );
-
+    background:radial-gradient(ellipse,rgba(93,110,255,.20),transparent 70%);
     filter:blur(25px);
 }
 
 .device-image img{
     position:relative;
     z-index:2;
-
     display:block;
-
     width:100%;
     height:100%;
-
     max-width:100%;
     max-height:330px;
-
     object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 35px 30px rgba(0,0,0,.7)
-        );
-
-    transition:
-        transform .5s ease;
+    filter:drop-shadow(0 35px 30px rgba(0,0,0,.7));
+    transition:.5s ease;
 }
 
 .device:hover .device-image img{
     transform:scale(1.035);
 }
 
+/* Si une image n'existe pas, on ne laisse plus un énorme bloc vide */
+
 .device-image.image-missing{
-    background:
-        radial-gradient(
-            circle,
-            rgba(89,105,255,.15),
-            transparent 55%
-        );
+    height:120px;
+    min-height:120px;
+    padding:0;
+    background:none;
 }
 
+.device-image.image-missing::before,
 .device-image.image-missing::after{
-    content:"IMAGE À AJOUTER";
+    display:none;
+}
 
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    color:#4e5870;
-
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:.28em;
-
-    z-index:4;
+.device-image.image-missing img{
+    display:none;
 }
 
 .device-info{
     position:relative;
     z-index:5;
-
     padding:27px 34px 34px;
-
     border-top:1px solid rgba(255,255,255,.07);
 }
 
@@ -691,13 +518,11 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     margin-bottom:18px;
 }
 
 .device-number{
     color:#626b7d;
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.3em;
@@ -707,9 +532,7 @@ header{
     display:flex;
     align-items:center;
     gap:8px;
-
     color:var(--green);
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.25em;
@@ -718,49 +541,39 @@ header{
 .connected i{
     width:6px;
     height:6px;
-
     border-radius:50%;
-
     background:var(--green);
-
-    box-shadow:
-        0 0 12px var(--green);
+    box-shadow:0 0 12px var(--green);
 }
 
 .device h3{
     margin-bottom:10px;
-
     color:#f5f6fa;
-
     font-size:31px;
     line-height:1;
-
     letter-spacing:-.045em;
 }
 
 .device p{
     color:#818a9d;
-
     font-size:13px;
     line-height:1.6;
 }
 
 .device-role{
     margin-top:20px;
-
     color:#b0b7c5;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.2em;
     text-transform:uppercase;
 }
 
+/* FEATURED */
+
 .device.featured{
     grid-column:span 2;
-
     min-height:660px;
-
     display:grid;
     grid-template-columns:1.2fr .8fr;
 }
@@ -774,9 +587,7 @@ header{
     display:flex;
     flex-direction:column;
     justify-content:center;
-
     padding:55px;
-
     border-top:0;
     border-left:1px solid rgba(255,255,255,.07);
 }
@@ -790,45 +601,25 @@ header{
     max-width:420px;
 }
 
-.vocal-section{
-    position:relative;
-    overflow:hidden;
-}
+/* VOCALS */
 
 .vocal-panel{
     position:relative;
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     min-height:620px;
-
     border:1px solid var(--line);
     border-radius:34px;
-
     overflow:hidden;
-
     background:
-        radial-gradient(
-            circle at 80% 35%,
-            rgba(93,108,255,.14),
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #0d1018,
-            #07090e
-        );
+        radial-gradient(circle at 80% 35%,rgba(93,108,255,.14),transparent 40%),
+        linear-gradient(145deg,#0d1018,#07090e);
 }
 
 .vocal-copy{
     position:relative;
     z-index:2;
-
     padding:70px 60px;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -836,34 +627,23 @@ header{
 
 .vocal-copy h3{
     max-width:500px;
-
-    font-size:clamp(
-        42px,
-        5vw,
-        70px
-    );
-
+    font-size:clamp(42px,5vw,70px);
     line-height:.95;
     letter-spacing:-.065em;
 }
 
 .vocal-copy p{
     max-width:500px;
-
     margin-top:28px;
-
     color:#929aaa;
-
     font-size:15px;
     line-height:1.8;
 }
 
 .vocal-list{
     margin-top:35px;
-
     display:flex;
     flex-direction:column;
-
     gap:12px;
 }
 
@@ -871,68 +651,42 @@ header{
     display:flex;
     align-items:center;
     gap:14px;
-
     color:#c7ccd6;
-
     font-size:12px;
     font-weight:700;
 }
 
 .vocal-item::before{
     content:"";
-
     width:6px;
     height:6px;
-
     border-radius:50%;
-
     background:var(--green);
-
     box-shadow:0 0 12px var(--green);
 }
 
 .vocal-visual{
     position:relative;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     min-height:620px;
-
     border-left:1px solid rgba(255,255,255,.07);
-
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(95,111,255,.18),
-            transparent 55%
-        );
+    background:radial-gradient(circle at 50% 50%,rgba(95,111,255,.18),transparent 55%);
 }
 
 .vocal-chain{
     position:relative;
-
     width:min(470px,80%);
 }
 
 .chain-card{
     position:relative;
-
     padding:26px;
-
     border:1px solid rgba(255,255,255,.13);
     border-radius:22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27,31,43,.95),
-            rgba(9,11,17,.95)
-        );
-
-    box-shadow:
-        0 25px 60px rgba(0,0,0,.35);
+    background:linear-gradient(145deg,rgba(27,31,43,.95),rgba(9,11,17,.95));
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
 }
 
 .chain-card + .chain-card{
@@ -941,11 +695,8 @@ header{
 
 .chain-card small{
     display:block;
-
     margin-bottom:9px;
-
     color:#667086;
-
     font-size:8px;
     font-weight:800;
     letter-spacing:.3em;
@@ -953,66 +704,45 @@ header{
 
 .chain-card strong{
     color:#f3f5fa;
-
     font-size:17px;
 }
 
 .chain-line{
     position:absolute;
-
     left:50%;
-
     width:1px;
     height:18px;
-
     background:rgba(98,243,165,.45);
-
     transform:translateX(-50%);
 }
 
+/* WORKFLOW */
+
 .workflow-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
 .workflow-card{
     position:relative;
-
     min-height:300px;
-
     padding:34px;
-
     border:1px solid var(--line);
     border-radius:28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,22,31,.9),
-            rgba(8,10,15,.96)
-        );
-
+    background:linear-gradient(145deg,rgba(18,22,31,.9),rgba(8,10,15,.96));
     overflow:hidden;
-
     transition:.35s ease;
 }
 
 .workflow-card:hover{
     transform:translateY(-5px);
-
     border-color:rgba(255,255,255,.18);
-
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.35);
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
 .workflow-number{
     color:#596276;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.3em;
@@ -1021,25 +751,14 @@ header{
 .workflow-icon{
     width:54px;
     height:54px;
-
     margin:48px 0 28px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     border:1px solid rgba(113,132,255,.25);
     border-radius:17px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(113,132,255,.18),
-            transparent 70%
-        );
-
+    background:radial-gradient(circle,rgba(113,132,255,.18),transparent 70%);
     color:#8b99ff;
-
     font-size:19px;
 }
 
@@ -1050,93 +769,63 @@ header{
 
 .workflow-card p{
     margin-top:12px;
-
     color:#7f889b;
-
     font-size:13px;
     line-height:1.7;
 }
 
+/* CREATION */
+
 .creation{
     position:relative;
-
     padding:75px;
-
     border:1px solid var(--line);
     border-radius:34px;
-
     background:
-        radial-gradient(
-            circle at 75% 30%,
-            rgba(92,108,255,.14),
-            transparent 40%
-        ),
+        radial-gradient(circle at 75% 30%,rgba(92,108,255,.14),transparent 40%),
         #080b12;
 }
 
 .creation-grid{
     display:grid;
-
-    grid-template-columns:
-        .8fr 1.2fr;
-
+    grid-template-columns:.8fr 1.2fr;
     gap:80px;
-
     align-items:center;
 }
 
 .creation-copy h3{
     max-width:600px;
-
-    font-size:clamp(
-        44px,
-        5vw,
-        72px
-    );
-
+    font-size:clamp(44px,5vw,72px);
     line-height:.93;
-
     letter-spacing:-.065em;
 }
 
 .creation-copy p{
     max-width:530px;
-
     margin-top:28px;
-
     color:#858e9f;
-
     font-size:15px;
     line-height:1.8;
 }
 
 .creation-stages{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:14px;
 }
 
 .stage{
     padding:25px;
-
     min-height:130px;
-
     border:1px solid rgba(255,255,255,.09);
     border-radius:20px;
-
     background:#10141d;
 }
 
 .stage span{
     display:block;
-
     margin-bottom:14px;
-
     color:#687186;
-
     font-size:8px;
     font-weight:800;
     letter-spacing:.25em;
@@ -1144,32 +833,24 @@ header{
 
 .stage strong{
     color:#eef0f5;
-
     font-size:14px;
 }
 
+/* SIGNAL */
+
 .signal-panel{
     position:relative;
-
     padding:65px;
-
     border:1px solid var(--line);
     border-radius:34px;
-
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(89,105,255,.10),
-            transparent 52%
-        ),
+        radial-gradient(circle at 50% 50%,rgba(89,105,255,.10),transparent 52%),
         #080b12;
 }
 
 .signal-title{
     margin-bottom:45px;
-
     color:#8d96aa;
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.28em;
@@ -1179,35 +860,22 @@ header{
     display:flex;
     align-items:center;
     justify-content:center;
-
     gap:14px;
-
     flex-wrap:wrap;
 }
 
 .signal-node{
     min-width:190px;
-
     padding:24px;
-
     border:1px solid rgba(255,255,255,.11);
     border-radius:18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #11151f,
-            #0b0e15
-        );
+    background:linear-gradient(145deg,#11151f,#0b0e15);
 }
 
 .signal-node small{
     display:block;
-
     margin-bottom:9px;
-
     color:#626c80;
-
     font-size:8px;
     font-weight:800;
     letter-spacing:.22em;
@@ -1215,37 +883,29 @@ header{
 
 .signal-node strong{
     color:#f1f3f8;
-
     font-size:14px;
 }
 
 .signal-arrow{
     color:#555f73;
-
     font-size:20px;
 }
 
+/* METRICS */
+
 .metrics{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     margin-top:24px;
-
     border:1px solid var(--line);
     border-radius:28px;
-
     overflow:hidden;
-
     background:#080a10;
 }
 
 .metric{
     min-height:150px;
-
     padding:30px;
-
     border-right:1px solid var(--line);
 }
 
@@ -1255,81 +915,64 @@ header{
 
 .metric-number{
     color:#f3f5fa;
-
     font-size:34px;
     font-weight:900;
-
     letter-spacing:-.06em;
 }
 
 .metric-label{
     margin-top:9px;
-
     color:#697286;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.2em;
     text-transform:uppercase;
 }
 
+/* FOOTER */
+
 footer{
     margin-top:80px;
-
     border-top:1px solid var(--line);
 }
 
 .footer-inner{
-    width:min(
-        calc(100% - 10vw),
-        var(--max)
-    );
-
+    width:min(calc(100% - 10vw),var(--max));
     margin:auto;
-
     padding:80px 0 45px;
 }
 
 .footer-main{
     display:flex;
-
     justify-content:space-between;
-
     gap:50px;
 }
 
 .footer-brand{
     font-size:30px;
     font-weight:900;
-
     letter-spacing:-.05em;
 }
 
 .footer-tagline{
     max-width:380px;
-
     margin-top:16px;
-
     color:#697286;
-
     font-size:13px;
     line-height:1.7;
 }
 
 .footer-links{
     display:flex;
-
     gap:50px;
 }
 
 .footer-links a{
     color:#70798c;
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.18em;
     text-transform:uppercase;
-
     transition:.25s ease;
 }
 
@@ -1340,32 +983,29 @@ footer{
 .footer-bottom{
     display:flex;
     justify-content:space-between;
-
     margin-top:80px;
     padding-top:25px;
-
     border-top:1px solid var(--line);
-
     color:#4f586a;
-
     font-size:9px;
     font-weight:700;
     letter-spacing:.16em;
 }
 
+/* REVEAL */
+
 .reveal{
     opacity:0;
     transform:translateY(28px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+    transition:opacity .8s ease,transform .8s ease;
 }
 
 .reveal.visible{
     opacity:1;
     transform:none;
 }
+
+/* RESPONSIVE */
 
 @media(max-width:1100px){
 
@@ -1388,7 +1028,6 @@ footer{
 
     .device.featured{
         grid-column:span 1;
-
         grid-template-columns:1fr;
     }
 
@@ -1423,8 +1062,7 @@ footer{
     }
 
     .metrics{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .metric:nth-child(2){
@@ -1434,7 +1072,6 @@ footer{
     .metric:nth-child(-n+2){
         border-bottom:1px solid var(--line);
     }
-
 }
 
 @media(max-width:700px){
@@ -1497,16 +1134,11 @@ footer{
     }
 
     .hero h1{
-        font-size:clamp(
-            62px,
-            19vw,
-            100px
-        );
+        font-size:clamp(62px,19vw,100px);
     }
 
     .hero-description{
         margin-top:32px;
-
         font-size:16px;
         line-height:1.7;
     }
@@ -1529,6 +1161,7 @@ footer{
     .system-display span{
         font-size:9px;
         letter-spacing:.3em;
+        text-align:center;
     }
 
     .hardware-section{
@@ -1644,20 +1277,16 @@ footer{
 
     .footer-links{
         margin-top:40px;
-
         display:grid;
         grid-template-columns:1fr 1fr;
-
         gap:22px;
     }
 
     .footer-bottom{
         flex-direction:column;
         gap:13px;
-
         margin-top:55px;
     }
-
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -1672,7 +1301,6 @@ footer{
         transition:none !important;
         animation:none !important;
     }
-
 }
 
 </style>
@@ -1683,13 +1311,8 @@ footer{
 <header>
 
     <a href="#studio" class="brand">
-
         <div class="logo">H</div>
-
-        <div class="brand-name">
-            HAERVIU ENGINE
-        </div>
-
+        <div class="brand-name">HAERVIU ENGINE</div>
     </a>
 
     <nav class="desktop-nav">
@@ -1727,6 +1350,8 @@ footer{
 
 <main>
 
+<!-- STUDIO -->
+
 <section class="hero" id="studio">
 
     <div class="container hero-content">
@@ -1749,20 +1374,18 @@ footer{
         </p>
 
         <div class="hero-status">
-
             <span class="status-dot"></span>
-
             SYSTEM ONLINE
-
         </div>
 
-        <div class="hero-system reveal">
+        <!-- CE BLOC EST MAINTENANT CLIQUABLE -->
+
+        <a href="#hardware" class="hero-system reveal"
+           aria-label="Go to studio hardware">
 
             <div class="system-top">
-
                 <span>HAERVIU ENGINE</span>
                 <span>STUDIO / CORE</span>
-
             </div>
 
             <div class="system-display">
@@ -1773,16 +1396,15 @@ footer{
 
             </div>
 
-        </div>
+        </a>
 
     </div>
 
 </section>
 
-<section
-    class="section hardware-section"
-    id="hardware"
->
+<!-- HARDWARE -->
+
+<section class="section hardware-section" id="hardware">
 
     <div class="container">
 
@@ -1816,7 +1438,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/mc-707.webp"
+                        src="assets/mc-707.webp"
                         alt="Roland MC-707"
                         loading="eager"
                     >
@@ -1832,15 +1454,12 @@ footer{
                         </span>
 
                         <span class="connected">
-                            <i></i>
-                            CONNECTED
+                            <i></i> CONNECTED
                         </span>
 
                     </div>
 
-                    <h3>
-                        Roland MC-707
-                    </h3>
+                    <h3>Roland MC-707</h3>
 
                     <p>
                         Groovebox · MIDI · Audio · Sampling
@@ -1859,7 +1478,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/tr-8s.webp"
+                        src="assets/tr-8s.webp"
                         alt="Roland TR-8S"
                         loading="lazy"
                     >
@@ -1869,21 +1488,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            02
-                        </span>
+                        <span class="device-number">02</span>
 
                         <span class="connected">
-                            <i></i>
-                            CONNECTED
+                            <i></i> CONNECTED
                         </span>
-
                     </div>
 
-                    <h3>
-                        Roland TR-8S
-                    </h3>
+                    <h3>Roland TR-8S</h3>
 
                     <p>
                         Rhythm Performer · Drum Machine · Sequencing
@@ -1902,7 +1514,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/akai-force.webp"
+                        src="assets/akai-force.webp"
                         alt="Akai Force"
                         loading="lazy"
                     >
@@ -1912,21 +1524,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            03
-                        </span>
+                        <span class="device-number">03</span>
 
                         <span class="connected">
-                            <i></i>
-                            READY
+                            <i></i> READY
                         </span>
-
                     </div>
 
-                    <h3>
-                        Akai Force
-                    </h3>
+                    <h3>Akai Force</h3>
 
                     <p>
                         Production · Sampling · Performance
@@ -1945,7 +1550,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/mx-1.webp"
+                        src="assets/mx-1.webp"
                         alt="Roland MX-1"
                         loading="lazy"
                     >
@@ -1955,21 +1560,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            04
-                        </span>
+                        <span class="device-number">04</span>
 
                         <span class="connected">
-                            <i></i>
-                            CONNECTED
+                            <i></i> CONNECTED
                         </span>
-
                     </div>
 
-                    <h3>
-                        Roland MX-1
-                    </h3>
+                    <h3>Roland MX-1</h3>
 
                     <p>
                         Mix Performer · Audio Hub · FX
@@ -1988,7 +1586,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/vt-4.webp"
+                        src="assets/vt-4.webp"
                         alt="Roland VT-4"
                         loading="lazy"
                     >
@@ -1998,21 +1596,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            05
-                        </span>
+                        <span class="device-number">05</span>
 
                         <span class="connected">
-                            <i></i>
-                            READY
+                            <i></i> READY
                         </span>
-
                     </div>
 
-                    <h3>
-                        Roland VT-4
-                    </h3>
+                    <h3>Roland VT-4</h3>
 
                     <p>
                         Voice Transformer · Vocal FX · Pitch
@@ -2031,7 +1622,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/rode-nt1.webp"
+                        src="assets/rode-nt1.webp"
                         alt="RØDE NT1"
                         loading="lazy"
                     >
@@ -2041,21 +1632,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            06
-                        </span>
+                        <span class="device-number">06</span>
 
                         <span class="connected">
-                            <i></i>
-                            READY
+                            <i></i> READY
                         </span>
-
                     </div>
 
-                    <h3>
-                        RØDE NT1
-                    </h3>
+                    <h3>RØDE NT1</h3>
 
                     <p>
                         Studio Microphone · Vocal Recording
@@ -2074,7 +1658,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/keylab-mk2-88.webp"
+                        src="assets/arturia-essential-88.webp"
                         alt="Arturia Essential 88"
                         loading="lazy"
                     >
@@ -2084,21 +1668,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            07
-                        </span>
+                        <span class="device-number">07</span>
 
                         <span class="connected">
-                            <i></i>
-                            READY
+                            <i></i> READY
                         </span>
-
                     </div>
 
-                    <h3>
-                        Arturia Essential 88
-                    </h3>
+                    <h3>Arturia Essential 88</h3>
 
                     <p>
                         MIDI Keyboard · Instrument Control
@@ -2117,7 +1694,7 @@ footer{
                 <div class="device-image">
 
                     <img
-                        src="images/yamaha-hs8.webp"
+                        src="assets/yamaha-hs8.webp"
                         alt="Yamaha HS8"
                         loading="lazy"
                     >
@@ -2127,21 +1704,14 @@ footer{
                 <div class="device-info">
 
                     <div class="device-top">
-
-                        <span class="device-number">
-                            08
-                        </span>
+                        <span class="device-number">08</span>
 
                         <span class="connected">
-                            <i></i>
-                            READY
+                            <i></i> READY
                         </span>
-
                     </div>
 
-                    <h3>
-                        Yamaha HS8
-                    </h3>
+                    <h3>Yamaha HS8</h3>
 
                     <p>
                         Studio Monitoring · Reference
@@ -2161,10 +1731,9 @@ footer{
 
 </section>
 
-<section
-    class="section"
-    id="workflow"
->
+<!-- WORKFLOW -->
+
+<section class="section" id="workflow">
 
     <div class="container">
 
@@ -2197,13 +1766,9 @@ footer{
                     01 / RHYTHM
                 </div>
 
-                <div class="workflow-icon">
-                    01
-                </div>
+                <div class="workflow-icon">01</div>
 
-                <h3>
-                    Build the Groove
-                </h3>
+                <h3>Build the Groove</h3>
 
                 <p>
                     TR-8S rhythm programming,
@@ -2219,13 +1784,9 @@ footer{
                     02 / PRODUCTION
                 </div>
 
-                <div class="workflow-icon">
-                    02
-                </div>
+                <div class="workflow-icon">02</div>
 
-                <h3>
-                    Shape the Track
-                </h3>
+                <h3>Shape the Track</h3>
 
                 <p>
                     MC-707 and Force handle
@@ -2241,13 +1802,9 @@ footer{
                     03 / MIX
                 </div>
 
-                <div class="workflow-icon">
-                    03
-                </div>
+                <div class="workflow-icon">03</div>
 
-                <h3>
-                    Perform the Mix
-                </h3>
+                <h3>Perform the Mix</h3>
 
                 <p>
                     MX-1 becomes the central
@@ -2263,10 +1820,9 @@ footer{
 
 </section>
 
-<section
-    class="section"
-    id="creation"
->
+<!-- CREATE -->
+
+<section class="section" id="creation">
 
     <div class="container">
 
@@ -2280,9 +1836,7 @@ footer{
                         04 / CREATE
                     </div>
 
-                    <h3>
-                        Music Creation.
-                    </h3>
+                    <h3>Music Creation.</h3>
 
                     <p>
                         Develop ideas, experiment with sound
@@ -2336,10 +1890,9 @@ footer{
 
 </section>
 
-<section
-    class="section vocal-section"
-    id="vocals"
->
+<!-- VOCALS -->
+
+<section class="section vocal-section" id="vocals">
 
     <div class="container">
 
@@ -2410,43 +1963,22 @@ footer{
                 <div class="vocal-chain">
 
                     <div class="chain-card">
-
-                        <small>
-                            SOURCE / 01
-                        </small>
-
-                        <strong>
-                            RØDE NT1
-                        </strong>
-
+                        <small>SOURCE / 01</small>
+                        <strong>RØDE NT1</strong>
                     </div>
 
                     <div class="chain-line"></div>
 
                     <div class="chain-card">
-
-                        <small>
-                            PROCESS / 02
-                        </small>
-
-                        <strong>
-                            ROLAND VT-4
-                        </strong>
-
+                        <small>PROCESS / 02</small>
+                        <strong>ROLAND VT-4</strong>
                     </div>
 
                     <div class="chain-line"></div>
 
                     <div class="chain-card">
-
-                        <small>
-                            RECORD / 03
-                        </small>
-
-                        <strong>
-                            CUBASE
-                        </strong>
-
+                        <small>RECORD / 03</small>
+                        <strong>CUBASE</strong>
                     </div>
 
                 </div>
@@ -2459,10 +1991,9 @@ footer{
 
 </section>
 
-<section
-    class="section"
-    id="signal"
->
+<!-- SIGNAL -->
+
+<section class="section" id="signal">
 
     <div class="container">
 
@@ -2496,79 +2027,36 @@ footer{
             <div class="signal-flow">
 
                 <div class="signal-node">
-
-                    <small>
-                        RHYTHM
-                    </small>
-
-                    <strong>
-                        TR-8S
-                    </strong>
-
+                    <small>RHYTHM</small>
+                    <strong>TR-8S</strong>
                 </div>
 
-                <div class="signal-arrow">
-                    →
-                </div>
+                <div class="signal-arrow">→</div>
 
                 <div class="signal-node">
-
-                    <small>
-                        PRODUCTION
-                    </small>
-
-                    <strong>
-                        MC-707 / FORCE
-                    </strong>
-
+                    <small>PRODUCTION</small>
+                    <strong>MC-707 / FORCE</strong>
                 </div>
 
-                <div class="signal-arrow">
-                    →
-                </div>
+                <div class="signal-arrow">→</div>
 
                 <div class="signal-node">
-
-                    <small>
-                        VOCALS
-                    </small>
-
-                    <strong>
-                        NT1 / VT-4
-                    </strong>
-
+                    <small>VOCALS</small>
+                    <strong>NT1 / VT-4</strong>
                 </div>
 
-                <div class="signal-arrow">
-                    →
-                </div>
+                <div class="signal-arrow">→</div>
 
                 <div class="signal-node">
-
-                    <small>
-                        MIXING
-                    </small>
-
-                    <strong>
-                        MX-1
-                    </strong>
-
+                    <small>MIXING</small>
+                    <strong>MX-1</strong>
                 </div>
 
-                <div class="signal-arrow">
-                    →
-                </div>
+                <div class="signal-arrow">→</div>
 
                 <div class="signal-node">
-
-                    <small>
-                        RECORDING
-                    </small>
-
-                    <strong>
-                        CUBASE
-                    </strong>
-
+                    <small>RECORDING</small>
+                    <strong>CUBASE</strong>
                 </div>
 
             </div>
@@ -2578,51 +2066,23 @@ footer{
         <div class="metrics reveal">
 
             <div class="metric">
-
-                <div class="metric-number">
-                    08
-                </div>
-
-                <div class="metric-label">
-                    MC-707 Tracks
-                </div>
-
+                <div class="metric-number">08</div>
+                <div class="metric-label">MC-707 Tracks</div>
             </div>
 
             <div class="metric">
-
-                <div class="metric-number">
-                    16
-                </div>
-
-                <div class="metric-label">
-                    TR-8S Steps
-                </div>
-
+                <div class="metric-number">16</div>
+                <div class="metric-label">TR-8S Steps</div>
             </div>
 
             <div class="metric">
-
-                <div class="metric-number">
-                    64
-                </div>
-
-                <div class="metric-label">
-                    Force Pads
-                </div>
-
+                <div class="metric-number">64</div>
+                <div class="metric-label">Force Pads</div>
             </div>
 
             <div class="metric">
-
-                <div class="metric-number">
-                    01
-                </div>
-
-                <div class="metric-label">
-                    Connected System
-                </div>
-
+                <div class="metric-number">01</div>
+                <div class="metric-label">Connected System</div>
             </div>
 
         </div>
@@ -2684,68 +2144,59 @@ footer{
 
 <script>
 
-const menuButton =
-    document.getElementById("menuButton");
+/* MENU MOBILE */
 
-const mobileNav =
-    document.getElementById("mobileNav");
+const menuButton = document.getElementById("menuButton");
+const mobileNav = document.getElementById("mobileNav");
 
-menuButton.addEventListener(
-    "click",
-    function(){
+menuButton.addEventListener("click",function(){
 
-        const isOpen =
-            mobileNav.classList.toggle("open");
+    const isOpen = mobileNav.classList.toggle("open");
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
+    menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
 
-    }
-);
+});
+
+/* FERME LE MENU APRES CLIC */
 
 document
     .querySelectorAll(".mobile-nav a")
     .forEach(function(link){
 
-        link.addEventListener(
-            "click",
-            function(){
+        link.addEventListener("click",function(){
 
-                mobileNav.classList.remove("open");
+            mobileNav.classList.remove("open");
 
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
-            }
-        );
+        });
 
     });
+
+/* IMAGES MANQUANTES */
 
 document
     .querySelectorAll(".device-image img")
     .forEach(function(image){
 
-        image.addEventListener(
-            "error",
-            function(){
+        image.addEventListener("error",function(){
 
-                const parent =
-                    image.closest(".device-image");
+            const parent =
+                image.closest(".device-image");
 
-                parent.classList.add(
-                    "image-missing"
-                );
+            parent.classList.add("image-missing");
 
-                image.style.display = "none";
-
-            }
-        );
+        });
 
     });
+
+/* APPARITION AU SCROLL */
 
 const revealElements =
     document.querySelectorAll(".reveal");
@@ -2754,23 +2205,19 @@ const revealObserver =
     new IntersectionObserver(
         function(entries){
 
-            entries.forEach(
-                function(entry){
+            entries.forEach(function(entry){
 
-                    if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                    entry.target.classList.add("visible");
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
                 }
-            );
+
+            });
 
         },
         {
@@ -2778,60 +2225,44 @@ const revealObserver =
         }
     );
 
-revealElements.forEach(
-    function(element){
+revealElements.forEach(function(element){
+    revealObserver.observe(element);
+});
 
-        revealObserver.observe(element);
-
-    }
-);
+/* NAVIGATION ACTIVE */
 
 const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+    document.querySelectorAll("section[id]");
 
 const navLinks =
-    document.querySelectorAll(
-        ".desktop-nav a"
-    );
+    document.querySelectorAll(".desktop-nav a");
 
 const sectionObserver =
     new IntersectionObserver(
         function(entries){
 
-            entries.forEach(
-                function(entry){
+            entries.forEach(function(entry){
 
-                    if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-                        navLinks.forEach(
-                            function(link){
+                    navLinks.forEach(function(link){
+                        link.classList.remove("active");
+                    });
 
-                                link.style.color =
-                                    "#777f91";
-
-                            }
+                    const active =
+                        document.querySelector(
+                            '.desktop-nav a[href="#' +
+                            entry.target.id +
+                            '"]'
                         );
 
-                        const active =
-                            document.querySelector(
-                                '.desktop-nav a[href="#' +
-                                entry.target.id +
-                                '"]'
-                            );
-
-                        if(active){
-
-                            active.style.color =
-                                "#ffffff";
-
-                        }
-
+                    if(active){
+                        active.classList.add("active");
                     }
 
                 }
-            );
+
+            });
 
         },
         {
@@ -2839,13 +2270,9 @@ const sectionObserver =
         }
     );
 
-sections.forEach(
-    function(section){
-
-        sectionObserver.observe(section);
-
-    }
-);
+sections.forEach(function(section){
+    sectionObserver.observe(section);
+});
 
 </script>
 
