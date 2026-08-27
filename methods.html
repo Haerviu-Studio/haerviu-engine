@@ -6,7 +6,8 @@
 
 <title>HAERVIU ENGINE — Methods</title>
 
-<meta name="description" content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
+<meta name="description"
+content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,24 +176,18 @@ header{
 
 .label{
     margin-bottom:20px;
-
     color:#687185;
-
     font-size:10px;
     font-weight:800;
     letter-spacing:.38em;
-
     text-transform:uppercase;
 }
 
 h1{
     max-width:1000px;
-
     font-size:clamp(65px,10vw,145px);
-
     line-height:.84;
     letter-spacing:-.085em;
-
     font-weight:900;
 }
 
@@ -202,11 +197,8 @@ h1 span{
 
 .description{
     max-width:680px;
-
     margin-top:38px;
-
     color:#aeb6c5;
-
     font-size:18px;
     line-height:1.75;
 }
@@ -274,7 +266,8 @@ h1 span{
 
     background:var(--green);
 
-    box-shadow:0 0 14px var(--green);
+    box-shadow:
+        0 0 14px var(--green);
 }
 
 
@@ -282,26 +275,20 @@ h1 span{
 
 .intro{
     display:grid;
-
     grid-template-columns:.8fr 1.2fr;
-
     gap:80px;
-
     align-items:start;
 }
 
 .intro h2{
     font-size:clamp(42px,5vw,70px);
-
     line-height:.92;
     letter-spacing:-.065em;
 }
 
 .intro-copy{
     color:#858ea0;
-
     font-size:15px;
-
     line-height:1.85;
 }
 
@@ -310,9 +297,7 @@ h1 span{
 
 .methods-grid{
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:22px;
 }
 
@@ -324,7 +309,6 @@ h1 span{
     padding:38px;
 
     border:1px solid var(--line);
-
     border-radius:30px;
 
     background:
@@ -347,7 +331,8 @@ h1 span{
 .method:hover{
     transform:translateY(-7px);
 
-    border-color:rgba(255,255,255,.19);
+    border-color:
+        rgba(255,255,255,.19);
 
     box-shadow:
         0 35px 80px rgba(0,0,0,.4);
@@ -355,7 +340,6 @@ h1 span{
 
 .method-number{
     color:#5d6679;
-
     font-size:9px;
     font-weight:800;
     letter-spacing:.3em;
@@ -372,7 +356,6 @@ h1 span{
     justify-content:center;
 
     border:1px solid rgba(115,131,255,.25);
-
     border-radius:18px;
 
     background:
@@ -401,7 +384,6 @@ h1 span{
     color:#7f889a;
 
     font-size:13px;
-
     line-height:1.75;
 }
 
@@ -416,89 +398,11 @@ h1 span{
     font-size:9px;
     font-weight:800;
     letter-spacing:.22em;
-
     text-transform:uppercase;
 }
 
 .method-link:hover{
     color:white;
-}
-
-
-/* METHOD DETAIL */
-
-.detail{
-    display:grid;
-
-    grid-template-columns:.65fr 1.35fr;
-
-    gap:80px;
-
-    padding:70px;
-
-    border:1px solid var(--line);
-
-    border-radius:34px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #0c1018,
-            #07090e
-        );
-}
-
-.detail-title h2{
-    font-size:clamp(44px,5vw,68px);
-
-    line-height:.9;
-    letter-spacing:-.065em;
-}
-
-.detail-copy{
-    color:#858e9f;
-
-    font-size:15px;
-
-    line-height:1.85;
-}
-
-.steps{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-
-    margin-top:35px;
-}
-
-.step{
-    padding:24px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
-
-    background:#10141d;
-}
-
-.step span{
-    display:block;
-
-    margin-bottom:13px;
-
-    color:#657086;
-
-    font-size:8px;
-    font-weight:800;
-    letter-spacing:.25em;
-}
-
-.step strong{
-    color:#edf0f5;
-
-    font-size:14px;
 }
 
 
@@ -508,7 +412,6 @@ h1 span{
     padding:65px;
 
     border:1px solid var(--line);
-
     border-radius:34px;
 
     background:
@@ -526,19 +429,15 @@ h1 span{
 
 .system-head h2{
     font-size:clamp(44px,5vw,70px);
-
     line-height:.92;
     letter-spacing:-.065em;
 }
 
 .system-flow{
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     gap:14px;
-
     flex-wrap:wrap;
 }
 
@@ -548,7 +447,6 @@ h1 span{
     padding:24px;
 
     border:1px solid rgba(255,255,255,.11);
-
     border-radius:19px;
 
     background:
@@ -573,14 +471,79 @@ h1 span{
 
 .node strong{
     color:#f2f4f8;
-
     font-size:14px;
 }
 
 .arrow{
     color:#555f73;
-
     font-size:20px;
+}
+
+
+/* METHOD DETAIL */
+
+.detail{
+    display:grid;
+    grid-template-columns:.65fr 1.35fr;
+    gap:80px;
+
+    padding:70px;
+
+    border:1px solid var(--line);
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1018,
+            #07090e
+        );
+}
+
+.detail-title h2{
+    font-size:clamp(44px,5vw,68px);
+    line-height:.9;
+    letter-spacing:-.065em;
+}
+
+.detail-copy{
+    color:#858e9f;
+    font-size:15px;
+    line-height:1.85;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+
+    margin-top:35px;
+}
+
+.step{
+    padding:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+
+    background:#10141d;
+}
+
+.step span{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:#657086;
+
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.25em;
+}
+
+.step strong{
+    color:#edf0f5;
+    font-size:14px;
 }
 
 
@@ -588,41 +551,32 @@ h1 span{
 
 footer{
     margin-top:80px;
-
     border-top:1px solid var(--line);
 }
 
 .footer{
     width:min(calc(100% - 10vw),var(--max));
-
     margin:auto;
-
     padding:70px 0 40px;
 }
 
 .footer-name{
     font-size:28px;
-
     font-weight:900;
-
     letter-spacing:-.05em;
 }
 
 .footer p{
     margin-top:14px;
-
     color:#687185;
-
     font-size:12px;
 }
 
 .footer-bottom{
     display:flex;
-
     justify-content:space-between;
 
     margin-top:60px;
-
     padding-top:24px;
 
     border-top:1px solid var(--line);
@@ -630,9 +584,7 @@ footer{
     color:#4f586a;
 
     font-size:9px;
-
     font-weight:700;
-
     letter-spacing:.15em;
 }
 
@@ -658,9 +610,7 @@ footer{
     .hero{
         min-height:650px;
     }
-
 }
-
 
 @media(max-width:700px){
 
@@ -744,7 +694,6 @@ footer{
         flex-direction:column;
         gap:12px;
     }
-
 }
 
 </style>
@@ -766,7 +715,6 @@ footer{
 
 </a>
 
-
 <nav class="nav">
 
     <a href="studio.html">
@@ -782,11 +730,8 @@ footer{
 </header>
 
 
-
 <main>
 
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -796,19 +741,16 @@ footer{
         HAERVIU ENGINE / METHODS
     </div>
 
-
     <h1>
         The<br>
         <span>Methods.</span>
     </h1>
-
 
     <p class="description">
         Transform the studio into a repeatable creative system.
         HAERVIU ENGINE methods are designed to turn ideas,
         machines, rhythm and sound into complete productions.
     </p>
-
 
     <div class="hero-status">
 
@@ -823,15 +765,11 @@ footer{
 </section>
 
 
-
-<!-- PHILOSOPHY -->
-
 <section class="section">
 
 <div class="container">
 
 <div class="intro">
-
 
 <div>
 
@@ -866,7 +804,6 @@ footer{
 
 </div>
 
-
 </div>
 
 </div>
@@ -874,13 +811,9 @@ footer{
 </section>
 
 
-
-<!-- METHOD LIBRARY -->
-
 <section class="section">
 
 <div class="container">
-
 
 <div class="label">
     02 / METHOD LIBRARY
@@ -889,8 +822,6 @@ footer{
 
 <div class="methods-grid">
 
-
-<!-- METHOD 01 -->
 
 <article class="method">
 
@@ -919,8 +850,6 @@ footer{
 </article>
 
 
-<!-- METHOD 02 -->
-
 <article class="method">
 
     <div class="method-number">
@@ -948,8 +877,6 @@ footer{
 </article>
 
 
-<!-- METHOD 03 -->
-
 <article class="method">
 
     <div class="method-number">
@@ -976,8 +903,6 @@ footer{
 
 </article>
 
-
-<!-- METHOD 04 -->
 
 <article class="method">
 
@@ -1013,15 +938,11 @@ footer{
 </section>
 
 
-
-<!-- METHOD 01 -->
-
 <section class="section" id="rhythm">
 
 <div class="container">
 
 <div class="detail">
-
 
 <div class="detail-title">
 
@@ -1049,47 +970,39 @@ footer{
 
     <div class="steps">
 
-
         <div class="step">
             <span>STEP 01</span>
             <strong>Kick Foundation</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Snare / Clap</strong>
         </div>
 
-
         <div class="step">
             <span>STEP 03</span>
             <strong>Hi-Hat Movement</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Percussion</strong>
         </div>
 
-
         <div class="step">
             <span>STEP 05</span>
             <strong>Velocity</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 06</span>
             <strong>Variation</strong>
         </div>
 
-
     </div>
 
 </div>
-
 
 </div>
 
@@ -1098,15 +1011,11 @@ footer{
 </section>
 
 
-
-<!-- METHOD 02 -->
-
 <section class="section" id="production">
 
 <div class="container">
 
 <div class="detail">
-
 
 <div class="detail-title">
 
@@ -1135,35 +1044,29 @@ footer{
 
     <div class="steps">
 
-
         <div class="step">
             <span>STEP 01</span>
             <strong>Choose the Bass Character</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Lock the Groove</strong>
         </div>
 
-
         <div class="step">
             <span>STEP 03</span>
             <strong>Create Movement</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Leave Space</strong>
         </div>
 
-
     </div>
 
 </div>
-
 
 </div>
 
@@ -1172,15 +1075,11 @@ footer{
 </section>
 
 
-
-<!-- METHOD 03 -->
-
 <section class="section" id="arrangement">
 
 <div class="container">
 
 <div class="detail">
-
 
 <div class="detail-title">
 
@@ -1209,47 +1108,39 @@ footer{
 
     <div class="steps">
 
-
         <div class="step">
             <span>STEP 01</span>
             <strong>Intro</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Build</strong>
         </div>
 
-
         <div class="step">
             <span>STEP 03</span>
             <strong>Main Section</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Break</strong>
         </div>
 
-
         <div class="step">
             <span>STEP 05</span>
             <strong>Return</strong>
         </div>
-
 
         <div class="step">
             <span>STEP 06</span>
             <strong>Outro</strong>
         </div>
 
-
     </div>
 
 </div>
-
 
 </div>
 
@@ -1258,15 +1149,11 @@ footer{
 </section>
 
 
-
-<!-- METHOD 04 -->
-
 <section class="section" id="mix">
 
 <div class="container">
 
 <div class="detail">
-
 
 <div class="detail-title">
 
@@ -1295,35 +1182,29 @@ footer{
 
     <div class="steps">
 
-
         <div class="step">
             <span>SOURCE</span>
             <strong>Hardware</strong>
         </div>
-
 
         <div class="step">
             <span>ROUTING</span>
             <strong>MX-1</strong>
         </div>
 
-
         <div class="step">
             <span>CONTROL</span>
             <strong>Performance</strong>
         </div>
-
 
         <div class="step">
             <span>RECORD</span>
             <strong>Cubase</strong>
         </div>
 
-
     </div>
 
 </div>
-
 
 </div>
 
@@ -1332,15 +1213,11 @@ footer{
 </section>
 
 
-
-<!-- ENGINE LOGIC -->
-
 <section class="section">
 
 <div class="container">
 
 <div class="system">
-
 
 <div class="system-head">
 
@@ -1358,59 +1235,40 @@ footer{
 
 <div class="system-flow">
 
-
     <div class="node">
         <small>IDEA</small>
         <strong>Concept</strong>
     </div>
 
-
-    <div class="arrow">
-        →
-    </div>
-
+    <div class="arrow">→</div>
 
     <div class="node">
         <small>RHYTHM</small>
         <strong>TR-8S</strong>
     </div>
 
-
-    <div class="arrow">
-        →
-    </div>
-
+    <div class="arrow">→</div>
 
     <div class="node">
         <small>PRODUCTION</small>
         <strong>MC-707 / FORCE</strong>
     </div>
 
-
-    <div class="arrow">
-        →
-    </div>
-
+    <div class="arrow">→</div>
 
     <div class="node">
         <small>MIX</small>
         <strong>MX-1</strong>
     </div>
 
-
-    <div class="arrow">
-        →
-    </div>
-
+    <div class="arrow">→</div>
 
     <div class="node">
         <small>RECORD</small>
         <strong>CUBASE</strong>
     </div>
 
-
 </div>
-
 
 </div>
 
@@ -1422,34 +1280,29 @@ footer{
 </main>
 
 
-
 <footer>
 
 <div class="footer">
 
+    <div class="footer-name">
+        HAERVIU ENGINE
+    </div>
 
-<div class="footer-name">
-    HAERVIU ENGINE
-</div>
+    <p>
+        Creative systems for music production.
+    </p>
 
+    <div class="footer-bottom">
 
-<p>
-    Creative systems for music production.
-</p>
+        <span>
+            METHODS / PRODUCTION SYSTEM
+        </span>
 
+        <span>
+            © 2026 HAERVIU
+        </span>
 
-<div class="footer-bottom">
-
-    <span>
-        METHODS / PRODUCTION SYSTEM
-    </span>
-
-    <span>
-        © 2026 HAERVIU
-    </span>
-
-</div>
-
+    </div>
 
 </div>
 
