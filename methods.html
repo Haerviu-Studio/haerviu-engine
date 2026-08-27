@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine — Studio Setup</title>
+<title>Haerviu Engine — Methods</title>
 
 <style>
 
@@ -22,8 +22,18 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     background:
         radial-gradient(
             circle at 82% 18%,
@@ -31,18 +41,27 @@ body{
             transparent 28%
         ),
         var(--bg);
+
     color:var(--text);
+
     min-height:100vh;
+
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
+
     position:fixed;
+
     inset:-20%;
+
     border:1px solid rgba(255,255,255,.055);
+
     border-radius:50%;
+
     transform:rotate(-18deg);
+
     pointer-events:none;
 }
 
@@ -51,104 +70,189 @@ a{
     color:inherit;
 }
 
+
+/* HEADER */
+
 header{
     height:104px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 6vw;
-    border-bottom:1px solid rgba(255,255,255,.09);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.09);
+
     position:sticky;
+
     top:0;
+
     z-index:10;
-    background:rgba(7,8,13,.88);
+
+    background:
+        rgba(7,8,13,.88);
+
     backdrop-filter:blur(18px);
+
     -webkit-backdrop-filter:blur(18px);
 }
 
 .brand{
     display:flex;
+
     align-items:center;
+
     gap:20px;
 }
 
 .logo{
     width:58px;
     height:58px;
-    border:1px solid var(--line);
+
+    border:
+        1px solid
+        var(--line);
+
     border-radius:17px;
+
     display:grid;
+
     place-items:center;
+
     font-family:Georgia,serif;
+
     font-size:28px;
 }
 
 .brand-name{
     font-size:17px;
+
     font-weight:800;
+
     letter-spacing:.22em;
 }
 
 .menu{
     width:58px;
     height:58px;
-    border:1px solid var(--line);
+
+    border:
+        1px solid
+        var(--line);
+
     border-radius:17px;
+
     display:grid;
+
     place-items:center;
+
     font-size:24px;
 }
 
+
+/* MAIN */
+
 main{
     max-width:1100px;
+
     margin:auto;
-    padding:65px 6vw 120px;
+
+    padding:
+        65px
+        6vw
+        120px;
+
     position:relative;
+
     z-index:1;
 }
 
+
+/* TOP */
+
 .kicker{
     color:#8e92a2;
+
     letter-spacing:.35em;
+
     font-size:12px;
+
     font-weight:700;
+
     margin-bottom:25px;
 }
 
 h1{
-    font-size:clamp(52px,8vw,100px);
+    font-size:
+        clamp(
+            52px,
+            8vw,
+            100px
+        );
+
     line-height:.9;
+
     letter-spacing:-.065em;
+
     margin-bottom:30px;
 }
 
 .intro{
     color:#aeb2bf;
+
     font-size:19px;
+
     line-height:1.65;
+
     max-width:680px;
+
     margin-bottom:45px;
 }
 
+
+/* BACK */
+
 .back{
     display:inline-block;
-    border:1px solid var(--line);
+
+    border:
+        1px solid
+        var(--line);
+
     border-radius:999px;
+
     padding:13px 20px;
+
     color:#d5d7df;
+
     margin-bottom:50px;
+
     transition:.25s ease;
 }
 
 .back:hover{
     background:#fff;
+
     color:#08090d;
 }
 
-.setup{
-    border:1px solid var(--line);
+
+/* METHODS */
+
+.methods{
+    border:
+        1px solid
+        var(--line);
+
     border-radius:30px;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             145deg,
@@ -157,128 +261,174 @@ h1{
         );
 }
 
-.setup-head{
+.methods-head{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     padding:30px 34px;
-    border-bottom:1px solid var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
 }
 
-.setup-title{
+.methods-title{
     font-size:24px;
+
     font-weight:800;
+
     letter-spacing:.04em;
 }
 
-.online{
+.status{
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     color:var(--green);
+
     font-size:13px;
+
     font-weight:800;
+
     letter-spacing:.2em;
 }
 
-.online-dot{
+.status-dot{
     width:9px;
     height:9px;
+
     background:var(--green);
+
     border-radius:50%;
-    box-shadow:0 0 16px var(--green);
+
+    box-shadow:
+        0 0 16px
+        var(--green);
 }
 
-.instrument{
+
+/* METHOD CARD */
+
+.method{
     margin:30px 34px;
-    min-height:190px;
-    border:1px solid var(--line);
+
+    padding:30px;
+
+    border:
+        1px solid
+        var(--line);
+
     border-radius:24px;
-    display:flex;
-    align-items:center;
-    gap:25px;
-    padding:25px;
-    background:rgba(255,255,255,.025);
+
+    background:
+        rgba(255,255,255,.025);
+
     transition:.3s ease;
 }
 
-.instrument:hover{
-    border-color:rgba(255,255,255,.28);
+.method:hover{
+    border-color:
+        rgba(255,255,255,.28);
+
     transform:translateY(-3px);
 }
 
-.instrument-image{
-    width:240px;
-    height:145px;
-    flex-shrink:0;
-    border:1px solid var(--line);
-    border-radius:20px;
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(70,80,150,.18),
-            rgba(255,255,255,.025)
-        );
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-}
+.method-number{
+    color:#707789;
 
-.instrument-image img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-}
+    font-size:11px;
 
-.instrument-info{
-    flex:1;
-}
-
-.instrument-name{
-    font-size:26px;
     font-weight:800;
-    margin-bottom:7px;
+
+    letter-spacing:.25em;
+
+    margin-bottom:15px;
 }
 
-.instrument-type{
+.method-name{
+    font-size:28px;
+
+    font-weight:800;
+
+    margin-bottom:12px;
+}
+
+.method-description{
     color:#858a99;
-    font-size:16px;
-    margin-bottom:22px;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    max-width:720px;
 }
 
-.connected{
+.method-tools{
     display:flex;
-    align-items:center;
+
+    flex-wrap:wrap;
+
     gap:9px;
-    color:var(--green);
-    font-size:12px;
-    font-weight:800;
-    letter-spacing:.18em;
+
+    margin-top:22px;
 }
 
-.connected-dot{
-    width:8px;
-    height:8px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 13px var(--green);
+.tool{
+    padding:9px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:999px;
+
+    color:#c7cad3;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.05em;
+
+    background:
+        rgba(255,255,255,.025);
 }
+
+
+/* FOOTER */
 
 footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:32px 6vw;
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    padding:
+        32px
+        6vw;
+
     color:#626674;
+
     font-size:12px;
+
     letter-spacing:.12em;
 }
+
+
+/* MOBILE */
 
 @media(max-width:700px){
 
     header{
         height:88px;
-        padding:0 26px;
+
+        padding:
+            0 26px;
     }
 
     .logo{
@@ -288,6 +438,7 @@ footer{
 
     .brand-name{
         font-size:14px;
+
         letter-spacing:.18em;
     }
 
@@ -297,7 +448,10 @@ footer{
     }
 
     main{
-        padding:48px 26px 90px;
+        padding:
+            48px
+            26px
+            90px;
     }
 
     h1{
@@ -308,259 +462,371 @@ footer{
         font-size:17px;
     }
 
-    .setup-head{
+    .methods-head{
         padding:25px;
     }
 
-    .setup-title{
+    .methods-title{
         font-size:20px;
     }
 
-    .instrument{
+    .method{
         margin:20px;
-        min-height:150px;
-        padding:20px;
-        gap:18px;
+
+        padding:22px;
     }
 
-    .instrument-image{
-        width:95px;
-        height:80px;
-        border-radius:16px;
+    .method-name{
+        font-size:22px;
     }
 
-    .instrument-name{
-        font-size:20px;
-    }
-
-    .instrument-type{
+    .method-description{
         font-size:14px;
-        margin-bottom:15px;
-    }
-}
-
-@media(max-width:480px){
-
-    .instrument{
-        flex-direction:column;
-        align-items:flex-start;
     }
 
-    .instrument-image{
-        width:100%;
-        height:130px;
-    }
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
-<a class="brand" href="index.html">
-    <div class="logo">H</div>
-    <div class="brand-name">HAERVIU ENGINE</div>
+<a
+    class="brand"
+    href="index.html"
+>
+
+    <div class="logo">
+        H
+    </div>
+
+    <div class="brand-name">
+        HAERVIU ENGINE
+    </div>
+
 </a>
 
-<div class="menu">☰</div>
+
+<div class="menu">
+    ☰
+</div>
 
 </header>
 
+
+
 <main>
 
+
 <div class="kicker">
-HAERVIU ENGINE / STUDIO SETUP
+HAERVIU ENGINE / METHODS
 </div>
 
+
 <h1>
-Your Studio.
+Make Music.
 </h1>
 
+
 <p class="intro">
-One central workspace to organize your instruments,
-connections, routing and creative workflow.
+Practical production methods designed around
+your hardware, your workflow and the way you create.
 </p>
 
-<a class="back" href="index.html">
+
+<a
+    class="back"
+    href="index.html"
+>
 ← Back to Engine
 </a>
 
-<section class="setup">
 
-<div class="setup-head">
 
-<div class="setup-title">
-STUDIO SETUP
+<section class="methods">
+
+
+<div class="methods-head">
+
+<div class="methods-title">
+METHODS
 </div>
 
-<div class="online">
-<span class="online-dot"></span>
-ONLINE
-</div>
+<div class="status">
 
-</div>
+<span class="status-dot"></span>
 
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/mc-707.webp" alt="Roland MC-707">
-</div>
-
-<div class="instrument-info">
-<div class="instrument-name">Roland MC-707</div>
-<div class="instrument-type">Groovebox / MIDI / Audio / Sampling</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-CONNECTED
-</div>
-</div>
-
-</div>
-
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/tr-8s.webp" alt="Roland TR-8S">
-</div>
-
-<div class="instrument-info">
-<div class="instrument-name">Roland TR-8S</div>
-<div class="instrument-type">Drum Machine / Rhythm / Performance</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-CONNECTED
-</div>
-</div>
-
-</div>
-
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/roland-gaia-sh01.webp" alt="Roland GAIA SH-01">
-</div>
-
-<div class="instrument-info">
-<div class="instrument-name">Roland GAIA SH-01</div>
-<div class="instrument-type">Synthesizer / Sound Design / MIDI</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
 READY
-</div>
-</div>
 
-</div>
-
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/akai-force.webp" alt="Akai Force">
-</div>
-
-<div class="instrument-info">
-<div class="instrument-name">Akai Force</div>
-<div class="instrument-type">Production / Performance / Sampling</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-READY
-</div>
 </div>
 
 </div>
 
 
-<div class="instrument">
 
-<div class="instrument-image">
-<img src="images/mx-1.webp" alt="Roland MX-1">
+<!-- METHOD 01 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 01
 </div>
 
-<div class="instrument-info">
-<div class="instrument-name">Roland MX-1</div>
-<div class="instrument-type">AIRA Mix Performer / USB / Audio Routing</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-CONNECTED
-</div>
+<div class="method-name">
+Deep House Workflow
 </div>
 
+<div class="method-description">
+Build a complete deep house track by combining
+drums, bass, synths, arrangement and performance
+without losing the natural variation of a live workflow.
 </div>
 
+<div class="method-tools">
 
-<div class="instrument">
+<span class="tool">
+TR-8S
+</span>
 
-<div class="instrument-image">
-<img src="images/keylab-mk2-88.webp" alt="Arturia KeyLab MK2 88">
-</div>
+<span class="tool">
+MC-707
+</span>
 
-<div class="instrument-info">
-<div class="instrument-name">Arturia KeyLab MK2 88</div>
-<div class="instrument-type">MIDI Controller / Keyboard</div>
+<span class="tool">
+GAIA SH-01
+</span>
 
-<div class="connected">
-<span class="connected-dot"></span>
-READY
-</div>
-</div>
+<span class="tool">
+MX-1
+</span>
 
-</div>
-
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/rode-nt1.webp" alt="RØDE NT1">
-</div>
-
-<div class="instrument-info">
-<div class="instrument-name">Vocal Chain</div>
-<div class="instrument-type">RØDE NT1 / Roland VT-4</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-READY
-</div>
 </div>
 
 </div>
 
 
-<div class="instrument">
 
-<div class="instrument-image">
-<img src="images/yamaha-hs8.webp" alt="Yamaha HS8">
+<!-- METHOD 02 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 02
 </div>
 
-<div class="instrument-info">
-<div class="instrument-name">Yamaha HS8</div>
-<div class="instrument-type">Studio Monitoring</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-READY
-</div>
+<div class="method-name">
+Hardware Performance
 </div>
 
+<div class="method-description">
+Use the studio as an instrument. Combine
+sequencing, triggering, hands-on control and
+performance to create evolving arrangements.
 </div>
+
+<div class="method-tools">
+
+<span class="tool">
+MC-707
+</span>
+
+<span class="tool">
+TR-8S
+</span>
+
+<span class="tool">
+Akai Force
+</span>
+
+<span class="tool">
+KeyLab MK2
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- METHOD 03 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 03
+</div>
+
+<div class="method-name">
+MIDI Control
+</div>
+
+<div class="method-description">
+Organize MIDI connections and control multiple
+instruments from one central workflow while keeping
+the studio flexible and easy to operate.
+</div>
+
+<div class="method-tools">
+
+<span class="tool">
+KeyLab MK2 88
+</span>
+
+<span class="tool">
+MC-707
+</span>
+
+<span class="tool">
+GAIA SH-01
+</span>
+
+<span class="tool">
+TR-8S
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- METHOD 04 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 04
+</div>
+
+<div class="method-name">
+Audio Routing
+</div>
+
+<div class="method-description">
+Create a clean audio workflow between instruments,
+mixer, computer and monitoring system so that every
+part of the studio has a defined place.
+</div>
+
+<div class="method-tools">
+
+<span class="tool">
+MX-1
+</span>
+
+<span class="tool">
+MC-707
+</span>
+
+<span class="tool">
+TR-8S
+</span>
+
+<span class="tool">
+Yamaha HS8
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- METHOD 05 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 05
+</div>
+
+<div class="method-name">
+Vocal Processing
+</div>
+
+<div class="method-description">
+Build a practical vocal chain combining microphone,
+voice processing and monitoring for spoken or sung
+performances.
+</div>
+
+<div class="method-tools">
+
+<span class="tool">
+RØDE NT1
+</span>
+
+<span class="tool">
+Roland VT-4
+</span>
+
+<span class="tool">
+Yamaha HS8
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- METHOD 06 -->
+
+<div class="method">
+
+<div class="method-number">
+METHOD 06
+</div>
+
+<div class="method-name">
+Arrangement & Variation
+</div>
+
+<div class="method-description">
+Move beyond repetitive loops by developing sections,
+transitions and variations that make a hardware-based
+production feel like a finished musical arrangement.
+</div>
+
+<div class="method-tools">
+
+<span class="tool">
+TR-8S
+</span>
+
+<span class="tool">
+MC-707
+</span>
+
+<span class="tool">
+Akai Force
+</span>
+
+<span class="tool">
+DAW
+</span>
+
+</div>
+
+</div>
+
 
 </section>
 
 </main>
 
+
+
 <footer>
+
 HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+
 </footer>
+
 
 </body>
 </html>
