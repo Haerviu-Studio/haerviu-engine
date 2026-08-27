@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>HAERVIU ENGINE — Methods</title>
-
-<meta name="description"
-content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
+<meta name="description" content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +39,17 @@ html{
 body{
     min-height:100vh;
     background:
-        radial-gradient(circle at 75% -10%,rgba(89,105,255,.18),transparent 34%),
-        linear-gradient(180deg,#05060a,#070914 50%,#05060a);
+        radial-gradient(
+            circle at 75% -10%,
+            rgba(89,105,255,.18),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #05060a,
+            #070914 50%,
+            #05060a
+        );
     color:var(--text);
     font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
@@ -56,10 +62,21 @@ body::before{
     pointer-events:none;
     opacity:.18;
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
     background-size:80px 80px;
-    mask-image:linear-gradient(to bottom,black,transparent 80%);
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
 }
 
 a{
@@ -74,14 +91,20 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
+
     height:84px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 5vw;
+
     background:rgba(5,6,10,.86);
+
     backdrop-filter:blur(24px);
     -webkit-backdrop-filter:blur(24px);
+
     border-bottom:1px solid var(--line);
 }
 
@@ -94,12 +117,21 @@ header{
 .logo{
     width:50px;
     height:50px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border:1px solid rgba(255,255,255,.2);
     border-radius:16px;
-    background:linear-gradient(145deg,#1a1e29,#08090d);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1e29,
+            #08090d
+        );
+
     font-family:Georgia,serif;
     font-size:27px;
 }
@@ -117,9 +149,12 @@ header{
 
 .nav a{
     color:#777f91;
+
     font-size:10px;
     font-weight:800;
+
     letter-spacing:.2em;
+
     text-transform:uppercase;
 }
 
@@ -131,7 +166,11 @@ header{
 /* GLOBAL */
 
 .container{
-    width:min(calc(100% - 10vw),var(--max));
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
+
     margin:auto;
 }
 
@@ -141,18 +180,30 @@ header{
 
 .label{
     margin-bottom:20px;
+
     color:#687185;
+
     font-size:10px;
     font-weight:800;
+
     letter-spacing:.38em;
+
     text-transform:uppercase;
 }
 
 h1{
     max-width:1000px;
-    font-size:clamp(65px,10vw,145px);
+
+    font-size:clamp(
+        65px,
+        10vw,
+        145px
+    );
+
     line-height:.84;
+
     letter-spacing:-.085em;
+
     font-weight:900;
 }
 
@@ -162,9 +213,13 @@ h1 span{
 
 .description{
     max-width:680px;
+
     margin-top:38px;
+
     color:#aeb6c5;
+
     font-size:18px;
+
     line-height:1.75;
 }
 
@@ -173,21 +228,35 @@ h1 span{
 
 .hero{
     min-height:720px;
+
     display:flex;
     align-items:center;
+
     position:relative;
+
     overflow:hidden;
 }
 
 .hero::after{
     content:"";
+
     position:absolute;
+
     width:700px;
     height:700px;
+
     right:-300px;
     top:0;
+
     border-radius:50%;
-    background:radial-gradient(circle,rgba(92,108,255,.18),transparent 68%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(92,108,255,.18),
+            transparent 68%
+        );
+
     pointer-events:none;
 }
 
@@ -200,18 +269,25 @@ h1 span{
     display:flex;
     align-items:center;
     gap:10px;
+
     margin-top:45px;
+
     color:var(--green);
+
     font-size:9px;
     font-weight:800;
+
     letter-spacing:.32em;
 }
 
 .dot{
     width:8px;
     height:8px;
+
     border-radius:50%;
+
     background:var(--green);
+
     box-shadow:0 0 14px var(--green);
 }
 
@@ -220,20 +296,31 @@ h1 span{
 
 .intro{
     display:grid;
+
     grid-template-columns:.8fr 1.2fr;
+
     gap:80px;
+
     align-items:start;
 }
 
 .intro h2{
-    font-size:clamp(42px,5vw,70px);
+    font-size:clamp(
+        42px,
+        5vw,
+        70px
+    );
+
     line-height:.92;
+
     letter-spacing:-.065em;
 }
 
 .intro-copy{
     color:#858ea0;
+
     font-size:15px;
+
     line-height:1.85;
 }
 
@@ -242,72 +329,124 @@ h1 span{
 
 .methods-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:repeat(
+        2,
+        1fr
+    );
+
     gap:22px;
 }
 
 .method{
     position:relative;
+
     min-height:390px;
+
     padding:38px;
+
     border:1px solid var(--line);
+
     border-radius:30px;
+
     background:
-        radial-gradient(circle at 80% 20%,rgba(90,106,255,.10),transparent 35%),
-        linear-gradient(145deg,#10141d,#080a10);
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(90,106,255,.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #10141d,
+            #080a10
+        );
+
     overflow:hidden;
+
     transition:.35s ease;
 }
 
 .method:hover{
     transform:translateY(-7px);
+
     border-color:rgba(255,255,255,.19);
-    box-shadow:0 35px 80px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.4);
 }
 
 .method-number{
     color:#5d6679;
+
     font-size:9px;
     font-weight:800;
+
     letter-spacing:.3em;
 }
 
 .method-icon{
     width:58px;
     height:58px;
+
     margin:55px 0 28px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(115,131,255,.25);
+
+    border:1px solid rgba(
+        115,
+        131,
+        255,
+        .25
+    );
+
     border-radius:18px;
-    background:radial-gradient(circle,rgba(115,131,255,.16),transparent 70%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(115,131,255,.16),
+            transparent 70%
+        );
+
     color:#8997ff;
+
     font-size:12px;
     font-weight:900;
 }
 
 .method h3{
     font-size:30px;
+
     letter-spacing:-.045em;
 }
 
 .method p{
     max-width:470px;
+
     margin-top:15px;
+
     color:#7f889a;
+
     font-size:13px;
+
     line-height:1.75;
 }
 
 .method-link{
     position:absolute;
+
     left:38px;
     bottom:35px;
+
     color:#aab3c4;
+
     font-size:9px;
     font-weight:800;
+
     letter-spacing:.22em;
+
     text-transform:uppercase;
 }
 
@@ -320,10 +459,17 @@ h1 span{
 
 .system{
     padding:65px;
+
     border:1px solid var(--line);
+
     border-radius:34px;
+
     background:
-        radial-gradient(circle at 50% 40%,rgba(89,105,255,.12),transparent 55%),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(89,105,255,.12),
+            transparent 55%
+        ),
         #080b12;
 }
 
@@ -332,43 +478,72 @@ h1 span{
 }
 
 .system-head h2{
-    font-size:clamp(44px,5vw,70px);
+    font-size:clamp(
+        44px,
+        5vw,
+        70px
+    );
+
     line-height:.92;
+
     letter-spacing:-.065em;
 }
 
 .system-flow{
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     gap:14px;
+
     flex-wrap:wrap;
 }
 
 .node{
     min-width:180px;
+
     padding:24px;
-    border:1px solid rgba(255,255,255,.11);
+
+    border:1px solid rgba(
+        255,
+        255,
+        255,
+        .11
+    );
+
     border-radius:19px;
-    background:linear-gradient(145deg,#11151f,#0b0e15);
+
+    background:
+        linear-gradient(
+            145deg,
+            #11151f,
+            #0b0e15
+        );
 }
 
 .node small{
     display:block;
+
     margin-bottom:9px;
+
     color:#606a7d;
+
     font-size:8px;
     font-weight:800;
+
     letter-spacing:.23em;
 }
 
 .node strong{
     color:#f2f4f8;
+
     font-size:14px;
 }
 
 .arrow{
     color:#555f73;
+
     font-size:20px;
 }
 
@@ -377,51 +552,89 @@ h1 span{
 
 .detail{
     display:grid;
+
     grid-template-columns:.65fr 1.35fr;
+
     gap:80px;
+
     padding:70px;
+
     border:1px solid var(--line);
+
     border-radius:34px;
-    background:linear-gradient(145deg,#0c1018,#07090e);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1018,
+            #07090e
+        );
 }
 
 .detail-title h2{
-    font-size:clamp(44px,5vw,68px);
+    font-size:clamp(
+        44px,
+        5vw,
+        68px
+    );
+
     line-height:.9;
+
     letter-spacing:-.065em;
 }
 
 .detail-copy{
     color:#858e9f;
+
     font-size:15px;
+
     line-height:1.85;
 }
 
 .steps{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:repeat(
+        2,
+        1fr
+    );
+
     gap:14px;
+
     margin-top:35px;
 }
 
 .step{
     padding:24px;
-    border:1px solid rgba(255,255,255,.08);
+
+    border:1px solid rgba(
+        255,
+        255,
+        255,
+        .08
+    );
+
     border-radius:18px;
+
     background:#10141d;
 }
 
 .step span{
     display:block;
+
     margin-bottom:13px;
+
     color:#657086;
+
     font-size:8px;
     font-weight:800;
+
     letter-spacing:.25em;
 }
 
 .step strong{
     color:#edf0f5;
+
     font-size:14px;
 }
 
@@ -430,36 +643,53 @@ h1 span{
 
 footer{
     margin-top:80px;
+
     border-top:1px solid var(--line);
 }
 
 .footer{
-    width:min(calc(100% - 10vw),var(--max));
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
+
     margin:auto;
+
     padding:70px 0 40px;
 }
 
 .footer-name{
     font-size:28px;
+
     font-weight:900;
+
     letter-spacing:-.05em;
 }
 
 .footer p{
     margin-top:14px;
+
     color:#687185;
+
     font-size:12px;
 }
 
 .footer-bottom{
     display:flex;
+
     justify-content:space-between;
+
     margin-top:60px;
+
     padding-top:24px;
+
     border-top:1px solid var(--line);
+
     color:#4f586a;
+
     font-size:9px;
     font-weight:700;
+
     letter-spacing:.15em;
 }
 
@@ -475,6 +705,7 @@ footer{
     .intro,
     .detail{
         grid-template-columns:1fr;
+
         gap:40px;
     }
 
@@ -491,17 +722,20 @@ footer{
 
     header{
         height:72px;
+
         padding:0 20px;
     }
 
     .logo{
         width:44px;
         height:44px;
+
         font-size:24px;
     }
 
     .brand-name{
         font-size:10px;
+
         letter-spacing:.27em;
     }
 
@@ -519,7 +753,11 @@ footer{
     }
 
     h1{
-        font-size:clamp(62px,19vw,100px);
+        font-size:clamp(
+            62px,
+            19vw,
+            100px
+        );
     }
 
     .description{
@@ -528,7 +766,9 @@ footer{
 
     .method{
         min-height:350px;
+
         padding:28px;
+
         border-radius:25px;
     }
 
@@ -544,11 +784,13 @@ footer{
     .system,
     .detail{
         padding:30px 22px;
+
         border-radius:25px;
     }
 
     .system-flow{
         flex-direction:column;
+
         align-items:stretch;
     }
 
@@ -558,6 +800,7 @@ footer{
 
     .arrow{
         text-align:center;
+
         transform:rotate(90deg);
     }
 
@@ -567,6 +810,7 @@ footer{
 
     .footer-bottom{
         flex-direction:column;
+
         gap:12px;
     }
 }
@@ -577,19 +821,36 @@ footer{
 
 <body>
 
+
 <header>
 
-    <a href="index.html" class="brand">
-        <div class="logo">H</div>
-        <div class="brand-name">HAERVIU ENGINE</div>
+<a href="index.html" class="brand">
+
+    <div class="logo">
+        H
+    </div>
+
+    <div class="brand-name">
+        HAERVIU ENGINE
+    </div>
+
+</a>
+
+
+<nav class="nav">
+
+    <a href="studio.html">
+        Studio
     </a>
 
-    <nav class="nav">
-        <a href="studio.html">Studio</a>
-        <a href="methods.html">Methods</a>
-    </nav>
+    <a href="methods.html">
+        Methods
+    </a>
+
+</nav>
 
 </header>
+
 
 
 <main>
@@ -597,530 +858,789 @@ footer{
 
 <section class="hero">
 
-    <div class="container hero-content">
+<div class="container hero-content">
 
-        <div class="label">
-            HAERVIU ENGINE / METHODS
-        </div>
+    <div class="label">
+        HAERVIU ENGINE / METHODS
+    </div>
 
-        <h1>
-            The<br>
-            <span>Methods.</span>
-        </h1>
+    <h1>
+        The<br>
+        <span>Methods.</span>
+    </h1>
 
-        <p class="description">
-            Transform the studio into a repeatable creative system.
-            HAERVIU ENGINE methods are designed to turn ideas,
-            machines, rhythm and sound into complete productions.
-        </p>
+    <p class="description">
+        Transform the studio into a repeatable creative system.
+        HAERVIU ENGINE methods are designed to turn ideas,
+        machines, rhythm and sound into complete productions.
+    </p>
 
-        <div class="hero-status">
-            <span class="dot"></span>
-            METHOD SYSTEM / IN DEVELOPMENT
-        </div>
+    <div class="hero-status">
+
+        <span class="dot"></span>
+
+        METHOD SYSTEM / IN DEVELOPMENT
 
     </div>
 
+</div>
+
 </section>
+
 
 
 <section class="section">
 
-    <div class="container">
+<div class="container">
 
-        <div class="intro">
+<div class="intro">
 
-            <div>
 
-                <div class="label">
-                    01 / PHILOSOPHY
-                </div>
+<div>
 
-                <h2>
-                    Not just<br>
-                    equipment.
-                </h2>
-
-            </div>
-
-            <div class="intro-copy">
-
-                HAERVIU ENGINE is built around a simple principle:
-                equipment becomes powerful when every machine has
-                a clear role inside a complete creative workflow.
-
-                <br><br>
-
-                The objective is not to collect machines.
-                The objective is to know what to do with them,
-                when to use them and how to connect them.
-
-                <br><br>
-
-                These methods will progressively transform
-                real studio workflows into repeatable systems.
-
-            </div>
-
-        </div>
-
+    <div class="label">
+        01 / PHILOSOPHY
     </div>
 
+    <h2>
+        Not just<br>
+        equipment.
+    </h2>
+
+</div>
+
+
+<div class="intro-copy">
+
+    HAERVIU ENGINE is built around a simple principle:
+    equipment becomes powerful when every machine has
+    a clear role inside a complete creative workflow.
+
+    <br><br>
+
+    The objective is not to collect machines.
+    The objective is to know what to do with them,
+    when to use them and how to connect them.
+
+    <br><br>
+
+    These methods will progressively transform
+    real studio workflows into repeatable systems.
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section">
 
-    <div class="container">
-
-        <div class="label">
-            02 / METHOD LIBRARY
-        </div>
-
-        <div class="methods-grid">
+<div class="container">
 
 
-            <article class="method">
-
-                <div class="method-number">
-                    METHOD 01
-                </div>
-
-                <div class="method-icon">
-                    RHYTHM
-                </div>
-
-                <h3>
-                    Build the Groove
-                </h3>
-
-                <p>
-                    Create a strong rhythmic foundation using
-                    drum machines, patterns, variations,
-                    velocity and groove.
-                </p>
-
-                <a class="method-link" href="#rhythm">
-                    Explore method →
-                </a>
-
-            </article>
+<div class="label">
+    02 / METHOD LIBRARY
+</div>
 
 
-            <article class="method">
-
-                <div class="method-number">
-                    METHOD 02
-                </div>
-
-                <div class="method-icon">
-                    BASS
-                </div>
-
-                <h3>
-                    Build the Foundation
-                </h3>
-
-                <p>
-                    Combine rhythm and bass so the track gains
-                    movement, weight and identity without
-                    becoming repetitive.
-                </p>
-
-                <a class="method-link" href="#production">
-                    Explore method →
-                </a>
-
-            </article>
+<div class="methods-grid">
 
 
-            <article class="method">
+<article class="method">
 
-                <div class="method-number">
-                    METHOD 03
-                </div>
-
-                <div class="method-icon">
-                    ARRANGE
-                </div>
-
-                <h3>
-                    Escape the Loop
-                </h3>
-
-                <p>
-                    Turn a loop into a real arrangement by
-                    introducing controlled changes, transitions,
-                    breaks and energy variations.
-                </p>
-
-                <a class="method-link" href="#arrangement">
-                    Explore method →
-                </a>
-
-            </article>
-
-
-            <article class="method">
-
-                <div class="method-number">
-                    METHOD 04
-                </div>
-
-                <div class="method-icon">
-                    MIX
-                </div>
-
-                <h3>
-                    Perform the Mix
-                </h3>
-
-                <p>
-                    Use the hardware mixer and the DAW as one
-                    environment for routing, balancing,
-                    performance and recording.
-                </p>
-
-                <a class="method-link" href="#mix">
-                    Explore method →
-                </a>
-
-            </article>
-
-
-        </div>
-
+    <div class="method-number">
+        METHOD 01
     </div>
 
+    <div class="method-icon">
+        RHYTHM
+    </div>
+
+    <h3>
+        Build the Groove
+    </h3>
+
+    <p>
+        Create a strong rhythmic foundation using
+        drum machines, patterns, variations,
+        velocity and groove.
+    </p>
+
+    <a class="method-link" href="#rhythm">
+        Explore method →
+    </a>
+
+</article>
+
+
+
+<article class="method">
+
+    <div class="method-number">
+        METHOD 02
+    </div>
+
+    <div class="method-icon">
+        BASS
+    </div>
+
+    <h3>
+        Build the Foundation
+    </h3>
+
+    <p>
+        Combine rhythm and bass so the track gains
+        movement, weight and identity without
+        becoming repetitive.
+    </p>
+
+    <a class="method-link" href="#production">
+        Explore method →
+    </a>
+
+</article>
+
+
+
+<article class="method">
+
+    <div class="method-number">
+        METHOD 03
+    </div>
+
+    <div class="method-icon">
+        ARRANGE
+    </div>
+
+    <h3>
+        Escape the Loop
+    </h3>
+
+    <p>
+        Turn a loop into a real arrangement by
+        introducing controlled changes, transitions,
+        breaks and energy variations.
+    </p>
+
+    <a class="method-link" href="#arrangement">
+        Explore method →
+    </a>
+
+</article>
+
+
+
+<article class="method">
+
+    <div class="method-number">
+        METHOD 04
+    </div>
+
+    <div class="method-icon">
+        MIX
+    </div>
+
+    <h3>
+        Perform the Mix
+    </h3>
+
+    <p>
+        Use the hardware mixer and the DAW as one
+        environment for routing, balancing,
+        performance and recording.
+    </p>
+
+    <a class="method-link" href="#mix">
+        Explore method →
+    </a>
+
+</article>
+
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section" id="rhythm">
 
-    <div class="container">
+<div class="container">
 
-        <div class="detail">
 
-            <div class="detail-title">
+<div class="detail">
 
-                <div class="label">
-                    METHOD 01
-                </div>
 
-                <h2>
-                    Build<br>
-                    the Groove.
-                </h2>
+<div class="detail-title">
 
-            </div>
+    <div class="label">
+        METHOD 01
+    </div>
 
-            <div class="detail-copy">
+    <h2>
+        Build<br>
+        the Groove.
+    </h2>
 
-                The first objective is not to make a complete song.
+</div>
 
-                <br><br>
 
-                The objective is to create a groove strong enough
-                to make the rest of the production possible.
+<div class="detail-copy">
 
-                <div class="steps">
+    The first objective is not to make a complete song.
 
-                    <div class="step">
-                        <span>STEP 01</span>
-                        <strong>Kick Foundation</strong>
-                    </div>
+    <br><br>
 
-                    <div class="step">
-                        <span>STEP 02</span>
-                        <strong>Snare / Clap</strong>
-                    </div>
+    The objective is to create a groove strong enough
+    to make the rest of the production possible.
 
-                    <div class="step">
-                        <span>STEP 03</span>
-                        <strong>Hi-Hat Movement</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>STEP 04</span>
-                        <strong>Percussion</strong>
-                    </div>
+    <div class="steps">
 
-                    <div class="step">
-                        <span>STEP 05</span>
-                        <strong>Velocity</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>STEP 06</span>
-                        <strong>Variation</strong>
-                    </div>
+        <div class="step">
 
-                </div>
+            <span>
+                STEP 01
+            </span>
 
-            </div>
+            <strong>
+                Kick Foundation
+            </strong>
 
         </div>
 
+
+        <div class="step">
+
+            <span>
+                STEP 02
+            </span>
+
+            <strong>
+                Snare / Clap
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 03
+            </span>
+
+            <strong>
+                Hi-Hat Movement
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 04
+            </span>
+
+            <strong>
+                Percussion
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 05
+            </span>
+
+            <strong>
+                Velocity
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 06
+            </span>
+
+            <strong>
+                Variation
+            </strong>
+
+        </div>
+
+
     </div>
 
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section" id="production">
 
-    <div class="container">
+<div class="container">
 
-        <div class="detail">
 
-            <div class="detail-title">
+<div class="detail">
 
-                <div class="label">
-                    METHOD 02
-                </div>
 
-                <h2>
-                    Build<br>
-                    the Foundation.
-                </h2>
+<div class="detail-title">
 
-            </div>
+    <div class="label">
+        METHOD 02
+    </div>
 
-            <div class="detail-copy">
+    <h2>
+        Build<br>
+        the Foundation.
+    </h2>
 
-                Rhythm and bass become the physical foundation
-                of the track.
+</div>
 
-                <br><br>
 
-                The goal is movement and interaction rather than
-                simply adding another sound.
+<div class="detail-copy">
 
-                <div class="steps">
+    Rhythm and bass become the physical foundation
+    of the track.
 
-                    <div class="step">
-                        <span>STEP 01</span>
-                        <strong>Choose the Bass Character</strong>
-                    </div>
+    <br><br>
 
-                    <div class="step">
-                        <span>STEP 02</span>
-                        <strong>Lock the Groove</strong>
-                    </div>
+    The goal is movement and interaction rather than
+    simply adding another sound.
 
-                    <div class="step">
-                        <span>STEP 03</span>
-                        <strong>Create Movement</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>STEP 04</span>
-                        <strong>Leave Space</strong>
-                    </div>
+    <div class="steps">
 
-                </div>
 
-            </div>
+        <div class="step">
+
+            <span>
+                STEP 01
+            </span>
+
+            <strong>
+                Choose the Bass Character
+            </strong>
 
         </div>
 
+
+        <div class="step">
+
+            <span>
+                STEP 02
+            </span>
+
+            <strong>
+                Lock the Groove
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 03
+            </span>
+
+            <strong>
+                Create Movement
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 04
+            </span>
+
+            <strong>
+                Leave Space
+            </strong>
+
+        </div>
+
+
     </div>
 
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section" id="arrangement">
 
-    <div class="container">
+<div class="container">
 
-        <div class="detail">
 
-            <div class="detail-title">
+<div class="detail">
 
-                <div class="label">
-                    METHOD 03
-                </div>
 
-                <h2>
-                    Escape<br>
-                    the Loop.
-                </h2>
+<div class="detail-title">
 
-            </div>
+    <div class="label">
+        METHOD 03
+    </div>
 
-            <div class="detail-copy">
+    <h2>
+        Escape<br>
+        the Loop.
+    </h2>
 
-                A production should evolve.
+</div>
 
-                <br><br>
 
-                Instead of copying one loop from beginning to end,
-                the arrangement introduces controlled changes
-                that create progression and anticipation.
+<div class="detail-copy">
 
-                <div class="steps">
+    A production should evolve.
 
-                    <div class="step">
-                        <span>STEP 01</span>
-                        <strong>Intro</strong>
-                    </div>
+    <br><br>
 
-                    <div class="step">
-                        <span>STEP 02</span>
-                        <strong>Build</strong>
-                    </div>
+    Instead of copying one loop from beginning to end,
+    the arrangement introduces controlled changes
+    that create progression and anticipation.
 
-                    <div class="step">
-                        <span>STEP 03</span>
-                        <strong>Main Section</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>STEP 04</span>
-                        <strong>Break</strong>
-                    </div>
+    <div class="steps">
 
-                    <div class="step">
-                        <span>STEP 05</span>
-                        <strong>Return</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>STEP 06</span>
-                        <strong>Outro</strong>
-                    </div>
+        <div class="step">
 
-                </div>
+            <span>
+                STEP 01
+            </span>
 
-            </div>
+            <strong>
+                Intro
+            </strong>
 
         </div>
 
+
+        <div class="step">
+
+            <span>
+                STEP 02
+            </span>
+
+            <strong>
+                Build
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 03
+            </span>
+
+            <strong>
+                Main Section
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 04
+            </span>
+
+            <strong>
+                Break
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 05
+            </span>
+
+            <strong>
+                Return
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                STEP 06
+            </span>
+
+            <strong>
+                Outro
+            </strong>
+
+        </div>
+
+
     </div>
 
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section" id="mix">
 
-    <div class="container">
+<div class="container">
 
-        <div class="detail">
 
-            <div class="detail-title">
+<div class="detail">
 
-                <div class="label">
-                    METHOD 04
-                </div>
 
-                <h2>
-                    Perform<br>
-                    the Mix.
-                </h2>
+<div class="detail-title">
 
-            </div>
+    <div class="label">
+        METHOD 04
+    </div>
 
-            <div class="detail-copy">
+    <h2>
+        Perform<br>
+        the Mix.
+    </h2>
 
-                The mixer is not simply the final stage.
+</div>
 
-                <br><br>
 
-                It becomes part of the performance itself:
-                levels, routing, effects, transitions and
-                recording are treated as part of the creative process.
+<div class="detail-copy">
 
-                <div class="steps">
+    The mixer is not simply the final stage.
 
-                    <div class="step">
-                        <span>SOURCE</span>
-                        <strong>Hardware</strong>
-                    </div>
+    <br><br>
 
-                    <div class="step">
-                        <span>ROUTING</span>
-                        <strong>MX-1</strong>
-                    </div>
+    It becomes part of the performance itself:
+    levels, routing, effects, transitions and
+    recording are treated as part of the creative process.
 
-                    <div class="step">
-                        <span>CONTROL</span>
-                        <strong>Performance</strong>
-                    </div>
 
-                    <div class="step">
-                        <span>RECORD</span>
-                        <strong>Cubase</strong>
-                    </div>
+    <div class="steps">
 
-                </div>
 
-            </div>
+        <div class="step">
+
+            <span>
+                SOURCE
+            </span>
+
+            <strong>
+                Hardware
+            </strong>
 
         </div>
 
+
+        <div class="step">
+
+            <span>
+                ROUTING
+            </span>
+
+            <strong>
+                MX-1
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                CONTROL
+            </span>
+
+            <strong>
+                Performance
+            </strong>
+
+        </div>
+
+
+        <div class="step">
+
+            <span>
+                RECORD
+            </span>
+
+            <strong>
+                Cubase
+            </strong>
+
+        </div>
+
+
     </div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
+
 <section class="section">
 
-    <div class="container">
+<div class="container">
 
-        <div class="system">
 
-            <div class="system-head">
+<div class="system">
 
-                <div class="label">
-                    03 / ENGINE LOGIC
-                </div>
 
-                <h2>
-                    One system.<br>
-                    Multiple methods.
-                </h2>
+<div class="system-head">
 
-            </div>
+    <div class="label">
+        03 / ENGINE LOGIC
+    </div>
 
-            <div class="system-flow">
+    <h2>
+        One system.<br>
+        Multiple methods.
+    </h2>
 
-                <div class="node">
-                    <small>IDEA</small>
-                    <strong>Concept</strong>
-                </div>
+</div>
 
-                <div class="arrow">→</div>
 
-                <div class="node">
-                    <small>RHYTHM</small>
-                    <strong>TR-8S</strong>
-                </div>
+<div class="system-flow">
 
-                <div class="arrow">→</div>
 
-                <div class="node">
-                    <small>PRODUCTION</small>
-                    <strong>MC-707 / FORCE</strong>
-                </div>
+    <div class="node">
 
-                <div class="arrow">→</div>
+        <small>
+            IDEA
+        </small>
 
-                <div class="node">
-                    <small>MIX</small>
-                    <strong>MX-1</strong>
-                </div>
-
-                <div class="arrow">→</div>
-
-                <div class="node">
-                    <small>RECORD</small>
-                    <strong>CUBASE</strong>
-                </div>
-
-            </div>
-
-        </div>
+        <strong>
+            Concept
+        </strong>
 
     </div>
+
+
+    <div class="arrow">
+        →
+    </div>
+
+
+    <div class="node">
+
+        <small>
+            RHYTHM
+        </small>
+
+        <strong>
+            TR-8S
+        </strong>
+
+    </div>
+
+
+    <div class="arrow">
+        →
+    </div>
+
+
+    <div class="node">
+
+        <small>
+            PRODUCTION
+        </small>
+
+        <strong>
+            MC-707 / FORCE
+        </strong>
+
+    </div>
+
+
+    <div class="arrow">
+        →
+    </div>
+
+
+    <div class="node">
+
+        <small>
+            MIX
+        </small>
+
+        <strong>
+            MX-1
+        </strong>
+
+    </div>
+
+
+    <div class="arrow">
+        →
+    </div>
+
+
+    <div class="node">
+
+        <small>
+            RECORD
+        </small>
+
+        <strong>
+            CUBASE
+        </strong>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
@@ -1128,31 +1648,36 @@ footer{
 </main>
 
 
+
 <footer>
 
-    <div class="footer">
+<div class="footer">
 
-        <div class="footer-name">
-            HAERVIU ENGINE
-        </div>
 
-        <p>
-            Creative systems for music production.
-        </p>
+<div class="footer-name">
+    HAERVIU ENGINE
+</div>
 
-        <div class="footer-bottom">
 
-            <span>
-                METHODS / PRODUCTION SYSTEM
-            </span>
+<p>
+    Creative systems for music production.
+</p>
 
-            <span>
-                © 2026 HAERVIU
-            </span>
 
-        </div>
+<div class="footer-bottom">
 
-    </div>
+    <span>
+        METHODS / PRODUCTION SYSTEM
+    </span>
+
+    <span>
+        © 2026 HAERVIU
+    </span>
+
+</div>
+
+
+</div>
 
 </footer>
 
