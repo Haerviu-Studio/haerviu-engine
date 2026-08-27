@@ -4,16 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine</title>
+<title>Haerviu Engine — Creative Music System</title>
+
+<meta name="description" content="Haerviu Engine — a central system for studio, methods, hardware and creative music workflows.">
 
 <style>
 
 :root{
     --bg:#07080d;
-    --line:rgba(255,255,255,.13);
+    --line:rgba(255,255,255,.12);
     --text:#f4f4f7;
     --muted:#858997;
-    --green:#6ee7a0;
+    --blue:#7383ff;
 }
 
 *{
@@ -27,239 +29,483 @@ html{
 }
 
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:
-        radial-gradient(circle at 78% 16%,rgba(90,110,180,.16),transparent 30%),
-        radial-gradient(circle at 18% 75%,rgba(80,130,110,.08),transparent 30%),
-        var(--bg);
-    color:var(--text);
     min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(90,110,180,.13),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #07080d,
+            #090b12 55%,
+            #07080d
+        );
+
+    color:var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
+
     position:fixed;
+
     inset:-20%;
-    border:1px solid rgba(255,255,255,.055);
+
+    border:1px solid rgba(255,255,255,.045);
+
     border-radius:50%;
+
     transform:rotate(-18deg);
+
     pointer-events:none;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
+
+
+/* HEADER */
 
 header{
     height:104px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 6vw;
-    border-bottom:1px solid rgba(255,255,255,.09);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
     position:sticky;
+
     top:0;
-    z-index:10;
+
+    z-index:20;
+
     background:rgba(7,8,13,.88);
+
     backdrop-filter:blur(18px);
+
     -webkit-backdrop-filter:blur(18px);
 }
 
 .brand{
     display:flex;
+
     align-items:center;
+
     gap:20px;
 }
 
 .logo{
     width:58px;
     height:58px;
+
     border:1px solid var(--line);
+
     border-radius:17px;
+
     display:grid;
+
     place-items:center;
+
     font-family:Georgia,serif;
+
     font-size:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
 }
 
 .brand-name{
     font-size:17px;
+
     font-weight:800;
+
     letter-spacing:.22em;
 }
 
 .menu{
     width:58px;
     height:58px;
+
     border:1px solid var(--line);
+
     border-radius:17px;
+
     display:grid;
+
     place-items:center;
+
     font-size:24px;
+
+    color:#dfe2e9;
 }
 
+
+/* MAIN */
+
 main{
-    max-width:1200px;
+    max-width:1100px;
+
     margin:auto;
-    padding:90px 6vw 130px;
+
+    padding:78px 6vw 130px;
+
     position:relative;
+
     z-index:1;
+}
+
+
+/* HERO */
+
+.hero{
+    min-height:560px;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+}
+
+.hero-content{
+    position:relative;
+
+    z-index:2;
 }
 
 .kicker{
     color:#8e92a2;
+
     letter-spacing:.35em;
+
     font-size:12px;
-    font-weight:700;
+
+    font-weight:800;
+
     margin-bottom:28px;
 }
 
 h1{
-    font-size:clamp(64px,10vw,125px);
-    line-height:.88;
-    letter-spacing:-.07em;
     max-width:900px;
-    margin-bottom:35px;
+
+    font-size:clamp(
+        58px,
+        8vw,
+        108px
+    );
+
+    line-height:.88;
+
+    letter-spacing:-.075em;
+
+    font-weight:900;
 }
 
-.hero-text{
-    max-width:720px;
+.description{
+    max-width:760px;
+
+    margin-top:36px;
+
     color:#aeb2bf;
-    font-size:20px;
+
+    font-size:19px;
+
     line-height:1.7;
-    margin-bottom:50px;
 }
 
 .actions{
     display:flex;
-    flex-wrap:wrap;
+
     gap:14px;
-    margin-bottom:100px;
+
+    margin-top:42px;
+
+    flex-wrap:wrap;
 }
 
 .button{
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
-    padding:16px 25px;
+
+    min-height:48px;
+
+    padding:0 22px;
+
     border:1px solid var(--line);
+
     border-radius:999px;
-    font-size:14px;
-    font-weight:700;
+
+    font-size:13px;
+
+    font-weight:800;
+
     transition:.25s ease;
 }
 
-.button:hover{
-    background:#fff;
-    color:#08090d;
-    transform:translateY(-2px);
+.button.primary{
+    background:#f5f5f7;
+
+    color:#090a0e;
+
+    border-color:#f5f5f7;
 }
 
-.button.primary{
-    background:#f4f4f7;
-    color:#08090d;
-    border-color:#f4f4f7;
+.button:hover{
+    transform:translateY(-2px);
+
+    border-color:rgba(255,255,255,.28);
 }
+
+
+/* SECTION */
 
 .section-label{
-    color:#8e92a2;
-    font-size:11px;
+    color:#747c8f;
+
+    letter-spacing:.35em;
+
+    font-size:10px;
+
     font-weight:800;
-    letter-spacing:.28em;
-    margin-bottom:22px;
+
+    margin-bottom:25px;
 }
+
+
+/* CARDS */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
 }
 
 .card{
-    min-height:260px;
+    position:relative;
+
+    min-height:290px;
+
+    padding:
+        30px
+        28px
+        32px;
+
     border:1px solid var(--line);
-    border-radius:28px;
-    padding:30px;
+
+    border-radius:25px;
+
     background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(90,105,180,.10),
+            transparent 38%
+        ),
         linear-gradient(
             145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
+            #12151c,
+            #0b0d13
         );
+
+    overflow:hidden;
+
     transition:.3s ease;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
 }
 
 .card:hover{
-    border-color:rgba(255,255,255,.30);
     transform:translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.23);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.35);
 }
 
 .card-number{
-    color:#666b7a;
-    font-size:12px;
-    letter-spacing:.2em;
+    color:#687184;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.25em;
 }
 
 .card h2{
+    margin-top:24px;
+
     font-size:27px;
-    margin:20px 0 12px;
+
+    letter-spacing:-.04em;
 }
 
 .card p{
-    color:#858a99;
-    line-height:1.6;
-    font-size:15px;
+    max-width:260px;
+
+    margin-top:15px;
+
+    color:#858c9d;
+
+    font-size:13px;
+
+    line-height:1.7;
 }
 
-.card-arrow{
-    margin-top:30px;
-    font-size:22px;
+.card-link{
+    position:absolute;
+
+    left:28px;
+
+    bottom:27px;
+
+    color:#d0d4dd;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
 }
+
+
+/* SYSTEM */
+
+.system{
+    margin-top:90px;
+
+    padding:45px;
+
+    border:1px solid var(--line);
+
+    border-radius:30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(90,105,180,.10),
+            transparent 60%
+        ),
+        #0b0e14;
+}
+
+.system h2{
+    font-size:clamp(
+        38px,
+        5vw,
+        62px
+    );
+
+    line-height:.95;
+
+    letter-spacing:-.06em;
+}
+
+.system p{
+    max-width:650px;
+
+    margin-top:22px;
+
+    color:#858c9d;
+
+    line-height:1.75;
+
+    font-size:14px;
+}
+
+
+/* FOOTER */
 
 footer{
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
     padding:32px 6vw;
+
     color:#626674;
+
     font-size:12px;
+
     letter-spacing:.12em;
 }
+
+
+/* TABLET / MOBILE */
 
 @media(max-width:800px){
 
     header{
         height:88px;
+
         padding:0 26px;
     }
 
-    .logo{
+    .logo,
+    .menu{
         width:50px;
+
         height:50px;
     }
 
     .brand-name{
         font-size:14px;
+
         letter-spacing:.18em;
     }
 
-    .menu{
-        width:50px;
-        height:50px;
+    main{
+        padding:
+            55px
+            26px
+            90px;
     }
 
-    main{
-        padding:60px 26px 90px;
+    .hero{
+        min-height:500px;
     }
 
     h1{
-        font-size:64px;
+        font-size:
+            clamp(
+                55px,
+                14vw,
+                90px
+            );
     }
 
-    .hero-text{
+    .description{
         font-size:17px;
     }
 
@@ -268,18 +514,29 @@ footer{
     }
 
     .card{
-        min-height:220px;
+        min-height:250px;
+    }
+
+    .system{
+        padding:30px 24px;
     }
 }
 
+
+/* SMALL MOBILE */
+
 @media(max-width:480px){
 
-    h1{
-        font-size:54px;
+    .brand-name{
+        font-size:11px;
+
+        letter-spacing:.16em;
     }
 
     .actions{
         flex-direction:column;
+
+        align-items:stretch;
     }
 
     .button{
@@ -290,39 +547,53 @@ footer{
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
 <a class="brand" href="index.html">
 
-    <div class="logo">H</div>
+<div class="logo">
+H
+</div>
 
-    <div class="brand-name">
-        HAERVIU ENGINE
-    </div>
+<div class="brand-name">
+HAERVIU ENGINE
+</div>
 
 </a>
 
-<div class="menu">
-    ☰
+
+<div class="menu" aria-hidden="true">
+☰
 </div>
 
 </header>
 
 
+
 <main>
+
+
+<section class="hero">
+
+<div class="hero-content">
+
 
 <div class="kicker">
 HAERVIU LABS / CREATIVE MUSIC SYSTEM
 </div>
+
 
 <h1>
 Your Studio.<br>
 Reimagined.
 </h1>
 
-<p class="hero-text">
+
+<p class="description">
 Haerviu Engine is a central system designed to connect,
 organize and control your music studio — instruments,
 routing, workflows, methods and creative tools in one place.
@@ -331,15 +602,31 @@ routing, workflows, methods and creative tools in one place.
 
 <div class="actions">
 
-<a class="button primary" href="methods.html">
+<a
+class="button primary"
+href="studio.html"
+>
 Explore Studio
 </a>
 
-<a class="button" href="studio.html">
-Studio
+
+<a
+class="button"
+href="methods.html"
+>
+Methods
 </a>
 
 </div>
+
+
+</div>
+
+</section>
+
+
+
+<section id="engine">
 
 
 <div class="section-label">
@@ -347,90 +634,129 @@ THE ENGINE
 </div>
 
 
-<section class="cards">
+<div class="cards">
 
 
-<a class="card" href="methods.html">
+<a
+class="card"
+href="methods.html"
+>
 
-<div>
-<div class="card-number">01 / METHODS</div>
+<div class="card-number">
+01 / METHODS
+</div>
 
 <h2>
 Methods
 </h2>
 
 <p>
-Practical production methods designed around your actual
-hardware, workflow and creative process.
+Practical production methods designed around
+your actual hardware, workflow and creative process.
 </p>
-</div>
 
-<div class="card-arrow">→</div>
+<span class="card-link">
+Explore Methods →
+</span>
 
 </a>
 
 
-<a class="card" href="studio.html">
 
-<div>
-<div class="card-number">02 / STUDIO</div>
+<a
+class="card"
+href="studio.html"
+>
+
+<div class="card-number">
+02 / STUDIO
+</div>
 
 <h2>
 Studio
 </h2>
 
 <p>
-Your complete studio environment, instruments,
-connections and production setup.
+Your complete studio environment,
+instruments, connections and production setup.
 </p>
-</div>
 
-<div class="card-arrow">→</div>
+<span class="card-link">
+Explore Studio →
+</span>
 
 </a>
 
 
-<a class="card" href="#system">
 
-<div>
-<div class="card-number">03 / SYSTEM</div>
+<a
+class="card"
+href="#system"
+>
+
+<div class="card-number">
+03 / SYSTEM
+</div>
 
 <h2>
 Engine
 </h2>
 
 <p>
-A future-ready workspace built to bring hardware,
-software and creative workflows together.
+A future-ready workspace built to bring
+hardware, software and creative workflows together.
 </p>
-</div>
 
-<div class="card-arrow">→</div>
+<span class="card-link">
+Explore System →
+</span>
 
 </a>
 
 
-</section>
-
-
-<section id="system" style="margin-top:100px;">
-
-<div class="section-label">
-HAERVIU ENGINE
 </div>
 
-<p class="hero-text" style="margin-bottom:0;">
-One system. One workflow. Your entire creative environment.
+</section>
+
+
+
+<section
+class="system"
+id="system"
+>
+
+
+<div class="section-label">
+HAERVIU ENGINE / SYSTEM
+</div>
+
+
+<h2>
+One system.<br>
+Your whole studio.
+</h2>
+
+
+<p>
+The Engine connects the studio environment,
+production methods and creative workflow into
+one coherent system.
 </p>
 
+
 </section>
+
 
 </main>
 
 
+
 <footer>
+
 HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+
 </footer>
+
 
 </body>
 </html>
