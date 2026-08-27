@@ -1,48 +1,2015 @@
-<!-- KEYLAB MKII 88 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<article class="device reveal"
-    data-device="Arturia KeyLab MkII 88"
-    data-number="08 / MIDI"
-    data-image="images/keylab-mk2-88.webp"
-    data-description="MIDI Keyboard · Instrument Control"
-    data-role="MIDI Performance / Instrument Control">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="device-image">
+<title>Haerviu Engine — Studio</title>
 
-        <img
-            src="images/keylab-mk2-88.webp"
-            alt="Arturia KeyLab MkII 88"
-            loading="lazy"
-        >
+<style>
 
+:root{
+    --bg:#07080d;
+    --panel:#0d1017;
+    --panel2:#11151e;
+    --line:rgba(255,255,255,.12);
+    --line2:rgba(255,255,255,.18);
+    --text:#f4f5f8;
+    --muted:#858b9b;
+    --blue:#6878ff;
+    --green:#6ee7a0;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(
+            circle at 82% 12%,
+            rgba(78,92,190,.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #07080d 0%,
+            #080a12 55%,
+            #07080d 100%
+        );
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.16;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+    background-size:80px 80px;
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:88px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5vw;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    background:rgba(7,8,13,.9);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.logo{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b1f2a,
+            #08090d
+        );
+
+    font-family:Georgia,serif;
+    font-size:26px;
+
+    box-shadow:
+        inset 0 0 22px rgba(255,255,255,.04),
+        0 10px 30px rgba(0,0,0,.35);
+}
+
+.brand-name{
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.3em;
+}
+
+.menu-button{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--line2);
+    border-radius:15px;
+
+    background:rgba(255,255,255,.025);
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.menu-button span,
+.menu-button span::before,
+.menu-button span::after{
+    width:19px;
+    height:2px;
+
+    display:block;
+
+    background:white;
+
+    transition:.25s ease;
+}
+
+.menu-button span{
+    position:relative;
+}
+
+.menu-button span::before,
+.menu-button span::after{
+    content:"";
+    position:absolute;
+    left:0;
+}
+
+.menu-button span::before{
+    top:-6px;
+}
+
+.menu-button span::after{
+    top:6px;
+}
+
+
+/* =========================
+   MOBILE NAV
+========================= */
+
+.mobile-nav{
+    position:fixed;
+
+    top:88px;
+    left:0;
+    right:0;
+
+    z-index:99;
+
+    display:none;
+
+    padding:18px 5vw;
+
+    background:rgba(7,8,13,.97);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.mobile-nav.open{
+    display:block;
+}
+
+.mobile-nav a{
+    display:block;
+
+    padding:17px 5px;
+
+    border-bottom:1px solid var(--line);
+
+    color:#aeb4c2;
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:min(1100px,90vw);
+    margin:auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:520px;
+
+    padding:110px 0 70px;
+
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    right:-330px;
+    top:-120px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(82,98,230,.18),
+            transparent 68%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+
+.hero-label{
+    margin-bottom:25px;
+
+    color:#777f92;
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.38em;
+
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:clamp(68px,9vw,116px);
+
+    line-height:.86;
+
+    letter-spacing:-.075em;
+
+    font-weight:900;
+
+    max-width:800px;
+}
+
+.hero-description{
+    max-width:690px;
+
+    margin-top:38px;
+
+    color:#aeb4c2;
+
+    font-size:18px;
+
+    line-height:1.65;
+}
+
+.hero-status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:34px;
+
+    color:var(--green);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.3em;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 10px var(--green),
+        0 0 25px rgba(110,231,160,.35);
+}
+
+
+/* =========================
+   STUDIO LAYOUT
+========================= */
+
+.studio-layout{
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) 330px;
+
+    gap:18px;
+
+    padding-bottom:110px;
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.panel{
+    border:1px solid var(--line);
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+}
+
+.panel-header{
+    min-height:66px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    border-bottom:1px solid var(--line);
+}
+
+.panel-title{
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.05em;
+}
+
+.online{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--green);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.2em;
+}
+
+.online-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:0 0 10px var(--green);
+}
+
+
+/* =========================
+   HARDWARE CARDS
+========================= */
+
+.hardware-list{
+    padding:18px;
+}
+
+.hardware-card{
+    min-height:170px;
+
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-bottom:12px;
+
+    padding:18px;
+
+    border:1px solid rgba(255,255,255,.11);
+
+    border-radius:21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.012)
+        );
+
+    transition:
+        border-color .25s ease,
+        transform .25s ease,
+        background .25s ease;
+}
+
+.hardware-card:last-child{
+    margin-bottom:0;
+}
+
+.hardware-card:hover{
+    border-color:rgba(255,255,255,.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+
+    transform:translateY(-2px);
+}
+
+.hardware-image{
+    width:235px;
+    height:135px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:17px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(74,88,180,.13),
+            rgba(0,0,0,.22)
+        );
+}
+
+.hardware-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    display:block;
+}
+
+.hardware-info{
+    flex:1;
+}
+
+.hardware-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:12px;
+}
+
+.hardware-number{
+    color:#656d7f;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.2em;
+}
+
+.connected{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:var(--green);
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:.17em;
+}
+
+.connected i{
+    width:6px;
+    height:6px;
+
+    display:block;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:0 0 8px var(--green);
+}
+
+.hardware-info h3{
+    margin-bottom:7px;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    letter-spacing:-.025em;
+}
+
+.hardware-info p{
+    color:#7f8798;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+.hardware-role{
+    margin-top:14px;
+
+    color:#aeb4c0;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.05em;
+}
+
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-actions{
+    padding:18px;
+}
+
+.action{
+    min-height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:0 15px;
+
+    margin-bottom:10px;
+
+    border:1px solid rgba(255,255,255,.11);
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#d7d9df;
+
+    transition:.25s ease;
+}
+
+.action:last-child{
+    margin-bottom:0;
+}
+
+.action:hover{
+    border-color:rgba(255,255,255,.27);
+
+    background:rgba(255,255,255,.06);
+
+    transform:translateX(2px);
+}
+
+.action-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.action-icon{
+    width:29px;
+    height:29px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.07);
+
+    color:#c9ccd5;
+
+    font-size:12px;
+}
+
+.action-name{
+    font-size:12px;
+    font-weight:700;
+}
+
+.action-arrow{
+    color:#aeb4c0;
+    font-size:15px;
+}
+
+
+/* =========================
+   SYSTEM INFO
+========================= */
+
+.system-info{
+    margin-top:18px;
+
+    padding:22px;
+
+    border-top:1px solid var(--line);
+}
+
+.system-label{
+    margin-bottom:18px;
+
+    color:#687184;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.22em;
+}
+
+.system-row{
+    display:flex;
+    justify-content:space-between;
+
+    padding:11px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    color:#8b92a1;
+
+    font-size:11px;
+}
+
+.system-row:last-child{
+    border-bottom:0;
+}
+
+.system-row strong{
+    color:#d9dce3;
+    font-weight:700;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding:45px 5vw;
+
+    color:#5f6777;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.16em;
+}
+
+.footer-inner{
+    width:min(1100px,90vw);
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .studio-layout{
+        grid-template-columns:1fr;
+    }
+
+    .quick-panel{
+        order:2;
+    }
+
+}
+
+@media(max-width:700px){
+
+    header{
+        height:76px;
+        padding:0 20px;
+    }
+
+    .mobile-nav{
+        top:76px;
+    }
+
+    .logo{
+        width:44px;
+        height:44px;
+        border-radius:14px;
+    }
+
+    .brand-name{
+        font-size:11px;
+        letter-spacing:.24em;
+    }
+
+    main{
+        width:min(92vw,600px);
+    }
+
+    .hero{
+        min-height:auto;
+        padding:75px 0 55px;
+    }
+
+    .hero h1{
+        font-size:64px;
+    }
+
+    .hero-description{
+        font-size:16px;
+    }
+
+    .panel-header{
+        padding:0 19px;
+    }
+
+    .hardware-list{
+        padding:12px;
+    }
+
+    .hardware-card{
+        min-height:0;
+
+        flex-direction:column;
+        align-items:stretch;
+
+        padding:14px;
+
+        gap:15px;
+    }
+
+    .hardware-image{
+        width:100%;
+        height:190px;
+    }
+
+    .hardware-info{
+        padding:3px 4px 8px;
+    }
+
+    .hardware-info h3{
+        font-size:21px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:430px){
+
+    .hero h1{
+        font-size:56px;
+    }
+
+    .hardware-image{
+        height:165px;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        transition:none !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<a href="index.html" class="brand">
+
+    <div class="logo">
+        H
     </div>
 
-    <div class="device-info">
+    <div class="brand-name">
+        HAERVIU ENGINE
+    </div>
 
-        <div class="device-top">
+</a>
 
-            <span class="device-number">
-                08
-            </span>
 
-            <span class="connected">
-                <i></i> READY
-            </span>
+<button
+    class="menu-button"
+    id="menuButton"
+    aria-label="Open menu"
+    aria-expanded="false"
+>
 
+    <span></span>
+
+</button>
+
+</header>
+
+
+<nav class="mobile-nav" id="mobileNav">
+
+    <a href="index.html">Home</a>
+    <a href="#hardware">Hardware</a>
+    <a href="#routing">Routing</a>
+    <a href="#workflow">Workflow</a>
+
+</nav>
+
+
+<main>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            HAERVIU ENGINE / CONTROL CENTER
         </div>
 
-        <h3>
-            Arturia KeyLab MkII 88
-        </h3>
 
-        <p>
-            MIDI Keyboard · Instrument Control
+        <h1>
+            Your Studio.
+        </h1>
+
+
+        <p class="hero-description">
+            One central workspace to organize your instruments,
+            connections, routing and creative workflow.
         </p>
 
-        <div class="device-role">
-            MIDI Performance / Instrument Control
+
+        <div class="hero-status">
+
+            <span class="status-dot"></span>
+
+            SYSTEM ONLINE
+
         </div>
 
     </div>
 
-</article>
+</section>
+
+
+
+<section class="studio-layout">
+
+
+<!-- =====================
+     HARDWARE
+===================== -->
+
+<div
+    class="panel"
+    id="hardware"
+>
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+            STUDIO SETUP
+        </div>
+
+        <div class="online">
+
+            <span class="online-dot"></span>
+
+            ONLINE
+
+        </div>
+
+    </div>
+
+
+    <div class="hardware-list">
+
+
+        <!-- MC-707 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/mc-707.webp"
+                    alt="Roland MC-707"
+                    loading="eager"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        01 / GROOVEBOX
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland MC-707
+                </h3>
+
+                <p>
+                    Groovebox · MIDI · Audio · Sampling
+                </p>
+
+                <div class="hardware-role">
+                    Production / Sequencing / MIDI Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- TR-8S -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/tr-8s.webp"
+                    alt="Roland TR-8S"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        02 / RHYTHM
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland TR-8S
+                </h3>
+
+                <p>
+                    Rhythm Performer · Drum Machine · Sequencing
+                </p>
+
+                <div class="hardware-role">
+                    Rhythm Engine / Percussion
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- GAIA -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/roland-gaia-sh01.webp"
+                    alt="Roland GAIA SH-01"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        03 / SYNTHESIS
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland GAIA SH-01
+                </h3>
+
+                <p>
+                    Synthesizer · Sound Design · MIDI
+                </p>
+
+                <div class="hardware-role">
+                    Synthesis / Sound Design / MIDI Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- FORCE -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/akai-force.webp"
+                    alt="Akai Force"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        04 / PRODUCTION
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Akai Force
+                </h3>
+
+                <p>
+                    Production · Performance · Sampling
+                </p>
+
+                <div class="hardware-role">
+                    Production / Arrangement / Performance
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- MX-1 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/mx-1.webp"
+                    alt="Roland MX-1"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        05 / MIXING
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland MX-1
+                </h3>
+
+                <p>
+                    Mix Performer · Audio Hub · FX
+                </p>
+
+                <div class="hardware-role">
+                    Master Mix / Audio Routing
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- KEYLAB -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/keylab-mk2-88.webp"
+                    alt="Arturia KeyLab MK2 88"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        06 / MIDI
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Arturia KeyLab MK2 88
+                </h3>
+
+                <p>
+                    MIDI Controller · Keyboard
+                </p>
+
+                <div class="hardware-role">
+                    MIDI Performance / Instrument Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- VOCAL -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/rode-nt1.webp"
+                    alt="RØDE NT1"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        07 / VOCAL SYSTEM
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Vocal Chain
+                </h3>
+
+                <p>
+                    RØDE NT1 · Roland VT-4
+                </p>
+
+                <div class="hardware-role">
+                    Vocal Capture / Voice Processing / FX
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- HS8 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/yamaha-hs8.webp"
+                    alt="Yamaha HS8"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        08 / MONITORING
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Yamaha HS8
+                </h3>
+
+                <p>
+                    Studio Monitoring · Reference
+                </p>
+
+                <div class="hardware-role">
+                    Monitoring / Critical Listening
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================
+     QUICK ACTIONS
+===================== -->
+
+<aside class="panel quick-panel">
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+            QUICK ACTIONS
+        </div>
+
+    </div>
+
+
+    <div class="quick-actions">
+
+
+        <a
+            href="#hardware"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ⚙
+                </div>
+
+                <div class="action-name">
+                    Studio Setup
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="#routing"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ↔
+                </div>
+
+                <div class="action-name">
+                    MIDI Routing
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="#signal"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ◉
+                </div>
+
+                <div class="action-name">
+                    Audio Routing
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="#workflow"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ✦
+                </div>
+
+                <div class="action-name">
+                    Creative Workflow
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <a
+            href="index.html"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    □
+                </div>
+
+                <div class="action-name">
+                    Projects
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+
+    <div
+        class="system-info"
+        id="routing"
+    >
+
+        <div class="system-label">
+            SYSTEM STATUS
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Hardware</span>
+
+            <strong>08 Devices</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Rhythm</span>
+
+            <strong>TR-8S</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Production</span>
+
+            <strong>MC-707 / FORCE</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Mixing</span>
+
+            <strong>MX-1</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Recording</span>
+
+            <strong>Cubase</strong>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+</section>
+
+
+
+<!-- =====================
+     SIGNAL
+===================== -->
+
+<section
+    id="signal"
+    style="padding-bottom:110px;"
+>
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                AUDIO ROUTING
+            </div>
+
+            <div class="online">
+
+                <span class="online-dot"></span>
+
+                SYSTEM
+
+            </div>
+
+        </div>
+
+
+        <div style="
+            padding:30px;
+            display:flex;
+            flex-wrap:wrap;
+            align-items:center;
+            justify-content:center;
+            gap:14px;
+        ">
+
+
+            <div style="
+                padding:18px 25px;
+                border:1px solid var(--line);
+                border-radius:15px;
+                background:rgba(255,255,255,.025);
+                text-align:center;
+            ">
+
+                <small style="
+                    display:block;
+                    color:#687184;
+                    font-size:8px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:8px;
+                ">
+                    RHYTHM
+                </small>
+
+                <strong>
+                    TR-8S
+                </strong>
+
+            </div>
+
+
+            <span style="
+                color:#6878ff;
+                font-size:20px;
+            ">
+                →
+            </span>
+
+
+            <div style="
+                padding:18px 25px;
+                border:1px solid var(--line);
+                border-radius:15px;
+                background:rgba(255,255,255,.025);
+                text-align:center;
+            ">
+
+                <small style="
+                    display:block;
+                    color:#687184;
+                    font-size:8px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:8px;
+                ">
+                    PRODUCTION
+                </small>
+
+                <strong>
+                    MC-707 / FORCE
+                </strong>
+
+            </div>
+
+
+            <span style="
+                color:#6878ff;
+                font-size:20px;
+            ">
+                →
+            </span>
+
+
+            <div style="
+                padding:18px 25px;
+                border:1px solid var(--line);
+                border-radius:15px;
+                background:rgba(255,255,255,.025);
+                text-align:center;
+            ">
+
+                <small style="
+                    display:block;
+                    color:#687184;
+                    font-size:8px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:8px;
+                ">
+                    MIXING
+                </small>
+
+                <strong>
+                    MX-1
+                </strong>
+
+            </div>
+
+
+            <span style="
+                color:#6878ff;
+                font-size:20px;
+            ">
+                →
+            </span>
+
+
+            <div style="
+                padding:18px 25px;
+                border:1px solid var(--line);
+                border-radius:15px;
+                background:rgba(255,255,255,.025);
+                text-align:center;
+            ">
+
+                <small style="
+                    display:block;
+                    color:#687184;
+                    font-size:8px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:8px;
+                ">
+                    RECORDING
+                </small>
+
+                <strong>
+                    CUBASE
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================
+     WORKFLOW
+===================== -->
+
+<section
+    id="workflow"
+    style="padding-bottom:110px;"
+>
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+                CREATIVE WORKFLOW
+            </div>
+
+            <div class="online">
+
+                <span class="online-dot"></span>
+
+                READY
+
+            </div>
+
+        </div>
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:1px;
+            background:var(--line);
+        ">
+
+
+            <div style="
+                padding:30px;
+                background:#0d1017;
+            ">
+
+                <div style="
+                    color:#6878ff;
+                    font-size:9px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:18px;
+                ">
+                    01 / RHYTHM
+                </div>
+
+                <h3 style="
+                    margin-bottom:10px;
+                    font-size:21px;
+                ">
+                    Build the Groove
+                </h3>
+
+                <p style="
+                    color:#7f8798;
+                    font-size:12px;
+                    line-height:1.7;
+                ">
+                    TR-8S rhythm programming,
+                    percussion, patterns and
+                    performance variations.
+                </p>
+
+            </div>
+
+
+            <div style="
+                padding:30px;
+                background:#0d1017;
+            ">
+
+                <div style="
+                    color:#6878ff;
+                    font-size:9px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:18px;
+                ">
+                    02 / PRODUCTION
+                </div>
+
+                <h3 style="
+                    margin-bottom:10px;
+                    font-size:21px;
+                ">
+                    Shape the Track
+                </h3>
+
+                <p style="
+                    color:#7f8798;
+                    font-size:12px;
+                    line-height:1.7;
+                ">
+                    MC-707 and Force handle
+                    sequencing, synthesis,
+                    sampling and arrangement.
+                </p>
+
+            </div>
+
+
+            <div style="
+                padding:30px;
+                background:#0d1017;
+            ">
+
+                <div style="
+                    color:#6878ff;
+                    font-size:9px;
+                    font-weight:800;
+                    letter-spacing:.2em;
+                    margin-bottom:18px;
+                ">
+                    03 / MIX
+                </div>
+
+                <h3 style="
+                    margin-bottom:10px;
+                    font-size:21px;
+                ">
+                    Perform the Mix
+                </h3>
+
+                <p style="
+                    color:#7f8798;
+                    font-size:12px;
+                    line-height:1.7;
+                ">
+                    MX-1 becomes the central
+                    mixing and routing point
+                    for the hardware system.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<div class="footer-inner">
+
+    <span>
+        HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+    </span>
+
+    <span>
+        © 2026 HAERVIU
+    </span>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileNav =
+    document.getElementById("mobileNav");
+
+
+menuButton.addEventListener(
+    "click",
+    function(){
+
+        const open =
+            mobileNav.classList.toggle("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            open ? "true" : "false"
+        );
+
+    }
+);
+
+
+document
+    .querySelectorAll(".mobile-nav a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                mobileNav.classList.remove("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
+
+    });
+
+
+/* Vérification des images */
+
+document
+    .querySelectorAll(".hardware-image img")
+    .forEach(function(image){
+
+        image.addEventListener(
+            "error",
+            function(){
+
+                console.error(
+                    "Image introuvable : " +
+                    image.getAttribute("src")
+                );
+
+            }
+        );
+
+    });
+
+</script>
+
+
+</body>
+</html>
