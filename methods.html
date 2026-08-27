@@ -22,10 +22,6 @@
     padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     background:
@@ -114,6 +110,8 @@ main{
     position:relative;
     z-index:1;
 }
+
+/* TOP */
 
 .kicker{
     color:#8e92a2;
@@ -222,21 +220,21 @@ h1{
 }
 
 .instrument-image{
-    width:190px;
-    height:125px;
+    width:240px;
+    height:145px;
     flex-shrink:0;
     border:1px solid var(--line);
     border-radius:20px;
-    overflow:hidden;
     background:
         radial-gradient(
             circle at 50% 50%,
-            rgba(90,110,180,.18),
+            rgba(70,80,150,.18),
             rgba(255,255,255,.025)
         );
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
 }
 
 .instrument-image img{
@@ -342,8 +340,8 @@ footer{
     }
 
     .instrument-image{
-        width:105px;
-        height:82px;
+        width:95px;
+        height:80px;
         border-radius:16px;
     }
 
@@ -354,6 +352,22 @@ footer{
     .instrument-type{
         font-size:14px;
         margin-bottom:15px;
+    }
+
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:480px){
+
+    .instrument{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .instrument-image{
+        width:100%;
+        height:130px;
     }
 
 }
@@ -383,6 +397,7 @@ footer{
 
 </header>
 
+
 <main>
 
 <div class="kicker">
@@ -402,6 +417,7 @@ connections, routing and creative workflow.
 ← Back to Studio
 </a>
 
+
 <section class="setup">
 
 <div class="setup-head">
@@ -411,19 +427,27 @@ STUDIO SETUP
 </div>
 
 <div class="online">
+
 <span class="online-dot"></span>
+
 ONLINE
-</div>
 
 </div>
 
+</div>
 
-<!-- ROLAND MC-707 -->
+
+<!-- MC-707 -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/mc-707.webp" alt="Roland MC-707">
+
+<img
+src="images/mc-707.webp"
+alt="Roland MC-707"
+>
+
 </div>
 
 <div class="instrument-info">
@@ -437,21 +461,29 @@ Groovebox / MIDI / Audio / Sampling
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 CONNECTED
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ROLAND TR-8S -->
+
+<!-- TR-8S -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/tr-8s.webp" alt="Roland TR-8S">
+
+<img
+src="images/tr-8s.webp"
+alt="Roland TR-8S"
+>
+
 </div>
 
 <div class="instrument-info">
@@ -461,25 +493,33 @@ Roland TR-8S
 </div>
 
 <div class="instrument-type">
-Drum Machine / Rhythm / Sequencing
+Drum Machine / Rhythm / Performance
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 CONNECTED
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ROLAND GAIA SH-01 -->
+
+<!-- GAIA SH-01 -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/gaia-sh01.webp" alt="Roland GAIA SH-01">
+
+<img
+src="images/roland-gaia-sh01.webp"
+alt="Roland GAIA SH-01"
+>
+
 </div>
 
 <div class="instrument-info">
@@ -493,8 +533,11 @@ Synthesizer / Sound Design / MIDI
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 READY
+
 </div>
 
 </div>
@@ -507,7 +550,12 @@ READY
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/akai-force.webp" alt="Akai Force">
+
+<img
+src="images/akai-force.webp"
+alt="Akai Force"
+>
+
 </div>
 
 <div class="instrument-info">
@@ -521,21 +569,65 @@ Production / Performance / Sampling
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 READY
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ARTURIA KEYLAB MK2 -->
+
+<!-- MX-1 -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/keylab-mk2-88.webp" alt="Arturia KeyLab MK2 88">
+
+<img
+src="images/mx-1.webp"
+alt="Roland MX-1"
+>
+
+</div>
+
+<div class="instrument-info">
+
+<div class="instrument-name">
+Roland MX-1
+</div>
+
+<div class="instrument-type">
+AIRA Mix Performer / USB / Audio Routing
+</div>
+
+<div class="connected">
+
+<span class="connected-dot"></span>
+
+CONNECTED
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- KEYLAB -->
+
+<div class="instrument">
+
+<div class="instrument-image">
+
+<img
+src="images/keylab-mk2-88.webp"
+alt="KeyLab MK2 88"
+>
+
 </div>
 
 <div class="instrument-info">
@@ -549,105 +641,65 @@ MIDI Controller / Keyboard
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 READY
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ROLAND MX-1 -->
+
+<!-- VOCAL CHAIN -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/mx-1.webp" alt="Roland MX-1">
+
+<img
+src="images/rode-nt1.webp"
+alt="RØDE NT1"
+>
+
 </div>
 
 <div class="instrument-info">
 
 <div class="instrument-name">
-Roland MX-1
+Vocal Chain
 </div>
 
 <div class="instrument-type">
-Performance Mixer / Audio / USB
+RØDE NT1 / Roland VT-4
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
-CONNECTED
-</div>
 
-</div>
-
-</div>
-
-
-<!-- RODE NT1 -->
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/rode-nt1.webp" alt="RØDE NT1">
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-RØDE NT1
-</div>
-
-<div class="instrument-type">
-Studio Microphone / Vocal Recording
-</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
 READY
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- ROLAND VT-4 -->
+
+<!-- MONITORING -->
 
 <div class="instrument">
 
 <div class="instrument-image">
-<img src="images/vt-4.webp" alt="Roland VT-4">
-</div>
 
-<div class="instrument-info">
+<img
+src="images/yamaha-hs8.webp"
+alt="Yamaha HS8"
+>
 
-<div class="instrument-name">
-Roland VT-4
-</div>
-
-<div class="instrument-type">
-Voice Transformer / Vocal Processing
-</div>
-
-<div class="connected">
-<span class="connected-dot"></span>
-READY
-</div>
-
-</div>
-
-</div>
-
-
-<!-- YAMAHA HS8 -->
-
-<div class="instrument">
-
-<div class="instrument-image">
-<img src="images/yamaha-hs8.webp" alt="Yamaha HS8">
 </div>
 
 <div class="instrument-info">
@@ -657,12 +709,15 @@ Yamaha HS8
 </div>
 
 <div class="instrument-type">
-Studio Monitor / Monitoring
+Studio Monitoring
 </div>
 
 <div class="connected">
+
 <span class="connected-dot"></span>
+
 READY
+
 </div>
 
 </div>
@@ -673,6 +728,7 @@ READY
 </section>
 
 </main>
+
 
 <footer>
 
