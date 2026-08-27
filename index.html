@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine — Studio Setup</title>
+<title>Haerviu Engine</title>
 
 <style>
 
@@ -22,37 +22,28 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-
     background:
-        radial-gradient(
-            circle at 82% 18%,
-            rgba(90,110,180,.13),
-            transparent 28%
-        ),
+        radial-gradient(circle at 78% 16%,rgba(90,110,180,.16),transparent 30%),
+        radial-gradient(circle at 18% 75%,rgba(80,130,110,.08),transparent 30%),
         var(--bg);
-
     color:var(--text);
-
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
-
     position:fixed;
-
     inset:-20%;
-
     border:1px solid rgba(255,255,255,.055);
-
     border-radius:50%;
-
     transform:rotate(-18deg);
-
     pointer-events:none;
 }
 
@@ -61,26 +52,17 @@ a{
     color:inherit;
 }
 
-
-/* HEADER */
-
 header{
     height:104px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 6vw;
-
     border-bottom:1px solid rgba(255,255,255,.09);
-
     position:sticky;
     top:0;
     z-index:10;
-
     background:rgba(7,8,13,.88);
-
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 }
@@ -94,13 +76,10 @@ header{
 .logo{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
     border-radius:17px;
-
     display:grid;
     place-items:center;
-
     font-family:Georgia,serif;
     font-size:28px;
 }
@@ -114,305 +93,143 @@ header{
 .menu{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
     border-radius:17px;
-
     display:grid;
     place-items:center;
-
     font-size:24px;
 }
 
-
-/* MAIN */
-
 main{
-    max-width:1100px;
-
+    max-width:1200px;
     margin:auto;
-
-    padding:65px 6vw 120px;
-
+    padding:90px 6vw 130px;
     position:relative;
     z-index:1;
 }
 
-
-/* TOP */
-
 .kicker{
     color:#8e92a2;
-
     letter-spacing:.35em;
-
     font-size:12px;
-
     font-weight:700;
-
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
 h1{
-    font-size:clamp(52px,8vw,100px);
-
-    line-height:.9;
-
-    letter-spacing:-.065em;
-
-    margin-bottom:30px;
+    font-size:clamp(64px,10vw,125px);
+    line-height:.88;
+    letter-spacing:-.07em;
+    max-width:900px;
+    margin-bottom:35px;
 }
 
-.intro{
+.hero-text{
+    max-width:720px;
     color:#aeb2bf;
-
-    font-size:19px;
-
-    line-height:1.65;
-
-    max-width:680px;
-
-    margin-bottom:45px;
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:50px;
 }
 
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:100px;
+}
 
-/* BACK */
-
-.back{
-    display:inline-block;
-
+.button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px 25px;
     border:1px solid var(--line);
-
     border-radius:999px;
-
-    padding:13px 20px;
-
-    color:#d5d7df;
-
-    margin-bottom:50px;
-
+    font-size:14px;
+    font-weight:700;
     transition:.25s ease;
 }
 
-.back:hover{
+.button:hover{
     background:#fff;
     color:#08090d;
+    transform:translateY(-2px);
 }
 
+.button.primary{
+    background:#f4f4f7;
+    color:#08090d;
+    border-color:#f4f4f7;
+}
 
-/* SETUP */
+.section-label{
+    color:#8e92a2;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.28em;
+    margin-bottom:22px;
+}
 
-.setup{
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
 
+.card{
+    min-height:260px;
     border:1px solid var(--line);
-
-    border-radius:30px;
-
-    overflow:hidden;
-
+    border-radius:28px;
+    padding:30px;
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.055),
             rgba(255,255,255,.018)
         );
-}
-
-.setup-head{
-
+    transition:.3s ease;
     display:flex;
-
+    flex-direction:column;
     justify-content:space-between;
-
-    align-items:center;
-
-    padding:30px 34px;
-
-    border-bottom:1px solid var(--line);
 }
 
-.setup-title{
-
-    font-size:24px;
-
-    font-weight:800;
-
-    letter-spacing:.04em;
+.card:hover{
+    border-color:rgba(255,255,255,.30);
+    transform:translateY(-5px);
 }
 
-.online{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    color:var(--green);
-
-    font-size:13px;
-
-    font-weight:800;
-
+.card-number{
+    color:#666b7a;
+    font-size:12px;
     letter-spacing:.2em;
 }
 
-.online-dot{
-
-    width:9px;
-    height:9px;
-
-    background:var(--green);
-
-    border-radius:50%;
-
-    box-shadow:0 0 16px var(--green);
+.card h2{
+    font-size:27px;
+    margin:20px 0 12px;
 }
 
-
-/* INSTRUMENT */
-
-.instrument{
-
-    margin:30px 34px;
-
-    min-height:190px;
-
-    border:1px solid var(--line);
-
-    border-radius:24px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
-
-    padding:25px;
-
-    background:rgba(255,255,255,.025);
-
-    transition:.3s ease;
-}
-
-.instrument:hover{
-
-    border-color:rgba(255,255,255,.28);
-
-    transform:translateY(-3px);
-}
-
-.instrument-icon{
-
-    width:105px;
-    height:105px;
-
-    flex-shrink:0;
-
-    border:1px solid var(--line);
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.025)
-        );
-
-    display:grid;
-
-    place-items:center;
-
-    font-size:45px;
-
-    overflow:hidden;
-}
-
-.instrument-icon img{
-
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-
-    padding:8px;
-
-    display:block;
-}
-
-.instrument-info{
-
-    flex:1;
-}
-
-.instrument-name{
-
-    font-size:26px;
-
-    font-weight:800;
-
-    margin-bottom:7px;
-}
-
-.instrument-type{
-
+.card p{
     color:#858a99;
-
-    font-size:16px;
-
-    margin-bottom:22px;
+    line-height:1.6;
+    font-size:15px;
 }
 
-.connected{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    color:var(--green);
-
-    font-size:12px;
-
-    font-weight:800;
-
-    letter-spacing:.18em;
+.card-arrow{
+    margin-top:30px;
+    font-size:22px;
 }
-
-.connected-dot{
-
-    width:8px;
-    height:8px;
-
-    background:var(--green);
-
-    border-radius:50%;
-
-    box-shadow:0 0 13px var(--green);
-}
-
-
-/* FOOTER */
 
 footer{
-
     border-top:1px solid rgba(255,255,255,.08);
-
     padding:32px 6vw;
-
     color:#626674;
-
     font-size:12px;
-
     letter-spacing:.12em;
 }
 
-
-/* MOBILE */
-
-@media(max-width:700px){
+@media(max-width:800px){
 
     header{
         height:88px;
@@ -435,75 +252,51 @@ footer{
     }
 
     main{
-        padding:48px 26px 90px;
+        padding:60px 26px 90px;
     }
 
     h1{
-        font-size:56px;
+        font-size:64px;
     }
 
-    .intro{
+    .hero-text{
         font-size:17px;
     }
 
-    .setup-head{
-        padding:25px;
+    .cards{
+        grid-template-columns:1fr;
     }
 
-    .setup-title{
-        font-size:20px;
+    .card{
+        min-height:220px;
+    }
+}
+
+@media(max-width:480px){
+
+    h1{
+        font-size:54px;
     }
 
-    .instrument{
-
-        margin:20px;
-
-        min-height:150px;
-
-        padding:20px;
-
-        gap:18px;
+    .actions{
+        flex-direction:column;
     }
 
-    .instrument-icon{
-
-        width:72px;
-        height:72px;
-
-        border-radius:16px;
-
-        font-size:32px;
+    .button{
+        width:100%;
     }
-
-    .instrument-icon img{
-        padding:5px;
-    }
-
-    .instrument-name{
-        font-size:20px;
-    }
-
-    .instrument-type{
-        font-size:14px;
-        margin-bottom:15px;
-    }
-
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
 <a class="brand" href="index.html">
 
-    <div class="logo">
-        H
-    </div>
+    <div class="logo">H</div>
 
     <div class="brand-name">
         HAERVIU ENGINE
@@ -518,216 +311,117 @@ footer{
 </header>
 
 
-
 <main>
 
-
 <div class="kicker">
-HAERVIU ENGINE / STUDIO SETUP
+HAERVIU LABS / CREATIVE MUSIC SYSTEM
 </div>
 
-
 <h1>
-Your Studio.
+Your Studio.<br>
+Reimagined.
 </h1>
 
-
-<p class="intro">
-One central workspace to organize your instruments,
-connections, routing and creative workflow.
+<p class="hero-text">
+Haerviu Engine is a central system designed to connect,
+organize and control your music studio — instruments,
+routing, workflows, methods and creative tools in one place.
 </p>
 
 
-<a class="back" href="studio.html">
-← Back to Studio
+<div class="actions">
+
+<a class="button primary" href="methods.html">
+Explore Studio
+</a>
+
+<a class="button" href="studio.html">
+Studio
+</a>
+
+</div>
+
+
+<div class="section-label">
+THE ENGINE
+</div>
+
+
+<section class="cards">
+
+
+<a class="card" href="methods.html">
+
+<div>
+<div class="card-number">01 / METHODS</div>
+
+<h2>
+Methods
+</h2>
+
+<p>
+Practical production methods designed around your actual
+hardware, workflow and creative process.
+</p>
+</div>
+
+<div class="card-arrow">→</div>
+
 </a>
 
 
+<a class="card" href="studio.html">
 
-<section class="setup">
+<div>
+<div class="card-number">02 / STUDIO</div>
 
+<h2>
+Studio
+</h2>
 
-<div class="setup-head">
-
-<div class="setup-title">
-STUDIO SETUP
+<p>
+Your complete studio environment, instruments,
+connections and production setup.
+</p>
 </div>
 
-<div class="online">
+<div class="card-arrow">→</div>
 
-<span class="online-dot"></span>
+</a>
 
-ONLINE
 
+<a class="card" href="#system">
+
+<div>
+<div class="card-number">03 / SYSTEM</div>
+
+<h2>
+Engine
+</h2>
+
+<p>
+A future-ready workspace built to bring hardware,
+software and creative workflows together.
+</p>
 </div>
 
+<div class="card-arrow">→</div>
+
+</a>
+
+
+</section>
+
+
+<section id="system" style="margin-top:100px;">
+
+<div class="section-label">
+HAERVIU ENGINE
 </div>
 
-
-
-<!-- MC-707 -->
-
-<div class="instrument">
-
-<div class="instrument-icon">
-🎛️
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-Roland MC-707
-</div>
-
-<div class="instrument-type">
-Groovebox / MIDI / Audio
-</div>
-
-<div class="connected">
-
-<span class="connected-dot"></span>
-
-CONNECTED
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- TR-8S -->
-
-<div class="instrument">
-
-<div class="instrument-icon">
-🥁
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-Roland TR-8S
-</div>
-
-<div class="instrument-type">
-Drum Machine
-</div>
-
-<div class="connected">
-
-<span class="connected-dot"></span>
-
-CONNECTED
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- GAIA SH-01 -->
-
-<div class="instrument">
-
-<div class="instrument-icon">
-
-<img
-    src="assets/roland-gaia-sh01.webp"
-    alt="Roland GAIA SH-01"
->
-
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-Roland GAIA SH-01
-</div>
-
-<div class="instrument-type">
-Synthesizer / Sound Design / MIDI
-</div>
-
-<div class="connected">
-
-<span class="connected-dot"></span>
-
-READY
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- AKAI FORCE -->
-
-<div class="instrument">
-
-<div class="instrument-icon">
-🎚️
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-Akai Force
-</div>
-
-<div class="instrument-type">
-Production / Performance
-</div>
-
-<div class="connected">
-
-<span class="connected-dot"></span>
-
-READY
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- VOCAL CHAIN -->
-
-<div class="instrument">
-
-<div class="instrument-icon">
-🎙️
-</div>
-
-<div class="instrument-info">
-
-<div class="instrument-name">
-Vocal Chain
-</div>
-
-<div class="instrument-type">
-RØDE NT1 / Roland VT-4
-</div>
-
-<div class="connected">
-
-<span class="connected-dot"></span>
-
-READY
-
-</div>
-
-</div>
-
-</div>
-
+<p class="hero-text" style="margin-bottom:0;">
+One system. One workflow. Your entire creative environment.
+</p>
 
 </section>
 
@@ -735,11 +429,8 @@ READY
 
 
 <footer>
-
 HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
-
 </footer>
-
 
 </body>
 </html>
