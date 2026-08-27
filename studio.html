@@ -43,22 +43,9 @@ html{
 body{
     min-height:100vh;
     background:
-        radial-gradient(
-            circle at 70% -10%,
-            rgba(89,105,255,.18),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 10% 45%,
-            rgba(80,95,180,.07),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            #05060a 0%,
-            #070914 45%,
-            #05060a 100%
-        );
+        radial-gradient(circle at 70% -10%,rgba(89,105,255,.18),transparent 34%),
+        radial-gradient(circle at 10% 45%,rgba(80,95,180,.07),transparent 30%),
+        linear-gradient(180deg,#05060a 0%,#070914 45%,#05060a 100%);
     color:var(--text);
     font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
@@ -71,21 +58,10 @@ body::before{
     pointer-events:none;
     opacity:.22;
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
     background-size:80px 80px;
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-    );
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
 }
 
 a{
@@ -96,6 +72,7 @@ a{
 button{
     font:inherit;
 }
+
 
 /* HEADER */
 
@@ -128,11 +105,7 @@ header{
     justify-content:center;
     border:1px solid rgba(255,255,255,.2);
     border-radius:16px;
-    background:linear-gradient(
-        145deg,
-        #1a1e29,
-        #08090d
-    );
+    background:linear-gradient(145deg,#1a1e29,#08090d);
     box-shadow:
         inset 0 0 25px rgba(255,255,255,.04),
         0 12px 35px rgba(0,0,0,.4);
@@ -227,6 +200,7 @@ header{
     top:6px;
 }
 
+
 /* MOBILE NAV */
 
 .mobile-nav{
@@ -256,6 +230,7 @@ header{
     letter-spacing:.18em;
     text-transform:uppercase;
 }
+
 
 /* GLOBAL */
 
@@ -301,6 +276,7 @@ header{
     margin-bottom:55px;
 }
 
+
 /* HERO */
 
 .hero{
@@ -320,12 +296,7 @@ header{
     right:-300px;
     top:40px;
     border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(94,109,255,.18),
-            transparent 65%
-        );
+    background:radial-gradient(circle,rgba(94,109,255,.18),transparent 65%);
     filter:blur(10px);
     pointer-events:none;
 }
@@ -385,6 +356,7 @@ header{
         0 0 28px rgba(98,243,165,.4);
 }
 
+
 /* HERO SYSTEM */
 
 .hero-system{
@@ -395,16 +367,8 @@ header{
     border:1px solid var(--line);
     border-radius:34px;
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(93,108,255,.13),
-            transparent 55%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(18,22,34,.92),
-            rgba(7,9,14,.96)
-        );
+        radial-gradient(circle at 50% 50%,rgba(93,108,255,.13),transparent 55%),
+        linear-gradient(145deg,rgba(18,22,34,.92),rgba(7,9,14,.96));
     overflow:hidden;
     cursor:pointer;
 }
@@ -444,11 +408,7 @@ header{
     border:1px solid rgba(120,135,255,.25);
     border-radius:22px;
     background:
-        radial-gradient(
-            circle,
-            rgba(81,101,255,.14),
-            transparent 70%
-        ),
+        radial-gradient(circle,rgba(81,101,255,.14),transparent 70%),
         #080a11;
     box-shadow:
         0 30px 80px rgba(0,0,0,.4),
@@ -463,16 +423,13 @@ header{
         0 30px 80px rgba(0,0,0,.4);
 }
 
-.hero-system:active .system-display{
-    transform:translate(-50%,-50%) scale(.97);
-}
-
 .system-display span{
     color:#7885b8;
     font-size:13px;
     font-weight:800;
     letter-spacing:.45em;
 }
+
 
 /* HARDWARE */
 
@@ -493,16 +450,8 @@ header{
     border:1px solid var(--line);
     border-radius:32px;
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(89,105,255,.10),
-            transparent 38%
-        ),
-        linear-gradient(
-            145deg,
-            #0d1119,
-            #080a0f
-        );
+        radial-gradient(circle at 50% 20%,rgba(89,105,255,.10),transparent 38%),
+        linear-gradient(145deg,#0d1119,#080a0f);
     transition:.45s ease;
     cursor:pointer;
 }
@@ -530,12 +479,7 @@ header{
     height:45%;
     left:14%;
     bottom:25px;
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(93,110,255,.20),
-            transparent 70%
-        );
+    background:radial-gradient(ellipse,rgba(93,110,255,.20),transparent 70%);
     filter:blur(25px);
 }
 
@@ -548,9 +492,7 @@ header{
     max-width:100%;
     max-height:330px;
     object-fit:contain;
-    filter:drop-shadow(
-        0 35px 30px rgba(0,0,0,.7)
-    );
+    filter:drop-shadow(0 35px 30px rgba(0,0,0,.7));
     transition:.5s ease;
 }
 
@@ -620,6 +562,7 @@ header{
     text-transform:uppercase;
 }
 
+
 /* FEATURED */
 
 .device.featured{
@@ -652,6 +595,7 @@ header{
     max-width:420px;
 }
 
+
 /* VOCALS */
 
 .vocal-panel{
@@ -663,16 +607,8 @@ header{
     border-radius:34px;
     overflow:hidden;
     background:
-        radial-gradient(
-            circle at 80% 35%,
-            rgba(93,108,255,.14),
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #0d1018,
-            #07090e
-        );
+        radial-gradient(circle at 80% 35%,rgba(93,108,255,.14),transparent 40%),
+        linear-gradient(145deg,#0d1018,#07090e);
 }
 
 .vocal-copy{
@@ -731,12 +667,7 @@ header{
     justify-content:center;
     min-height:620px;
     border-left:1px solid rgba(255,255,255,.07);
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(95,111,255,.18),
-            transparent 55%
-        );
+    background:radial-gradient(circle at 50% 50%,rgba(95,111,255,.18),transparent 55%);
 }
 
 .vocal-chain{
@@ -749,12 +680,7 @@ header{
     padding:26px;
     border:1px solid rgba(255,255,255,.13);
     border-radius:22px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(27,31,43,.95),
-            rgba(9,11,17,.95)
-        );
+    background:linear-gradient(145deg,rgba(27,31,43,.95),rgba(9,11,17,.95));
     box-shadow:0 25px 60px rgba(0,0,0,.35);
 }
 
@@ -785,6 +711,7 @@ header{
     transform:translateX(-50%);
 }
 
+
 /* WORKFLOW */
 
 .workflow-grid{
@@ -799,12 +726,7 @@ header{
     padding:34px;
     border:1px solid var(--line);
     border-radius:28px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,22,31,.9),
-            rgba(8,10,15,.96)
-        );
+    background:linear-gradient(145deg,rgba(18,22,31,.9),rgba(8,10,15,.96));
     overflow:hidden;
     transition:.35s ease;
 }
@@ -831,12 +753,7 @@ header{
     justify-content:center;
     border:1px solid rgba(113,132,255,.25);
     border-radius:17px;
-    background:
-        radial-gradient(
-            circle,
-            rgba(113,132,255,.18),
-            transparent 70%
-        );
+    background:radial-gradient(circle,rgba(113,132,255,.18),transparent 70%);
     color:#8b99ff;
     font-size:19px;
 }
@@ -853,6 +770,7 @@ header{
     line-height:1.7;
 }
 
+
 /* CREATION */
 
 .creation{
@@ -861,11 +779,7 @@ header{
     border:1px solid var(--line);
     border-radius:34px;
     background:
-        radial-gradient(
-            circle at 75% 30%,
-            rgba(92,108,255,.14),
-            transparent 40%
-        ),
+        radial-gradient(circle at 75% 30%,rgba(92,108,255,.14),transparent 40%),
         #080b12;
 }
 
@@ -919,6 +833,7 @@ header{
     font-size:14px;
 }
 
+
 /* SIGNAL */
 
 .signal-panel{
@@ -927,11 +842,7 @@ header{
     border:1px solid var(--line);
     border-radius:34px;
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(89,105,255,.10),
-            transparent 52%
-        ),
+        radial-gradient(circle at 50% 50%,rgba(89,105,255,.10),transparent 52%),
         #080b12;
 }
 
@@ -956,12 +867,7 @@ header{
     padding:24px;
     border:1px solid rgba(255,255,255,.11);
     border-radius:18px;
-    background:
-        linear-gradient(
-            145deg,
-            #11151f,
-            #0b0e15
-        );
+    background:linear-gradient(145deg,#11151f,#0b0e15);
 }
 
 .signal-node small{
@@ -982,6 +888,7 @@ header{
     color:#555f73;
     font-size:20px;
 }
+
 
 /* METRICS */
 
@@ -1021,7 +928,8 @@ header{
     text-transform:uppercase;
 }
 
-/* HARDWARE MODAL */
+
+/* MODAL */
 
 .hardware-modal{
     position:fixed;
@@ -1054,16 +962,8 @@ header{
     border:1px solid rgba(255,255,255,.15);
     border-radius:32px;
     background:
-        radial-gradient(
-            circle at 70% 15%,
-            rgba(93,108,255,.18),
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #11151f,
-            #07090e
-        );
+        radial-gradient(circle at 70% 15%,rgba(93,108,255,.18),transparent 40%),
+        linear-gradient(145deg,#11151f,#07090e);
     box-shadow:0 50px 140px rgba(0,0,0,.65);
     transform:translateY(25px) scale(.97);
     transition:.3s ease;
@@ -1101,21 +1001,14 @@ header{
     justify-content:center;
     padding:50px;
     border-right:1px solid rgba(255,255,255,.08);
-    background:
-        radial-gradient(
-            circle,
-            rgba(89,105,255,.16),
-            transparent 60%
-        );
+    background:radial-gradient(circle,rgba(89,105,255,.16),transparent 60%);
 }
 
 .modal-image img{
     width:100%;
     max-height:430px;
     object-fit:contain;
-    filter:drop-shadow(
-        0 35px 35px rgba(0,0,0,.7)
-    );
+    filter:drop-shadow(0 35px 35px rgba(0,0,0,.7));
 }
 
 .modal-info{
@@ -1166,6 +1059,7 @@ header{
     letter-spacing:.18em;
     text-transform:uppercase;
 }
+
 
 /* FOOTER */
 
@@ -1230,20 +1124,20 @@ footer{
     letter-spacing:.16em;
 }
 
+
 /* REVEAL */
 
 .reveal{
     opacity:0;
     transform:translateY(28px);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+    transition:opacity .8s ease,transform .8s ease;
 }
 
 .reveal.visible{
     opacity:1;
     transform:none;
 }
+
 
 /* RESPONSIVE */
 
@@ -1331,6 +1225,7 @@ footer{
         padding:40px;
     }
 }
+
 
 @media(max-width:700px){
 
@@ -1574,6 +1469,7 @@ footer{
     }
 }
 
+
 @media(prefers-reduced-motion:reduce){
 
     html{
@@ -1596,107 +1492,90 @@ footer{
 <header>
 
 <a href="#studio" class="brand">
-
     <div class="logo">H</div>
-
-    <div class="brand-name">
-        HAERVIU ENGINE
-    </div>
-
+    <div class="brand-name">HAERVIU ENGINE</div>
 </a>
 
 <nav class="desktop-nav">
-
     <a href="#studio">Studio</a>
     <a href="#hardware">Hardware</a>
     <a href="#workflow">Workflow</a>
     <a href="#creation">Create</a>
     <a href="#vocals">Vocals</a>
     <a href="#signal">Signal</a>
-
 </nav>
 
 <button
     class="menu-button"
     id="menuButton"
     aria-label="Open menu"
-    aria-expanded="false"
->
+    aria-expanded="false">
     <span></span>
 </button>
 
 </header>
 
 <nav class="mobile-nav" id="mobileNav">
-
     <a href="#studio">Studio</a>
     <a href="#hardware">Hardware</a>
     <a href="#workflow">Workflow</a>
     <a href="#creation">Music Creation</a>
     <a href="#vocals">Vocal Chain</a>
     <a href="#signal">Signal Architecture</a>
-
 </nav>
 
-<main>
 
-<!-- STUDIO -->
+<main>
 
 <section class="hero" id="studio">
 
 <div class="container hero-content">
 
-    <div class="hero-label">
-        HAERVIU ENGINE / 01
+<div class="hero-label">
+    HAERVIU ENGINE / 01
+</div>
+
+<h1>
+    The<br>
+    <span class="blue">Studio.</span>
+</h1>
+
+<p class="hero-description">
+    A connected creative environment built around
+    rhythm, production, sampling, synthesis, mixing
+    and vocal processing.
+    Every machine has a specific role.
+    Every signal has a destination.
+</p>
+
+<div class="hero-status">
+    <span class="status-dot"></span>
+    SYSTEM ONLINE
+</div>
+
+<a href="#hardware"
+   class="hero-system reveal"
+   aria-label="Go to studio hardware">
+
+    <div class="system-top">
+        <span>HAERVIU ENGINE</span>
+        <span>STUDIO / CORE</span>
     </div>
 
-    <h1>
-        The<br>
-        <span class="blue">Studio.</span>
-    </h1>
-
-    <p class="hero-description">
-        A connected creative environment built around
-        rhythm, production, sampling, synthesis, mixing
-        and vocal processing.
-        Every machine has a specific role.
-        Every signal has a destination.
-    </p>
-
-    <div class="hero-status">
-        <span class="status-dot"></span>
-        SYSTEM ONLINE
+    <div class="system-display">
+        <span>
+            STUDIO CONTROL SYSTEM
+        </span>
     </div>
 
-    <a
-        href="#hardware"
-        class="hero-system reveal"
-        aria-label="Go to studio hardware"
-    >
-
-        <div class="system-top">
-            <span>HAERVIU ENGINE</span>
-            <span>STUDIO / CORE</span>
-        </div>
-
-        <div class="system-display">
-            <span>
-                STUDIO CONTROL SYSTEM
-            </span>
-        </div>
-
-    </a>
+</a>
 
 </div>
 
 </section>
 
-<!-- HARDWARE -->
 
-<section
-    class="section hardware-section"
-    id="hardware"
->
+<section class="section hardware-section" id="hardware">
 
 <div class="container">
 
@@ -1704,13 +1583,13 @@ footer{
 
 <div>
 
-    <div class="section-label">
-        02 / STUDIO HARDWARE
-    </div>
+<div class="section-label">
+    02 / STUDIO HARDWARE
+</div>
 
-    <h2 class="section-title">
-        The Hardware.
-    </h2>
+<h2 class="section-title">
+    The Hardware.
+</h2>
 
 </div>
 
@@ -1723,47 +1602,39 @@ footer{
 
 </div>
 
+
 <div class="hardware-grid">
+
 
 <!-- MC-707 -->
 
-<article
-    class="device featured reveal"
-    data-device="Roland MC-707"
-    data-number="01 / GROOVEBOX"
-    data-image="assets/mc-707.webp"
-    data-description="Groovebox · MIDI · Audio · Sampling"
-    data-role="Production / Sequencing / MIDI Control"
->
+<article class="device featured reveal"
+data-device="Roland MC-707"
+data-number="01 / GROOVEBOX"
+data-image="images/mc-707.webp"
+data-description="Groovebox · MIDI · Audio · Sampling"
+data-role="Production / Sequencing / MIDI Control">
 
 <div class="device-image">
-
 <img
-    src="assets/mc-707.webp"
-    alt="Roland MC-707"
-    loading="eager"
->
-
+src="images/mc-707.webp"
+alt="Roland MC-707"
+loading="eager">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
 <span class="device-number">
 01 / GROOVEBOX
 </span>
 
 <span class="connected">
-<i></i>
-CONNECTED
+<i></i> CONNECTED
 </span>
-
 </div>
 
-<h3>
-Roland MC-707
-</h3>
+<h3>Roland MC-707</h3>
 
 <p>
 Groovebox · MIDI · Audio · Sampling
@@ -1777,45 +1648,34 @@ Production / Sequencing / MIDI Control
 
 </article>
 
+
 <!-- TR-8S -->
 
-<article
-    class="device reveal"
-    data-device="Roland TR-8S"
-    data-number="02 / RHYTHM"
-    data-image="assets/tr-8s.webp"
-    data-description="Rhythm Performer · Drum Machine · Sequencing"
-    data-role="Rhythm Engine / Percussion"
->
+<article class="device reveal"
+data-device="Roland TR-8S"
+data-number="02 / RHYTHM"
+data-image="images/tr-8s.webp"
+data-description="Rhythm Performer · Drum Machine · Sequencing"
+data-role="Rhythm Engine / Percussion">
 
 <div class="device-image">
-
 <img
-    src="assets/tr-8s.webp"
-    alt="Roland TR-8S"
-    loading="lazy"
->
-
+src="images/tr-8s.webp"
+alt="Roland TR-8S"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-02
-</span>
+<span class="device-number">02</span>
 
 <span class="connected">
-<i></i>
-CONNECTED
+<i></i> CONNECTED
 </span>
-
 </div>
 
-<h3>
-Roland TR-8S
-</h3>
+<h3>Roland TR-8S</h3>
 
 <p>
 Rhythm Performer · Drum Machine · Sequencing
@@ -1829,45 +1689,75 @@ Rhythm Engine / Percussion
 
 </article>
 
-<!-- AKAI FORCE -->
 
-<article
-    class="device reveal"
-    data-device="Akai Force"
-    data-number="03 / PRODUCTION"
-    data-image="assets/akai-force.webp"
-    data-description="Production · Sampling · Performance"
-    data-role="Production / Sampling / Performance"
->
+<!-- GAIA -->
+
+<article class="device reveal"
+data-device="Roland GAIA SH-01"
+data-number="03 / SYNTHESIZER"
+data-image="images/roland-gaia-sh01.webp"
+data-description="Synthesizer · Sound Design · MIDI"
+data-role="Synthesis / Sound Design / MIDI Control">
 
 <div class="device-image">
-
 <img
-    src="assets/akai-force.webp"
-    alt="Akai Force"
-    loading="lazy"
->
-
+src="images/roland-gaia-sh01.webp"
+alt="Roland GAIA SH-01"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-03
-</span>
+<span class="device-number">03</span>
 
 <span class="connected">
-<i></i>
-READY
+<i></i> READY
 </span>
+</div>
+
+<h3>Roland GAIA SH-01</h3>
+
+<p>
+Synthesizer · Sound Design · MIDI
+</p>
+
+<div class="device-role">
+Synthesis / Sound Design / MIDI Control
+</div>
 
 </div>
 
-<h3>
-Akai Force
-</h3>
+</article>
+
+
+<!-- AKAI FORCE -->
+
+<article class="device reveal"
+data-device="Akai Force"
+data-number="04 / PRODUCTION"
+data-image="images/akai-force.webp"
+data-description="Production · Sampling · Performance"
+data-role="Production / Sampling / Performance">
+
+<div class="device-image">
+<img
+src="images/akai-force.webp"
+alt="Akai Force"
+loading="lazy">
+</div>
+
+<div class="device-info">
+
+<div class="device-top">
+<span class="device-number">04</span>
+
+<span class="connected">
+<i></i> READY
+</span>
+</div>
+
+<h3>Akai Force</h3>
 
 <p>
 Production · Sampling · Performance
@@ -1881,45 +1771,34 @@ Production / Sampling / Performance
 
 </article>
 
+
 <!-- MX-1 -->
 
-<article
-    class="device reveal"
-    data-device="Roland MX-1"
-    data-number="04 / MIXING"
-    data-image="assets/mx-1.webp"
-    data-description="Mix Performer · Audio Hub · FX"
-    data-role="Master Mix / Audio Routing"
->
+<article class="device reveal"
+data-device="Roland MX-1"
+data-number="05 / MIXING"
+data-image="images/mx-1.webp"
+data-description="Mix Performer · Audio Hub · FX"
+data-role="Master Mix / Audio Routing">
 
 <div class="device-image">
-
 <img
-    src="assets/mx-1.webp"
-    alt="Roland MX-1"
-    loading="lazy"
->
-
+src="images/mx-1.webp"
+alt="Roland MX-1"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-04
-</span>
+<span class="device-number">05</span>
 
 <span class="connected">
-<i></i>
-CONNECTED
+<i></i> CONNECTED
 </span>
-
 </div>
 
-<h3>
-Roland MX-1
-</h3>
+<h3>Roland MX-1</h3>
 
 <p>
 Mix Performer · Audio Hub · FX
@@ -1933,97 +1812,34 @@ Master Mix / Audio Routing
 
 </article>
 
-<!-- GAIA -->
-
-<article
-    class="device reveal"
-    data-device="Roland GAIA SH-01"
-    data-number="05 / SYNTHESIZER"
-    data-image="assets/roland-gaia-sh01.webp"
-    data-description="Synthesizer · Sound Design · MIDI"
-    data-role="Synthesis / Sound Design / MIDI"
->
-
-<div class="device-image">
-
-<img
-    src="assets/roland-gaia-sh01.webp"
-    alt="Roland GAIA SH-01"
-    loading="lazy"
->
-
-</div>
-
-<div class="device-info">
-
-<div class="device-top">
-
-<span class="device-number">
-05
-</span>
-
-<span class="connected">
-<i></i>
-READY
-</span>
-
-</div>
-
-<h3>
-Roland GAIA SH-01
-</h3>
-
-<p>
-Synthesizer · Sound Design · MIDI
-</p>
-
-<div class="device-role">
-Synthesis / Sound Design / MIDI
-</div>
-
-</div>
-
-</article>
 
 <!-- VT-4 -->
 
-<article
-    class="device reveal"
-    data-device="Roland VT-4"
-    data-number="06 / VOCAL FX"
-    data-image="assets/vt-4.webp"
-    data-description="Voice Transformer · Vocal FX · Pitch"
-    data-role="Vocal Processing / Voice FX"
->
+<article class="device reveal"
+data-device="Roland VT-4"
+data-number="06 / VOCAL FX"
+data-image="images/vt-4.webp"
+data-description="Voice Transformer · Vocal FX · Pitch"
+data-role="Vocal Processing / Voice FX">
 
 <div class="device-image">
-
 <img
-    src="assets/vt-4.webp"
-    alt="Roland VT-4"
-    loading="lazy"
->
-
+src="images/vt-4.webp"
+alt="Roland VT-4"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-06
-</span>
+<span class="device-number">06</span>
 
 <span class="connected">
-<i></i>
-READY
+<i></i> READY
 </span>
-
 </div>
 
-<h3>
-Roland VT-4
-</h3>
+<h3>Roland VT-4</h3>
 
 <p>
 Voice Transformer · Vocal FX · Pitch
@@ -2037,45 +1853,34 @@ Vocal Processing / Voice FX
 
 </article>
 
-<!-- RODE -->
 
-<article
-    class="device reveal"
-    data-device="RØDE NT1"
-    data-number="07 / MICROPHONE"
-    data-image="assets/rode-nt1.webp"
-    data-description="Studio Microphone · Vocal Recording"
-    data-role="Vocal Capture / Studio Recording"
->
+<!-- NT1 -->
+
+<article class="device reveal"
+data-device="RØDE NT1"
+data-number="07 / MICROPHONE"
+data-image="images/rode-nt1.webp"
+data-description="Studio Microphone · Vocal Recording"
+data-role="Vocal Capture / Studio Recording">
 
 <div class="device-image">
-
 <img
-    src="assets/rode-nt1.webp"
-    alt="RØDE NT1"
-    loading="lazy"
->
-
+src="images/rode-nt1.webp"
+alt="RØDE NT1"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-07
-</span>
+<span class="device-number">07</span>
 
 <span class="connected">
-<i></i>
-READY
+<i></i> READY
 </span>
-
 </div>
 
-<h3>
-RØDE NT1
-</h3>
+<h3>RØDE NT1</h3>
 
 <p>
 Studio Microphone · Vocal Recording
@@ -2089,45 +1894,34 @@ Vocal Capture / Studio Recording
 
 </article>
 
+
 <!-- KEYLAB -->
 
-<article
-    class="device reveal"
-    data-device="Arturia KeyLab MK2 88"
-    data-number="08 / MIDI"
-    data-image="assets/keylab-mk2-88.webp"
-    data-description="MIDI Keyboard · Instrument Control"
-    data-role="MIDI Performance / Instrument Control"
->
+<article class="device reveal"
+data-device="Arturia Essential 88"
+data-number="08 / MIDI"
+data-image="images/arturia-essential-88.webp"
+data-description="MIDI Keyboard · Instrument Control"
+data-role="MIDI Performance / Instrument Control">
 
 <div class="device-image">
-
 <img
-    src="assets/keylab-mk2-88.webp"
-    alt="Arturia KeyLab MK2 88"
-    loading="lazy"
->
-
+src="images/arturia-essential-88.webp"
+alt="Arturia Essential 88"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-08
-</span>
+<span class="device-number">08</span>
 
 <span class="connected">
-<i></i>
-READY
+<i></i> READY
 </span>
-
 </div>
 
-<h3>
-Arturia KeyLab MK2 88
-</h3>
+<h3>Arturia Essential 88</h3>
 
 <p>
 MIDI Keyboard · Instrument Control
@@ -2141,45 +1935,34 @@ MIDI Performance / Instrument Control
 
 </article>
 
+
 <!-- YAMAHA -->
 
-<article
-    class="device reveal"
-    data-device="Yamaha HS8"
-    data-number="09 / MONITORING"
-    data-image="assets/yamaha-hs8.webp"
-    data-description="Studio Monitoring · Reference"
-    data-role="Monitoring / Critical Listening"
->
+<article class="device reveal"
+data-device="Yamaha HS8"
+data-number="09 / MONITORING"
+data-image="images/yamaha-hs8.webp"
+data-description="Studio Monitoring · Reference"
+data-role="Monitoring / Critical Listening">
 
 <div class="device-image">
-
 <img
-    src="assets/yamaha-hs8.webp"
-    alt="Yamaha HS8"
-    loading="lazy"
->
-
+src="images/yamaha-hs8.webp"
+alt="Yamaha HS8"
+loading="lazy">
 </div>
 
 <div class="device-info">
 
 <div class="device-top">
-
-<span class="device-number">
-09
-</span>
+<span class="device-number">09</span>
 
 <span class="connected">
-<i></i>
-READY
+<i></i> READY
 </span>
-
 </div>
 
-<h3>
-Yamaha HS8
-</h3>
+<h3>Yamaha HS8</h3>
 
 <p>
 Studio Monitoring · Reference
@@ -2193,18 +1976,16 @@ Monitoring / Critical Listening
 
 </article>
 
-</div>
 
+</div>
 </div>
 
 </section>
 
+
 <!-- WORKFLOW -->
 
-<section
-    class="section"
-    id="workflow"
->
+<section class="section" id="workflow">
 
 <div class="container">
 
@@ -2229,72 +2010,42 @@ every stage of the Haerviu system is connected.
 
 </div>
 
+
 <div class="workflow-grid">
 
 <article class="workflow-card reveal">
-
-<div class="workflow-number">
-01 / RHYTHM
-</div>
-
-<div class="workflow-icon">
-01
-</div>
-
-<h3>
-Build the Groove
-</h3>
-
+<div class="workflow-number">01 / RHYTHM</div>
+<div class="workflow-icon">01</div>
+<h3>Build the Groove</h3>
 <p>
 TR-8S rhythm programming,
 percussion, patterns and
 performance variations.
 </p>
-
 </article>
 
+
 <article class="workflow-card reveal">
-
-<div class="workflow-number">
-02 / PRODUCTION
-</div>
-
-<div class="workflow-icon">
-02
-</div>
-
-<h3>
-Shape the Track
-</h3>
-
+<div class="workflow-number">02 / PRODUCTION</div>
+<div class="workflow-icon">02</div>
+<h3>Shape the Track</h3>
 <p>
 MC-707 and Force handle
 sequencing, synthesis,
 sampling and arrangement.
 </p>
-
 </article>
 
+
 <article class="workflow-card reveal">
-
-<div class="workflow-number">
-03 / MIX
-</div>
-
-<div class="workflow-icon">
-03
-</div>
-
-<h3>
-Perform the Mix
-</h3>
-
+<div class="workflow-number">03 / MIX</div>
+<div class="workflow-icon">03</div>
+<h3>Perform the Mix</h3>
 <p>
 MX-1 becomes the central
 mixing and routing point
 for the hardware system.
 </p>
-
 </article>
 
 </div>
@@ -2303,12 +2054,10 @@ for the hardware system.
 
 </section>
 
+
 <!-- CREATE -->
 
-<section
-    class="section"
-    id="creation"
->
+<section class="section" id="creation">
 
 <div class="container">
 
@@ -2335,6 +2084,7 @@ isolated equipment.
 </p>
 
 </div>
+
 
 <div class="creation-stages">
 
@@ -2378,12 +2128,10 @@ isolated equipment.
 
 </section>
 
+
 <!-- VOCALS -->
 
-<section
-    class="section"
-    id="vocals"
->
+<section class="section vocal-section" id="vocals">
 
 <div class="container">
 
@@ -2407,6 +2155,7 @@ integrated directly into the studio workflow.
 </p>
 
 </div>
+
 
 <div class="vocal-panel reveal">
 
@@ -2449,6 +2198,7 @@ Vocal FX
 
 </div>
 
+
 <div class="vocal-visual">
 
 <div class="vocal-chain">
@@ -2482,12 +2232,10 @@ Vocal FX
 
 </section>
 
+
 <!-- SIGNAL -->
 
-<section
-    class="section"
-    id="signal"
->
+<section class="section" id="signal">
 
 <div class="container">
 
@@ -2512,6 +2260,7 @@ recording operate as one connected system.
 
 </div>
 
+
 <div class="signal-panel reveal">
 
 <div class="signal-title">
@@ -2525,36 +2274,28 @@ HAERVIU ENGINE / AUDIO SYSTEM
 <strong>TR-8S</strong>
 </div>
 
-<div class="signal-arrow">
-→
-</div>
+<div class="signal-arrow">→</div>
 
 <div class="signal-node">
 <small>PRODUCTION</small>
 <strong>MC-707 / FORCE</strong>
 </div>
 
-<div class="signal-arrow">
-→
-</div>
+<div class="signal-arrow">→</div>
 
 <div class="signal-node">
 <small>VOCALS</small>
 <strong>NT1 / VT-4</strong>
 </div>
 
-<div class="signal-arrow">
-→
-</div>
+<div class="signal-arrow">→</div>
 
 <div class="signal-node">
 <small>MIXING</small>
 <strong>MX-1</strong>
 </div>
 
-<div class="signal-arrow">
-→
-</div>
+<div class="signal-arrow">→</div>
 
 <div class="signal-node">
 <small>RECORDING</small>
@@ -2564,6 +2305,7 @@ HAERVIU ENGINE / AUDIO SYSTEM
 </div>
 
 </div>
+
 
 <div class="metrics reveal">
 
@@ -2595,50 +2337,35 @@ HAERVIU ENGINE / AUDIO SYSTEM
 
 </main>
 
+
 <!-- HARDWARE MODAL -->
 
-<div
-    class="hardware-modal"
-    id="hardwareModal"
->
+<div class="hardware-modal" id="hardwareModal">
 
 <div class="modal-box">
 
 <button
-    class="modal-close"
-    id="modalClose"
-    aria-label="Fermer"
->
+class="modal-close"
+id="modalClose"
+aria-label="Fermer">
 ×
 </button>
 
 <div class="modal-content">
 
 <div class="modal-image">
-
-<img
-    id="modalImage"
-    src=""
-    alt=""
->
-
+<img id="modalImage" src="" alt="">
 </div>
 
 <div class="modal-info">
 
-<div
-    class="modal-number"
-    id="modalNumber"
-></div>
+<div class="modal-number" id="modalNumber"></div>
 
 <h3 id="modalTitle"></h3>
 
 <p id="modalDescription"></p>
 
-<div
-    class="modal-role"
-    id="modalRole"
-></div>
+<div class="modal-role" id="modalRole"></div>
 
 <div class="modal-hint">
 HAERVIU ENGINE / HARDWARE
@@ -2651,6 +2378,7 @@ HAERVIU ENGINE / HARDWARE
 </div>
 
 </div>
+
 
 <footer>
 
@@ -2674,33 +2402,17 @@ performance, vocals and sound design.
 
 <div class="footer-links">
 
-<a href="#studio">
-Studio
-</a>
-
-<a href="#hardware">
-Hardware
-</a>
-
-<a href="#workflow">
-Workflow
-</a>
-
-<a href="#creation">
-Create
-</a>
-
-<a href="#vocals">
-Vocals
-</a>
-
-<a href="#signal">
-Signal
-</a>
+<a href="#studio">Studio</a>
+<a href="#hardware">Hardware</a>
+<a href="#workflow">Workflow</a>
+<a href="#creation">Create</a>
+<a href="#vocals">Vocals</a>
+<a href="#signal">Signal</a>
 
 </div>
 
 </div>
+
 
 <div class="footer-bottom">
 
@@ -2718,318 +2430,250 @@ STUDIO / PRODUCTION SYSTEM
 
 </footer>
 
+
 <script>
 
 /* MENU */
 
 const menuButton =
-    document.getElementById("menuButton");
+document.getElementById("menuButton");
 
 const mobileNav =
-    document.getElementById("mobileNav");
+document.getElementById("mobileNav");
 
-menuButton.addEventListener(
-    "click",
-    function(){
+menuButton.addEventListener("click",function(){
 
-        const isOpen =
-            mobileNav.classList.toggle("open");
+const isOpen =
+mobileNav.classList.toggle("open");
 
-        menuButton.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-    }
+menuButton.setAttribute(
+"aria-expanded",
+isOpen ? "true" : "false"
 );
 
-document
-    .querySelectorAll(".mobile-nav a")
-    .forEach(function(link){
+});
 
-        link.addEventListener(
-            "click",
-            function(){
-
-                mobileNav.classList.remove("open");
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-        );
-
-    });
-
-/* IMAGES */
 
 document
-    .querySelectorAll(".device-image img")
-    .forEach(function(image){
+.querySelectorAll(".mobile-nav a")
+.forEach(function(link){
 
-        image.addEventListener(
-            "error",
-            function(){
+link.addEventListener("click",function(){
 
-                console.warn(
-                    "Image introuvable :",
-                    image.getAttribute("src")
-                );
+mobileNav.classList.remove("open");
 
-            }
-        );
+menuButton.setAttribute(
+"aria-expanded",
+"false"
+);
 
-    });
+});
+
+});
+
 
 /* REVEAL */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+document.querySelectorAll(".reveal");
 
 const revealObserver =
-    new IntersectionObserver(
-        function(entries){
+new IntersectionObserver(
+function(entries){
 
-            entries.forEach(function(entry){
+entries.forEach(function(entry){
 
-                if(entry.isIntersecting){
+if(entry.isIntersecting){
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+entry.target.classList.add("visible");
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+revealObserver.unobserve(
+entry.target
+);
 
-                }
+}
 
-            });
+});
 
-        },
-        {
-            threshold:.12
-        }
-    );
+},
+{
+threshold:.12
+}
+);
 
 revealElements.forEach(function(element){
 
-    revealObserver.observe(element);
+revealObserver.observe(element);
 
 });
 
-/* ACTIVE NAV */
+
+/* NAV ACTIVE */
 
 const sections =
-    document.querySelectorAll("section[id]");
+document.querySelectorAll("section[id]");
 
 const navLinks =
-    document.querySelectorAll(
-        ".desktop-nav a"
-    );
+document.querySelectorAll(".desktop-nav a");
 
 const sectionObserver =
-    new IntersectionObserver(
-        function(entries){
+new IntersectionObserver(
+function(entries){
 
-            entries.forEach(function(entry){
+entries.forEach(function(entry){
 
-                if(entry.isIntersecting){
+if(entry.isIntersecting){
 
-                    navLinks.forEach(
-                        function(link){
+navLinks.forEach(function(link){
 
-                            link.classList.remove(
-                                "active"
-                            );
+link.classList.remove("active");
 
-                        }
-                    );
+});
 
-                    const active =
-                        document.querySelector(
-                            '.desktop-nav a[href="#' +
-                            entry.target.id +
-                            '"]'
-                        );
+const active =
+document.querySelector(
+'.desktop-nav a[href="#' +
+entry.target.id +
+'"]'
+);
 
-                    if(active){
+if(active){
+active.classList.add("active");
+}
 
-                        active.classList.add(
-                            "active"
-                        );
+}
 
-                    }
+});
 
-                }
-
-            });
-
-        },
-        {
-            rootMargin:
-                "-35% 0px -55% 0px"
-        }
-    );
+},
+{
+rootMargin:"-35% 0px -55% 0px"
+}
+);
 
 sections.forEach(function(section){
 
-    sectionObserver.observe(section);
+sectionObserver.observe(section);
 
 });
+
 
 /* HARDWARE MODAL */
 
 const hardwareModal =
-    document.getElementById(
-        "hardwareModal"
-    );
+document.getElementById("hardwareModal");
 
 const modalClose =
-    document.getElementById(
-        "modalClose"
-    );
+document.getElementById("modalClose");
 
 const modalImage =
-    document.getElementById(
-        "modalImage"
-    );
+document.getElementById("modalImage");
 
 const modalNumber =
-    document.getElementById(
-        "modalNumber"
-    );
+document.getElementById("modalNumber");
 
 const modalTitle =
-    document.getElementById(
-        "modalTitle"
-    );
+document.getElementById("modalTitle");
 
 const modalDescription =
-    document.getElementById(
-        "modalDescription"
-    );
+document.getElementById("modalDescription");
 
 const modalRole =
-    document.getElementById(
-        "modalRole"
-    );
+document.getElementById("modalRole");
 
 const devices =
-    document.querySelectorAll(
-        ".device"
-    );
+document.querySelectorAll(".device");
+
 
 function openHardwareModal(device){
 
-    const title =
-        device.dataset.device;
+const title =
+device.dataset.device;
 
-    const number =
-        device.dataset.number;
+const number =
+device.dataset.number;
 
-    const image =
-        device.dataset.image;
+const image =
+device.dataset.image;
 
-    const description =
-        device.dataset.description;
+const description =
+device.dataset.description;
 
-    const role =
-        device.dataset.role;
+const role =
+device.dataset.role;
 
-    modalNumber.textContent =
-        number;
+modalNumber.textContent = number;
 
-    modalTitle.textContent =
-        title;
+modalTitle.textContent = title;
 
-    modalDescription.textContent =
-        description;
+modalDescription.textContent = description;
 
-    modalRole.textContent =
-        role;
+modalRole.textContent = role;
 
-    modalImage.src =
-        image;
+modalImage.src = image;
 
-    modalImage.alt =
-        title;
+modalImage.alt = title;
 
-    hardwareModal.classList.add(
-        "open"
-    );
+hardwareModal.classList.add("open");
 
-    document.body.style.overflow =
-        "hidden";
+document.body.style.overflow = "hidden";
 
 }
+
 
 function closeHardwareModal(){
 
-    hardwareModal.classList.remove(
-        "open"
-    );
+hardwareModal.classList.remove("open");
 
-    document.body.style.overflow =
-        "";
+document.body.style.overflow = "";
 
 }
 
+
 devices.forEach(function(device){
 
-    device.addEventListener(
-        "click",
-        function(){
+device.addEventListener("click",function(){
 
-            openHardwareModal(
-                device
-            );
-
-        }
-    );
+openHardwareModal(device);
 
 });
 
+});
+
+
 modalClose.addEventListener(
-    "click",
-    closeHardwareModal
+"click",
+closeHardwareModal
 );
+
 
 hardwareModal.addEventListener(
-    "click",
-    function(event){
+"click",
+function(event){
 
-        if(
-            event.target ===
-            hardwareModal
-        ){
+if(event.target === hardwareModal){
 
-            closeHardwareModal();
+closeHardwareModal();
 
-        }
+}
 
-    }
-);
+});
+
 
 document.addEventListener(
-    "keydown",
-    function(event){
+"keydown",
+function(event){
 
-        if(
-            event.key === "Escape" &&
-            hardwareModal.classList.contains(
-                "open"
-            )
-        ){
+if(
+event.key === "Escape" &&
+hardwareModal.classList.contains("open")
+){
 
-            closeHardwareModal();
+closeHardwareModal();
 
-        }
+}
 
-    }
-);
+});
 
 </script>
 
