@@ -1,427 +1,839 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haerviu Engine — Methods</title>
+
+<title>HAERVIU ENGINE — Methods</title>
+
+<meta name="description"
+content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --bg:#07080d;
-    --line:rgba(255,255,255,.13);
-    --text:#f4f4f7;
-    --muted:#858997;
-    --green:#6ee7a0;
+    --bg:#05060a;
+    --panel:#0b0e15;
+    --panel2:#10141d;
+    --white:#f7f8fc;
+    --text:#e9ebf2;
+    --muted:#788195;
+    --line:rgba(255,255,255,.095);
+    --line2:rgba(255,255,255,.15);
+    --blue:#7383ff;
+    --green:#62f3a5;
+    --max:1440px;
 }
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:
-        radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
-        var(--bg);
-    color:var(--text);
     min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 75% -10%,
+            rgba(89,105,255,.18),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #05060a,
+            #070914 50%,
+            #05060a
+        );
+
+    color:var(--text);
+
+    font-family:Inter,Arial,sans-serif;
+
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
+
     position:fixed;
-    inset:-20%;
-    border:1px solid rgba(255,255,255,.055);
-    border-radius:50%;
-    transform:rotate(-18deg);
+
+    inset:0;
+
     pointer-events:none;
+
+    opacity:.18;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:80px 80px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
+
 
 /* HEADER */
 
 header{
-    height:104px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6vw;
-    border-bottom:1px solid rgba(255,255,255,.09);
     position:sticky;
+
     top:0;
-    z-index:10;
-    background:rgba(7,8,13,.88);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+
+    z-index:1000;
+
+    height:84px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 5vw;
+
+    background:rgba(5,6,10,.86);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border-bottom:1px solid var(--line);
 }
 
 .brand{
     display:flex;
+
     align-items:center;
-    gap:20px;
+
+    gap:18px;
 }
 
 .logo{
-    width:58px;
-    height:58px;
-    border:1px solid var(--line);
-    border-radius:17px;
-    display:grid;
-    place-items:center;
+    width:50px;
+
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1e29,
+            #08090d
+        );
+
     font-family:Georgia,serif;
-    font-size:28px;
+
+    font-size:27px;
 }
 
 .brand-name{
-    font-size:17px;
+    font-size:14px;
+
     font-weight:800;
-    letter-spacing:.22em;
+
+    letter-spacing:.34em;
 }
 
-.menu{
-    width:58px;
-    height:58px;
-    border:1px solid var(--line);
-    border-radius:17px;
-    display:grid;
-    place-items:center;
-    font-size:24px;
+.nav{
+    display:flex;
+
+    gap:34px;
 }
 
-/* MAIN */
+.nav a{
+    color:#777f91;
 
-main{
-    position:relative;
-    z-index:1;
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
 }
+
+.nav a:hover{
+    color:white;
+}
+
+
+/* GLOBAL */
+
+.container{
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
+
+    margin:auto;
+}
+
+.section{
+    padding:110px 0;
+}
+
+.label{
+    margin-bottom:20px;
+
+    color:#687185;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.38em;
+
+    text-transform:uppercase;
+}
+
+h1{
+    max-width:1000px;
+
+    font-size:clamp(
+        65px,
+        10vw,
+        145px
+    );
+
+    line-height:.84;
+
+    letter-spacing:-.085em;
+
+    font-weight:900;
+}
+
+h1 span{
+    color:var(--blue);
+}
+
+.description{
+    max-width:680px;
+
+    margin-top:38px;
+
+    color:#aeb6c5;
+
+    font-size:18px;
+
+    line-height:1.75;
+}
+
 
 /* HERO */
 
 .hero{
-    max-width:1100px;
-    margin:auto;
-    padding:90px 6vw 100px;
+    min-height:720px;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-.label{
-    color:#8e92a2;
-    letter-spacing:.35em;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:25px;
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    right:-300px;
+
+    top:0;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(92,108,255,.18),
+            transparent 68%
+        );
+
+    pointer-events:none;
 }
 
-h1{
-    font-size:clamp(60px,9vw,112px);
-    line-height:.88;
-    letter-spacing:-.07em;
-    margin-bottom:32px;
+.hero-content{
+    position:relative;
+
+    z-index:2;
 }
 
-.hero-text{
-    max-width:700px;
-    color:#aeb2bf;
-    font-size:19px;
-    line-height:1.7;
-}
+.hero-status{
+    display:flex;
 
-/* SECTIONS */
+    align-items:center;
 
-.section{
-    padding:100px 0;
-    border-top:1px solid rgba(255,255,255,.07);
-}
+    gap:10px;
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:0 6vw;
-}
+    margin-top:45px;
 
-.section-head{
-    max-width:760px;
-    margin-bottom:55px;
-}
+    color:var(--green);
 
-.section-number{
-    color:#707789;
-    font-size:11px;
+    font-size:9px;
+
     font-weight:800;
-    letter-spacing:.25em;
-    margin-bottom:18px;
+
+    letter-spacing:.32em;
 }
 
-h2{
-    font-size:clamp(42px,6vw,76px);
-    line-height:.95;
-    letter-spacing:-.055em;
-    margin-bottom:25px;
+.dot{
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 14px var(--green);
 }
 
-.section-intro{
-    color:#8f94a2;
-    font-size:17px;
-    line-height:1.7;
+
+/* INTRO */
+
+.intro{
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:80px;
+
+    align-items:start;
 }
 
-/* METHOD */
+.intro h2{
+    font-size:clamp(
+        42px,
+        5vw,
+        70px
+    );
+
+    line-height:.92;
+
+    letter-spacing:-.065em;
+}
+
+.intro-copy{
+    color:#858ea0;
+
+    font-size:15px;
+
+    line-height:1.85;
+}
+
+
+/* METHODS */
+
+.methods-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:22px;
+}
 
 .method{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
+    position:relative;
 
-.method-card{
-    border:1px solid var(--line);
-    border-radius:28px;
-    padding:32px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-    transition:.3s ease;
-}
+    min-height:390px;
 
-.method-card:hover{
-    border-color:rgba(255,255,255,.28);
-    transform:translateY(-4px);
-}
-
-.method-card .number{
-    color:#707789;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.25em;
-    margin-bottom:18px;
-}
-
-.method-card h3{
-    font-size:30px;
-    letter-spacing:-.035em;
-    margin-bottom:15px;
-}
-
-.method-card p{
-    color:#8f94a2;
-    font-size:15px;
-    line-height:1.7;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:25px;
-}
-
-.tag{
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:999px;
-    padding:8px 12px;
-    color:#c7cad3;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.08em;
-}
-
-/* PERFORMANCE */
-
-.performance{
-    border:1px solid var(--line);
-    border-radius:30px;
     padding:38px;
+
+    border:1px solid var(--line);
+
+    border-radius:30px;
+
     background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(90,106,255,.10),
+            transparent 35%
+        ),
         linear-gradient(
             145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
+            #10141d,
+            #080a10
         );
+
+    overflow:hidden;
+
+    transition:.35s ease;
 }
 
-.performance h3{
-    font-size:34px;
-    letter-spacing:-.04em;
-    margin-bottom:18px;
+.method:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(255,255,255,.19);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.4);
 }
 
-.performance p{
-    color:#8f94a2;
-    font-size:16px;
-    line-height:1.75;
-    max-width:760px;
-}
+.method-number{
+    color:#5d6679;
 
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin-top:35px;
-}
+    font-size:9px;
 
-.step{
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:18px;
-    padding:22px;
-    background:rgba(255,255,255,.025);
-}
-
-.step span{
-    display:block;
-    color:#707789;
-    font-size:10px;
     font-weight:800;
-    letter-spacing:.2em;
-    margin-bottom:10px;
+
+    letter-spacing:.3em;
 }
 
-.step strong{
-    font-size:16px;
+.method-icon{
+    width:58px;
+
+    height:58px;
+
+    margin:55px 0 28px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(115,131,255,.25);
+
+    border-radius:18px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(115,131,255,.16),
+            transparent 70%
+        );
+
+    color:#8997ff;
+
+    font-size:12px;
+
+    font-weight:900;
 }
 
-/* ENGINE LOGIC */
+.method h3{
+    font-size:30px;
+
+    letter-spacing:-.045em;
+}
+
+.method p{
+    max-width:470px;
+
+    margin-top:15px;
+
+    color:#7f889a;
+
+    font-size:13px;
+
+    line-height:1.75;
+}
+
+.method-link{
+    position:absolute;
+
+    left:38px;
+
+    bottom:35px;
+
+    color:#aab3c4;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+}
+
+.method-link:hover{
+    color:white;
+}
+
+
+/* SYSTEM */
 
 .system{
+    padding:65px;
+
     border:1px solid var(--line);
-    border-radius:30px;
-    padding:38px;
+
+    border-radius:34px;
+
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(89,105,255,.12),
+            transparent 55%
+        ),
+        #080b12;
 }
 
 .system-head{
-    margin-bottom:40px;
+    margin-bottom:50px;
+}
+
+.system-head h2{
+    font-size:clamp(
+        44px,
+        5vw,
+        70px
+    );
+
+    line-height:.92;
+
+    letter-spacing:-.065em;
 }
 
 .system-flow{
     display:flex;
+
     align-items:center;
-    gap:12px;
-    overflow-x:auto;
-    padding-bottom:5px;
+
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
 }
 
 .node{
-    min-width:150px;
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:18px;
-    padding:20px;
-    background:rgba(255,255,255,.025);
+    min-width:180px;
+
+    padding:24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius:19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11151f,
+            #0b0e15
+        );
 }
 
 .node small{
     display:block;
-    color:#707789;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:.18em;
+
     margin-bottom:9px;
+
+    color:#606a7d;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:.23em;
 }
 
 .node strong{
-    font-size:15px;
+    color:#f2f4f8;
+
+    font-size:14px;
 }
 
 .arrow{
-    color:#626674;
+    color:#555f73;
+
     font-size:20px;
-    flex-shrink:0;
 }
+
+
+/* METHOD DETAIL */
+
+.detail{
+    display:grid;
+
+    grid-template-columns:.65fr 1.35fr;
+
+    gap:80px;
+
+    padding:70px;
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1018,
+            #07090e
+        );
+}
+
+.detail-title h2{
+    font-size:clamp(
+        44px,
+        5vw,
+        68px
+    );
+
+    line-height:.9;
+
+    letter-spacing:-.065em;
+}
+
+.detail-copy{
+    color:#858e9f;
+
+    font-size:15px;
+
+    line-height:1.85;
+}
+
+.steps{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:35px;
+}
+
+.step{
+    padding:24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    background:#10141d;
+}
+
+.step span{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:#657086;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:.25em;
+}
+
+.step strong{
+    color:#edf0f5;
+
+    font-size:14px;
+}
+
 
 /* FOOTER */
 
 footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:45px 6vw;
+    margin-top:80px;
+
+    border-top:1px solid var(--line);
 }
 
 .footer{
-    max-width:1100px;
+    width:min(
+        calc(100% - 10vw),
+        var(--max)
+    );
+
     margin:auto;
+
+    padding:70px 0 40px;
 }
 
 .footer-name{
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:.22em;
-    margin-bottom:10px;
+    font-size:28px;
+
+    font-weight:900;
+
+    letter-spacing:-.05em;
 }
 
-footer p{
-    color:#626674;
+.footer p{
+    margin-top:14px;
+
+    color:#687185;
+
     font-size:12px;
 }
 
 .footer-bottom{
     display:flex;
+
     justify-content:space-between;
-    margin-top:35px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.07);
-    color:#4f5360;
-    font-size:10px;
-    letter-spacing:.16em;
+
+    margin-top:60px;
+
+    padding-top:24px;
+
+    border-top:1px solid var(--line);
+
+    color:#4f586a;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:.15em;
 }
 
-/* MOBILE */
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .nav{
+        display:none;
+    }
+
+    .intro,
+    .detail{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .methods-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:650px;
+    }
+}
 
 @media(max-width:700px){
 
     header{
-        height:88px;
-        padding:0 26px;
+        height:72px;
+
+        padding:0 20px;
     }
 
     .logo{
-        width:50px;
-        height:50px;
+        width:44px;
+
+        height:44px;
+
+        font-size:24px;
     }
 
     .brand-name{
-        font-size:14px;
-        letter-spacing:.18em;
+        font-size:10px;
+
+        letter-spacing:.27em;
     }
 
-    .menu{
-        width:50px;
-        height:50px;
-    }
-
-    .hero{
-        padding:60px 26px 75px;
+    .container,
+    .footer{
+        width:calc(100% - 40px);
     }
 
     .section{
         padding:75px 0;
     }
 
-    .container{
-        padding:0 26px;
+    .hero{
+        min-height:620px;
+    }
+
+    h1{
+        font-size:
+            clamp(
+                62px,
+                19vw,
+                100px
+            );
+    }
+
+    .description{
+        font-size:16px;
     }
 
     .method{
-        grid-template-columns:1fr;
+        min-height:350px;
+
+        padding:28px;
+
+        border-radius:25px;
     }
 
-    .steps{
-        grid-template-columns:1fr 1fr;
+    .method-icon{
+        margin-top:42px;
+    }
+
+    .method-link{
+        left:28px;
+
+        bottom:27px;
+    }
+
+    .system,
+    .detail{
+        padding:30px 22px;
+
+        border-radius:25px;
     }
 
     .system-flow{
         flex-direction:column;
+
         align-items:stretch;
     }
 
@@ -430,15 +842,23 @@ footer p{
     }
 
     .arrow{
+        text-align:center;
+
         transform:rotate(90deg);
-        align-self:center;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
     }
 
     .footer-bottom{
         flex-direction:column;
+
         gap:12px;
     }
+
 }
+
 </style>
 </head>
 
@@ -446,66 +866,145 @@ footer p{
 
 <header>
 
-<a class="brand" href="index.html">
-    <div class="logo">H</div>
-    <div class="brand-name">HAERVIU ENGINE</div>
+<a href="index.html" class="brand">
+
+<div class="logo">
+H
+</div>
+
+<div class="brand-name">
+HAERVIU ENGINE
+</div>
+
 </a>
 
-<div class="menu">☰</div>
+<nav class="nav">
+
+<a href="studio.html">
+Studio
+</a>
+
+<a href="methods.html">
+Methods
+</a>
+
+</nav>
 
 </header>
 
+
 <main>
 
+
 <section class="hero">
+
+<div class="container hero-content">
 
 <div class="label">
 HAERVIU ENGINE / METHODS
 </div>
 
 <h1>
-Make Music.<br>
-Your Way.
+
+The<br>
+
+<span>Methods.</span>
+
 </h1>
 
-<p class="hero-text">
-A practical production system built around hardware,
-performance, routing and creative control.
+<p class="description">
+
+Transform the studio into a repeatable creative system.
+
+HAERVIU ENGINE methods are designed to turn ideas,
+machines, rhythm and sound into complete productions.
+
 </p>
 
+<div class="hero-status">
+
+<span class="dot"></span>
+
+METHOD SYSTEM / IN DEVELOPMENT
+
+</div>
+
+</div>
+
 </section>
+
 
 
 <section class="section">
 
 <div class="container">
 
-<div class="section-head">
+<div class="intro">
 
-<div class="section-number">
-01 / PRODUCTION METHODS
+<div>
+
+<div class="label">
+01 / PHILOSOPHY
 </div>
 
 <h2>
-Different methods.<br>
-One creative system.
-</h2>
 
-<p class="section-intro">
-Haerviu Engine organizes the studio around the way
-music is actually created — from the first idea to
-the final recording.
-</p>
+Not just<br>
+
+equipment.
+
+</h2>
 
 </div>
 
 
-<div class="method">
+<div class="intro-copy">
 
-<div class="method-card">
+HAERVIU ENGINE is built around a simple principle:
+equipment becomes powerful when every machine has
+a clear role inside a complete creative workflow.
 
-<div class="number">
-01 / RHYTHM
+<br><br>
+
+The objective is not to collect machines.
+The objective is to know what to do with them,
+when to use them and how to connect them.
+
+<br><br>
+
+These methods will progressively transform
+real studio workflows into repeatable systems.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="label">
+02 / METHOD LIBRARY
+</div>
+
+
+<div class="methods-grid">
+
+
+<article class="method">
+
+<div class="method-number">
+METHOD 01
+</div>
+
+<div class="method-icon">
+RHYTHM
 </div>
 
 <h3>
@@ -513,92 +1012,109 @@ Build the Groove
 </h3>
 
 <p>
-Start with the rhythm and create movement using
-the TR-8S, then develop the groove into a complete
-musical foundation.
+
+Create a strong rhythmic foundation using
+drum machines, patterns, variations,
+velocity and groove.
+
 </p>
 
-<div class="tags">
-<span class="tag">TR-8S</span>
-<span class="tag">DRUMS</span>
-<span class="tag">GROOVE</span>
+<a class="method-link" href="#rhythm">
+Explore method →
+</a>
+
+</article>
+
+
+
+<article class="method">
+
+<div class="method-number">
+METHOD 02
 </div>
 
-</div>
-
-
-<div class="method-card">
-
-<div class="number">
-02 / PRODUCTION
+<div class="method-icon">
+BASS
 </div>
 
 <h3>
-Shape the Track
+Build the Foundation
 </h3>
 
 <p>
-Develop basslines, synths, samples and musical
-sections with the MC-707, GAIA SH-01 and Akai Force.
+
+Combine rhythm and bass so the track gains
+movement, weight and identity without
+becoming repetitive.
+
 </p>
 
-<div class="tags">
-<span class="tag">MC-707</span>
-<span class="tag">GAIA SH-01</span>
-<span class="tag">FORCE</span>
+<a class="method-link" href="#production">
+Explore method →
+</a>
+
+</article>
+
+
+
+<article class="method">
+
+<div class="method-number">
+METHOD 03
 </div>
 
-</div>
-
-
-<div class="method-card">
-
-<div class="number">
-03 / CONTROL
+<div class="method-icon">
+ARRANGE
 </div>
 
 <h3>
-Play the System
+Escape the Loop
 </h3>
 
 <p>
-Use the KeyLab and the hardware instruments as
-performance tools rather than simply treating them
-as isolated sound sources.
+
+Turn a loop into a real arrangement by
+introducing controlled changes, transitions,
+breaks and energy variations.
+
 </p>
 
-<div class="tags">
-<span class="tag">KEYLAB</span>
-<span class="tag">MIDI</span>
-<span class="tag">PERFORMANCE</span>
+<a class="method-link" href="#arrangement">
+Explore method →
+</a>
+
+</article>
+
+
+
+<article class="method">
+
+<div class="method-number">
+METHOD 04
 </div>
 
-</div>
-
-
-<div class="method-card">
-
-<div class="number">
-04 / ARRANGEMENT
+<div class="method-icon">
+MIX
 </div>
 
 <h3>
-Create Variation
+Perform the Mix
 </h3>
 
 <p>
-Move beyond repetitive loops by combining sections,
-transitions, fills and performance changes into a
-complete arrangement.
+
+Use the hardware mixer and the DAW as one
+environment for routing, balancing,
+performance and recording.
+
 </p>
 
-<div class="tags">
-<span class="tag">MC-707</span>
-<span class="tag">TR-8S</span>
-<span class="tag">FORCE</span>
-</div>
+<a class="method-link" href="#mix">
+Explore method →
+</a>
 
-</div>
+</article>
+
 
 </div>
 
@@ -607,58 +1123,121 @@ complete arrangement.
 </section>
 
 
-<section class="section">
+
+<section class="section" id="rhythm">
 
 <div class="container">
 
-<div class="section-head">
+<div class="detail">
 
-<div class="section-number">
-02 / HARDWARE PERFORMANCE
+<div class="detail-title">
+
+<div class="label">
+METHOD 01
 </div>
 
 <h2>
-The studio<br>
-becomes the instrument.
+
+Build<br>
+
+the Groove.
+
 </h2>
 
 </div>
 
 
-<div class="performance">
+<div class="detail-copy">
 
-<h3>
-Performance is part of the production.
-</h3>
+The first objective is not to make a complete song.
 
-<p>
-Instead of separating composition, sound design,
-mixing and recording, the system brings them together.
-Levels, routing, effects, transitions and recording
-are treated as part of the creative process.
-</p>
+<br><br>
+
+The objective is to create a groove strong enough
+to make the rest of the production possible.
 
 
 <div class="steps">
 
-<div class="step">
-<span>SOURCE</span>
-<strong>Hardware</strong>
-</div>
 
 <div class="step">
-<span>ROUTING</span>
-<strong>MX-1</strong>
+
+<span>
+STEP 01
+</span>
+
+<strong>
+Kick Foundation
+</strong>
+
 </div>
 
-<div class="step">
-<span>CONTROL</span>
-<strong>Performance</strong>
-</div>
 
 <div class="step">
-<span>RECORD</span>
-<strong>Cubase</strong>
+
+<span>
+STEP 02
+</span>
+
+<strong>
+Snare / Clap
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 03
+</span>
+
+<strong>
+Hi-Hat Movement
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 04
+</span>
+
+<strong>
+Percussion
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 05
+</span>
+
+<strong>
+Velocity
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 06
+</span>
+
+<strong>
+Variation
+</strong>
+
+</div>
+
+
 </div>
 
 </div>
@@ -668,6 +1247,336 @@ are treated as part of the creative process.
 </div>
 
 </section>
+
+
+
+<section class="section" id="production">
+
+<div class="container">
+
+<div class="detail">
+
+<div class="detail-title">
+
+<div class="label">
+METHOD 02
+</div>
+
+<h2>
+
+Build<br>
+
+the Foundation.
+
+</h2>
+
+</div>
+
+
+<div class="detail-copy">
+
+Rhythm and bass become the physical foundation
+of the track.
+
+<br><br>
+
+The goal is movement and interaction rather than
+simply adding another sound.
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<span>
+STEP 01
+</span>
+
+<strong>
+Choose the Bass Character
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 02
+</span>
+
+<strong>
+Lock the Groove
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 03
+</span>
+
+<strong>
+Create Movement
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 04
+</span>
+
+<strong>
+Leave Space
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="arrangement">
+
+<div class="container">
+
+<div class="detail">
+
+<div class="detail-title">
+
+<div class="label">
+METHOD 03
+</div>
+
+<h2>
+
+Escape<br>
+
+the Loop.
+
+</h2>
+
+</div>
+
+
+<div class="detail-copy">
+
+A production should evolve.
+
+<br><br>
+
+Instead of copying one loop from beginning to end,
+the arrangement introduces controlled changes
+that create progression and anticipation.
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<span>
+STEP 01
+</span>
+
+<strong>
+Intro
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 02
+</span>
+
+<strong>
+Build
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 03
+</span>
+
+<strong>
+Main Section
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 04
+</span>
+
+<strong>
+Break
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 05
+</span>
+
+<strong>
+Return
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+STEP 06
+</span>
+
+<strong>
+Outro
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="section" id="mix">
+
+<div class="container">
+
+<div class="detail">
+
+<div class="detail-title">
+
+<div class="label">
+METHOD 04
+</div>
+
+<h2>
+
+Perform<br>
+
+the Mix.
+
+</h2>
+
+</div>
+
+
+<div class="detail-copy">
+
+The mixer is not simply the final stage.
+
+<br><br>
+
+It becomes part of the performance itself:
+levels, routing, effects, transitions and
+recording are treated as part of the creative process.
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<span>
+SOURCE
+</span>
+
+<strong>
+Hardware
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+ROUTING
+</span>
+
+<strong>
+MX-1
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+CONTROL
+</span>
+
+<strong>
+Performance
+</strong>
+
+</div>
+
+
+<div class="step">
+
+<span>
+RECORD
+</span>
+
+<strong>
+Cubase
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 
 
 <section class="section">
@@ -683,8 +1592,11 @@ are treated as part of the creative process.
 </div>
 
 <h2>
+
 One system.<br>
+
 Multiple methods.
+
 </h2>
 
 </div>
@@ -692,38 +1604,91 @@ Multiple methods.
 
 <div class="system-flow">
 
-<div class="node">
-<small>IDEA</small>
-<strong>Concept</strong>
-</div>
-
-<div class="arrow">→</div>
 
 <div class="node">
-<small>RHYTHM</small>
-<strong>TR-8S</strong>
+
+<small>
+IDEA
+</small>
+
+<strong>
+Concept
+</strong>
+
 </div>
 
-<div class="arrow">→</div>
+
+<div class="arrow">
+→
+</div>
+
 
 <div class="node">
-<small>PRODUCTION</small>
-<strong>MC-707 / FORCE</strong>
+
+<small>
+RHYTHM
+</small>
+
+<strong>
+TR-8S
+</strong>
+
 </div>
 
-<div class="arrow">→</div>
+
+<div class="arrow">
+→
+</div>
+
 
 <div class="node">
-<small>MIX</small>
-<strong>MX-1</strong>
+
+<small>
+PRODUCTION
+</small>
+
+<strong>
+MC-707 / FORCE
+</strong>
+
 </div>
 
-<div class="arrow">→</div>
+
+<div class="arrow">
+→
+</div>
+
 
 <div class="node">
-<small>RECORD</small>
-<strong>CUBASE</strong>
+
+<small>
+MIX
+</small>
+
+<strong>
+MX-1
+</strong>
+
 </div>
+
+
+<div class="arrow">
+→
+</div>
+
+
+<div class="node">
+
+<small>
+RECORD
+</small>
+
+<strong>
+CUBASE
+</strong>
+
+</div>
+
 
 </div>
 
@@ -733,7 +1698,9 @@ Multiple methods.
 
 </section>
 
+
 </main>
+
 
 
 <footer>
@@ -763,6 +1730,7 @@ METHODS / PRODUCTION SYSTEM
 </div>
 
 </footer>
+
 
 </body>
 </html>
