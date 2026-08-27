@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HAERVIU ENGINE — Methods</title>
+
 <meta name="description" content="HAERVIU ENGINE — Production methods, workflows and creative systems.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,8 +41,17 @@ html{
 body{
     min-height:100vh;
     background:
-        radial-gradient(circle at 75% -10%,rgba(89,105,255,.18),transparent 34%),
-        linear-gradient(180deg,#05060a,#070914 50%,#05060a);
+        radial-gradient(
+            circle at 75% -10%,
+            rgba(89,105,255,.18),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            #05060a,
+            #070914 50%,
+            #05060a
+        );
     color:var(--text);
     font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
@@ -53,10 +64,21 @@ body::before{
     pointer-events:none;
     opacity:.18;
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
     background-size:80px 80px;
-    mask-image:linear-gradient(to bottom,black,transparent 80%);
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+    );
 }
 
 a{
@@ -64,20 +86,27 @@ a{
     text-decoration:none;
 }
 
+
 /* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
+
     height:84px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 5vw;
+
     background:rgba(5,6,10,.86);
+
     backdrop-filter:blur(24px);
     -webkit-backdrop-filter:blur(24px);
+
     border-bottom:1px solid var(--line);
 }
 
@@ -90,12 +119,21 @@ header{
 .logo{
     width:50px;
     height:50px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border:1px solid rgba(255,255,255,.2);
     border-radius:16px;
-    background:linear-gradient(145deg,#1a1e29,#08090d);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a1e29,
+            #08090d
+        );
+
     font-family:Georgia,serif;
     font-size:27px;
 }
@@ -123,6 +161,7 @@ header{
     color:white;
 }
 
+
 /* GLOBAL */
 
 .container{
@@ -136,18 +175,24 @@ header{
 
 .label{
     margin-bottom:20px;
+
     color:#687185;
+
     font-size:10px;
     font-weight:800;
     letter-spacing:.38em;
+
     text-transform:uppercase;
 }
 
 h1{
     max-width:1000px;
+
     font-size:clamp(65px,10vw,145px);
+
     line-height:.84;
     letter-spacing:-.085em;
+
     font-weight:900;
 }
 
@@ -157,31 +202,48 @@ h1 span{
 
 .description{
     max-width:680px;
+
     margin-top:38px;
+
     color:#aeb6c5;
+
     font-size:18px;
     line-height:1.75;
 }
+
 
 /* HERO */
 
 .hero{
     min-height:720px;
+
     display:flex;
     align-items:center;
+
     position:relative;
     overflow:hidden;
 }
 
 .hero::after{
     content:"";
+
     position:absolute;
+
     width:700px;
     height:700px;
+
     right:-300px;
     top:0;
+
     border-radius:50%;
-    background:radial-gradient(circle,rgba(92,108,255,.18),transparent 68%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(92,108,255,.18),
+            transparent 68%
+        );
+
     pointer-events:none;
 }
 
@@ -194,8 +256,11 @@ h1 span{
     display:flex;
     align-items:center;
     gap:10px;
+
     margin-top:45px;
+
     color:var(--green);
+
     font-size:9px;
     font-weight:800;
     letter-spacing:.32em;
@@ -204,61 +269,93 @@ h1 span{
 .dot{
     width:8px;
     height:8px;
+
     border-radius:50%;
+
     background:var(--green);
+
     box-shadow:0 0 14px var(--green);
 }
+
 
 /* INTRO */
 
 .intro{
     display:grid;
+
     grid-template-columns:.8fr 1.2fr;
+
     gap:80px;
+
     align-items:start;
 }
 
 .intro h2{
     font-size:clamp(42px,5vw,70px);
+
     line-height:.92;
     letter-spacing:-.065em;
 }
 
 .intro-copy{
     color:#858ea0;
+
     font-size:15px;
+
     line-height:1.85;
 }
+
 
 /* METHODS */
 
 .methods-grid{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:22px;
 }
 
 .method{
     position:relative;
+
     min-height:390px;
+
     padding:38px;
+
     border:1px solid var(--line);
+
     border-radius:30px;
+
     background:
-        radial-gradient(circle at 80% 20%,rgba(90,106,255,.10),transparent 35%),
-        linear-gradient(145deg,#10141d,#080a10);
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(90,106,255,.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #10141d,
+            #080a10
+        );
+
     overflow:hidden;
+
     transition:.35s ease;
 }
 
 .method:hover{
     transform:translateY(-7px);
+
     border-color:rgba(255,255,255,.19);
-    box-shadow:0 35px 80px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.4);
 }
 
 .method-number{
     color:#5d6679;
+
     font-size:9px;
     font-weight:800;
     letter-spacing:.3em;
@@ -267,14 +364,26 @@ h1 span{
 .method-icon{
     width:58px;
     height:58px;
+
     margin:55px 0 28px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border:1px solid rgba(115,131,255,.25);
+
     border-radius:18px;
-    background:radial-gradient(circle,rgba(115,131,255,.16),transparent 70%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(115,131,255,.16),
+            transparent 70%
+        );
+
     color:#8997ff;
+
     font-size:12px;
     font-weight:900;
 }
@@ -286,20 +395,28 @@ h1 span{
 
 .method p{
     max-width:470px;
+
     margin-top:15px;
+
     color:#7f889a;
+
     font-size:13px;
+
     line-height:1.75;
 }
 
 .method-link{
     position:absolute;
+
     left:38px;
     bottom:35px;
+
     color:#aab3c4;
+
     font-size:9px;
     font-weight:800;
     letter-spacing:.22em;
+
     text-transform:uppercase;
 }
 
@@ -307,14 +424,99 @@ h1 span{
     color:white;
 }
 
+
+/* METHOD DETAIL */
+
+.detail{
+    display:grid;
+
+    grid-template-columns:.65fr 1.35fr;
+
+    gap:80px;
+
+    padding:70px;
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1018,
+            #07090e
+        );
+}
+
+.detail-title h2{
+    font-size:clamp(44px,5vw,68px);
+
+    line-height:.9;
+    letter-spacing:-.065em;
+}
+
+.detail-copy{
+    color:#858e9f;
+
+    font-size:15px;
+
+    line-height:1.85;
+}
+
+.steps{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:35px;
+}
+
+.step{
+    padding:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    background:#10141d;
+}
+
+.step span{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:#657086;
+
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.25em;
+}
+
+.step strong{
+    color:#edf0f5;
+
+    font-size:14px;
+}
+
+
 /* SYSTEM */
 
 .system{
     padding:65px;
+
     border:1px solid var(--line);
+
     border-radius:34px;
+
     background:
-        radial-gradient(circle at 50% 40%,rgba(89,105,255,.12),transparent 55%),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(89,105,255,.12),
+            transparent 55%
+        ),
         #080b12;
 }
 
@@ -324,30 +526,46 @@ h1 span{
 
 .system-head h2{
     font-size:clamp(44px,5vw,70px);
+
     line-height:.92;
     letter-spacing:-.065em;
 }
 
 .system-flow{
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     gap:14px;
+
     flex-wrap:wrap;
 }
 
 .node{
     min-width:180px;
+
     padding:24px;
+
     border:1px solid rgba(255,255,255,.11);
+
     border-radius:19px;
-    background:linear-gradient(145deg,#11151f,#0b0e15);
+
+    background:
+        linear-gradient(
+            145deg,
+            #11151f,
+            #0b0e15
+        );
 }
 
 .node small{
     display:block;
+
     margin-bottom:9px;
+
     color:#606a7d;
+
     font-size:8px;
     font-weight:800;
     letter-spacing:.23em;
@@ -355,102 +573,69 @@ h1 span{
 
 .node strong{
     color:#f2f4f8;
+
     font-size:14px;
 }
 
 .arrow{
     color:#555f73;
+
     font-size:20px;
 }
 
-/* METHOD DETAIL */
-
-.detail{
-    display:grid;
-    grid-template-columns:.65fr 1.35fr;
-    gap:80px;
-    padding:70px;
-    border:1px solid var(--line);
-    border-radius:34px;
-    background:linear-gradient(145deg,#0c1018,#07090e);
-}
-
-.detail-title h2{
-    font-size:clamp(44px,5vw,68px);
-    line-height:.9;
-    letter-spacing:-.065em;
-}
-
-.detail-copy{
-    color:#858e9f;
-    font-size:15px;
-    line-height:1.85;
-}
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    margin-top:35px;
-}
-
-.step{
-    padding:24px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    background:#10141d;
-}
-
-.step span{
-    display:block;
-    margin-bottom:13px;
-    color:#657086;
-    font-size:8px;
-    font-weight:800;
-    letter-spacing:.25em;
-}
-
-.step strong{
-    color:#edf0f5;
-    font-size:14px;
-}
 
 /* FOOTER */
 
 footer{
     margin-top:80px;
+
     border-top:1px solid var(--line);
 }
 
 .footer{
     width:min(calc(100% - 10vw),var(--max));
+
     margin:auto;
+
     padding:70px 0 40px;
 }
 
 .footer-name{
     font-size:28px;
+
     font-weight:900;
+
     letter-spacing:-.05em;
 }
 
 .footer p{
     margin-top:14px;
+
     color:#687185;
+
     font-size:12px;
 }
 
 .footer-bottom{
     display:flex;
+
     justify-content:space-between;
+
     margin-top:60px;
+
     padding-top:24px;
+
     border-top:1px solid var(--line);
+
     color:#4f586a;
+
     font-size:9px;
+
     font-weight:700;
+
     letter-spacing:.15em;
 }
+
 
 /* RESPONSIVE */
 
@@ -473,7 +658,9 @@ footer{
     .hero{
         min-height:650px;
     }
+
 }
+
 
 @media(max-width:700px){
 
@@ -557,12 +744,15 @@ footer{
         flex-direction:column;
         gap:12px;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -576,17 +766,27 @@ footer{
 
 </a>
 
+
 <nav class="nav">
 
-    <a href="studio.html">Studio</a>
-    <a href="methods.html">Methods</a>
+    <a href="studio.html">
+        Studio
+    </a>
+
+    <a href="methods.html">
+        Methods
+    </a>
 
 </nav>
 
 </header>
 
 
+
 <main>
+
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -596,22 +796,25 @@ footer{
         HAERVIU ENGINE / METHODS
     </div>
 
+
     <h1>
         The<br>
         <span>Methods.</span>
     </h1>
 
+
     <p class="description">
         Transform the studio into a repeatable creative system.
         HAERVIU ENGINE methods are designed to turn ideas,
-        rhythm, production and performance into a complete workflow.
+        machines, rhythm and sound into complete productions.
     </p>
+
 
     <div class="hero-status">
 
         <span class="dot"></span>
 
-        SYSTEM ONLINE
+        METHOD SYSTEM / IN DEVELOPMENT
 
     </div>
 
@@ -619,6 +822,9 @@ footer{
 
 </section>
 
+
+
+<!-- PHILOSOPHY -->
 
 <section class="section">
 
@@ -626,38 +832,40 @@ footer{
 
 <div class="intro">
 
-    <div>
 
-        <div class="label">
-            01 / THE METHOD
-        </div>
+<div>
 
-        <h2>
-            Less<br>
-            Guessing.<br>
-            More Creating.
-        </h2>
-
+    <div class="label">
+        01 / PHILOSOPHY
     </div>
 
-    <div class="intro-copy">
+    <h2>
+        Not just<br>
+        equipment.
+    </h2>
 
-        HAERVIU ENGINE is built around practical production
-        methods designed for real hardware and real creative
-        situations.
+</div>
 
-        <br><br>
 
-        The objective is simple: create a workflow that can be
-        repeated, adapted and improved without losing the
-        human side of music production.
+<div class="intro-copy">
 
-        <br><br>
+    HAERVIU ENGINE is built around a simple principle:
+    equipment becomes powerful when every machine has
+    a clear role inside a complete creative workflow.
 
-        Every method gives the studio a clear role, from the
-        first rhythm to the final recorded performance.
+    <br><br>
 
-    </div>
+    The objective is not to collect machines.
+    The objective is to know what to do with them,
+    when to use them and how to connect them.
+
+    <br><br>
+
+    These methods will progressively transform
+    real studio workflows into repeatable systems.
+
+</div>
+
 
 </div>
 
@@ -666,16 +874,23 @@ footer{
 </section>
 
 
+
+<!-- METHOD LIBRARY -->
+
 <section class="section">
 
 <div class="container">
 
+
 <div class="label">
-    02 / PRODUCTION METHODS
+    02 / METHOD LIBRARY
 </div>
+
 
 <div class="methods-grid">
 
+
+<!-- METHOD 01 -->
 
 <article class="method">
 
@@ -684,7 +899,7 @@ footer{
     </div>
 
     <div class="method-icon">
-        GROOVE
+        RHYTHM
     </div>
 
     <h3>
@@ -692,8 +907,9 @@ footer{
     </h3>
 
     <p>
-        Start with rhythm and create a solid foundation
-        before adding unnecessary complexity.
+        Create a strong rhythmic foundation using
+        drum machines, patterns, variations,
+        velocity and groove.
     </p>
 
     <a class="method-link" href="#rhythm">
@@ -702,6 +918,8 @@ footer{
 
 </article>
 
+
+<!-- METHOD 02 -->
 
 <article class="method">
 
@@ -730,6 +948,8 @@ footer{
 </article>
 
 
+<!-- METHOD 03 -->
+
 <article class="method">
 
     <div class="method-number">
@@ -756,6 +976,8 @@ footer{
 
 </article>
 
+
+<!-- METHOD 04 -->
 
 <article class="method">
 
@@ -791,11 +1013,15 @@ footer{
 </section>
 
 
+
+<!-- METHOD 01 -->
+
 <section class="section" id="rhythm">
 
 <div class="container">
 
 <div class="detail">
+
 
 <div class="detail-title">
 
@@ -823,39 +1049,47 @@ footer{
 
     <div class="steps">
 
+
         <div class="step">
             <span>STEP 01</span>
             <strong>Kick Foundation</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Snare / Clap</strong>
         </div>
 
+
         <div class="step">
             <span>STEP 03</span>
             <strong>Hi-Hat Movement</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Percussion</strong>
         </div>
 
+
         <div class="step">
             <span>STEP 05</span>
             <strong>Velocity</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 06</span>
             <strong>Variation</strong>
         </div>
 
+
     </div>
 
 </div>
+
 
 </div>
 
@@ -864,11 +1098,15 @@ footer{
 </section>
 
 
+
+<!-- METHOD 02 -->
+
 <section class="section" id="production">
 
 <div class="container">
 
 <div class="detail">
+
 
 <div class="detail-title">
 
@@ -897,29 +1135,35 @@ footer{
 
     <div class="steps">
 
+
         <div class="step">
             <span>STEP 01</span>
             <strong>Choose the Bass Character</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Lock the Groove</strong>
         </div>
 
+
         <div class="step">
             <span>STEP 03</span>
             <strong>Create Movement</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Leave Space</strong>
         </div>
 
+
     </div>
 
 </div>
+
 
 </div>
 
@@ -928,11 +1172,15 @@ footer{
 </section>
 
 
+
+<!-- METHOD 03 -->
+
 <section class="section" id="arrangement">
 
 <div class="container">
 
 <div class="detail">
+
 
 <div class="detail-title">
 
@@ -961,39 +1209,47 @@ footer{
 
     <div class="steps">
 
+
         <div class="step">
             <span>STEP 01</span>
             <strong>Intro</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 02</span>
             <strong>Build</strong>
         </div>
 
+
         <div class="step">
             <span>STEP 03</span>
             <strong>Main Section</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 04</span>
             <strong>Break</strong>
         </div>
 
+
         <div class="step">
             <span>STEP 05</span>
             <strong>Return</strong>
         </div>
+
 
         <div class="step">
             <span>STEP 06</span>
             <strong>Outro</strong>
         </div>
 
+
     </div>
 
 </div>
+
 
 </div>
 
@@ -1002,11 +1258,15 @@ footer{
 </section>
 
 
+
+<!-- METHOD 04 -->
+
 <section class="section" id="mix">
 
 <div class="container">
 
 <div class="detail">
+
 
 <div class="detail-title">
 
@@ -1035,29 +1295,35 @@ footer{
 
     <div class="steps">
 
+
         <div class="step">
             <span>SOURCE</span>
             <strong>Hardware</strong>
         </div>
+
 
         <div class="step">
             <span>ROUTING</span>
             <strong>MX-1</strong>
         </div>
 
+
         <div class="step">
             <span>CONTROL</span>
             <strong>Performance</strong>
         </div>
+
 
         <div class="step">
             <span>RECORD</span>
             <strong>Cubase</strong>
         </div>
 
+
     </div>
 
 </div>
+
 
 </div>
 
@@ -1066,11 +1332,15 @@ footer{
 </section>
 
 
+
+<!-- ENGINE LOGIC -->
+
 <section class="section">
 
 <div class="container">
 
 <div class="system">
+
 
 <div class="system-head">
 
@@ -1088,40 +1358,59 @@ footer{
 
 <div class="system-flow">
 
+
     <div class="node">
         <small>IDEA</small>
         <strong>Concept</strong>
     </div>
 
-    <div class="arrow">→</div>
+
+    <div class="arrow">
+        →
+    </div>
+
 
     <div class="node">
         <small>RHYTHM</small>
         <strong>TR-8S</strong>
     </div>
 
-    <div class="arrow">→</div>
+
+    <div class="arrow">
+        →
+    </div>
+
 
     <div class="node">
         <small>PRODUCTION</small>
         <strong>MC-707 / FORCE</strong>
     </div>
 
-    <div class="arrow">→</div>
+
+    <div class="arrow">
+        →
+    </div>
+
 
     <div class="node">
         <small>MIX</small>
         <strong>MX-1</strong>
     </div>
 
-    <div class="arrow">→</div>
+
+    <div class="arrow">
+        →
+    </div>
+
 
     <div class="node">
         <small>RECORD</small>
         <strong>CUBASE</strong>
     </div>
 
+
 </div>
+
 
 </div>
 
@@ -1129,36 +1418,43 @@ footer{
 
 </section>
 
+
 </main>
+
 
 
 <footer>
 
 <div class="footer">
 
-    <div class="footer-name">
-        HAERVIU ENGINE
-    </div>
 
-    <p>
-        Creative systems for music production.
-    </p>
+<div class="footer-name">
+    HAERVIU ENGINE
+</div>
 
-    <div class="footer-bottom">
 
-        <span>
-            METHODS / PRODUCTION SYSTEM
-        </span>
+<p>
+    Creative systems for music production.
+</p>
 
-        <span>
-            © 2026 HAERVIU
-        </span>
 
-    </div>
+<div class="footer-bottom">
+
+    <span>
+        METHODS / PRODUCTION SYSTEM
+    </span>
+
+    <span>
+        © 2026 HAERVIU
+    </span>
+
+</div>
+
 
 </div>
 
 </footer>
+
 
 </body>
 </html>
