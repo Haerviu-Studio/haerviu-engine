@@ -41,57 +41,25 @@ html{
 
 body{
     min-height:100vh;
-
     background:
-        radial-gradient(
-            circle at 75% -10%,
-            rgba(89,105,255,.18),
-            transparent 34%
-        ),
-        linear-gradient(
-            180deg,
-            #05060a,
-            #070914 50%,
-            #05060a
-        );
-
+        radial-gradient(circle at 75% -10%,rgba(89,105,255,.18),transparent 34%),
+        linear-gradient(180deg,#05060a,#070914 50%,#05060a);
     color:var(--text);
-
     font-family:Inter,Arial,sans-serif;
-
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
-
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     opacity:.18;
-
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
-
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
     background-size:80px 80px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 80%
-        );
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
 }
 
 a{
@@ -99,93 +67,58 @@ a{
     text-decoration:none;
 }
 
-
 /* HEADER */
 
 header{
     position:sticky;
-
     top:0;
-
     z-index:1000;
-
     height:84px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     padding:0 5vw;
-
     background:rgba(5,6,10,.86);
-
     backdrop-filter:blur(24px);
-
     -webkit-backdrop-filter:blur(24px);
-
     border-bottom:1px solid var(--line);
 }
 
 .brand{
     display:flex;
-
     align-items:center;
-
     gap:18px;
 }
 
 .logo{
     width:50px;
-
     height:50px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     border:1px solid rgba(255,255,255,.2);
-
     border-radius:16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1a1e29,
-            #08090d
-        );
-
+    background:linear-gradient(145deg,#1a1e29,#08090d);
     font-family:Georgia,serif;
-
     font-size:27px;
 }
 
 .brand-name{
     font-size:14px;
-
     font-weight:800;
-
     letter-spacing:.34em;
 }
 
 .nav{
     display:flex;
-
     gap:34px;
 }
 
 .nav a{
     color:#777f91;
-
     font-size:10px;
-
     font-weight:800;
-
     letter-spacing:.2em;
-
     text-transform:uppercase;
 }
 
@@ -193,15 +126,10 @@ header{
     color:white;
 }
 
-
 /* GLOBAL */
 
 .container{
-    width:min(
-        calc(100% - 10vw),
-        var(--max)
-    );
-
+    width:min(calc(100% - 10vw),var(--max));
     margin:auto;
 }
 
@@ -211,31 +139,18 @@ header{
 
 .label{
     margin-bottom:20px;
-
     color:#687185;
-
     font-size:10px;
-
     font-weight:800;
-
     letter-spacing:.38em;
-
     text-transform:uppercase;
 }
 
 h1{
     max-width:1000px;
-
-    font-size:clamp(
-        65px,
-        10vw,
-        145px
-    );
-
+    font-size:clamp(65px,10vw,145px);
     line-height:.84;
-
     letter-spacing:-.085em;
-
     font-weight:900;
 }
 
@@ -245,252 +160,149 @@ h1 span{
 
 .description{
     max-width:680px;
-
     margin-top:38px;
-
     color:#aeb6c5;
-
     font-size:18px;
-
     line-height:1.75;
 }
-
 
 /* HERO */
 
 .hero{
     min-height:720px;
-
     display:flex;
-
     align-items:center;
-
     position:relative;
-
     overflow:hidden;
 }
 
 .hero::after{
     content:"";
-
     position:absolute;
-
     width:700px;
-
     height:700px;
-
     right:-300px;
-
     top:0;
-
     border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(92,108,255,.18),
-            transparent 68%
-        );
-
+    background:radial-gradient(circle,rgba(92,108,255,.18),transparent 68%);
     pointer-events:none;
 }
 
 .hero-content{
     position:relative;
-
     z-index:2;
 }
 
 .hero-status{
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
     margin-top:45px;
-
     color:var(--green);
-
     font-size:9px;
-
     font-weight:800;
-
     letter-spacing:.32em;
 }
 
 .dot{
     width:8px;
-
     height:8px;
-
     border-radius:50%;
-
     background:var(--green);
-
-    box-shadow:
-        0 0 14px var(--green);
+    box-shadow:0 0 14px var(--green);
 }
-
 
 /* INTRO */
 
 .intro{
     display:grid;
-
     grid-template-columns:.8fr 1.2fr;
-
     gap:80px;
-
     align-items:start;
 }
 
 .intro h2{
-    font-size:clamp(
-        42px,
-        5vw,
-        70px
-    );
-
+    font-size:clamp(42px,5vw,70px);
     line-height:.92;
-
     letter-spacing:-.065em;
 }
 
 .intro-copy{
     color:#858ea0;
-
     font-size:15px;
-
     line-height:1.85;
 }
-
 
 /* METHODS */
 
 .methods-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:22px;
 }
 
 .method{
     position:relative;
-
     min-height:390px;
-
     padding:38px;
-
     border:1px solid var(--line);
-
     border-radius:30px;
-
     background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(90,106,255,.10),
-            transparent 35%
-        ),
-        linear-gradient(
-            145deg,
-            #10141d,
-            #080a10
-        );
-
+        radial-gradient(circle at 80% 20%,rgba(90,106,255,.10),transparent 35%),
+        linear-gradient(145deg,#10141d,#080a10);
     overflow:hidden;
-
     transition:.35s ease;
 }
 
 .method:hover{
     transform:translateY(-7px);
-
-    border-color:
-        rgba(255,255,255,.19);
-
-    box-shadow:
-        0 35px 80px rgba(0,0,0,.4);
+    border-color:rgba(255,255,255,.19);
+    box-shadow:0 35px 80px rgba(0,0,0,.4);
 }
 
 .method-number{
     color:#5d6679;
-
     font-size:9px;
-
     font-weight:800;
-
     letter-spacing:.3em;
 }
 
 .method-icon{
     width:58px;
-
     height:58px;
-
     margin:55px 0 28px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    border:
-        1px solid
-        rgba(115,131,255,.25);
-
+    border:1px solid rgba(115,131,255,.25);
     border-radius:18px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(115,131,255,.16),
-            transparent 70%
-        );
-
+    background:radial-gradient(circle,rgba(115,131,255,.16),transparent 70%);
     color:#8997ff;
-
     font-size:12px;
-
     font-weight:900;
 }
 
 .method h3{
     font-size:30px;
-
     letter-spacing:-.045em;
 }
 
 .method p{
     max-width:470px;
-
     margin-top:15px;
-
     color:#7f889a;
-
     font-size:13px;
-
     line-height:1.75;
 }
 
 .method-link{
     position:absolute;
-
     left:38px;
-
     bottom:35px;
-
     color:#aab3c4;
-
     font-size:9px;
-
     font-weight:800;
-
     letter-spacing:.22em;
-
     text-transform:uppercase;
 }
 
@@ -498,22 +310,14 @@ h1 span{
     color:white;
 }
 
-
 /* SYSTEM */
 
 .system{
     padding:65px;
-
     border:1px solid var(--line);
-
     border-radius:34px;
-
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(89,105,255,.12),
-            transparent 55%
-        ),
+        radial-gradient(circle at 50% 40%,rgba(89,105,255,.12),transparent 55%),
         #080b12;
 }
 
@@ -522,217 +326,134 @@ h1 span{
 }
 
 .system-head h2{
-    font-size:clamp(
-        44px,
-        5vw,
-        70px
-    );
-
+    font-size:clamp(44px,5vw,70px);
     line-height:.92;
-
     letter-spacing:-.065em;
 }
 
 .system-flow{
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     gap:14px;
-
     flex-wrap:wrap;
 }
 
 .node{
     min-width:180px;
-
     padding:24px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
+    border:1px solid rgba(255,255,255,.11);
     border-radius:19px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #11151f,
-            #0b0e15
-        );
+    background:linear-gradient(145deg,#11151f,#0b0e15);
 }
 
 .node small{
     display:block;
-
     margin-bottom:9px;
-
     color:#606a7d;
-
     font-size:8px;
-
     font-weight:800;
-
     letter-spacing:.23em;
 }
 
 .node strong{
     color:#f2f4f8;
-
     font-size:14px;
 }
 
 .arrow{
     color:#555f73;
-
     font-size:20px;
 }
-
 
 /* METHOD DETAIL */
 
 .detail{
     display:grid;
-
     grid-template-columns:.65fr 1.35fr;
-
     gap:80px;
-
     padding:70px;
-
     border:1px solid var(--line);
-
     border-radius:34px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #0c1018,
-            #07090e
-        );
+    background:linear-gradient(145deg,#0c1018,#07090e);
 }
 
 .detail-title h2{
-    font-size:clamp(
-        44px,
-        5vw,
-        68px
-    );
-
+    font-size:clamp(44px,5vw,68px);
     line-height:.9;
-
     letter-spacing:-.065em;
 }
 
 .detail-copy{
     color:#858e9f;
-
     font-size:15px;
-
     line-height:1.85;
 }
 
 .steps{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:14px;
-
     margin-top:35px;
 }
 
 .step{
     padding:24px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
+    border:1px solid rgba(255,255,255,.08);
     border-radius:18px;
-
     background:#10141d;
 }
 
 .step span{
     display:block;
-
     margin-bottom:13px;
-
     color:#657086;
-
     font-size:8px;
-
     font-weight:800;
-
     letter-spacing:.25em;
 }
 
 .step strong{
     color:#edf0f5;
-
     font-size:14px;
 }
-
 
 /* FOOTER */
 
 footer{
     margin-top:80px;
-
     border-top:1px solid var(--line);
 }
 
 .footer{
-    width:min(
-        calc(100% - 10vw),
-        var(--max)
-    );
-
+    width:min(calc(100% - 10vw),var(--max));
     margin:auto;
-
     padding:70px 0 40px;
 }
 
 .footer-name{
     font-size:28px;
-
     font-weight:900;
-
     letter-spacing:-.05em;
 }
 
 .footer p{
     margin-top:14px;
-
     color:#687185;
-
     font-size:12px;
 }
 
 .footer-bottom{
     display:flex;
-
     justify-content:space-between;
-
     margin-top:60px;
-
     padding-top:24px;
-
     border-top:1px solid var(--line);
-
     color:#4f586a;
-
     font-size:9px;
-
     font-weight:700;
-
     letter-spacing:.15em;
 }
-
 
 /* RESPONSIVE */
 
@@ -745,7 +466,6 @@ footer{
     .intro,
     .detail{
         grid-template-columns:1fr;
-
         gap:40px;
     }
 
@@ -762,21 +482,17 @@ footer{
 
     header{
         height:72px;
-
         padding:0 20px;
     }
 
     .logo{
         width:44px;
-
         height:44px;
-
         font-size:24px;
     }
 
     .brand-name{
         font-size:10px;
-
         letter-spacing:.27em;
     }
 
@@ -794,12 +510,7 @@ footer{
     }
 
     h1{
-        font-size:
-            clamp(
-                62px,
-                19vw,
-                100px
-            );
+        font-size:clamp(62px,19vw,100px);
     }
 
     .description{
@@ -808,9 +519,7 @@ footer{
 
     .method{
         min-height:350px;
-
         padding:28px;
-
         border-radius:25px;
     }
 
@@ -820,20 +529,17 @@ footer{
 
     .method-link{
         left:28px;
-
         bottom:27px;
     }
 
     .system,
     .detail{
         padding:30px 22px;
-
         border-radius:25px;
     }
 
     .system-flow{
         flex-direction:column;
-
         align-items:stretch;
     }
 
@@ -843,7 +549,6 @@ footer{
 
     .arrow{
         text-align:center;
-
         transform:rotate(90deg);
     }
 
@@ -853,10 +558,8 @@ footer{
 
     .footer-bottom{
         flex-direction:column;
-
         gap:12px;
     }
-
 }
 
 </style>
@@ -867,34 +570,18 @@ footer{
 <header>
 
 <a href="index.html" class="brand">
-
-<div class="logo">
-H
-</div>
-
-<div class="brand-name">
-HAERVIU ENGINE
-</div>
-
+    <div class="logo">H</div>
+    <div class="brand-name">HAERVIU ENGINE</div>
 </a>
 
 <nav class="nav">
-
-<a href="studio.html">
-Studio
-</a>
-
-<a href="methods.html">
-Methods
-</a>
-
+    <a href="studio.html">Studio</a>
+    <a href="methods.html">Methods</a>
 </nav>
 
 </header>
 
-
 <main>
-
 
 <section class="hero">
 
@@ -905,34 +592,24 @@ HAERVIU ENGINE / METHODS
 </div>
 
 <h1>
-
 The<br>
-
 <span>Methods.</span>
-
 </h1>
 
 <p class="description">
-
 Transform the studio into a repeatable creative system.
-
 HAERVIU ENGINE methods are designed to turn ideas,
 machines, rhythm and sound into complete productions.
-
 </p>
 
 <div class="hero-status">
-
 <span class="dot"></span>
-
 METHOD SYSTEM / IN DEVELOPMENT
-
 </div>
 
 </div>
 
 </section>
-
 
 
 <section class="section">
@@ -948,15 +625,11 @@ METHOD SYSTEM / IN DEVELOPMENT
 </div>
 
 <h2>
-
 Not just<br>
-
 equipment.
-
 </h2>
 
 </div>
-
 
 <div class="intro-copy">
 
@@ -984,7 +657,6 @@ real studio workflows into repeatable systems.
 </section>
 
 
-
 <section class="section">
 
 <div class="container">
@@ -992,7 +664,6 @@ real studio workflows into repeatable systems.
 <div class="label">
 02 / METHOD LIBRARY
 </div>
-
 
 <div class="methods-grid">
 
@@ -1012,11 +683,9 @@ Build the Groove
 </h3>
 
 <p>
-
 Create a strong rhythmic foundation using
 drum machines, patterns, variations,
 velocity and groove.
-
 </p>
 
 <a class="method-link" href="#rhythm">
@@ -1024,7 +693,6 @@ Explore method →
 </a>
 
 </article>
-
 
 
 <article class="method">
@@ -1042,11 +710,9 @@ Build the Foundation
 </h3>
 
 <p>
-
 Combine rhythm and bass so the track gains
 movement, weight and identity without
 becoming repetitive.
-
 </p>
 
 <a class="method-link" href="#production">
@@ -1054,7 +720,6 @@ Explore method →
 </a>
 
 </article>
-
 
 
 <article class="method">
@@ -1072,11 +737,9 @@ Escape the Loop
 </h3>
 
 <p>
-
 Turn a loop into a real arrangement by
 introducing controlled changes, transitions,
 breaks and energy variations.
-
 </p>
 
 <a class="method-link" href="#arrangement">
@@ -1084,7 +747,6 @@ Explore method →
 </a>
 
 </article>
-
 
 
 <article class="method">
@@ -1102,11 +764,9 @@ Perform the Mix
 </h3>
 
 <p>
-
 Use the hardware mixer and the DAW as one
 environment for routing, balancing,
 performance and recording.
-
 </p>
 
 <a class="method-link" href="#mix">
@@ -1115,13 +775,11 @@ Explore method →
 
 </article>
 
-
 </div>
 
 </div>
 
 </section>
-
 
 
 <section class="section" id="rhythm">
@@ -1137,15 +795,11 @@ METHOD 01
 </div>
 
 <h2>
-
 Build<br>
-
 the Groove.
-
 </h2>
 
 </div>
-
 
 <div class="detail-copy">
 
@@ -1156,87 +810,37 @@ The first objective is not to make a complete song.
 The objective is to create a groove strong enough
 to make the rest of the production possible.
 
-
 <div class="steps">
 
-
 <div class="step">
-
-<span>
-STEP 01
-</span>
-
-<strong>
-Kick Foundation
-</strong>
-
+<span>STEP 01</span>
+<strong>Kick Foundation</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 02
-</span>
-
-<strong>
-Snare / Clap
-</strong>
-
+<span>STEP 02</span>
+<strong>Snare / Clap</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 03
-</span>
-
-<strong>
-Hi-Hat Movement
-</strong>
-
+<span>STEP 03</span>
+<strong>Hi-Hat Movement</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 04
-</span>
-
-<strong>
-Percussion
-</strong>
-
+<span>STEP 04</span>
+<strong>Percussion</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 05
-</span>
-
-<strong>
-Velocity
-</strong>
-
+<span>STEP 05</span>
+<strong>Velocity</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 06
-</span>
-
-<strong>
-Variation
-</strong>
-
+<span>STEP 06</span>
+<strong>Variation</strong>
 </div>
-
 
 </div>
 
@@ -1247,7 +851,6 @@ Variation
 </div>
 
 </section>
-
 
 
 <section class="section" id="production">
@@ -1263,15 +866,11 @@ METHOD 02
 </div>
 
 <h2>
-
 Build<br>
-
 the Foundation.
-
 </h2>
 
 </div>
-
 
 <div class="detail-copy">
 
@@ -1283,61 +882,27 @@ of the track.
 The goal is movement and interaction rather than
 simply adding another sound.
 
-
 <div class="steps">
 
-
 <div class="step">
-
-<span>
-STEP 01
-</span>
-
-<strong>
-Choose the Bass Character
-</strong>
-
+<span>STEP 01</span>
+<strong>Choose the Bass Character</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 02
-</span>
-
-<strong>
-Lock the Groove
-</strong>
-
+<span>STEP 02</span>
+<strong>Lock the Groove</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 03
-</span>
-
-<strong>
-Create Movement
-</strong>
-
+<span>STEP 03</span>
+<strong>Create Movement</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 04
-</span>
-
-<strong>
-Leave Space
-</strong>
-
+<span>STEP 04</span>
+<strong>Leave Space</strong>
 </div>
-
 
 </div>
 
@@ -1348,7 +913,6 @@ Leave Space
 </div>
 
 </section>
-
 
 
 <section class="section" id="arrangement">
@@ -1364,15 +928,11 @@ METHOD 03
 </div>
 
 <h2>
-
 Escape<br>
-
 the Loop.
-
 </h2>
 
 </div>
-
 
 <div class="detail-copy">
 
@@ -1384,87 +944,37 @@ Instead of copying one loop from beginning to end,
 the arrangement introduces controlled changes
 that create progression and anticipation.
 
-
 <div class="steps">
 
-
 <div class="step">
-
-<span>
-STEP 01
-</span>
-
-<strong>
-Intro
-</strong>
-
+<span>STEP 01</span>
+<strong>Intro</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 02
-</span>
-
-<strong>
-Build
-</strong>
-
+<span>STEP 02</span>
+<strong>Build</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 03
-</span>
-
-<strong>
-Main Section
-</strong>
-
+<span>STEP 03</span>
+<strong>Main Section</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 04
-</span>
-
-<strong>
-Break
-</strong>
-
+<span>STEP 04</span>
+<strong>Break</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 05
-</span>
-
-<strong>
-Return
-</strong>
-
+<span>STEP 05</span>
+<strong>Return</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-STEP 06
-</span>
-
-<strong>
-Outro
-</strong>
-
+<span>STEP 06</span>
+<strong>Outro</strong>
 </div>
-
 
 </div>
 
@@ -1475,7 +985,6 @@ Outro
 </div>
 
 </section>
-
 
 
 <section class="section" id="mix">
@@ -1491,15 +1000,11 @@ METHOD 04
 </div>
 
 <h2>
-
 Perform<br>
-
 the Mix.
-
 </h2>
 
 </div>
-
 
 <div class="detail-copy">
 
@@ -1511,61 +1016,27 @@ It becomes part of the performance itself:
 levels, routing, effects, transitions and
 recording are treated as part of the creative process.
 
-
 <div class="steps">
 
-
 <div class="step">
-
-<span>
-SOURCE
-</span>
-
-<strong>
-Hardware
-</strong>
-
+<span>SOURCE</span>
+<strong>Hardware</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-ROUTING
-</span>
-
-<strong>
-MX-1
-</strong>
-
+<span>ROUTING</span>
+<strong>MX-1</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-CONTROL
-</span>
-
-<strong>
-Performance
-</strong>
-
+<span>CONTROL</span>
+<strong>Performance</strong>
 </div>
 
-
 <div class="step">
-
-<span>
-RECORD
-</span>
-
-<strong>
-Cubase
-</strong>
-
+<span>RECORD</span>
+<strong>Cubase</strong>
 </div>
-
 
 </div>
 
@@ -1576,7 +1047,6 @@ Cubase
 </div>
 
 </section>
-
 
 
 <section class="section">
@@ -1592,103 +1062,46 @@ Cubase
 </div>
 
 <h2>
-
 One system.<br>
-
 Multiple methods.
-
 </h2>
 
 </div>
 
-
 <div class="system-flow">
 
+<div class="node">
+<small>IDEA</small>
+<strong>Concept</strong>
+</div>
+
+<div class="arrow">→</div>
 
 <div class="node">
-
-<small>
-IDEA
-</small>
-
-<strong>
-Concept
-</strong>
-
+<small>RHYTHM</small>
+<strong>TR-8S</strong>
 </div>
 
-
-<div class="arrow">
-→
-</div>
-
+<div class="arrow">→</div>
 
 <div class="node">
-
-<small>
-RHYTHM
-</small>
-
-<strong>
-TR-8S
-</strong>
-
+<small>PRODUCTION</small>
+<strong>MC-707 / FORCE</strong>
 </div>
 
-
-<div class="arrow">
-→
-</div>
-
+<div class="arrow">→</div>
 
 <div class="node">
-
-<small>
-PRODUCTION
-</small>
-
-<strong>
-MC-707 / FORCE
-</strong>
-
+<small>MIX</small>
+<strong>MX-1</strong>
 </div>
 
-
-<div class="arrow">
-→
-</div>
-
+<div class="arrow">→</div>
 
 <div class="node">
-
-<small>
-MIX
-</small>
-
-<strong>
-MX-1
-</strong>
-
+<small>RECORD</small>
+<strong>CUBASE</strong>
 </div>
-
-
-<div class="arrow">
-→
-</div>
-
-
-<div class="node">
-
-<small>
-RECORD
-</small>
-
-<strong>
-CUBASE
-</strong>
-
-</div>
-
 
 </div>
 
@@ -1698,9 +1111,7 @@ CUBASE
 
 </section>
 
-
 </main>
-
 
 
 <footer>
@@ -1730,7 +1141,6 @@ METHODS / PRODUCTION SYSTEM
 </div>
 
 </footer>
-
 
 </body>
 </html>
