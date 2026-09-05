@@ -1,297 +1,879 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu Engine — Support</title>
+<title>Support — HAERVIU ENGINE</title>
 
 <style>
+
 :root{
     --bg:#07080d;
-    --line:rgba(255,255,255,.13);
+    --line:rgba(255,255,255,.12);
     --text:#f4f4f7;
     --muted:#858997;
-    --green:#6ee7a0;
+    --accent:#7383ff;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:
-        radial-gradient(circle at 82% 18%,rgba(90,110,180,.13),transparent 28%),
-        var(--bg);
-    color:var(--text);
     min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(90,110,180,.13),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #07080d,
+            #090b12 55%,
+            #07080d
+        );
+
+    color:var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
+
     position:fixed;
+
     inset:-20%;
-    border:1px solid rgba(255,255,255,.055);
+
+    border:1px solid rgba(255,255,255,.045);
+
     border-radius:50%;
+
     transform:rotate(-18deg);
+
     pointer-events:none;
 }
 
-a{text-decoration:none;color:inherit;}
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-header{
+
+/* =====================================
+   HEADER
+===================================== */
+
+.he-header{
     height:104px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 6vw;
-    border-bottom:1px solid rgba(255,255,255,.09);
-    background:rgba(7,8,13,.88);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    background:rgba(7,8,13,.92);
+
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 }
 
-.brand{
+.he-brand{
     display:flex;
     align-items:center;
     gap:20px;
 }
 
-.logo{
+.he-logo{
     width:58px;
     height:58px;
+
     border:1px solid var(--line);
+
     border-radius:17px;
+
     display:grid;
     place-items:center;
+
     font-family:Georgia,serif;
     font-size:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
 }
 
-.brand-name{
+.he-brand-name{
     font-size:17px;
+
     font-weight:800;
+
     letter-spacing:.22em;
 }
 
-.menu{
+
+/* =====================================
+   HAMBURGER
+===================================== */
+
+.he-menu-button{
+    display:flex !important;
+
+    align-items:center;
+    justify-content:center;
+
     width:58px;
     height:58px;
+
+    flex-shrink:0;
+
     border:1px solid var(--line);
     border-radius:17px;
-    display:grid;
-    place-items:center;
-    font-size:24px;
-}
 
-main{
-    max-width:1100px;
-    margin:auto;
-    padding:80px 6vw 120px;
+    background:rgba(255,255,255,.02);
+
+    color:#ffffff;
+
+    font-size:26px;
+    line-height:1;
+
+    cursor:pointer;
+
     position:relative;
+
+    z-index:1003;
+
+    visibility:visible !important;
+    opacity:1 !important;
+
+    -webkit-appearance:none;
+    appearance:none;
 }
 
-.kicker{
-    color:#8e92a2;
-    letter-spacing:.35em;
-    font-size:12px;
+.he-menu-button:hover{
+    background:rgba(255,255,255,.08);
+
+    border-color:
+        rgba(255,255,255,.30);
+}
+
+
+/* =====================================
+   MENU OVERLAY
+===================================== */
+
+.he-menu-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .3s ease;
+
+    z-index:1000;
+}
+
+.he-menu-overlay.active{
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+.he-navigation{
+    position:fixed;
+
+    top:0;
+    right:0;
+
+    width:min(440px,100vw);
+
+    height:100vh;
+
+    padding:125px 55px 50px;
+
+    display:flex !important;
+
+    flex-direction:column;
+
+    background:#0b0d13;
+
+    border-left:
+        1px solid rgba(255,255,255,.10);
+
+    transform:translateX(100%);
+
+    transition:transform .35s ease;
+
+    z-index:1002;
+
+    box-shadow:
+        -30px 0 80px rgba(0,0,0,.40);
+}
+
+.he-navigation.active{
+    transform:translateX(0);
+}
+
+.he-navigation a{
+    display:block;
+
+    padding:20px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    font-size:22px;
+
     font-weight:700;
-    margin-bottom:25px;
+
+    color:#f4f4f7;
+
+    transition:.2s ease;
 }
 
-h1{
-    font-size:clamp(56px,8vw,100px);
-    line-height:.9;
-    letter-spacing:-.065em;
-    margin-bottom:30px;
+.he-navigation a:hover{
+    color:var(--accent);
+
+    padding-left:8px;
 }
 
-.intro{
-    color:#aeb2bf;
-    font-size:19px;
-    line-height:1.7;
-    max-width:720px;
-    margin-bottom:60px;
+
+/* =====================================
+   MAIN
+===================================== */
+
+.he-main{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:85px 6vw 130px;
+
+    position:relative;
+
+    z-index:1;
 }
 
-.support-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:22px;
-}
+.he-kicker{
+    color:#8e92a2;
 
-.card{
-    border:1px solid var(--line);
-    border-radius:25px;
-    padding:32px;
-    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-}
+    letter-spacing:.35em;
 
-.card-label{
-    color:var(--green);
-    font-size:11px;
+    font-size:12px;
+
     font-weight:800;
-    letter-spacing:.22em;
-    margin-bottom:20px;
+
+    margin-bottom:28px;
 }
 
-.card h2{
-    font-size:27px;
+.he-title{
+    font-size:clamp(58px,8vw,108px);
+
+    line-height:.88;
+
+    letter-spacing:-.075em;
+
+    font-weight:900;
+
+    margin-bottom:40px;
+}
+
+.he-intro{
+    max-width:720px;
+
+    color:#aeb2bf;
+
+    font-size:19px;
+
+    line-height:1.7;
+
+    margin-bottom:65px;
+}
+
+
+/* =====================================
+   SUPPORT CARDS
+===================================== */
+
+.he-support-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+
+    max-width:1000px;
+}
+
+.he-support-card{
+    min-height:240px;
+
+    padding:32px;
+
+    border:1px solid var(--line);
+
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(90,105,180,.10),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #12151c,
+            #0b0d13
+        );
+
+    transition:.3s ease;
+}
+
+.he-support-card:hover{
+    transform:translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.25);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.30);
+}
+
+.he-card-number{
+    color:#687184;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.25em;
+
+    margin-bottom:28px;
+}
+
+.he-support-card h2{
+    font-size:28px;
+
+    letter-spacing:-.04em;
+
     margin-bottom:15px;
 }
 
-.card p{
-    color:#9ca0ad;
+.he-support-card p{
+    color:#858c9d;
+
+    font-size:14px;
+
     line-height:1.7;
-    font-size:16px;
+
+    max-width:390px;
 }
 
-.help{
-    margin-top:25px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:14px 20px;
-    display:inline-block;
-    transition:.25s ease;
-}
 
-.help:hover{
-    background:#fff;
-    color:#08090d;
-}
+/* =====================================
+   CONTACT SECTION
+===================================== */
 
-.status{
+.he-contact{
     margin-top:70px;
+
+    max-width:1000px;
+
+    padding:45px;
+
     border:1px solid var(--line);
-    border-radius:25px;
-    padding:30px 34px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    background:rgba(255,255,255,.025);
+
+    border-radius:30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(90,105,180,.10),
+            transparent 60%
+        ),
+        #0b0e14;
 }
 
-.dot{
-    width:10px;
-    height:10px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 16px var(--green);
+.he-contact h2{
+    font-size:clamp(
+        34px,
+        4vw,
+        54px
+    );
+
+    line-height:.95;
+
+    letter-spacing:-.06em;
+
+    margin-bottom:22px;
 }
 
-.status strong{
-    font-size:14px;
-    letter-spacing:.16em;
+.he-contact p{
+    max-width:650px;
+
+    color:#858c9d;
+
+    font-size:15px;
+
+    line-height:1.8;
 }
 
-.status span{
-    color:#858997;
-    margin-left:auto;
-    font-size:14px;
-}
 
-footer{
-    border-top:1px solid rgba(255,255,255,.08);
+/* =====================================
+   FOOTER
+===================================== */
+
+.he-footer{
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
     padding:32px 6vw;
+
     color:#626674;
+
     font-size:12px;
+
     letter-spacing:.12em;
 }
 
-@media(max-width:700px){
-    header{height:88px;padding:0 26px;}
-    .logo,.menu{width:50px;height:50px;}
-    .brand-name{font-size:14px;letter-spacing:.18em;}
-    main{padding:55px 26px 90px;}
-    h1{font-size:58px;}
-    .intro{font-size:17px;}
-    .support-grid{grid-template-columns:1fr;}
-    .status{align-items:flex-start;flex-wrap:wrap;}
-    .status span{margin-left:24px;}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:800px){
+
+    .he-header{
+        height:88px;
+
+        padding:0 26px;
+    }
+
+    .he-logo,
+    .he-menu-button{
+        width:50px;
+        height:50px;
+    }
+
+    .he-brand-name{
+        font-size:14px;
+
+        letter-spacing:.18em;
+    }
+
+    .he-main{
+        padding:65px 26px 90px;
+    }
+
+    .he-title{
+        font-size:
+            clamp(
+                55px,
+                14vw,
+                90px
+            );
+    }
+
+    .he-intro{
+        font-size:17px;
+    }
+
+    .he-navigation{
+        width:100vw;
+
+        padding:115px 40px 50px;
+    }
+
+    .he-navigation a{
+        font-size:28px;
+    }
+
+    .he-support-grid{
+        grid-template-columns:1fr;
+    }
+
+    .he-contact{
+        padding:30px 24px;
+    }
 }
+
+
+@media(max-width:480px){
+
+    .he-brand-name{
+        font-size:11px;
+
+        letter-spacing:.16em;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<header>
-    <a class="brand" href="index.html">
-        <div class="logo">H</div>
-        <div class="brand-name">HAERVIU ENGINE</div>
+
+<!-- HEADER -->
+
+<header class="he-header">
+
+    <a
+        class="he-brand"
+        href="index.html"
+    >
+
+        <div class="he-logo">
+            H
+        </div>
+
+        <div class="he-brand-name">
+            HAERVIU ENGINE
+        </div>
+
     </a>
 
-    <div class="menu">☰</div>
+
+    <button
+        type="button"
+        class="he-menu-button"
+        id="heMenuButton"
+        aria-label="Open navigation"
+    >
+        ☰
+    </button>
+
 </header>
 
-<main>
 
-    <div class="kicker">HAERVIU ENGINE / SUPPORT</div>
+<!-- OVERLAY -->
 
-    <h1>Support.</h1>
+<div
+    class="he-menu-overlay"
+    id="heMenuOverlay"
+></div>
 
-    <p class="intro">
-        Help and information for Haerviu Engine.
-        Find guidance about the system, studio workflow,
-        hardware organization and platform usage.
+
+<!-- NAVIGATION -->
+
+<nav
+    class="he-navigation"
+    id="heNavigation"
+>
+
+    <a href="index.html">Home</a>
+
+    <a href="studio.html">Studio</a>
+
+    <a href="methods.html">Methods</a>
+
+    <a href="setup.html">Setup</a>
+
+    <a href="support.html">Support</a>
+
+    <a href="privacy.html">Privacy Policy</a>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main class="he-main">
+
+
+    <div class="he-kicker">
+        HAERVIU ENGINE / SUPPORT
+    </div>
+
+
+    <h1 class="he-title">
+        How can we<br>
+        help?
+    </h1>
+
+
+    <p class="he-intro">
+        Support and resources for your HAERVIU ENGINE
+        workspace, studio configuration and creative
+        production workflow.
     </p>
 
-    <div class="support-grid">
 
-        <div class="card">
-            <div class="card-label">01 / PLATFORM</div>
-            <h2>Getting Started</h2>
+    <section class="he-support-grid">
+
+
+        <div class="he-support-card">
+
+            <div class="he-card-number">
+                01 / STUDIO
+            </div>
+
+            <h2>
+                Studio Setup
+            </h2>
+
             <p>
-                Explore Haerviu Engine and understand how the
-                workspace is organized around your studio,
-                instruments and creative workflow.
+                Help organizing instruments, connections,
+                MIDI routing and your complete studio
+                environment.
             </p>
+
         </div>
 
-        <div class="card">
-            <div class="card-label">02 / STUDIO</div>
-            <h2>Studio Setup</h2>
+
+        <div class="he-support-card">
+
+            <div class="he-card-number">
+                02 / METHODS
+            </div>
+
+            <h2>
+                Production Methods
+            </h2>
+
             <p>
-                Find information about connected hardware,
-                routing, MIDI organization and the creative
-                production environment.
+                Guidance for creative workflows,
+                production techniques and practical
+                studio methods.
             </p>
-            <a class="help" href="studio.html">Open Studio →</a>
+
         </div>
 
-        <div class="card">
-            <div class="card-label">03 / METHODS</div>
-            <h2>Production Methods</h2>
+
+        <div class="he-support-card">
+
+            <div class="he-card-number">
+                03 / SYSTEM
+            </div>
+
+            <h2>
+                HAERVIU Engine
+            </h2>
+
             <p>
-                Discover the production methods and creative
-                systems developed around the Haerviu Engine workflow.
+                Information about the system,
+                workspace structure and future
+                development of the platform.
             </p>
-            <a class="help" href="methods.html">Open Methods →</a>
+
         </div>
 
-        <div class="card">
-            <div class="card-label">04 / CONTACT</div>
-            <h2>Need Help?</h2>
+
+        <div class="he-support-card">
+
+            <div class="he-card-number">
+                04 / HELP
+            </div>
+
+            <h2>
+                General Support
+            </h2>
+
             <p>
-                For questions regarding Haerviu Engine,
-                technical information or general support,
-                contact the project administrator.
+                General questions and assistance
+                regarding the HAERVIU ENGINE
+                creative music system.
             </p>
-            <a class="help" href="mailto:contact@haerviu.com">Contact Support →</a>
+
         </div>
 
-    </div>
 
-    <div class="status">
-        <div class="dot"></div>
-        <strong>SYSTEM ONLINE</strong>
-        <span>HAERVIU ENGINE SUPPORT CENTER</span>
-    </div>
+    </section>
+
+
+    <section class="he-contact">
+
+        <h2>
+            Built for your<br>
+            creative workflow.
+        </h2>
+
+        <p>
+            HAERVIU ENGINE is designed as an evolving
+            creative system. Support resources and
+            additional documentation will continue
+            to grow with the platform.
+        </p>
+
+    </section>
+
 
 </main>
 
-<footer>
+
+<!-- FOOTER -->
+
+<footer class="he-footer">
+
     HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+
 </footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const button =
+            document.getElementById(
+                "heMenuButton"
+            );
+
+        const navigation =
+            document.getElementById(
+                "heNavigation"
+            );
+
+        const overlay =
+            document.getElementById(
+                "heMenuOverlay"
+            );
+
+
+        function openMenu(){
+
+            navigation.classList.add(
+                "active"
+            );
+
+            overlay.classList.add(
+                "active"
+            );
+
+            button.innerHTML = "✕";
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+        function closeMenu(){
+
+            navigation.classList.remove(
+                "active"
+            );
+
+            overlay.classList.remove(
+                "active"
+            );
+
+            button.innerHTML = "☰";
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                if(
+                    navigation.classList.contains(
+                        "active"
+                    )
+                ){
+
+                    closeMenu();
+
+                }else{
+
+                    openMenu();
+
+                }
+
+            }
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        navigation
+            .querySelectorAll("a")
+            .forEach(
+                function(link){
+
+                    link.addEventListener(
+                        "click",
+                        closeMenu
+                    );
+
+                }
+            );
+
+
+        document.addEventListener(
+            "keydown",
+            function(event){
+
+                if(
+                    event.key === "Escape"
+                ){
+
+                    closeMenu();
+
+                }
+
+            }
+        );
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
