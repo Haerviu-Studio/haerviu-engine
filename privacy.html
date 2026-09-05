@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,16 +10,12 @@
 
 <style>
 
-/* =========================================
-   HAERVIU ENGINE — GLOBAL
-========================================= */
-
 :root{
     --bg:#07080d;
     --line:rgba(255,255,255,.12);
     --text:#f4f4f7;
     --muted:#858997;
-    --green:#6ee7a0;
+    --accent:#7383ff;
 }
 
 *{
@@ -73,8 +70,6 @@ body::before{
     transform:rotate(-18deg);
 
     pointer-events:none;
-
-    z-index:0;
 }
 
 a{
@@ -83,17 +78,15 @@ a{
 }
 
 
-/* =========================================
+/* =====================================
    HEADER
-========================================= */
+===================================== */
 
-header{
+.he-header{
     height:104px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 6vw;
@@ -101,7 +94,6 @@ header{
     border-bottom:1px solid rgba(255,255,255,.08);
 
     position:sticky;
-
     top:0;
 
     z-index:100;
@@ -109,23 +101,16 @@ header{
     background:rgba(7,8,13,.92);
 
     backdrop-filter:blur(18px);
-
     -webkit-backdrop-filter:blur(18px);
 }
 
-.brand{
+.he-brand{
     display:flex;
-
     align-items:center;
-
     gap:20px;
-
-    position:relative;
-
-    z-index:102;
 }
 
-.logo{
+.he-logo{
     width:58px;
     height:58px;
 
@@ -134,11 +119,9 @@ header{
     border-radius:17px;
 
     display:grid;
-
     place-items:center;
 
     font-family:Georgia,serif;
-
     font-size:28px;
 
     background:
@@ -149,7 +132,7 @@ header{
         );
 }
 
-.brand-name{
+.he-brand-name{
     font-size:17px;
 
     font-weight:800;
@@ -158,49 +141,57 @@ header{
 }
 
 
-/* =========================================
-   HAMBURGER
-========================================= */
+/* =====================================
+   HAMBURGER — ALWAYS VISIBLE
+===================================== */
 
-.menu{
+.he-menu-button{
+    display:flex !important;
+
+    align-items:center;
+    justify-content:center;
+
     width:58px;
     height:58px;
 
-    border:1px solid var(--line);
+    flex-shrink:0;
 
+    border:1px solid var(--line);
     border-radius:17px;
 
-    display:grid;
+    background:rgba(255,255,255,.02);
 
-    place-items:center;
+    color:#ffffff;
 
-    font-size:24px;
-
-    color:#dfe2e9;
-
-    background:transparent;
+    font-size:26px;
+    line-height:1;
 
     cursor:pointer;
 
     position:relative;
 
-    z-index:1002;
+    z-index:1003;
 
-    transition:.25s ease;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    -webkit-appearance:none;
+    appearance:none;
 }
 
-.menu:hover{
-    border-color:rgba(255,255,255,.30);
+.he-menu-button:hover{
+    background:rgba(255,255,255,.08);
 
-    background:rgba(255,255,255,.04);
+    border-color:
+        rgba(255,255,255,.30);
 }
 
 
-/* =========================================
-   MENU OVERLAY
-========================================= */
+/* =====================================
+   DARK OVERLAY
+===================================== */
 
-.menu-overlay{
+.he-menu-overlay{
     position:fixed;
 
     inset:0;
@@ -209,63 +200,63 @@ header{
 
     opacity:0;
 
-    visibility:hidden;
+    pointer-events:none;
 
-    transition:.3s ease;
+    transition:opacity .3s ease;
 
     z-index:1000;
 }
 
-.menu-overlay.open{
+.he-menu-overlay.active{
     opacity:1;
 
-    visibility:visible;
+    pointer-events:auto;
 }
 
 
-/* =========================================
-   NAVIGATION PANEL
-========================================= */
+/* =====================================
+   SIDE NAVIGATION
+===================================== */
 
-.nav-links{
+.he-navigation{
     position:fixed;
 
     top:0;
-
     right:0;
 
-    width:min(440px,100%);
+    width:min(440px,100vw);
 
     height:100vh;
 
-    padding:130px 55px 50px;
+    padding:125px 55px 50px;
 
-    display:flex;
+    display:flex !important;
 
     flex-direction:column;
 
     background:#0b0d13;
 
-    border-left:1px solid var(--line);
+    border-left:
+        1px solid rgba(255,255,255,.10);
 
     transform:translateX(100%);
 
     transition:transform .35s ease;
 
-    z-index:1001;
+    z-index:1002;
 
     box-shadow:
-        -30px 0 80px rgba(0,0,0,.35);
+        -30px 0 80px rgba(0,0,0,.40);
 }
 
-.nav-links.open{
+.he-navigation.active{
     transform:translateX(0);
 }
 
-.nav-links a{
+.he-navigation a{
     display:block;
 
-    padding:19px 0;
+    padding:20px 0;
 
     border-bottom:
         1px solid rgba(255,255,255,.08);
@@ -274,37 +265,35 @@ header{
 
     font-weight:700;
 
-    letter-spacing:-.02em;
-
     color:#f4f4f7;
 
     transition:.2s ease;
 }
 
-.nav-links a:hover{
-    color:var(--green);
+.he-navigation a:hover{
+    color:var(--accent);
 
     padding-left:8px;
 }
 
 
-/* =========================================
+/* =====================================
    MAIN
-========================================= */
+===================================== */
 
-main{
+.he-main{
     max-width:1100px;
 
     margin:auto;
 
-    padding:90px 6vw 130px;
+    padding:85px 6vw 130px;
 
     position:relative;
 
     z-index:1;
 }
 
-.kicker{
+.he-kicker{
     color:#8e92a2;
 
     letter-spacing:.35em;
@@ -316,14 +305,8 @@ main{
     margin-bottom:28px;
 }
 
-h1{
-    max-width:900px;
-
-    font-size:clamp(
-        58px,
-        8vw,
-        108px
-    );
+.he-title{
+    font-size:clamp(58px,8vw,108px);
 
     line-height:.88;
 
@@ -331,55 +314,52 @@ h1{
 
     font-weight:900;
 
-    margin-bottom:50px;
+    margin-bottom:55px;
 }
 
 
-/* =========================================
+/* =====================================
    PRIVACY CONTENT
-========================================= */
+===================================== */
 
-.privacy-content{
+.he-content{
     max-width:800px;
 
     border-top:
         1px solid rgba(255,255,255,.10);
 }
 
-.privacy-section{
+.he-section{
     padding:38px 0;
 
     border-bottom:
         1px solid rgba(255,255,255,.10);
 }
 
-.privacy-section h2{
-    font-size:26px;
+.he-section h2{
+    font-size:27px;
 
     letter-spacing:-.03em;
 
     margin-bottom:16px;
 }
 
-.privacy-section p{
+.he-section p{
     color:#aeb2bf;
 
     font-size:16px;
 
     line-height:1.8;
-
-    max-width:720px;
 }
 
 
-/* =========================================
+/* =====================================
    FOOTER
-========================================= */
+===================================== */
 
-footer{
+.he-footer{
     border-top:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 
     padding:32px 6vw;
 
@@ -388,46 +368,38 @@ footer{
     font-size:12px;
 
     letter-spacing:.12em;
-
-    position:relative;
-
-    z-index:1;
 }
 
 
-/* =========================================
+/* =====================================
    MOBILE
-========================================= */
+===================================== */
 
 @media(max-width:800px){
 
-    header{
+    .he-header{
         height:88px;
 
         padding:0 26px;
     }
 
-    .logo,
-    .menu{
+    .he-logo,
+    .he-menu-button{
         width:50px;
-
         height:50px;
     }
 
-    .brand-name{
+    .he-brand-name{
         font-size:14px;
 
         letter-spacing:.18em;
     }
 
-    main{
-        padding:
-            65px
-            26px
-            90px;
+    .he-main{
+        padding:65px 26px 90px;
     }
 
-    h1{
+    .he-title{
         font-size:
             clamp(
                 55px,
@@ -436,36 +408,29 @@ footer{
             );
     }
 
-    .nav-links{
-        width:100%;
+    .he-navigation{
+        width:100vw;
 
-        padding:
-            120px
-            40px
-            50px;
+        padding:115px 40px 50px;
     }
 
-    .nav-links a{
+    .he-navigation a{
         font-size:28px;
-
-        padding:22px 0;
     }
-
 }
 
 
 @media(max-width:480px){
 
-    .brand-name{
+    .he-brand-name{
         font-size:11px;
 
         letter-spacing:.16em;
     }
 
-    .privacy-section h2{
+    .he-section h2{
         font-size:23px;
     }
-
 }
 
 </style>
@@ -476,19 +441,20 @@ footer{
 <body>
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- HEADER -->
 
-<header>
+<header class="he-header">
 
-    <a class="brand" href="index.html">
+    <a
+        class="he-brand"
+        href="index.html"
+    >
 
-        <div class="logo">
+        <div class="he-logo">
             H
         </div>
 
-        <div class="brand-name">
+        <div class="he-brand-name">
             HAERVIU ENGINE
         </div>
 
@@ -496,10 +462,10 @@ footer{
 
 
     <button
-        class="menu"
-        id="menuButton"
-        aria-label="Open navigation"
         type="button"
+        class="he-menu-button"
+        id="heMenuButton"
+        aria-label="Open navigation"
     >
         ☰
     </button>
@@ -507,23 +473,19 @@ footer{
 </header>
 
 
-<!-- =========================================
-     MENU OVERLAY
-========================================= -->
+<!-- OVERLAY -->
 
 <div
-    class="menu-overlay"
-    id="menuOverlay"
+    class="he-menu-overlay"
+    id="heMenuOverlay"
 ></div>
 
 
-<!-- =========================================
-     NAVIGATION
-========================================= -->
+<!-- NAVIGATION -->
 
 <nav
-    class="nav-links"
-    id="navLinks"
+    class="he-navigation"
+    id="heNavigation"
 >
 
     <a href="index.html">
@@ -553,28 +515,25 @@ footer{
 </nav>
 
 
-<!-- =========================================
-     MAIN
-========================================= -->
+<!-- MAIN -->
 
-<main>
+<main class="he-main">
 
-
-    <div class="kicker">
+    <div class="he-kicker">
         HAERVIU ENGINE / LEGAL
     </div>
 
 
-    <h1>
+    <h1 class="he-title">
         Privacy<br>
         Policy.
     </h1>
 
 
-    <div class="privacy-content">
+    <div class="he-content">
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Information
@@ -582,86 +541,81 @@ footer{
 
             <p>
                 HAERVIU ENGINE respects your privacy.
-                This website is designed as a creative
-                platform dedicated to music production,
-                studio workflow and creative systems.
+                This website is designed as a creative platform
+                dedicated to music production, studio workflow
+                and creative systems.
             </p>
 
         </section>
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Data Collection
             </h2>
 
             <p>
-                Personal information is not intentionally
-                collected unless you voluntarily provide it
-                through a contact or support request.
+                Personal information is not intentionally collected
+                unless you voluntarily provide it through a contact
+                or support request.
             </p>
 
         </section>
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Data Usage
             </h2>
 
             <p>
-                Information voluntarily provided may only
-                be used to respond to requests, provide
-                support or improve communication.
+                Information voluntarily provided may be used only
+                to respond to requests and provide support.
             </p>
 
         </section>
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Cookies
             </h2>
 
             <p>
-                The website may use essential technical
-                technologies required for normal operation.
-                No unnecessary personal profiling is
-                intentionally implemented.
+                This website may use essential technical technologies
+                required for normal operation.
             </p>
 
         </section>
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Third-Party Services
             </h2>
 
             <p>
-                External links may direct users to
-                third-party websites. HAERVIU ENGINE
-                is not responsible for the privacy
-                practices of external services.
+                External links may direct users to third-party
+                websites. HAERVIU ENGINE is not responsible
+                for the privacy practices of external services.
             </p>
 
         </section>
 
 
-        <section class="privacy-section">
+        <section class="he-section">
 
             <h2>
                 Contact
             </h2>
 
             <p>
-                For questions regarding privacy or the
-                handling of information, please use the
-                HAERVIU ENGINE support section.
+                For questions regarding privacy or information,
+                please use the HAERVIU ENGINE support section.
             </p>
 
         </section>
@@ -669,24 +623,19 @@ footer{
 
     </div>
 
-
 </main>
 
 
-<!-- =========================================
-     FOOTER
-========================================= -->
+<!-- FOOTER -->
 
-<footer>
+<footer class="he-footer">
 
     HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 
 </footer>
 
 
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
+<!-- JAVASCRIPT -->
 
 <script>
 
@@ -694,48 +643,66 @@ document.addEventListener(
     "DOMContentLoaded",
     function(){
 
-        const menuButton =
-            document.getElementById("menuButton");
+        const button =
+            document.getElementById(
+                "heMenuButton"
+            );
 
-        const navLinks =
-            document.getElementById("navLinks");
+        const navigation =
+            document.getElementById(
+                "heNavigation"
+            );
 
-        const menuOverlay =
-            document.getElementById("menuOverlay");
+        const overlay =
+            document.getElementById(
+                "heMenuOverlay"
+            );
 
 
         function openMenu(){
 
-            navLinks.classList.add("open");
+            navigation.classList.add(
+                "active"
+            );
 
-            menuOverlay.classList.add("open");
+            overlay.classList.add(
+                "active"
+            );
 
-            menuButton.innerHTML = "✕";
+            button.innerHTML = "✕";
 
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow =
+                "hidden";
 
         }
 
 
         function closeMenu(){
 
-            navLinks.classList.remove("open");
+            navigation.classList.remove(
+                "active"
+            );
 
-            menuOverlay.classList.remove("open");
+            overlay.classList.remove(
+                "active"
+            );
 
-            menuButton.innerHTML = "☰";
+            button.innerHTML = "☰";
 
-            document.body.style.overflow = "";
+            document.body.style.overflow =
+                "";
 
         }
 
 
-        menuButton.addEventListener(
+        button.addEventListener(
             "click",
             function(){
 
                 if(
-                    navLinks.classList.contains("open")
+                    navigation.classList.contains(
+                        "active"
+                    )
                 ){
 
                     closeMenu();
@@ -750,28 +717,20 @@ document.addEventListener(
         );
 
 
-        menuOverlay.addEventListener(
+        overlay.addEventListener(
             "click",
-            function(){
-
-                closeMenu();
-
-            }
+            closeMenu
         );
 
 
-        navLinks
+        navigation
             .querySelectorAll("a")
             .forEach(
                 function(link){
 
                     link.addEventListener(
                         "click",
-                        function(){
-
-                            closeMenu();
-
-                        }
+                        closeMenu
                     );
 
                 }
@@ -782,7 +741,9 @@ document.addEventListener(
             "keydown",
             function(event){
 
-                if(event.key === "Escape"){
+                if(
+                    event.key === "Escape"
+                ){
 
                     closeMenu();
 
