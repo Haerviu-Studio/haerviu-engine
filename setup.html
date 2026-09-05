@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,12 +9,17 @@
 
 <style>
 
+/* =========================================================
+   HAERVIU ENGINE — STUDIO SETUP
+========================================================= */
+
 :root{
     --bg:#07080d;
-    --line:rgba(255,255,255,.13);
+    --panel:#12141c;
+    --line:rgba(255,255,255,.12);
     --text:#f4f4f7;
-    --muted:#858997;
-    --green:#6ee7a0;
+    --muted:#8b91a0;
+    --green:#72e7a5;
 }
 
 *{
@@ -22,23 +28,42 @@
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    min-height:100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
     background:
         radial-gradient(
             circle at 82% 18%,
-            rgba(90,110,180,.13),
-            transparent 28%
+            rgba(70,85,160,.14),
+            transparent 30%
         ),
-        var(--bg);
+        linear-gradient(
+            180deg,
+            #07080d,
+            #090b12 60%,
+            #07080d
+        );
 
     color:var(--text);
 
-    min-height:100vh;
-
     overflow-x:hidden;
 }
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 body::before{
     content:"";
@@ -47,164 +72,255 @@ body::before{
 
     inset:-20%;
 
-    border:1px solid rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.045);
 
     border-radius:50%;
 
     transform:rotate(-18deg);
 
     pointer-events:none;
+
+    z-index:0;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     height:104px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:0 6vw;
 
-    border-bottom:1px solid rgba(255,255,255,.09);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 
     position:sticky;
-    top:0;
-    z-index:1000;
 
-    background:rgba(7,8,13,.88);
+    top:0;
+
+    z-index:100;
+
+    background:rgba(7,8,13,.92);
 
     backdrop-filter:blur(18px);
+
     -webkit-backdrop-filter:blur(18px);
 }
 
+
 .brand{
     display:flex;
+
     align-items:center;
+
     gap:20px;
 
     position:relative;
-    z-index:1002;
+
+    z-index:102;
 }
+
 
 .logo{
     width:58px;
     height:58px;
 
     border:1px solid var(--line);
+
     border-radius:17px;
 
     display:grid;
+
     place-items:center;
 
     font-family:Georgia,serif;
+
     font-size:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
 }
+
 
 .brand-name{
     font-size:17px;
+
     font-weight:800;
+
     letter-spacing:.22em;
 }
 
-.menu{
+
+/* =========================================================
+   HAMBURGER BUTTON
+========================================================= */
+
+.menu-toggle{
     width:58px;
     height:58px;
 
     border:1px solid var(--line);
+
     border-radius:17px;
 
+    background:
+        rgba(255,255,255,.015);
+
+    color:#dfe2e9;
+
+    cursor:pointer;
+
     display:grid;
+
     place-items:center;
 
     font-size:24px;
 
-    color:#dfe2e9;
-
-    background:transparent;
-
-    cursor:pointer;
+    line-height:1;
 
     position:relative;
-    z-index:1002;
+
+    z-index:102;
+
+    transition:.25s ease;
+}
+
+.menu-toggle:hover{
+    border-color:
+        rgba(255,255,255,.28);
+
+    background:
+        rgba(255,255,255,.05);
 }
 
 
-/* MENU NAVIGATION */
+/* =========================================================
+   NAVIGATION OVERLAY
+========================================================= */
 
-.nav-links{
+.navigation{
     position:fixed;
 
     top:104px;
     right:0;
 
-    width:330px;
+    width:100%;
 
     height:calc(100vh - 104px);
 
-    background:#0b0d13;
+    background:
+        rgba(8,10,16,.98);
 
-    border-left:1px solid rgba(255,255,255,.10);
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    z-index:90;
 
     display:flex;
+
+    justify-content:flex-end;
+
+    padding:70px 10vw;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+
+.navigation.open{
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+
+.nav-links{
+    width:min(520px,100%);
+
+    display:flex;
+
     flex-direction:column;
 
-    padding:55px 55px;
-
-    gap:28px;
-
-    transform:translateX(100%);
-
-    transition:transform .35s ease;
-
-    z-index:999;
+    align-items:flex-start;
 }
 
-.nav-links.open{
-    transform:translateX(0);
-}
 
 .nav-links a{
-    font-size:32px;
+    width:100%;
+
+    padding:22px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.10);
+
+    font-size:
+        clamp(28px,4vw,52px);
 
     font-weight:800;
 
     letter-spacing:-.04em;
 
-    color:#e8e9ee;
-
     transition:.2s ease;
 }
 
-.nav-links a:hover{
-    color:var(--green);
 
-    transform:translateX(6px);
+.nav-links a:hover{
+    padding-left:14px;
+
+    color:#8b9cff;
 }
 
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
 
 main{
     max-width:1100px;
 
     margin:auto;
 
-    padding:65px 6vw 120px;
+    padding:
+        65px
+        6vw
+        120px;
 
     position:relative;
+
     z-index:1;
 }
 
 
-/* TOP */
+/* =========================================================
+   TOP
+========================================================= */
 
 .kicker{
     color:#8e92a2;
@@ -218,8 +334,14 @@ main{
     margin-bottom:25px;
 }
 
+
 h1{
-    font-size:clamp(52px,8vw,100px);
+    font-size:
+        clamp(
+            52px,
+            8vw,
+            100px
+        );
 
     line-height:.9;
 
@@ -227,6 +349,7 @@ h1{
 
     margin-bottom:30px;
 }
+
 
 .intro{
     color:#aeb2bf;
@@ -241,31 +364,50 @@ h1{
 }
 
 
-/* BACK */
+/* =========================================================
+   BACK BUTTON
+========================================================= */
 
 .back{
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+
+    min-height:46px;
 
     border:1px solid var(--line);
 
     border-radius:999px;
 
-    padding:13px 20px;
+    padding:
+        0
+        20px;
 
     color:#d5d7df;
 
-    margin-bottom:50px;
+    margin-bottom:42px;
+
+    font-size:13px;
+
+    font-weight:700;
 
     transition:.25s ease;
 }
 
+
 .back:hover{
     background:#fff;
+
     color:#08090d;
+
+    transform:
+        translateY(-2px);
 }
 
 
-/* SETUP */
+/* =========================================================
+   STUDIO SETUP
+========================================================= */
 
 .setup{
 
@@ -276,12 +418,18 @@ h1{
     overflow:hidden;
 
     background:
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(80,95,170,.10),
+            transparent 40%
+        ),
         linear-gradient(
             145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
         );
 }
+
 
 .setup-head{
 
@@ -293,8 +441,10 @@ h1{
 
     padding:30px 34px;
 
-    border-bottom:1px solid var(--line);
+    border-bottom:
+        1px solid var(--line);
 }
+
 
 .setup-title{
 
@@ -304,6 +454,7 @@ h1{
 
     letter-spacing:.04em;
 }
+
 
 .online{
 
@@ -315,33 +466,37 @@ h1{
 
     color:var(--green);
 
-    font-size:13px;
+    font-size:11px;
 
     font-weight:800;
 
-    letter-spacing:.2em;
+    letter-spacing:.22em;
 }
+
 
 .online-dot{
 
-    width:9px;
-    height:9px;
+    width:8px;
+    height:8px;
 
     background:var(--green);
 
     border-radius:50%;
 
-    box-shadow:0 0 16px var(--green);
+    box-shadow:
+        0 0 16px var(--green);
 }
 
 
-/* INSTRUMENT */
+/* =========================================================
+   INSTRUMENT
+========================================================= */
 
 .instrument{
 
-    margin:30px 34px;
+    margin:26px 30px;
 
-    min-height:190px;
+    min-height:164px;
 
     border:1px solid var(--line);
 
@@ -355,22 +510,39 @@ h1{
 
     padding:25px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
     transition:.3s ease;
 }
 
+
+.instrument:last-child{
+    margin-bottom:30px;
+}
+
+
 .instrument:hover{
 
-    border-color:rgba(255,255,255,.28);
+    border-color:
+        rgba(255,255,255,.25);
 
-    transform:translateY(-3px);
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,255,255,.04);
 }
+
+
+/* =========================================================
+   INSTRUMENT ICON
+========================================================= */
 
 .instrument-icon{
 
-    width:105px;
-    height:105px;
+    width:92px;
+    height:92px;
 
     flex-shrink:0;
 
@@ -382,17 +554,18 @@ h1{
         linear-gradient(
             145deg,
             rgba(255,255,255,.08),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.02)
         );
 
     display:grid;
 
     place-items:center;
 
-    font-size:45px;
+    font-size:38px;
 
     overflow:hidden;
 }
+
 
 .instrument-icon img{
 
@@ -406,10 +579,16 @@ h1{
     display:block;
 }
 
+
+/* =========================================================
+   INSTRUMENT INFO
+========================================================= */
+
 .instrument-info{
 
     flex:1;
 }
+
 
 .instrument-name{
 
@@ -417,17 +596,25 @@ h1{
 
     font-weight:800;
 
+    letter-spacing:-.025em;
+
     margin-bottom:7px;
 }
 
+
 .instrument-type{
 
-    color:#858a99;
+    color:#8c92a1;
 
-    font-size:16px;
+    font-size:14px;
 
-    margin-bottom:22px;
+    margin-bottom:18px;
 }
+
+
+/* =========================================================
+   STATUS
+========================================================= */
 
 .connected{
 
@@ -439,110 +626,138 @@ h1{
 
     color:var(--green);
 
-    font-size:12px;
+    font-size:10px;
 
     font-weight:800;
 
-    letter-spacing:.18em;
+    letter-spacing:.22em;
 }
+
 
 .connected-dot{
 
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 
     background:var(--green);
 
     border-radius:50%;
 
-    box-shadow:0 0 13px var(--green);
+    box-shadow:
+        0 0 13px var(--green);
 }
 
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
 
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid rgba(255,255,255,.08);
 
-    padding:32px 6vw;
+    padding:
+        32px
+        6vw;
 
     color:#626674;
 
     font-size:12px;
 
     letter-spacing:.12em;
+
+    position:relative;
+
+    z-index:1;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
     header{
         height:88px;
+
         padding:0 26px;
     }
 
-    .logo{
+
+    .logo,
+    .menu-toggle{
         width:50px;
         height:50px;
     }
+
 
     .brand-name{
-        font-size:14px;
-        letter-spacing:.18em;
+        font-size:13px;
+
+        letter-spacing:.16em;
     }
 
-    .menu{
-        width:50px;
-        height:50px;
-    }
 
-    .nav-links{
+    .navigation{
         top:88px;
 
-        width:100%;
+        height:
+            calc(100vh - 88px);
 
-        height:calc(100vh - 88px);
-
-        padding:45px 35px;
+        padding:
+            45px
+            26px;
     }
+
 
     .nav-links a{
-        font-size:30px;
+        font-size:34px;
+
+        padding:18px 0;
     }
 
+
     main{
-        padding:48px 26px 90px;
+        padding:
+            48px
+            26px
+            90px;
     }
+
 
     h1{
         font-size:56px;
     }
 
+
     .intro{
         font-size:17px;
     }
+
 
     .setup-head{
         padding:25px;
     }
 
+
     .setup-title{
         font-size:20px;
     }
+
 
     .instrument{
 
         margin:20px;
 
-        min-height:150px;
+        min-height:145px;
 
         padding:20px;
 
         gap:18px;
     }
+
 
     .instrument-icon{
 
@@ -551,65 +766,146 @@ footer{
 
         border-radius:16px;
 
-        font-size:32px;
+        font-size:30px;
     }
+
 
     .instrument-icon img{
         padding:5px;
     }
 
+
     .instrument-name{
         font-size:20px;
     }
 
+
     .instrument-type{
-        font-size:14px;
+        font-size:13px;
+
         margin-bottom:15px;
+    }
+
+
+    .instrument:last-child{
+        margin-bottom:20px;
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .brand{
+        gap:12px;
+    }
+
+
+    .brand-name{
+        font-size:10px;
+
+        letter-spacing:.13em;
+    }
+
+
+    .instrument{
+        padding:16px;
+
+        gap:15px;
+    }
+
+
+    .instrument-icon{
+        width:64px;
+        height:64px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
+
 
 <a class="brand" href="index.html">
 
-    <div class="logo">
-        H
-    </div>
+<div class="logo">
+H
+</div>
 
-    <div class="brand-name">
-        HAERVIU ENGINE
-    </div>
+<div class="brand-name">
+HAERVIU ENGINE
+</div>
 
 </a>
 
 
-<button class="menu" onclick="toggleMenu()" type="button">
-    ☰
+<button
+class="menu-toggle"
+id="menuToggle"
+aria-label="Open navigation"
+aria-expanded="false"
+>
+☰
 </button>
 
-
-<nav class="nav-links" id="navLinks">
-
-    <a href="index.html">Home</a>
-    <a href="studio.html">Studio</a>
-    <a href="methods.html">Methods</a>
-    <a href="setup.html">Setup</a>
-    <a href="support.html">Support</a>
-    <a href="privacy.html">Privacy Policy</a>
-
-</nav>
 
 </header>
 
 
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav
+class="navigation"
+id="navigation"
+>
+
+<div class="nav-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="studio.html">
+Studio
+</a>
+
+<a href="methods.html">
+Methods
+</a>
+
+<a href="setup.html">
+Setup
+</a>
+
+<a href="support.html">
+Support
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+</div>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main>
 
@@ -630,20 +926,28 @@ connections, routing and creative workflow.
 </p>
 
 
-<a class="back" href="studio.html">
+<a
+class="back"
+href="studio.html"
+>
 ← Back to Studio
 </a>
 
 
+<!-- =====================================================
+     STUDIO SETUP
+===================================================== -->
 
 <section class="setup">
 
 
 <div class="setup-head">
 
+
 <div class="setup-title">
 STUDIO SETUP
 </div>
+
 
 <div class="online">
 
@@ -653,27 +957,32 @@ ONLINE
 
 </div>
 
-</div>
 
+</div>
 
 
 <!-- MC-707 -->
 
 <div class="instrument">
 
+
 <div class="instrument-icon">
 🎛️
 </div>
 
+
 <div class="instrument-info">
+
 
 <div class="instrument-name">
 Roland MC-707
 </div>
 
+
 <div class="instrument-type">
 Groovebox / MIDI / Audio
 </div>
+
 
 <div class="connected">
 
@@ -683,29 +992,34 @@ CONNECTED
 
 </div>
 
-</div>
 
 </div>
 
+</div>
 
 
 <!-- TR-8S -->
 
 <div class="instrument">
 
+
 <div class="instrument-icon">
 🥁
 </div>
 
+
 <div class="instrument-info">
+
 
 <div class="instrument-name">
 Roland TR-8S
 </div>
 
+
 <div class="instrument-type">
 Drum Machine
 </div>
+
 
 <div class="connected">
 
@@ -715,34 +1029,39 @@ CONNECTED
 
 </div>
 
-</div>
 
 </div>
 
+</div>
 
 
-<!-- GAIA SH-01 -->
+<!-- GAIA -->
 
 <div class="instrument">
+
 
 <div class="instrument-icon">
 
 <img
-    src="images/roland-gaia-sh01.webp"
-    alt="Roland GAIA SH-01"
+src="images/roland-gaia-sh01.webp"
+alt="Roland GAIA SH-01"
 >
 
 </div>
 
+
 <div class="instrument-info">
+
 
 <div class="instrument-name">
 Roland GAIA SH-01
 </div>
 
+
 <div class="instrument-type">
 Synthesizer / Sound Design / MIDI
 </div>
+
 
 <div class="connected">
 
@@ -752,29 +1071,34 @@ READY
 
 </div>
 
-</div>
 
 </div>
 
+</div>
 
 
 <!-- AKAI FORCE -->
 
 <div class="instrument">
 
+
 <div class="instrument-icon">
 🎚️
 </div>
 
+
 <div class="instrument-info">
+
 
 <div class="instrument-name">
 Akai Force
 </div>
 
+
 <div class="instrument-type">
 Production / Performance
 </div>
+
 
 <div class="connected">
 
@@ -784,29 +1108,34 @@ READY
 
 </div>
 
-</div>
 
 </div>
 
+</div>
 
 
 <!-- VOCAL CHAIN -->
 
 <div class="instrument">
 
+
 <div class="instrument-icon">
 🎙️
 </div>
 
+
 <div class="instrument-info">
+
 
 <div class="instrument-name">
 Vocal Chain
 </div>
 
+
 <div class="instrument-type">
 RØDE NT1 / Roland VT-4
 </div>
+
 
 <div class="connected">
 
@@ -815,6 +1144,7 @@ RØDE NT1 / Roland VT-4
 READY
 
 </div>
+
 
 </div>
 
@@ -823,8 +1153,13 @@ READY
 
 </section>
 
+
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -833,22 +1168,51 @@ HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 </footer>
 
 
+<!-- =====================================================
+     JAVASCRIPT — HAMBURGER
+===================================================== -->
+
 <script>
 
-function toggleMenu(){
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.getElementById("navigation");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-    const nav = document.getElementById("navLinks");
-    const button = document.querySelector(".menu");
 
-    nav.classList.toggle("open");
+menuToggle.addEventListener("click", function(){
 
-    if(nav.classList.contains("open")){
-        button.innerHTML = "✕";
-    }else{
-        button.innerHTML = "☰";
-    }
+    navigation.classList.toggle("open");
 
-}
+    const isOpen =
+        navigation.classList.contains("open");
+
+    menuToggle.textContent =
+        isOpen ? "×" : "☰";
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+navLinks.forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        navigation.classList.remove("open");
+
+        menuToggle.textContent = "☰";
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+});
 
 </script>
 
