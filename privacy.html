@@ -1,577 +1,801 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
 
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Privacy Policy — HAERVIU ENGINE</title>
+<title>Privacy Policy — HAERVIU ENGINE</title>
 
-  <link rel="stylesheet" href="style.css">
+<style>
 
-  <style>
+/* =========================================
+   HAERVIU ENGINE — GLOBAL
+========================================= */
 
-    /* =========================================
-       PAGE PRIVACY
-    ========================================= */
+:root{
+    --bg:#07080d;
+    --line:rgba(255,255,255,.12);
+    --text:#f4f4f7;
+    --muted:#858997;
+    --green:#6ee7a0;
+}
 
-    .privacy-page {
-      min-height: 100vh;
-      background: #0b0d12;
-      color: #e8e9ed;
-    }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    .privacy-hero {
-      padding: 140px 8% 80px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+html{
+    scroll-behavior:smooth;
+}
 
-    .privacy-label {
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: #7ee2b8;
-      font-weight: 700;
-      margin-bottom: 25px;
-    }
+body{
+    min-height:100vh;
 
-    .privacy-hero h1 {
-      font-size: clamp(52px, 8vw, 110px);
-      line-height: 0.95;
-      margin: 0 0 35px;
-      letter-spacing: -4px;
-    }
-
-    .privacy-hero p {
-      max-width: 700px;
-      color: #9ba1ad;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .privacy-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px 8% 120px;
-    }
-
-    .privacy-section {
-      border-top: 1px solid rgba(255,255,255,0.10);
-      padding: 50px 0;
-    }
-
-    .privacy-section h2 {
-      font-size: 30px;
-      margin: 0 0 20px;
-      color: #f2f3f5;
-    }
-
-    .privacy-section p,
-    .privacy-section li {
-      color: #9ba1ad;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .privacy-section ul {
-      padding-left: 20px;
-    }
-
-    /* =========================================
-       UNIVERSAL MOBILE MENU
-    ========================================= */
-
-    .menu-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-
-      color: #e8e9ed;
-      font-size: 24px;
-
-      cursor: pointer;
-
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
-
-      z-index: 1002;
-    }
-
-    .menu-toggle:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.25);
-    }
-
-
-    /* Overlay */
-
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-
-      background: rgba(5,7,10,0.72);
-
-      opacity: 0;
-      visibility: hidden;
-
-      transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-
-      z-index: 999;
-    }
-
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-
-    /* Mobile navigation */
-
-    @media (max-width: 768px) {
-
-      .nav-links {
-
-        position: fixed;
-
-        top: 0;
-        right: 0;
-
-        width: min(82vw, 420px);
-        height: 100vh;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 0;
-
-        padding: 100px 40px 50px;
-
-        background: #0d1015;
-
-        border-left:
-          1px solid rgba(255,255,255,0.10);
-
-        transform: translateX(100%);
-
-        transition: transform 0.35s cubic-bezier(
-          0.77,
-          0,
-          0.18,
-          1
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(90,110,180,.13),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #07080d,
+            #090b12 55%,
+            #07080d
         );
 
-        z-index: 1001;
+    color:var(--text);
 
-        box-sizing: border-box;
-      }
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
+    overflow-x:hidden;
+}
 
-      .nav-links.open {
-        transform: translateX(0);
-      }
+body::before{
+    content:"";
 
+    position:fixed;
 
-      .nav-links a {
+    inset:-20%;
 
-        display: block;
+    border:1px solid rgba(255,255,255,.045);
 
-        padding: 22px 0;
+    border-radius:50%;
 
-        font-size: 30px;
-        font-weight: 700;
+    transform:rotate(-18deg);
 
-        color: #e8e9ed;
+    pointer-events:none;
 
-        text-decoration: none;
+    z-index:0;
+}
 
-        border-bottom:
-          1px solid rgba(255,255,255,0.10);
-
-        transition:
-          color 0.2s ease,
-          padding-left 0.2s ease;
-      }
-
-
-      .nav-links a:hover {
-        color: #7ee2b8;
-        padding-left: 8px;
-      }
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
 
-      .privacy-hero {
-        padding-top: 110px;
-      }
+/* =========================================
+   HEADER
+========================================= */
 
+header{
+    height:104px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6vw;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    background:rgba(7,8,13,.92);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+}
+
+.brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    position:relative;
+
+    z-index:102;
+}
+
+.logo{
+    width:58px;
+    height:58px;
+
+    border:1px solid var(--line);
+
+    border-radius:17px;
+
+    display:grid;
+
+    place-items:center;
+
+    font-family:Georgia,serif;
+
+    font-size:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
+}
+
+.brand-name{
+    font-size:17px;
+
+    font-weight:800;
+
+    letter-spacing:.22em;
+}
+
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.menu{
+    width:58px;
+    height:58px;
+
+    border:1px solid var(--line);
+
+    border-radius:17px;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:24px;
+
+    color:#dfe2e9;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:1002;
+
+    transition:.25s ease;
+}
+
+.menu:hover{
+    border-color:rgba(255,255,255,.30);
+
+    background:rgba(255,255,255,.04);
+}
+
+
+/* =========================================
+   MENU OVERLAY
+========================================= */
+
+.menu-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s ease;
+
+    z-index:1000;
+}
+
+.menu-overlay.open{
+    opacity:1;
+
+    visibility:visible;
+}
+
+
+/* =========================================
+   NAVIGATION PANEL
+========================================= */
+
+.nav-links{
+    position:fixed;
+
+    top:0;
+
+    right:0;
+
+    width:min(440px,100%);
+
+    height:100vh;
+
+    padding:130px 55px 50px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#0b0d13;
+
+    border-left:1px solid var(--line);
+
+    transform:translateX(100%);
+
+    transition:transform .35s ease;
+
+    z-index:1001;
+
+    box-shadow:
+        -30px 0 80px rgba(0,0,0,.35);
+}
+
+.nav-links.open{
+    transform:translateX(0);
+}
+
+.nav-links a{
+    display:block;
+
+    padding:19px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    font-size:22px;
+
+    font-weight:700;
+
+    letter-spacing:-.02em;
+
+    color:#f4f4f7;
+
+    transition:.2s ease;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+
+    padding-left:8px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:90px 6vw 130px;
+
+    position:relative;
+
+    z-index:1;
+}
+
+.kicker{
+    color:#8e92a2;
+
+    letter-spacing:.35em;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    margin-bottom:28px;
+}
+
+h1{
+    max-width:900px;
+
+    font-size:clamp(
+        58px,
+        8vw,
+        108px
+    );
+
+    line-height:.88;
+
+    letter-spacing:-.075em;
+
+    font-weight:900;
+
+    margin-bottom:50px;
+}
+
+
+/* =========================================
+   PRIVACY CONTENT
+========================================= */
+
+.privacy-content{
+    max-width:800px;
+
+    border-top:
+        1px solid rgba(255,255,255,.10);
+}
+
+.privacy-section{
+    padding:38px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.10);
+}
+
+.privacy-section h2{
+    font-size:26px;
+
+    letter-spacing:-.03em;
+
+    margin-bottom:16px;
+}
+
+.privacy-section p{
+    color:#aeb2bf;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    max-width:720px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    padding:32px 6vw;
+
+    color:#626674;
+
+    font-size:12px;
+
+    letter-spacing:.12em;
+
+    position:relative;
+
+    z-index:1;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px){
+
+    header{
+        height:88px;
+
+        padding:0 26px;
     }
 
+    .logo,
+    .menu{
+        width:50px;
 
-    @media (min-width: 769px) {
-
-      .menu-toggle {
-        display: none;
-      }
-
-      .menu-overlay {
-        display: none;
-      }
-
+        height:50px;
     }
 
-  </style>
+    .brand-name{
+        font-size:14px;
+
+        letter-spacing:.18em;
+    }
+
+    main{
+        padding:
+            65px
+            26px
+            90px;
+    }
+
+    h1{
+        font-size:
+            clamp(
+                55px,
+                14vw,
+                90px
+            );
+    }
+
+    .nav-links{
+        width:100%;
+
+        padding:
+            120px
+            40px
+            50px;
+    }
+
+    .nav-links a{
+        font-size:28px;
+
+        padding:22px 0;
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .brand-name{
+        font-size:11px;
+
+        letter-spacing:.16em;
+    }
+
+    .privacy-section h2{
+        font-size:23px;
+    }
+
+}
+
+</style>
 
 </head>
 
 
-<body class="privacy-page">
+<body>
 
 
-  <!-- =====================================
-       HEADER
-  ====================================== -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
-  <header class="nav">
+<header>
 
-    <a href="index.html" class="brand">
+    <a class="brand" href="index.html">
 
-      <div class="brand-mark">
-        H
-      </div>
+        <div class="logo">
+            H
+        </div>
 
-      <span>
-        HAERVIU ENGINE
-      </span>
+        <div class="brand-name">
+            HAERVIU ENGINE
+        </div>
 
     </a>
 
 
     <button
-      class="menu-toggle"
-      aria-label="Open navigation"
-      aria-expanded="false">
-
-      ☰
-
+        class="menu"
+        id="menuButton"
+        aria-label="Open navigation"
+        type="button"
+    >
+        ☰
     </button>
 
-
-    <nav class="nav-links">
-
-      <a href="index.html">Home</a>
-
-      <a href="studio.html">Studio</a>
-
-      <a href="methods.html">Methods</a>
-
-      <a href="setup.html">Setup</a>
-
-      <a href="support.html">Support</a>
-
-      <a href="privacy.html">Privacy Policy</a>
-
-    </nav>
-
-  </header>
+</header>
 
 
-  <!-- MENU OVERLAY -->
+<!-- =========================================
+     MENU OVERLAY
+========================================= -->
 
-  <div class="menu-overlay"></div>
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+></div>
 
 
-  <!-- =====================================
-       HERO
-  ====================================== -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
-  <main>
+<nav
+    class="nav-links"
+    id="navLinks"
+>
 
-    <section class="privacy-hero">
+    <a href="index.html">
+        Home
+    </a>
 
-      <div class="privacy-label">
+    <a href="studio.html">
+        Studio
+    </a>
+
+    <a href="methods.html">
+        Methods
+    </a>
+
+    <a href="setup.html">
+        Setup
+    </a>
+
+    <a href="support.html">
+        Support
+    </a>
+
+    <a href="privacy.html">
+        Privacy Policy
+    </a>
+
+</nav>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+
+    <div class="kicker">
         HAERVIU ENGINE / LEGAL
-      </div>
+    </div>
 
-      <h1>
+
+    <h1>
         Privacy<br>
         Policy.
-      </h1>
-
-      <p>
-        Your privacy matters. This page explains how
-        HAERVIU ENGINE handles information and protects
-        your personal data.
-      </p>
-
-    </section>
+    </h1>
 
 
-    <!-- =====================================
-         CONTENT
-    ====================================== -->
-
-    <section class="privacy-content">
+    <div class="privacy-content">
 
 
-      <div class="privacy-section">
+        <section class="privacy-section">
 
-        <h2>
-          Information
-        </h2>
+            <h2>
+                Information
+            </h2>
 
-        <p>
-          HAERVIU ENGINE does not intentionally collect
-          personal information unless you voluntarily
-          provide it through a contact or support request.
-        </p>
+            <p>
+                HAERVIU ENGINE respects your privacy.
+                This website is designed as a creative
+                platform dedicated to music production,
+                studio workflow and creative systems.
+            </p>
 
-      </div>
-
-
-      <div class="privacy-section">
-
-        <h2>
-          Data Usage
-        </h2>
-
-        <p>
-          Information provided voluntarily is used only
-          to respond to requests, improve communication,
-          and provide relevant support.
-        </p>
-
-      </div>
+        </section>
 
 
-      <div class="privacy-section">
+        <section class="privacy-section">
 
-        <h2>
-          Cookies
-        </h2>
+            <h2>
+                Data Collection
+            </h2>
 
-        <p>
-          This website may use essential technical
-          features required for normal operation.
-          No unnecessary personal tracking is
-          intentionally implemented.
-        </p>
+            <p>
+                Personal information is not intentionally
+                collected unless you voluntarily provide it
+                through a contact or support request.
+            </p>
 
-      </div>
-
-
-      <div class="privacy-section">
-
-        <h2>
-          Third Parties
-        </h2>
-
-        <p>
-          HAERVIU ENGINE may use third-party hosting
-          services required to publish and operate
-          the website. These services may process
-          technical information necessary for
-          normal delivery of the website.
-        </p>
-
-      </div>
+        </section>
 
 
-      <div class="privacy-section">
+        <section class="privacy-section">
 
-        <h2>
-          Your Rights
-        </h2>
+            <h2>
+                Data Usage
+            </h2>
 
-        <p>
-          You may request information concerning
-          personal data you have voluntarily provided
-          and request correction or deletion where
-          applicable.
-        </p>
+            <p>
+                Information voluntarily provided may only
+                be used to respond to requests, provide
+                support or improve communication.
+            </p>
 
-      </div>
-
-
-      <div class="privacy-section">
-
-        <h2>
-          Contact
-        </h2>
-
-        <p>
-          For privacy-related questions, please use
-          the HAERVIU ENGINE support section.
-        </p>
-
-      </div>
+        </section>
 
 
-    </section>
+        <section class="privacy-section">
 
-  </main>
+            <h2>
+                Cookies
+            </h2>
 
+            <p>
+                The website may use essential technical
+                technologies required for normal operation.
+                No unnecessary personal profiling is
+                intentionally implemented.
+            </p>
 
-  <!-- =====================================
-       FOOTER
-  ====================================== -->
-
-  <footer>
-
-    <span>
-      © <span id="year"></span>
-      HAERVIU ENGINE
-    </span>
-
-  </footer>
+        </section>
 
 
-  <!-- =====================================
-       JAVASCRIPT
-  ====================================== -->
+        <section class="privacy-section">
 
-  <script>
+            <h2>
+                Third-Party Services
+            </h2>
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function () {
+            <p>
+                External links may direct users to
+                third-party websites. HAERVIU ENGINE
+                is not responsible for the privacy
+                practices of external services.
+            </p>
+
+        </section>
+
+
+        <section class="privacy-section">
+
+            <h2>
+                Contact
+            </h2>
+
+            <p>
+                For questions regarding privacy or the
+                handling of information, please use the
+                HAERVIU ENGINE support section.
+            </p>
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
         const menuButton =
-          document.querySelector(".menu-toggle");
+            document.getElementById("menuButton");
 
         const navLinks =
-          document.querySelector(".nav-links");
+            document.getElementById("navLinks");
 
-        const overlay =
-          document.querySelector(".menu-overlay");
+        const menuOverlay =
+            document.getElementById("menuOverlay");
 
 
-        function openMenu() {
+        function openMenu(){
 
-          navLinks.classList.add("open");
+            navLinks.classList.add("open");
 
-          overlay.classList.add("active");
+            menuOverlay.classList.add("open");
 
-          menuButton.innerHTML = "×";
+            menuButton.innerHTML = "✕";
 
-          menuButton.setAttribute(
-            "aria-expanded",
-            "true"
-          );
-
-          document.body.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
 
         }
 
 
-        function closeMenu() {
+        function closeMenu(){
 
-          navLinks.classList.remove("open");
+            navLinks.classList.remove("open");
 
-          overlay.classList.remove("active");
+            menuOverlay.classList.remove("open");
 
-          menuButton.innerHTML = "☰";
+            menuButton.innerHTML = "☰";
 
-          menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          document.body.style.overflow = "";
+            document.body.style.overflow = "";
 
         }
 
 
-        if (
-          menuButton &&
-          navLinks &&
-          overlay
-        ) {
-
-          menuButton.addEventListener(
+        menuButton.addEventListener(
             "click",
-            function () {
+            function(){
 
-              if (
-                navLinks.classList.contains("open")
-              ) {
+                if(
+                    navLinks.classList.contains("open")
+                ){
+
+                    closeMenu();
+
+                }else{
+
+                    openMenu();
+
+                }
+
+            }
+        );
+
+
+        menuOverlay.addEventListener(
+            "click",
+            function(){
 
                 closeMenu();
 
-              } else {
-
-                openMenu();
-
-              }
-
             }
-          );
+        );
 
 
-          overlay.addEventListener(
-            "click",
-            closeMenu
-          );
-
-
-          navLinks
+        navLinks
             .querySelectorAll("a")
-            .forEach(function (link) {
+            .forEach(
+                function(link){
 
-              link.addEventListener(
-                "click",
-                closeMenu
-              );
+                    link.addEventListener(
+                        "click",
+                        function(){
 
-            });
+                            closeMenu();
+
+                        }
+                    );
+
+                }
+            );
 
 
-          document.addEventListener(
+        document.addEventListener(
             "keydown",
-            function (event) {
+            function(event){
 
-              if (
-                event.key === "Escape"
-              ) {
+                if(event.key === "Escape"){
 
-                closeMenu();
+                    closeMenu();
 
-              }
+                }
 
             }
-          );
+        );
 
-        }
+    }
+);
 
-
-        const year =
-          document.querySelector("#year");
-
-        if (year) {
-
-          year.textContent =
-            new Date().getFullYear();
-
-        }
-
-      }
-    );
-
-  </script>
+</script>
 
 
 </body>
-
 </html>
