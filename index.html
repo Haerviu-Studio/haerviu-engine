@@ -30,45 +30,21 @@ html{
 
 body{
     min-height:100vh;
-
     background:
-        radial-gradient(
-            circle at 82% 18%,
-            rgba(90,110,180,.13),
-            transparent 28%
-        ),
-        linear-gradient(
-            180deg,
-            #07080d,
-            #090b12 55%,
-            #07080d
-        );
-
+        radial-gradient(circle at 82% 18%, rgba(90,110,180,.13), transparent 28%),
+        linear-gradient(180deg, #07080d, #090b12 55%, #07080d);
     color:var(--text);
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
-
     position:fixed;
-
     inset:-20%;
-
     border:1px solid rgba(255,255,255,.045);
-
     border-radius:50%;
-
     transform:rotate(-18deg);
-
     pointer-events:none;
 }
 
@@ -77,419 +53,336 @@ a{
     text-decoration:none;
 }
 
-
 /* HEADER */
 
 header{
     height:104px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     padding:0 6vw;
-
     border-bottom:1px solid rgba(255,255,255,.08);
-
     position:sticky;
-
     top:0;
-
-    z-index:20;
-
+    z-index:100;
     background:rgba(7,8,13,.88);
-
     backdrop-filter:blur(18px);
-
     -webkit-backdrop-filter:blur(18px);
 }
 
 .brand{
     display:flex;
-
     align-items:center;
-
     gap:20px;
+    position:relative;
+    z-index:102;
 }
 
 .logo{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
-
     border-radius:17px;
-
     display:grid;
-
     place-items:center;
-
     font-family:Georgia,serif;
-
     font-size:28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.015)
-        );
+    background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
 }
 
 .brand-name{
     font-size:17px;
-
     font-weight:800;
-
     letter-spacing:.22em;
 }
+
+/* MENU BUTTON */
 
 .menu{
     width:58px;
     height:58px;
-
     border:1px solid var(--line);
-
     border-radius:17px;
-
     display:grid;
-
     place-items:center;
-
     font-size:24px;
-
     color:#dfe2e9;
+    background:transparent;
+    cursor:pointer;
+    position:relative;
+    z-index:102;
 }
 
+/* NAVIGATION PANEL */
+
+.nav-links{
+    position:fixed;
+    top:104px;
+    right:0;
+    width:min(420px,100%);
+    height:calc(100vh - 104px);
+    background:rgba(9,11,18,.98);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+    padding:55px 8vw;
+    gap:28px;
+
+    transform:translateX(100%);
+    transition:transform .35s ease;
+
+    border-left:1px solid var(--line);
+    z-index:101;
+}
+
+.nav-links.open{
+    transform:translateX(0);
+}
+
+.nav-links a{
+    font-size:clamp(26px,4vw,42px);
+    font-weight:700;
+    letter-spacing:-.03em;
+    color:#dfe2e9;
+    transition:.2s ease;
+}
+
+.nav-links a:hover{
+    color:white;
+    transform:translateX(8px);
+}
 
 /* MAIN */
 
 main{
     max-width:1100px;
-
     margin:auto;
-
     padding:78px 6vw 130px;
-
     position:relative;
-
     z-index:1;
 }
-
 
 /* HERO */
 
 .hero{
     min-height:560px;
-
     display:flex;
-
     align-items:center;
-
     position:relative;
 }
 
 .hero-content{
     position:relative;
-
     z-index:2;
 }
 
 .kicker{
     color:#8e92a2;
-
     letter-spacing:.35em;
-
     font-size:12px;
-
     font-weight:800;
-
     margin-bottom:28px;
 }
 
 h1{
     max-width:900px;
-
-    font-size:clamp(
-        58px,
-        8vw,
-        108px
-    );
-
+    font-size:clamp(58px,8vw,108px);
     line-height:.88;
-
     letter-spacing:-.075em;
-
     font-weight:900;
 }
 
 .description{
     max-width:760px;
-
     margin-top:36px;
-
     color:#aeb2bf;
-
     font-size:19px;
-
     line-height:1.7;
 }
 
 .actions{
     display:flex;
-
     gap:14px;
-
     margin-top:42px;
-
     flex-wrap:wrap;
 }
 
 .button{
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
-
     min-height:48px;
-
     padding:0 22px;
-
     border:1px solid var(--line);
-
     border-radius:999px;
-
     font-size:13px;
-
     font-weight:800;
-
     transition:.25s ease;
 }
 
 .button.primary{
     background:#f5f5f7;
-
     color:#090a0e;
-
     border-color:#f5f5f7;
 }
 
 .button:hover{
     transform:translateY(-2px);
-
     border-color:rgba(255,255,255,.28);
 }
-
 
 /* SECTION */
 
 .section-label{
     color:#747c8f;
-
     letter-spacing:.35em;
-
     font-size:10px;
-
     font-weight:800;
-
     margin-bottom:25px;
 }
-
 
 /* CARDS */
 
 .cards{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:16px;
 }
 
 .card{
     position:relative;
-
     min-height:290px;
-
-    padding:
-        30px
-        28px
-        32px;
-
+    padding:30px 28px 32px;
     border:1px solid var(--line);
-
     border-radius:25px;
-
     background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(90,105,180,.10),
-            transparent 38%
-        ),
-        linear-gradient(
-            145deg,
-            #12151c,
-            #0b0d13
-        );
-
+        radial-gradient(circle at 80% 10%,rgba(90,105,180,.10),transparent 38%),
+        linear-gradient(145deg,#12151c,#0b0d13);
     overflow:hidden;
-
     transition:.3s ease;
 }
 
 .card:hover{
     transform:translateY(-5px);
-
-    border-color:
-        rgba(255,255,255,.23);
-
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.35);
+    border-color:rgba(255,255,255,.23);
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 
 .card-number{
     color:#687184;
-
     font-size:9px;
-
     font-weight:800;
-
     letter-spacing:.25em;
 }
 
 .card h2{
     margin-top:24px;
-
     font-size:27px;
-
     letter-spacing:-.04em;
 }
 
 .card p{
     max-width:260px;
-
     margin-top:15px;
-
     color:#858c9d;
-
     font-size:13px;
-
     line-height:1.7;
 }
 
 .card-link{
     position:absolute;
-
     left:28px;
-
     bottom:27px;
-
     color:#d0d4dd;
-
     font-size:10px;
-
     font-weight:800;
-
     letter-spacing:.18em;
-
     text-transform:uppercase;
 }
-
 
 /* SYSTEM */
 
 .system{
     margin-top:90px;
-
     padding:45px;
-
     border:1px solid var(--line);
-
     border-radius:30px;
-
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(90,105,180,.10),
-            transparent 60%
-        ),
+        radial-gradient(circle at 50% 50%,rgba(90,105,180,.10),transparent 60%),
         #0b0e14;
 }
 
 .system h2{
-    font-size:clamp(
-        38px,
-        5vw,
-        62px
-    );
-
+    font-size:clamp(38px,5vw,62px);
     line-height:.95;
-
     letter-spacing:-.06em;
 }
 
 .system p{
     max-width:650px;
-
     margin-top:22px;
-
     color:#858c9d;
-
     line-height:1.75;
-
     font-size:14px;
 }
-
 
 /* FOOTER */
 
 footer{
-    border-top:
-        1px solid
-        rgba(255,255,255,.08);
-
+    border-top:1px solid rgba(255,255,255,.08);
     padding:32px 6vw;
-
     color:#626674;
-
     font-size:12px;
-
     letter-spacing:.12em;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
 }
 
+.footer-links{
+    display:flex;
+    gap:24px;
+}
 
-/* TABLET / MOBILE */
+.footer-links a:hover{
+    color:#fff;
+}
+
+/* MOBILE */
 
 @media(max-width:800px){
 
     header{
         height:88px;
-
         padding:0 26px;
     }
 
     .logo,
     .menu{
         width:50px;
-
         height:50px;
     }
 
     .brand-name{
         font-size:14px;
-
         letter-spacing:.18em;
     }
 
+    .nav-links{
+        top:88px;
+        height:calc(100vh - 88px);
+        width:100%;
+        padding:50px 26px;
+    }
+
     main{
-        padding:
-            55px
-            26px
-            90px;
+        padding:55px 26px 90px;
     }
 
     .hero{
@@ -497,12 +390,7 @@ footer{
     }
 
     h1{
-        font-size:
-            clamp(
-                55px,
-                14vw,
-                90px
-            );
+        font-size:clamp(55px,14vw,90px);
     }
 
     .description{
@@ -520,22 +408,22 @@ footer{
     .system{
         padding:30px 24px;
     }
+
+    footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 }
-
-
-/* SMALL MOBILE */
 
 @media(max-width:480px){
 
     .brand-name{
         font-size:11px;
-
         letter-spacing:.16em;
     }
 
     .actions{
         flex-direction:column;
-
         align-items:stretch;
     }
 
@@ -547,51 +435,44 @@ footer{
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
 <a class="brand" href="index.html">
-
-<div class="logo">
-H
-</div>
-
-<div class="brand-name">
-HAERVIU ENGINE
-</div>
-
+    <div class="logo">H</div>
+    <div class="brand-name">HAERVIU ENGINE</div>
 </a>
 
-
-<div class="menu" aria-hidden="true">
+<button class="menu" aria-label="Open navigation" aria-expanded="false">
 ☰
-</div>
+</button>
+
+<nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="studio.html">Studio</a>
+    <a href="methods.html">Methods</a>
+    <a href="setup.html">Setup</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+</nav>
 
 </header>
 
-
-
 <main>
-
 
 <section class="hero">
 
 <div class="hero-content">
 
-
 <div class="kicker">
 HAERVIU LABS / CREATIVE MUSIC SYSTEM
 </div>
-
 
 <h1>
 Your Studio.<br>
 Reimagined.
 </h1>
-
 
 <p class="description">
 Haerviu Engine is a central system designed to connect,
@@ -599,143 +480,58 @@ organize and control your music studio — instruments,
 routing, workflows, methods and creative tools in one place.
 </p>
 
-
 <div class="actions">
-
-<a
-class="button primary"
-href="studio.html"
->
-Explore Studio
-</a>
-
-
-<a
-class="button"
-href="methods.html"
->
-Methods
-</a>
-
+    <a class="button primary" href="studio.html">Explore Studio</a>
+    <a class="button" href="methods.html">Methods</a>
 </div>
-
 
 </div>
 
 </section>
 
-
-
 <section id="engine">
-
 
 <div class="section-label">
 THE ENGINE
 </div>
 
-
 <div class="cards">
 
-
-<a
-class="card"
-href="methods.html"
->
-
-<div class="card-number">
-01 / METHODS
-</div>
-
-<h2>
-Methods
-</h2>
-
-<p>
-Practical production methods designed around
-your actual hardware, workflow and creative process.
-</p>
-
-<span class="card-link">
-Explore Methods →
-</span>
-
+<a class="card" href="methods.html">
+    <div class="card-number">01 / METHODS</div>
+    <h2>Methods</h2>
+    <p>Practical production methods designed around your actual hardware, workflow and creative process.</p>
+    <span class="card-link">Explore Methods →</span>
 </a>
 
-
-
-<a
-class="card"
-href="studio.html"
->
-
-<div class="card-number">
-02 / STUDIO
-</div>
-
-<h2>
-Studio
-</h2>
-
-<p>
-Your complete studio environment,
-instruments, connections and production setup.
-</p>
-
-<span class="card-link">
-Explore Studio →
-</span>
-
+<a class="card" href="studio.html">
+    <div class="card-number">02 / STUDIO</div>
+    <h2>Studio</h2>
+    <p>Your complete studio environment, instruments, connections and production setup.</p>
+    <span class="card-link">Explore Studio →</span>
 </a>
 
-
-
-<a
-class="card"
-href="#system"
->
-
-<div class="card-number">
-03 / SYSTEM
-</div>
-
-<h2>
-Engine
-</h2>
-
-<p>
-A future-ready workspace built to bring
-hardware, software and creative workflows together.
-</p>
-
-<span class="card-link">
-Explore System →
-</span>
-
+<a class="card" href="#system">
+    <div class="card-number">03 / SYSTEM</div>
+    <h2>Engine</h2>
+    <p>A future-ready workspace built to bring hardware, software and creative workflows together.</p>
+    <span class="card-link">Explore System →</span>
 </a>
-
 
 </div>
 
 </section>
 
-
-
-<section
-class="system"
-id="system"
->
-
+<section class="system" id="system">
 
 <div class="section-label">
 HAERVIU ENGINE / SYSTEM
 </div>
 
-
 <h2>
 One system.<br>
 Your whole studio.
 </h2>
-
 
 <p>
 The Engine connects the studio environment,
@@ -743,13 +539,9 @@ production methods and creative workflow into
 one coherent system.
 </p>
 
-
 </section>
 
-
 </main>
-
-
 
 <footer>
     <div>HAERVIU ENGINE — CREATIVE MUSIC SYSTEM</div>
@@ -759,6 +551,42 @@ one coherent system.
         <a href="privacy.html">Privacy Policy</a>
     </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuButton = document.querySelector(".menu");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuButton && navLinks) {
+
+        menuButton.addEventListener("click", () => {
+
+            navLinks.classList.toggle("open");
+
+            const isOpen = navLinks.classList.contains("open");
+
+            menuButton.textContent = isOpen ? "✕" : "☰";
+            menuButton.setAttribute("aria-expanded", isOpen);
+
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("open");
+                menuButton.textContent = "☰";
+                menuButton.setAttribute("aria-expanded", "false");
+
+            });
+
+        });
+
+    }
+
+});
+</script>
 
 </body>
 </html>
