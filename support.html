@@ -30,7 +30,6 @@ html{
 
 body{
     min-height:100vh;
-
     background:
         radial-gradient(
             circle at 82% 18%,
@@ -60,16 +59,16 @@ body::before{
     content:"";
 
     position:fixed;
-
     inset:-20%;
 
     border:1px solid rgba(255,255,255,.045);
-
     border-radius:50%;
 
     transform:rotate(-18deg);
 
     pointer-events:none;
+
+    z-index:0;
 }
 
 a{
@@ -78,9 +77,9 @@ a{
 }
 
 
-/* =====================================
+/* =========================================
    HEADER
-===================================== */
+========================================= */
 
 .he-header{
     height:104px;
@@ -108,6 +107,9 @@ a{
     display:flex;
     align-items:center;
     gap:20px;
+
+    position:relative;
+    z-index:1005;
 }
 
 .he-logo{
@@ -115,7 +117,6 @@ a{
     height:58px;
 
     border:1px solid var(--line);
-
     border-radius:17px;
 
     display:grid;
@@ -134,110 +135,98 @@ a{
 
 .he-brand-name{
     font-size:17px;
-
     font-weight:800;
-
     letter-spacing:.22em;
 }
 
 
-/* =====================================
-   HAMBURGER
-===================================== */
+/* =========================================
+   MENU SYSTEM — NO JAVASCRIPT
+========================================= */
 
-.he-menu-button{
-    display:flex !important;
+#menu-toggle{
+    display:none;
+}
 
-    align-items:center;
-    justify-content:center;
 
+/* HAMBURGER BUTTON */
+
+.menu-button{
     width:58px;
     height:58px;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
 
     flex-shrink:0;
 
     border:1px solid var(--line);
     border-radius:17px;
 
-    background:rgba(255,255,255,.02);
+    background:rgba(255,255,255,.03);
 
     color:#ffffff;
 
     font-size:26px;
-    line-height:1;
 
     cursor:pointer;
 
     position:relative;
 
-    z-index:1003;
+    z-index:1005;
 
-    visibility:visible !important;
-    opacity:1 !important;
+    transition:.25s ease;
 
-    -webkit-appearance:none;
-    appearance:none;
+    user-select:none;
 }
 
-.he-menu-button:hover{
+.menu-button:hover{
     background:rgba(255,255,255,.08);
-
-    border-color:
-        rgba(255,255,255,.30);
+    border-color:rgba(255,255,255,.30);
 }
 
 
-/* =====================================
-   MENU OVERLAY
-===================================== */
+/* OVERLAY */
 
-.he-menu-overlay{
+.menu-overlay{
     position:fixed;
 
     inset:0;
 
-    background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.70);
 
     opacity:0;
+    visibility:hidden;
 
-    pointer-events:none;
+    transition:.3s ease;
 
-    transition:opacity .3s ease;
-
-    z-index:1000;
-}
-
-.he-menu-overlay.active{
-    opacity:1;
-
-    pointer-events:auto;
+    z-index:1001;
 }
 
 
-/* =====================================
-   NAVIGATION
-===================================== */
+/* MENU PANEL */
 
-.he-navigation{
+.side-menu{
     position:fixed;
 
     top:0;
     right:0;
 
-    width:min(440px,100vw);
+    width:420px;
+    max-width:100%;
 
     height:100vh;
 
-    padding:125px 55px 50px;
+    padding:125px 50px 50px;
 
-    display:flex !important;
+    display:flex;
 
     flex-direction:column;
 
     background:#0b0d13;
 
-    border-left:
-        1px solid rgba(255,255,255,.10);
+    border-left:1px solid rgba(255,255,255,.12);
 
     transform:translateX(100%);
 
@@ -246,14 +235,10 @@ a{
     z-index:1002;
 
     box-shadow:
-        -30px 0 80px rgba(0,0,0,.40);
+        -30px 0 80px rgba(0,0,0,.50);
 }
 
-.he-navigation.active{
-    transform:translateX(0);
-}
-
-.he-navigation a{
+.side-menu a{
     display:block;
 
     padding:20px 0;
@@ -261,25 +246,50 @@ a{
     border-bottom:
         1px solid rgba(255,255,255,.08);
 
-    font-size:22px;
-
-    font-weight:700;
-
     color:#f4f4f7;
+
+    font-size:22px;
+    font-weight:700;
 
     transition:.2s ease;
 }
 
-.he-navigation a:hover{
+.side-menu a:hover{
     color:var(--accent);
-
     padding-left:8px;
 }
 
 
-/* =====================================
+/* OPEN MENU */
+
+#menu-toggle:checked ~ .menu-overlay{
+    opacity:1;
+    visibility:visible;
+}
+
+#menu-toggle:checked ~ .side-menu{
+    transform:translateX(0);
+}
+
+
+/* CHANGE HAMBURGER TO X */
+
+.menu-button .close-icon{
+    display:none;
+}
+
+#menu-toggle:checked + .he-header .menu-button .menu-icon{
+    display:none;
+}
+
+#menu-toggle:checked + .he-header .menu-button .close-icon{
+    display:block;
+}
+
+
+/* =========================================
    MAIN
-===================================== */
+========================================= */
 
 .he-main{
     max-width:1100px;
@@ -330,9 +340,9 @@ a{
 }
 
 
-/* =====================================
-   SUPPORT CARDS
-===================================== */
+/* =========================================
+   SUPPORT GRID
+========================================= */
 
 .he-support-grid{
     display:grid;
@@ -341,8 +351,6 @@ a{
         repeat(2,1fr);
 
     gap:18px;
-
-    max-width:1000px;
 }
 
 .he-support-card{
@@ -405,19 +413,15 @@ a{
     font-size:14px;
 
     line-height:1.7;
-
-    max-width:390px;
 }
 
 
-/* =====================================
-   CONTACT SECTION
-===================================== */
+/* =========================================
+   CONTACT
+========================================= */
 
 .he-contact{
     margin-top:70px;
-
-    max-width:1000px;
 
     padding:45px;
 
@@ -435,11 +439,7 @@ a{
 }
 
 .he-contact h2{
-    font-size:clamp(
-        34px,
-        4vw,
-        54px
-    );
+    font-size:clamp(34px,4vw,54px);
 
     line-height:.95;
 
@@ -459,9 +459,9 @@ a{
 }
 
 
-/* =====================================
+/* =========================================
    FOOTER
-===================================== */
+========================================= */
 
 .he-footer{
     border-top:
@@ -474,30 +474,32 @@ a{
     font-size:12px;
 
     letter-spacing:.12em;
+
+    position:relative;
+
+    z-index:1;
 }
 
 
-/* =====================================
+/* =========================================
    MOBILE
-===================================== */
+========================================= */
 
 @media(max-width:800px){
 
     .he-header{
         height:88px;
-
         padding:0 26px;
     }
 
     .he-logo,
-    .he-menu-button{
+    .menu-button{
         width:50px;
         height:50px;
     }
 
     .he-brand-name{
         font-size:14px;
-
         letter-spacing:.18em;
     }
 
@@ -518,13 +520,13 @@ a{
         font-size:17px;
     }
 
-    .he-navigation{
-        width:100vw;
+    .side-menu{
+        width:100%;
 
         padding:115px 40px 50px;
     }
 
-    .he-navigation a{
+    .side-menu a{
         font-size:28px;
     }
 
@@ -535,6 +537,7 @@ a{
     .he-contact{
         padding:30px 24px;
     }
+
 }
 
 
@@ -542,7 +545,6 @@ a{
 
     .he-brand-name{
         font-size:11px;
-
         letter-spacing:.16em;
     }
 
@@ -554,6 +556,14 @@ a{
 
 
 <body>
+
+
+<!-- CHECKBOX MENU CONTROLLER -->
+
+<input
+    type="checkbox"
+    id="menu-toggle"
+>
 
 
 <!-- HEADER -->
@@ -576,32 +586,32 @@ a{
     </a>
 
 
-    <button
-        type="button"
-        class="he-menu-button"
-        id="heMenuButton"
+    <label
+        for="menu-toggle"
+        class="menu-button"
         aria-label="Open navigation"
     >
-        ☰
-    </button>
+
+        <span class="menu-icon">☰</span>
+
+        <span class="close-icon">✕</span>
+
+    </label>
 
 </header>
 
 
-<!-- OVERLAY -->
+<!-- DARK OVERLAY -->
 
-<div
-    class="he-menu-overlay"
-    id="heMenuOverlay"
-></div>
+<label
+    for="menu-toggle"
+    class="menu-overlay"
+></label>
 
 
-<!-- NAVIGATION -->
+<!-- SIDE MENU -->
 
-<nav
-    class="he-navigation"
-    id="heNavigation"
->
+<nav class="side-menu">
 
     <a href="index.html">Home</a>
 
@@ -750,129 +760,6 @@ a{
     HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 
 </footer>
-
-
-<!-- JAVASCRIPT -->
-
-<script>
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        const button =
-            document.getElementById(
-                "heMenuButton"
-            );
-
-        const navigation =
-            document.getElementById(
-                "heNavigation"
-            );
-
-        const overlay =
-            document.getElementById(
-                "heMenuOverlay"
-            );
-
-
-        function openMenu(){
-
-            navigation.classList.add(
-                "active"
-            );
-
-            overlay.classList.add(
-                "active"
-            );
-
-            button.innerHTML = "✕";
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-
-
-        function closeMenu(){
-
-            navigation.classList.remove(
-                "active"
-            );
-
-            overlay.classList.remove(
-                "active"
-            );
-
-            button.innerHTML = "☰";
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                if(
-                    navigation.classList.contains(
-                        "active"
-                    )
-                ){
-
-                    closeMenu();
-
-                }else{
-
-                    openMenu();
-
-                }
-
-            }
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        navigation
-            .querySelectorAll("a")
-            .forEach(
-                function(link){
-
-                    link.addEventListener(
-                        "click",
-                        closeMenu
-                    );
-
-                }
-            );
-
-
-        document.addEventListener(
-            "keydown",
-            function(event){
-
-                if(
-                    event.key === "Escape"
-                ){
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-    }
-);
-
-</script>
 
 
 </body>
