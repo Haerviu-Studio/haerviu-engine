@@ -1,84 +1,247 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Mobile navigation
-  const nav = document.querySelector(".nav");
-  const navLinks = document.querySelector(".nav-links");
 
-  if (nav && navLinks) {
-    const menuButton = document.createElement("button");
+  /* =====================================================
+     HAERVIU ENGINE — UNIVERSAL NAVIGATION
+  ===================================================== */
 
-    menuButton.className = "menu-toggle";
-    menuButton.setAttribute("aria-label", "Open navigation");
-    menuButton.innerHTML = "☰";
+  const menu = document.querySelector(".menu");
 
-    nav.insertBefore(menuButton, navLinks);
+  if (menu) {
 
-    menuButton.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-      menuButton.innerHTML = navLinks.classList.contains("open") ? "✕" : "☰";
-    });
+    // Transform existing menu element into accessible button
+    menu.setAttribute("role", "button");
+    menu.setAttribute("tabindex", "0");
+    menu.setAttribute("aria-label", "Open navigation");
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuButton.innerHTML = "☰";
-      });
-    });
-  }
+    // Create overlay
+    const overlay = document.createElement("div");
+    overlay.className = "engine-menu-overlay";
 
-  // Smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
-      const target = document.querySelector(targetId);
+    overlay.innerHTML = `
+      <nav class="engine-menu-panel">
 
-      if (target) {
+        <a href="index.html" class="engine-menu-link">Home</a>
+
+        <a href="studio.html" class="engine-menu-link">Studio</a>
+
+        <a href="methods.html" class="engine-menu-link">Methods</a>
+
+        <a href="setup.html" class="engine-menu-link">Setup</a>
+
+        <a href="support.html" class="engine-menu-link">Support</a>
+
+        <a href="privacy.html" class="engine-menu-link">Privacy Policy</a>
+
+      </nav>
+    `;
+
+    document.body.appendChild(overlay);
+
+    // Open / Close menu
+    const toggleMenu = () => {
+
+      const isOpen = overlay.classList.contains("active");
+
+      overlay.classList.toggle("active");
+
+      menu.innerHTML = isOpen ? "☰" : "✕";
+
+      menu.setAttribute(
+        "aria-label",
+        isOpen ? "Open navigation" : "Close navigation"
+      );
+
+      document.body.classList.toggle("menu-open");
+
+    };
+
+    menu.addEventListener("click", toggleMenu);
+
+    menu.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
         event.preventDefault();
 
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+        toggleMenu();
+
       }
+
     });
-  });
 
-  // Reveal elements when they enter the screen
-  const revealElements = document.querySelectorAll(
-    ".card, .section-title, .hero-content"
-  );
+    // Close when clicking outside panel
+    overlay.addEventListener("click", (event) => {
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
+      if (event.target === overlay) {
+
+        overlay.classList.remove("active");
+
+        menu.innerHTML = "☰";
+
+        menu.setAttribute(
+          "aria-label",
+          "Open navigation"
+        );
+
+        document.body.classList.remove("menu-open");
+
+      }
+
+    });
+
+    // Close when clicking a link
+    overlay
+      .querySelectorAll(".engine-menu-link")
+      .forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+          overlay.classList.remove("active");
+
+          menu.innerHTML = "☰";
+
+          document.body.classList.remove("menu-open");
+
+        });
+
       });
-    },
-    {
-      threshold: 0.12
-    }
-  );
 
-  revealElements.forEach((element) => {
-    element.classList.add("reveal");
-    observer.observe(element);
-  });
+    // Close with Escape key
+    document.addEventListener("keydown", (event) => {
 
-  // Current year
-  const year = document.querySelector("#year");
+      if (event.key === "Escape") {
 
-  if (year) {
-    year.textContent = new Date().getFullYear();
+        overlay.classList.remove("active");
+
+        menu.innerHTML = "☰";
+
+        menu.setAttribute(
+          "aria-label",
+          "Open navigation"
+        );
+
+        document.body.classList.remove("menu-open");
+
+      }
+
+    });
+
   }
 
-  // Prevent empty links from jumping to the top
-  document.querySelectorAll('a[href="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-    });
-  });
 
-  console.log("HAERVIU ENGINE initialized.");
+  /* =====================================================
+     SMOOTH SCROLLING
+  ===================================================== */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
+
+      link.addEventListener("click", (event) => {
+
+        const targetId = link.getAttribute("href");
+
+        if (targetId === "#") {
+
+          event.preventDefault();
+
+          return;
+
+        }
+
+        const target =
+          document.querySelector(targetId);
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      });
+
+    });
+
+
+  /* =====================================================
+     REVEAL ANIMATION
+  ===================================================== */
+
+  const revealElements =
+    document.querySelectorAll(
+      ".card, .section-title, .hero-content, .instrument, .setup"
+    );
+
+  if (
+    "IntersectionObserver" in window &&
+    revealElements.length > 0
+  ) {
+
+    const observer =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.08
+        }
+
+      );
+
+    revealElements.forEach((element) => {
+
+      element.classList.add("reveal");
+
+      observer.observe(element);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     CURRENT YEAR
+  ===================================================== */
+
+  const year =
+    document.querySelector("#year");
+
+  if (year) {
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  console.log(
+    "HAERVIU ENGINE — Universal navigation initialized."
+  );
+
 });
