@@ -1,306 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>Privacy Policy — HAERVIU ENGINE</title>
 
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Privacy page fallback */
-    .page-container {
-      width: min(1100px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 140px 0 100px;
+
+    /* =========================================
+       PAGE PRIVACY
+    ========================================= */
+
+    .privacy-page {
+      min-height: 100vh;
+      background: #0b0d12;
+      color: #e8e9ed;
     }
 
-    .page-eyebrow {
+    .privacy-hero {
+      padding: 140px 8% 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .privacy-label {
       font-size: 11px;
       letter-spacing: 4px;
+      color: #7ee2b8;
       font-weight: 700;
-      color: #7ee0b1;
-      margin-bottom: 24px;
+      margin-bottom: 25px;
     }
 
-    .page-title {
-      font-size: clamp(48px, 8vw, 100px);
+    .privacy-hero h1 {
+      font-size: clamp(52px, 8vw, 110px);
       line-height: 0.95;
-      margin: 0 0 40px;
-      font-weight: 800;
+      margin: 0 0 35px;
+      letter-spacing: -4px;
     }
 
-    .content-card {
-      max-width: 850px;
-      padding: 48px;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      background: rgba(255,255,255,0.025);
+    .privacy-hero p {
+      max-width: 700px;
+      color: #9ba1ad;
+      font-size: 18px;
+      line-height: 1.7;
     }
 
-    .content-card h2 {
-      font-size: 24px;
-      margin: 38px 0 14px;
+    .privacy-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 8% 120px;
     }
 
-    .content-card h2:first-child {
-      margin-top: 0;
+    .privacy-section {
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding: 50px 0;
     }
 
-    .content-card p {
-      color: #9da3b0;
+    .privacy-section h2 {
+      font-size: 30px;
+      margin: 0 0 20px;
+      color: #f2f3f5;
+    }
+
+    .privacy-section p,
+    .privacy-section li {
+      color: #9ba1ad;
+      font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 18px;
     }
 
-    /* MENU OVERLAY */
+    .privacy-section ul {
+      padding-left: 20px;
+    }
+
+    /* =========================================
+       UNIVERSAL MOBILE MENU
+    ========================================= */
+
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+
+      color: #e8e9ed;
+      font-size: 24px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
+      z-index: 1002;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+
+    /* Overlay */
+
     .menu-overlay {
       position: fixed;
       inset: 0;
-      z-index: 9998;
-      background: #0d1015;
+
+      background: rgba(5,7,10,0.72);
+
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+      z-index: 999;
     }
 
-    .menu-overlay.open {
+    .menu-overlay.active {
       opacity: 1;
       visibility: visible;
     }
 
-    .nav-links {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(520px, 70vw);
-      height: 100vh;
-      z-index: 9999;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    /* Mobile navigation */
 
-      padding: 80px 70px;
+    @media (max-width: 768px) {
 
-      background: #0d1015;
-      border-left: 1px solid rgba(255,255,255,0.1);
+      .nav-links {
 
-      transform: translateX(100%);
-      transition: transform 0.35s ease;
-    }
+        position: fixed;
 
-    .nav-links.open {
-      transform: translateX(0);
-    }
+        top: 0;
+        right: 0;
 
-    .nav-links a {
-      display: block;
-      padding: 22px 0;
+        width: min(82vw, 420px);
+        height: 100vh;
 
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
+        display: flex;
+        flex-direction: column;
 
-      color: #f4f4f4;
-      text-decoration: none;
+        justify-content: center;
 
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+        gap: 0;
 
-    .nav-links a:hover {
-      color: #7ee0b1;
-    }
+        padding: 100px 40px 50px;
 
-    .menu {
-      position: relative;
-      z-index: 10000;
-      width: 50px;
-      height: 50px;
+        background: #0d1015;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        border-left:
+          1px solid rgba(255,255,255,0.10);
 
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
+        transform: translateX(100%);
 
-      background: transparent;
-      color: white;
+        transition: transform 0.35s cubic-bezier(
+          0.77,
+          0,
+          0.18,
+          1
+        );
 
-      font-size: 22px;
-      cursor: pointer;
-    }
+        z-index: 1001;
 
-    @media (max-width: 700px) {
-      .page-container {
-        width: min(100% - 32px, 1100px);
+        box-sizing: border-box;
+      }
+
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+
+      .nav-links a {
+
+        display: block;
+
+        padding: 22px 0;
+
+        font-size: 30px;
+        font-weight: 700;
+
+        color: #e8e9ed;
+
+        text-decoration: none;
+
+        border-bottom:
+          1px solid rgba(255,255,255,0.10);
+
+        transition:
+          color 0.2s ease,
+          padding-left 0.2s ease;
+      }
+
+
+      .nav-links a:hover {
+        color: #7ee2b8;
+        padding-left: 8px;
+      }
+
+
+      .privacy-hero {
         padding-top: 110px;
       }
 
-      .content-card {
-        padding: 28px;
+    }
+
+
+    @media (min-width: 769px) {
+
+      .menu-toggle {
+        display: none;
       }
 
-      .nav-links {
-        width: 100%;
-        padding: 80px 40px;
+      .menu-overlay {
+        display: none;
       }
+
     }
+
   </style>
+
 </head>
 
-<body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
+<body class="privacy-page">
 
-      <a href="index.html" class="brand">
-        <div class="brand-mark">H</div>
-        <span>HAERVIU ENGINE</span>
-      </a>
 
-      <button
-        class="menu"
-        id="menuButton"
-        aria-label="Open navigation"
-        aria-expanded="false"
-        type="button">
-        ☰
-      </button>
+  <!-- =====================================
+       HEADER
+  ====================================== -->
 
-    </div>
+  <header class="nav">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-mark">
+        H
+      </div>
+
+      <span>
+        HAERVIU ENGINE
+      </span>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false">
+
+      ☰
+
+    </button>
+
+
+    <nav class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="studio.html">Studio</a>
+
+      <a href="methods.html">Methods</a>
+
+      <a href="setup.html">Setup</a>
+
+      <a href="support.html">Support</a>
+
+      <a href="privacy.html">Privacy Policy</a>
+
+    </nav>
+
   </header>
 
 
-  <!-- MENU BACKGROUND -->
-  <div class="menu-overlay" id="menuOverlay"></div>
+  <!-- MENU OVERLAY -->
+
+  <div class="menu-overlay"></div>
 
 
-  <!-- NAVIGATION -->
-  <nav class="nav-links" id="navLinks">
-    <a href="index.html">Home</a>
-    <a href="studio.html">Studio</a>
-    <a href="methods.html">Methods</a>
-    <a href="setup.html">Setup</a>
-    <a href="support.html">Support</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </nav>
+  <!-- =====================================
+       HERO
+  ====================================== -->
 
+  <main>
 
-  <!-- CONTENT -->
-  <main class="page-container">
+    <section class="privacy-hero">
 
-    <div class="page-eyebrow">
-      HAERVIU ENGINE / LEGAL
-    </div>
+      <div class="privacy-label">
+        HAERVIU ENGINE / LEGAL
+      </div>
 
-    <h1 class="page-title">
-      Privacy<br>Policy.
-    </h1>
-
-    <div class="content-card">
-
-      <h2>Privacy</h2>
+      <h1>
+        Privacy<br>
+        Policy.
+      </h1>
 
       <p>
-        HAERVIU ENGINE respects your privacy. This website is designed as an
-        informational and creative platform dedicated to music production,
-        studio workflow and creative systems.
+        Your privacy matters. This page explains how
+        HAERVIU ENGINE handles information and protects
+        your personal data.
       </p>
 
-      <h2>Data Collection</h2>
+    </section>
 
-      <p>
-        HAERVIU ENGINE does not intentionally collect personal information
-        unless you voluntarily provide it through a contact form or another
-        communication channel.
-      </p>
 
-      <h2>Cookies</h2>
+    <!-- =====================================
+         CONTENT
+    ====================================== -->
 
-      <p>
-        This website may use essential technical technologies required for
-        proper operation. No personal profiling is intentionally performed
-        through this website.
-      </p>
+    <section class="privacy-content">
 
-      <h2>Third-Party Services</h2>
 
-      <p>
-        External links may direct users to third-party websites. HAERVIU ENGINE
-        is not responsible for the privacy practices or content of external
-        services.
-      </p>
+      <div class="privacy-section">
 
-      <h2>Data Protection</h2>
+        <h2>
+          Information
+        </h2>
 
-      <p>
-        Reasonable measures are taken to maintain the security and integrity
-        of the website. However, no internet transmission can be guaranteed
-        to be completely secure.
-      </p>
+        <p>
+          HAERVIU ENGINE does not intentionally collect
+          personal information unless you voluntarily
+          provide it through a contact or support request.
+        </p>
 
-      <h2>Contact</h2>
+      </div>
 
-      <p>
-        For questions regarding this privacy policy or the handling of
-        information, please contact HAERVIU ENGINE through the appropriate
-        communication channels.
-      </p>
 
-    </div>
+      <div class="privacy-section">
+
+        <h2>
+          Data Usage
+        </h2>
+
+        <p>
+          Information provided voluntarily is used only
+          to respond to requests, improve communication,
+          and provide relevant support.
+        </p>
+
+      </div>
+
+
+      <div class="privacy-section">
+
+        <h2>
+          Cookies
+        </h2>
+
+        <p>
+          This website may use essential technical
+          features required for normal operation.
+          No unnecessary personal tracking is
+          intentionally implemented.
+        </p>
+
+      </div>
+
+
+      <div class="privacy-section">
+
+        <h2>
+          Third Parties
+        </h2>
+
+        <p>
+          HAERVIU ENGINE may use third-party hosting
+          services required to publish and operate
+          the website. These services may process
+          technical information necessary for
+          normal delivery of the website.
+        </p>
+
+      </div>
+
+
+      <div class="privacy-section">
+
+        <h2>
+          Your Rights
+        </h2>
+
+        <p>
+          You may request information concerning
+          personal data you have voluntarily provided
+          and request correction or deletion where
+          applicable.
+        </p>
+
+      </div>
+
+
+      <div class="privacy-section">
+
+        <h2>
+          Contact
+        </h2>
+
+        <p>
+          For privacy-related questions, please use
+          the HAERVIU ENGINE support section.
+        </p>
+
+      </div>
+
+
+    </section>
 
   </main>
 
 
-  <!-- MENU SCRIPT -->
+  <!-- =====================================
+       FOOTER
+  ====================================== -->
+
+  <footer>
+
+    <span>
+      © <span id="year"></span>
+      HAERVIU ENGINE
+    </span>
+
+  </footer>
+
+
+  <!-- =====================================
+       JAVASCRIPT
+  ====================================== -->
+
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
 
-      const menuButton = document.getElementById("menuButton");
-      const navLinks = document.getElementById("navLinks");
-      const menuOverlay = document.getElementById("menuOverlay");
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
 
-      function openMenu() {
-        navLinks.classList.add("open");
-        menuOverlay.classList.add("open");
-        menuButton.innerHTML = "✕";
-        menuButton.setAttribute("aria-expanded", "true");
-        document.body.style.overflow = "hidden";
-      }
+        const menuButton =
+          document.querySelector(".menu-toggle");
 
-      function closeMenu() {
-        navLinks.classList.remove("open");
-        menuOverlay.classList.remove("open");
-        menuButton.innerHTML = "☰";
-        menuButton.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
-      }
+        const navLinks =
+          document.querySelector(".nav-links");
 
-      menuButton.addEventListener("click", function () {
-        if (navLinks.classList.contains("open")) {
-          closeMenu();
-        } else {
-          openMenu();
+        const overlay =
+          document.querySelector(".menu-overlay");
+
+
+        function openMenu() {
+
+          navLinks.classList.add("open");
+
+          overlay.classList.add("active");
+
+          menuButton.innerHTML = "×";
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+
+          document.body.style.overflow = "hidden";
+
         }
-      });
 
-      menuOverlay.addEventListener("click", closeMenu);
 
-      navLinks.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", closeMenu);
-      });
+        function closeMenu() {
 
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          closeMenu();
+          navLinks.classList.remove("open");
+
+          overlay.classList.remove("active");
+
+          menuButton.innerHTML = "☰";
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          document.body.style.overflow = "";
+
         }
-      });
 
-    });
+
+        if (
+          menuButton &&
+          navLinks &&
+          overlay
+        ) {
+
+          menuButton.addEventListener(
+            "click",
+            function () {
+
+              if (
+                navLinks.classList.contains("open")
+              ) {
+
+                closeMenu();
+
+              } else {
+
+                openMenu();
+
+              }
+
+            }
+          );
+
+
+          overlay.addEventListener(
+            "click",
+            closeMenu
+          );
+
+
+          navLinks
+            .querySelectorAll("a")
+            .forEach(function (link) {
+
+              link.addEventListener(
+                "click",
+                closeMenu
+              );
+
+            });
+
+
+          document.addEventListener(
+            "keydown",
+            function (event) {
+
+              if (
+                event.key === "Escape"
+              ) {
+
+                closeMenu();
+
+              }
+
+            }
+          );
+
+        }
+
+
+        const year =
+          document.querySelector("#year");
+
+        if (year) {
+
+          year.textContent =
+            new Date().getFullYear();
+
+        }
+
+      }
+    );
+
   </script>
 
+
 </body>
+
 </html>
