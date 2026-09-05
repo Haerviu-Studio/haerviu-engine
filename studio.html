@@ -9,14 +9,22 @@
 
 <style>
 
+/* =========================================================
+   HAERVIU ENGINE — STUDIO
+   COMPLETE FILE
+========================================================= */
+
 :root{
     --bg:#07080d;
     --panel:#0d1017;
     --panel2:#11151e;
+
     --line:rgba(255,255,255,.12);
     --line2:rgba(255,255,255,.18);
+
     --text:#f4f5f8;
     --muted:#858b9b;
+
     --blue:#6878ff;
     --green:#6ee7a0;
 }
@@ -32,7 +40,13 @@ html{
 }
 
 body{
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
     background:
         radial-gradient(
             circle at 82% 12%,
@@ -45,17 +59,23 @@ body{
             #080a12 55%,
             #07080d 100%
         );
+
     color:var(--text);
+
     min-height:100vh;
     overflow-x:hidden;
 }
 
 body::before{
     content:"";
+
     position:fixed;
     inset:0;
+
     pointer-events:none;
+
     opacity:.16;
+
     background-image:
         linear-gradient(
             rgba(255,255,255,.025) 1px,
@@ -66,12 +86,17 @@ body::before{
             rgba(255,255,255,.025) 1px,
             transparent 1px
         );
+
     background-size:80px 80px;
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-    );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 80%
+        );
+
+    z-index:-1;
 }
 
 a{
@@ -84,29 +109,38 @@ button{
 }
 
 
-/* =========================
-   HEADER / SHARED NAVIGATION
-========================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     height:88px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 5vw;
+
     position:sticky;
     top:0;
+
     z-index:100;
+
     background:rgba(7,8,13,.94);
+
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 }
 
 .brand{
     display:flex;
     align-items:center;
     gap:18px;
+
     position:relative;
     z-index:102;
 }
@@ -114,14 +148,26 @@ header{
 .logo{
     width:48px;
     height:48px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(255,255,255,.2);
+
+    border:
+        1px solid rgba(255,255,255,.20);
+
     border-radius:15px;
-    background:linear-gradient(145deg,#1b1f2a,#08090d);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b1f2a,
+            #08090d
+        );
+
     font-family:Georgia,serif;
     font-size:26px;
+
     box-shadow:
         inset 0 0 22px rgba(255,255,255,.04),
         0 10px 30px rgba(0,0,0,.35);
@@ -130,41 +176,76 @@ header{
 .brand-name{
     font-size:14px;
     font-weight:800;
-    letter-spacing:.3em;
+    letter-spacing:.30em;
 }
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
 
 .menu{
     width:48px;
     height:48px;
+
     display:grid;
     place-items:center;
-    border:1px solid var(--line2);
+
+    border:
+        1px solid var(--line2);
+
     border-radius:15px;
-    background:rgba(255,255,255,.025);
+
+    background:
+        rgba(255,255,255,.025);
+
     color:white;
+
     cursor:pointer;
-    font-size:22px;
+
+    font-size:20px;
+
     position:relative;
     z-index:102;
 }
 
+
+/* =========================================================
+   SIDE MENU
+========================================================= */
+
 .nav-links{
     position:fixed;
+
     top:88px;
     right:0;
+
     width:min(420px,100%);
     height:calc(100vh - 88px);
+
     display:flex;
     flex-direction:column;
+
     align-items:flex-start;
+
     padding:52px 5vw;
+
     gap:26px;
-    background:rgba(7,8,13,.98);
+
+    background:
+        rgba(7,8,13,.98);
+
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
-    border-left:1px solid var(--line);
+
+    border-left:
+        1px solid var(--line);
+
     transform:translateX(100%);
-    transition:transform .35s ease;
+
+    transition:
+        transform .35s ease;
+
     z-index:101;
 }
 
@@ -173,10 +254,15 @@ header{
 }
 
 .nav-links a{
-    font-size:clamp(24px,4vw,40px);
+    font-size:
+        clamp(24px,4vw,40px);
+
     font-weight:700;
+
     letter-spacing:-.03em;
+
     color:#dfe2e9;
+
     transition:.2s ease;
 }
 
@@ -186,9 +272,9 @@ header{
 }
 
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 main{
     width:min(1100px,90vw);
@@ -196,30 +282,38 @@ main{
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
     min-height:520px;
+
     padding:110px 0 70px;
+
     position:relative;
 }
 
 .hero::after{
     content:"";
+
     position:absolute;
+
     width:650px;
     height:650px;
+
     right:-330px;
     top:-120px;
+
     border-radius:50%;
+
     background:
         radial-gradient(
             circle,
             rgba(82,98,230,.18),
             transparent 68%
         );
+
     pointer-events:none;
 }
 
@@ -230,71 +324,106 @@ main{
 
 .hero-label{
     margin-bottom:25px;
+
     color:#777f92;
+
     font-size:10px;
     font-weight:800;
+
     letter-spacing:.38em;
+
     text-transform:uppercase;
 }
 
 .hero h1{
-    font-size:clamp(68px,9vw,116px);
+    font-size:
+        clamp(68px,9vw,116px);
+
     line-height:.86;
+
     letter-spacing:-.075em;
+
     font-weight:900;
+
     max-width:800px;
 }
 
 .hero-description{
     max-width:690px;
+
     margin-top:38px;
+
     color:#aeb4c2;
+
     font-size:18px;
+
     line-height:1.65;
 }
 
 .hero-status{
     display:flex;
     align-items:center;
+
     gap:10px;
+
     margin-top:34px;
+
     color:var(--green);
+
     font-size:10px;
     font-weight:800;
-    letter-spacing:.3em;
+
+    letter-spacing:.30em;
 }
 
 .status-dot{
     width:8px;
     height:8px;
+
+    flex:0 0 auto;
+
     border-radius:50%;
+
     background:var(--green);
+
     box-shadow:
         0 0 10px var(--green),
         0 0 25px rgba(110,231,160,.35);
 }
 
 
-/* =========================
+/* =========================================================
    STUDIO LAYOUT
-========================= */
+========================================================= */
 
 .studio-layout{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 330px;
+
+    grid-template-columns:
+        minmax(0,1fr) 330px;
+
+    align-items:start;
+
     gap:18px;
+
     padding-bottom:110px;
 }
 
 
-/* =========================
+/* =========================================================
    PANELS
-========================= */
+========================================================= */
 
 .panel{
-    border:1px solid var(--line);
+    min-width:0;
+
+    border:
+        1px solid var(--line);
+
     border-radius:26px;
+
     overflow:hidden;
+
     background:
         linear-gradient(
             145deg,
@@ -305,41 +434,56 @@ main{
 
 .panel-header{
     min-height:66px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 25px;
-    border-bottom:1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
 }
 
 .panel-title{
     font-size:15px;
     font-weight:800;
+
     letter-spacing:.05em;
 }
 
 .online{
     display:flex;
     align-items:center;
+
     gap:8px;
+
     color:var(--green);
+
     font-size:9px;
     font-weight:800;
-    letter-spacing:.2em;
+
+    letter-spacing:.20em;
 }
 
 .online-dot{
     width:7px;
     height:7px;
+
+    flex:0 0 auto;
+
     border-radius:50%;
+
     background:var(--green);
-    box-shadow:0 0 10px var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
 }
 
 
-/* =========================
-   HARDWARE CARDS
-========================= */
+/* =========================================================
+   HARDWARE
+========================================================= */
 
 .hardware-list{
     padding:18px;
@@ -347,19 +491,28 @@ main{
 
 .hardware-card{
     min-height:170px;
+
     display:flex;
     align-items:center;
+
     gap:22px;
+
     margin-bottom:12px;
+
     padding:18px;
-    border:1px solid rgba(255,255,255,.11);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
     border-radius:21px;
+
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.025),
             rgba(255,255,255,.012)
         );
+
     transition:
         border-color .25s ease,
         transform .25s ease,
@@ -371,26 +524,36 @@ main{
 }
 
 .hardware-card:hover{
-    border-color:rgba(255,255,255,.25);
+    border-color:
+        rgba(255,255,255,.25);
+
     background:
         linear-gradient(
             145deg,
             rgba(255,255,255,.045),
             rgba(255,255,255,.018)
         );
+
     transform:translateY(-2px);
 }
 
 .hardware-image{
     width:235px;
     height:135px;
-    flex-shrink:0;
+
+    flex:0 0 235px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.1);
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
     border-radius:17px;
+
     background:
         radial-gradient(
             circle at 50% 50%,
@@ -402,47 +565,40 @@ main{
 .hardware-image img{
     width:100%;
     height:100%;
+
     object-fit:contain;
+
     display:block;
 }
 
 .hardware-info{
     flex:1;
+    min-width:0;
 }
 
 .hardware-top{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:15px;
+
     margin-bottom:12px;
 }
 
 .hardware-number{
     color:#656d7f;
+
     font-size:9px;
     font-weight:800;
-    letter-spacing:.2em;
+
+    letter-spacing:.20em;
 }
 
 .connected{
     display:flex;
     align-items:center;
-    gap:7px;
-    color:var(--green);
-    font-size:8px;
-    font-weight:800;
-        color:#656d7f;
 
-    font-size:9px;
-    font-weight:800;
-
-    letter-spacing:.2em;
-}
-
-.connected{
-    display:flex;
-    align-items:center;
     gap:7px;
 
     color:var(--green);
@@ -451,11 +607,15 @@ main{
     font-weight:800;
 
     letter-spacing:.17em;
+
+    white-space:nowrap;
 }
 
 .connected i{
     width:6px;
     height:6px;
+
+    flex:0 0 auto;
 
     display:block;
 
@@ -463,7 +623,8 @@ main{
 
     background:var(--green);
 
-    box-shadow:0 0 8px var(--green);
+    box-shadow:
+        0 0 8px var(--green);
 }
 
 .hardware-info h3{
@@ -471,383 +632,376 @@ main{
 
     font-size:22px;
 
-    letter-spacing:-.03em;
+    font-weight:800;
+
+    letter-spacing:-.025em;
 }
 
 .hardware-info p{
-    max-width:470px;
-
-    color:#858c9d;
-
-    font-size:12px;
-
-    line-height:1.7;
-}
-
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.sidebar{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-}
-
-.sidebar-panel{
-    padding:25px;
-
-    border:1px solid var(--line);
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-}
-
-.sidebar-label{
-    color:#6f778a;
-
-    font-size:9px;
-    font-weight:800;
-
-    letter-spacing:.25em;
-
-    margin-bottom:20px;
-}
-
-.system-status{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:16px;
-}
-
-.status-row{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding-bottom:14px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-
-    font-size:12px;
-}
-
-.status-row:last-child{
-    padding-bottom:0;
-
-    border-bottom:none;
-}
-
-.status-name{
-    color:#8c93a3;
-}
-
-.status-value{
-    color:#dce0e8;
-
-    font-weight:700;
-}
-
-
-/* =========================
-   QUICK ACTIONS
-========================= */
-
-.quick-actions{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-}
-
-.quick-action{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:15px 16px;
-
-    border:1px solid rgba(255,255,255,.09);
-
-    border-radius:14px;
-
-    color:#b8bdc8;
-
-    font-size:12px;
-
-    transition:.2s ease;
-}
-
-.quick-action:hover{
-    color:white;
-
-    border-color:rgba(255,255,255,.22);
-
-    background:rgba(255,255,255,.035);
-
-    transform:translateX(3px);
-}
-
-.quick-action span{
-    color:#687184;
-
-    font-size:14px;
-}
-
-
-/* =========================
-   ROUTING
-========================= */
-
-.routing{
-    margin-top:22px;
-
-    padding:30px;
-
-    border:1px solid var(--line);
-
-    border-radius:26px;
-
-    background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(82,98,230,.10),
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-}
-
-.routing-header{
-    display:flex;
-
-    align-items:flex-end;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    margin-bottom:28px;
-}
-
-.routing-title{
-    font-size:28px;
-
-    letter-spacing:-.04em;
-}
-
-.routing-subtitle{
-    max-width:500px;
-
-    margin-top:8px;
-
-    color:#858c9d;
+    color:#7f8798;
 
     font-size:12px;
 
     line-height:1.6;
 }
 
-.routing-grid{
-    display:grid;
+.hardware-role{
+    margin-top:14px;
 
-    grid-template-columns:
-        repeat(3,1fr);
+    color:#aeb4c0;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:.05em;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS — FIXED
+   IMPORTANT: ONE LINE PER ACTION
+========================================================= */
+
+.quick-panel{
+    width:100%;
+    min-width:0;
+}
+
+.quick-actions{
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+    padding:18px;
+}
+
+/* The action itself */
+.quick-actions .action{
+    width:100%;
+    min-width:0;
+    min-height:55px;
+
+    display:flex !important;
+    flex-direction:row !important;
+
+    align-items:center !important;
+    justify-content:space-between !important;
+
+    flex-wrap:nowrap !important;
+
+    gap:12px;
+
+    padding:0 15px;
+
+    margin:0 !important;
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:#d7d9df;
+
+    overflow:hidden;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.quick-actions .action:hover{
+    border-color:
+        rgba(255,255,255,.27);
+
+    background:
+        rgba(255,255,255,.06);
+
+    transform:translateX(2px);
+}
+
+
+/* LEFT SIDE — ICON + TEXT */
+.quick-actions .action-left{
+    min-width:0;
+
+    flex:1 1 auto;
+
+    display:flex !important;
+    flex-direction:row !important;
+
+    align-items:center !important;
+
+    justify-content:flex-start !important;
+
+    flex-wrap:nowrap !important;
 
     gap:12px;
 }
 
-.routing-card{
-    padding:20px;
 
-    border:1px solid rgba(255,255,255,.09);
+/* ICON */
+.quick-actions .action-icon{
+    width:29px !important;
+    height:29px !important;
 
-    border-radius:18px;
+    min-width:29px !important;
 
-    background:rgba(0,0,0,.16);
-}
+    flex:0 0 29px !important;
 
-.routing-number{
-    color:#687184;
+    display:grid !important;
+    place-items:center !important;
 
-    font-size:9px;
-
-    font-weight:800;
-
-    letter-spacing:.2em;
-
-    margin-bottom:18px;
-}
-
-.routing-card h4{
-    font-size:17px;
-
-    margin-bottom:9px;
-}
-
-.routing-card p{
-    color:#858c9d;
-
-    font-size:11px;
-
-    line-height:1.7;
-}
-
-
-/* =========================
-   WORKFLOW
-========================= */
-
-.workflow{
-    margin-top:22px;
-
-    padding:30px;
-
-    border:1px solid var(--line);
-
-    border-radius:26px;
+    border-radius:8px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-}
+        rgba(255,255,255,.07);
 
-.workflow-header{
-    margin-bottom:28px;
-}
-
-.workflow-title{
-    font-size:28px;
-
-    letter-spacing:-.04em;
-}
-
-.workflow-description{
-    max-width:600px;
-
-    margin-top:10px;
-
-    color:#858c9d;
+    color:#c9ccd5;
 
     font-size:12px;
 
-    line-height:1.7;
+    line-height:1 !important;
+}
+
+
+/* TEXT */
+.quick-actions .action-name{
+    display:block !important;
+
+    min-width:0;
+
+    flex:1 1 auto;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    line-height:1.2 !important;
+
+    white-space:nowrap !important;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* ARROW — ALWAYS RIGHT */
+.quick-actions .action-arrow{
+    width:18px;
+
+    min-width:18px;
+
+    flex:0 0 18px !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+    margin-left:auto !important;
+
+    color:#aeb4c0;
+
+    font-size:15px;
+
+    line-height:1 !important;
+
+    white-space:nowrap !important;
+}
+
+
+/* =========================================================
+   SYSTEM INFO
+========================================================= */
+
+.system-info{
+    margin-top:18px;
+
+    padding:22px;
+
+    border-top:
+        1px solid var(--line);
+}
+
+.system-label{
+    margin-bottom:18px;
+
+    color:#687184;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.22em;
+}
+
+.system-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:11px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+    color:#8b92a1;
+
+    font-size:11px;
+}
+
+.system-row:last-child{
+    border-bottom:0;
+}
+
+.system-row strong{
+    color:#d9dce3;
+
+    font-weight:700;
+
+    text-align:right;
+}
+
+
+/* =========================================================
+   CONTENT PANELS
+========================================================= */
+
+.content-section{
+    padding-bottom:110px;
+}
+
+.routing-flow{
+    padding:30px;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+}
+
+.route-box{
+    padding:18px 25px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-align:center;
+}
+
+.route-box small{
+    display:block;
+
+    color:#687184;
+
+    font-size:8px;
+    font-weight:800;
+
+    letter-spacing:.20em;
+
+    margin-bottom:8px;
+}
+
+.route-arrow{
+    color:#6878ff;
+
+    font-size:20px;
 }
 
 .workflow-grid{
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(3,1fr);
 
-    gap:12px;
+    gap:1px;
+
+    background:var(--line);
 }
 
-.workflow-step{
-    position:relative;
+.workflow-card{
+    padding:30px;
 
-    min-height:170px;
-
-    padding:20px;
-
-    border:1px solid rgba(255,255,255,.09);
-
-    border-radius:18px;
-
-    background:rgba(0,0,0,.15);
+    background:#0d1017;
 }
 
-.workflow-step-number{
-    color:#687184;
+.workflow-number{
+    color:#6878ff;
 
     font-size:9px;
-
     font-weight:800;
 
-    letter-spacing:.2em;
+    letter-spacing:.20em;
 
-    margin-bottom:25px;
+    margin-bottom:18px;
 }
 
-.workflow-step h4{
-    font-size:18px;
-
+.workflow-card h3{
     margin-bottom:10px;
+
+    font-size:21px;
 }
 
-.workflow-step p{
-    color:#858c9d;
+.workflow-card p{
+    color:#7f8798;
 
-    font-size:11px;
+    font-size:12px;
 
     line-height:1.7;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-    width:min(1100px,90vw);
-
-    margin:0 auto;
-
-    padding:30px 0 50px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
     border-top:
         1px solid rgba(255,255,255,.08);
 
-    color:#626674;
+    padding:45px 5vw;
+
+    color:#5f6777;
 
     font-size:10px;
+    font-weight:700;
 
     letter-spacing:.16em;
 }
 
-.footer-links{
+.footer-inner{
+    width:min(1100px,90vw);
+
+    margin:auto;
+
     display:flex;
+    justify-content:space-between;
 
-    gap:20px;
-}
-
-.footer-links a:hover{
-    color:white;
+    gap:30px;
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:950px){
 
@@ -855,436 +1009,892 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .sidebar{
-        display:grid;
-
-        grid-template-columns:
-            repeat(2,1fr);
+    .quick-panel{
+        order:2;
     }
 
-    .workflow-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .routing-grid{
-        grid-template-columns:1fr;
-    }
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
     header{
         height:76px;
-
-        padding:0 5vw;
+        padding:0 20px;
     }
 
     .nav-links{
         top:76px;
-
         height:calc(100vh - 76px);
+    }
 
-        width:100%;
+    .logo{
+        width:44px;
+        height:44px;
 
-        padding:45px 7vw;
+        border-radius:14px;
     }
 
     .brand-name{
         font-size:11px;
-
-        letter-spacing:.22em;
+        letter-spacing:.24em;
     }
 
-    .logo,
-    .menu{
-        width:44px;
-
-        height:44px;
+    main{
+        width:min(92vw,600px);
     }
 
     .hero{
         min-height:auto;
-
-        padding:80px 0 60px;
+        padding:75px 0 55px;
     }
 
     .hero h1{
-        font-size:clamp(58px,16vw,90px);
+        font-size:64px;
     }
 
     .hero-description{
         font-size:16px;
     }
 
+    .panel-header{
+        padding:0 19px;
+    }
+
+    .hardware-list{
+        padding:12px;
+    }
+
     .hardware-card{
-        align-items:flex-start;
+        min-height:0;
 
         flex-direction:column;
+        align-items:stretch;
+
+        padding:14px;
+
+        gap:15px;
     }
 
     .hardware-image{
         width:100%;
+        height:190px;
 
-        height:180px;
+        flex:0 0 auto;
     }
 
-    .sidebar{
-        grid-template-columns:1fr;
+    .hardware-info{
+        padding:3px 4px 8px;
+    }
+
+    .hardware-info h3{
+        font-size:21px;
+    }
+
+    .quick-actions{
+        padding:12px;
+    }
+
+    .quick-actions .action{
+        min-height:56px;
+        padding:0 14px;
     }
 
     .workflow-grid{
         grid-template-columns:1fr;
     }
 
-    .routing-header{
-        align-items:flex-start;
+    .routing-flow{
+        padding:20px;
+    }
 
+    .footer-inner{
         flex-direction:column;
     }
 
-    footer{
-        align-items:flex-start;
+}
 
-        flex-direction:column;
 
-        gap:18px;
+@media(max-width:430px){
+
+    .hero h1{
+        font-size:56px;
     }
+
+    .hardware-image{
+        height:165px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        transition:none !important;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
-<a href="index.html" class="brand">
-    <div class="logo">H</div>
-    <div class="brand-name">HAERVIU ENGINE</div>
-</a>
+    <a href="index.html" class="brand">
 
-<button class="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="logo">H</div>
 
-<nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="studio.html">Studio</a>
-    <a href="methods.html">Methods</a>
-    <a href="setup.html">Setup</a>
-    <a href="support.html">Support</a>
-    <a href="privacy.html">Privacy Policy</a>
-</nav>
+        <div class="brand-name">
+            HAERVIU ENGINE
+        </div>
+
+    </a>
+
+
+    <button
+        class="menu"
+        aria-label="Open navigation"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="studio.html">Studio</a>
+
+        <a href="methods.html">Methods</a>
+
+        <a href="setup.html">Setup</a>
+
+        <a href="support.html">Support</a>
+
+        <a href="privacy.html">Privacy Policy</a>
+
+    </nav>
 
 </header>
 
+
 <main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<div class="hero-label">
-HAERVIU ENGINE / STUDIO
-</div>
+        <div class="hero-label">
+            HAERVIU ENGINE / CONTROL CENTER
+        </div>
 
-<h1>
-Your Studio.<br>
-Connected.
-</h1>
 
-<p class="hero-description">
-A central view of your complete creative environment.
-Hardware, instruments, routing and workflow — connected
-inside one coherent system.
-</p>
+        <h1>
+            Your Studio.
+        </h1>
 
-<div class="hero-status">
-    <span class="status-dot"></span>
-    SYSTEM ONLINE
-</div>
 
-</div>
+        <p class="hero-description">
+            One central workspace to organize your instruments,
+            connections, routing and creative workflow.
+        </p>
+
+
+        <div class="hero-status">
+
+            <span class="status-dot"></span>
+
+            SYSTEM ONLINE
+
+        </div>
+
+    </div>
 
 </section>
+
+
+<!-- =====================================================
+     STUDIO
+===================================================== -->
+
 <section class="studio-layout">
 
-<div class="panel" id="hardware">
 
-<div class="panel-header">
-    <div class="panel-title">STUDIO SETUP</div>
+<!-- =====================
+     HARDWARE
+===================== -->
 
-    <div class="online">
-        <span class="online-dot"></span>
-        ONLINE
+<div
+    class="panel"
+    id="hardware"
+>
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+            STUDIO SETUP
+        </div>
+
+        <div class="online">
+
+            <span class="online-dot"></span>
+
+            ONLINE
+
+        </div>
+
     </div>
+
+
+    <div class="hardware-list">
+
+
+        <!-- MC-707 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/mc-707.webp"
+                    alt="Roland MC-707"
+                    loading="eager"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        01 / GROOVEBOX
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland MC-707
+                </h3>
+
+
+                <p>
+                    Groovebox · MIDI · Audio · Sampling
+                </p>
+
+
+                <div class="hardware-role">
+                    Production / Sequencing / MIDI Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- TR-8S -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/tr-8s.webp"
+                    alt="Roland TR-8S"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        02 / RHYTHM
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland TR-8S
+                </h3>
+
+
+                <p>
+                    Rhythm Performer · Drum Machine · Sequencing
+                </p>
+
+
+                <div class="hardware-role">
+                    Rhythm Engine / Percussion
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- GAIA -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/roland-gaia-sh01.webp"
+                    alt="Roland GAIA SH-01"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        03 / SYNTHESIS
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland GAIA SH-01
+                </h3>
+
+
+                <p>
+                    Synthesizer · Sound Design · MIDI
+                </p>
+
+
+                <div class="hardware-role">
+                    Synthesis / Sound Design / MIDI Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- FORCE -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/akai-force.webp"
+                    alt="Akai Force"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        04 / PRODUCTION
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Akai Force
+                </h3>
+
+
+                <p>
+                    Production · Performance · Sampling
+                </p>
+
+
+                <div class="hardware-role">
+                    Production / Arrangement / Performance
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- MX-1 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/mx-1.webp"
+                    alt="Roland MX-1"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        05 / MIXING
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roland MX-1
+                </h3>
+
+
+                <p>
+                    Mix Performer · Audio Hub · FX
+                </p>
+
+
+                <div class="hardware-role">
+                    Master Mix / Audio Routing
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- KEYLAB -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/keylab-mk2-88.webp"
+                    alt="Arturia KeyLab MK2 88"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        06 / MIDI
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Arturia KeyLab MK2 88
+                </h3>
+
+
+                <p>
+                    MIDI Controller · Keyboard
+                </p>
+
+
+                <div class="hardware-role">
+                    MIDI Performance / Instrument Control
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- VOCAL -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/rode-nt1.webp"
+                    alt="RØDE NT1"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        07 / VOCAL SYSTEM
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Vocal Chain
+                </h3>
+
+
+                <p>
+                    RØDE NT1 · Roland VT-4
+                </p>
+
+
+                <div class="hardware-role">
+                    Vocal Capture / Voice Processing / FX
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- HS8 -->
+
+        <article class="hardware-card">
+
+            <div class="hardware-image">
+
+                <img
+                    src="images/yamaha-hs8.webp"
+                    alt="Yamaha HS8"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="hardware-info">
+
+                <div class="hardware-top">
+
+                    <span class="hardware-number">
+                        08 / MONITORING
+                    </span>
+
+                    <span class="connected">
+                        <i></i>
+                        READY
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Yamaha HS8
+                </h3>
+
+
+                <p>
+                    Studio Monitoring · Reference
+                </p>
+
+
+                <div class="hardware-role">
+                    Monitoring / Critical Listening
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
 </div>
 
-<div class="hardware-list">
 
-<!-- MC-707 -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/mc-707.webp" alt="Roland MC-707" loading="eager">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">01 / GROOVEBOX</span>
-            <span class="connected"><i></i> CONNECTED</span>
-        </div>
-
-        <h3>Roland MC-707</h3>
-        <p>Groovebox · MIDI · Audio · Sampling</p>
-
-        <div class="hardware-role">
-            Production / Sequencing / MIDI Control
-        </div>
-    </div>
-</article>
-
-<!-- TR-8S -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/tr-8s.webp" alt="Roland TR-8S" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">02 / RHYTHM</span>
-            <span class="connected"><i></i> CONNECTED</span>
-        </div>
-
-        <h3>Roland TR-8S</h3>
-        <p>Rhythm Performer · Drum Machine · Sequencing</p>
-
-        <div class="hardware-role">
-            Rhythm Engine / Percussion
-        </div>
-    </div>
-</article>
-
-<!-- GAIA -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/roland-gaia-sh01.webp" alt="Roland GAIA SH-01" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">03 / SYNTHESIS</span>
-            <span class="connected"><i></i> READY</span>
-        </div>
-
-        <h3>Roland GAIA SH-01</h3>
-        <p>Synthesizer · Sound Design · MIDI</p>
-
-        <div class="hardware-role">
-            Synthesis / Sound Design / MIDI Control
-        </div>
-    </div>
-</article>
-
-<!-- FORCE -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/akai-force.webp" alt="Akai Force" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">04 / PRODUCTION</span>
-            <span class="connected"><i></i> READY</span>
-        </div>
-
-        <h3>Akai Force</h3>
-        <p>Production · Performance · Sampling</p>
-
-        <div class="hardware-role">
-            Production / Arrangement / Performance
-        </div>
-    </div>
-</article>
-
-<!-- MX-1 -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/mx-1.webp" alt="Roland MX-1" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">05 / MIXING</span>
-            <span class="connected"><i></i> CONNECTED</span>
-        </div>
-
-        <h3>Roland MX-1</h3>
-        <p>Mix Performer · Audio Hub · FX</p>
-
-        <div class="hardware-role">
-            Master Mix / Audio Routing
-        </div>
-    </div>
-</article>
-
-<!-- KEYLAB -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/keylab-mk2-88.webp" alt="Arturia KeyLab MK2 88" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">06 / MIDI</span>
-            <span class="connected"><i></i> READY</span>
-        </div>
-
-        <h3>Arturia KeyLab MK2 88</h3>
-        <p>MIDI Controller · Keyboard</p>
-
-        <div class="hardware-role">
-            MIDI Performance / Instrument Control
-        </div>
-    </div>
-</article>
-
-<!-- VOCAL -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/rode-nt1.webp" alt="RØDE NT1" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">07 / VOCAL SYSTEM</span>
-            <span class="connected"><i></i> READY</span>
-        </div>
-
-        <h3>Vocal Chain</h3>
-        <p>RØDE NT1 · Roland VT-4</p>
-
-        <div class="hardware-role">
-            Vocal Capture / Voice Processing / FX
-        </div>
-    </div>
-</article>
-
-<!-- HS8 -->
-<article class="hardware-card">
-    <div class="hardware-image">
-        <img src="images/yamaha-hs8.webp" alt="Yamaha HS8" loading="lazy">
-    </div>
-
-    <div class="hardware-info">
-        <div class="hardware-top">
-            <span class="hardware-number">08 / MONITORING</span>
-            <span class="connected"><i></i> READY</span>
-        </div>
-
-        <h3>Yamaha HS8</h3>
-        <p>Studio Monitoring · Reference</p>
-
-        <div class="hardware-role">
-            Monitoring / Critical Listening
-        </div>
-    </div>
-</article>
-
-</div>
-</div>
-
-<!-- QUICK ACTIONS -->
+<!-- =====================================================
+     QUICK ACTIONS
+===================================================== -->
 
 <aside class="panel quick-panel">
 
-<div class="panel-header">
-    <div class="panel-title">QUICK ACTIONS</div>
-</div>
+    <div class="panel-header">
 
-<div class="quick-actions">
+        <div class="panel-title">
+            QUICK ACTIONS
+        </div>
 
-<a href="#hardware" class="action">
-    <div class="action-left">
-        <div class="action-icon">⚙</div>
-        <div class="action-name">Studio Setup</div>
     </div>
-    <div class="action-arrow">→</div>
-</a>
 
-<a href="#routing" class="action">
-    <div class="action-left">
-        <div class="action-icon">↔</div>
-        <div class="action-name">MIDI Routing</div>
+
+    <div class="quick-actions">
+
+
+        <a
+            href="#hardware"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ⚙
+                </div>
+
+                <div class="action-name">
+                    Studio Setup
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            href="#routing"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ↔
+                </div>
+
+                <div class="action-name">
+                    MIDI Routing
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            href="#signal"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ◉
+                </div>
+
+                <div class="action-name">
+                    Audio Routing
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            href="#workflow"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    ✦
+                </div>
+
+                <div class="action-name">
+                    Creative Workflow
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="action"
+        >
+
+            <div class="action-left">
+
+                <div class="action-icon">
+                    □
+                </div>
+
+                <div class="action-name">
+                    Projects
+                </div>
+
+            </div>
+
+            <div class="action-arrow">
+                →
+            </div>
+
+        </a>
+
+
     </div>
-    <div class="action-arrow">→</div>
-</a>
 
-<a href="#signal" class="action">
-    <div class="action-left">
-        <div class="action-icon">◉</div>
-        <div class="action-name">Audio Routing</div>
+
+    <!-- SYSTEM STATUS -->
+
+    <div
+        class="system-info"
+        id="routing"
+    >
+
+        <div class="system-label">
+            SYSTEM STATUS
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Hardware</span>
+
+            <strong>08 Devices</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Rhythm</span>
+
+            <strong>TR-8S</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Production</span>
+
+            <strong>MC-707 / FORCE</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Mixing</span>
+
+            <strong>MX-1</strong>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <span>Recording</span>
+
+            <strong>Cubase</strong>
+
+        </div>
+
     </div>
-    <div class="action-arrow">→</div>
-</a>
-
-<a href="#workflow" class="action">
-    <div class="action-left">
-        <div class="action-icon">✦</div>
-        <div class="action-name">Creative Workflow</div>
-    </div>
-    <div class="action-arrow">→</div>
-</a>
-
-<a href="index.html" class="action">
-    <div class="action-left">
-        <div class="action-icon">□</div>
-        <div class="action-name">Projects</div>
-    </div>
-    <div class="action-arrow">→</div>
-</a>
-
-</div>
-
-<div class="system-info" id="routing">
-
-<div class="system-label">SYSTEM STATUS</div>
-
-<div class="system-row">
-    <span>Hardware</span>
-    <strong>08 Devices</strong>
-</div>
-
-<div class="system-row">
-    <span>Rhythm</span>
-    <strong>TR-8S</strong>
-</div>
-
-<div class="system-row">
-    <span>Production</span>
-    <strong>MC-707 / FORCE</strong>
-</div>
-
-<div class="system-row">
-    <span>Mixing</span>
-    <strong>MX-1</strong>
-</div>
-
-<div class="system-row">
-    <span>Recording</span>
-    <strong>Cubase</strong>
-</div>
-
-</div>
 
 </aside>
 
+
 </section>
-<!-- =====================
-     SIGNAL
-===================== -->
+
+
+<!-- =====================================================
+     AUDIO ROUTING
+===================================================== -->
 
 <section
     id="signal"
-    style="padding-bottom:110px;"
+    class="content-section"
 >
 
     <div class="panel">
@@ -1296,110 +1906,85 @@ inside one coherent system.
             </div>
 
             <div class="online">
+
                 <span class="online-dot"></span>
+
                 SYSTEM
+
             </div>
 
         </div>
 
-        <div style="
-            padding:30px;
-            display:flex;
-            flex-wrap:wrap;
-            align-items:center;
-            justify-content:center;
-            gap:14px;
-        ">
 
-            <div style="
-                padding:18px 25px;
-                border:1px solid var(--line);
-                border-radius:15px;
-                background:rgba(255,255,255,.025);
-                text-align:center;
-            ">
-                <small style="
-                    display:block;
-                    color:#687184;
-                    font-size:8px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:8px;
-                ">
+        <div class="routing-flow">
+
+
+            <div class="route-box">
+
+                <small>
                     RHYTHM
                 </small>
 
-                <strong>TR-8S</strong>
+                <strong>
+                    TR-8S
+                </strong>
+
             </div>
 
-            <span style="color:#6878ff;font-size:20px;">→</span>
 
-            <div style="
-                padding:18px 25px;
-                border:1px solid var(--line);
-                border-radius:15px;
-                background:rgba(255,255,255,.025);
-                text-align:center;
-            ">
-                <small style="
-                    display:block;
-                    color:#687184;
-                    font-size:8px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:8px;
-                ">
+            <span class="route-arrow">
+                →
+            </span>
+
+
+            <div class="route-box">
+
+                <small>
                     PRODUCTION
                 </small>
 
-                <strong>MC-707 / FORCE</strong>
+                <strong>
+                    MC-707 / FORCE
+                </strong>
+
             </div>
 
-            <span style="color:#6878ff;font-size:20px;">→</span>
 
-            <div style="
-                padding:18px 25px;
-                border:1px solid var(--line);
-                border-radius:15px;
-                background:rgba(255,255,255,.025);
-                text-align:center;
-            ">
-                <small style="
-                    display:block;
-                    color:#687184;
-                    font-size:8px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:8px;
-                ">
+            <span class="route-arrow">
+                →
+            </span>
+
+
+            <div class="route-box">
+
+                <small>
                     MIXING
                 </small>
 
-                <strong>MX-1</strong>
+                <strong>
+                    MX-1
+                </strong>
+
             </div>
 
-            <span style="color:#6878ff;font-size:20px;">→</span>
 
-            <div style="
-                padding:18px 25px;
-                border:1px solid var(--line);
-                border-radius:15px;
-                background:rgba(255,255,255,.025);
-                text-align:center;
-            ">
-                <small style="
-                    display:block;
-                    color:#687184;
-                    font-size:8px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:8px;
-                ">
+            <span class="route-arrow">
+                →
+            </span>
+
+
+            <div class="route-box">
+
+                <small>
                     RECORDING
                 </small>
 
-                <strong>CUBASE</strong>
+                <strong>
+                    CUBASE
+                </strong>
+
             </div>
+
 
         </div>
 
@@ -1408,13 +1993,13 @@ inside one coherent system.
 </section>
 
 
-<!-- =====================
-     WORKFLOW
-===================== -->
+<!-- =====================================================
+     CREATIVE WORKFLOW
+===================================================== -->
 
 <section
     id="workflow"
-    style="padding-bottom:110px;"
+    class="content-section"
 >
 
     <div class="panel">
@@ -1426,46 +2011,30 @@ inside one coherent system.
             </div>
 
             <div class="online">
+
                 <span class="online-dot"></span>
+
                 READY
+
             </div>
 
         </div>
 
-        <div style="
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:1px;
-            background:var(--line);
-        ">
 
-            <div style="
-                padding:30px;
-                background:#0d1017;
-            ">
+        <div class="workflow-grid">
 
-                <div style="
-                    color:#6878ff;
-                    font-size:9px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:18px;
-                ">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">
                     01 / RHYTHM
                 </div>
 
-                <h3 style="
-                    margin-bottom:10px;
-                    font-size:21px;
-                ">
+                <h3>
                     Build the Groove
                 </h3>
 
-                <p style="
-                    color:#7f8798;
-                    font-size:12px;
-                    line-height:1.7;
-                ">
+                <p>
                     TR-8S rhythm programming,
                     percussion, patterns and
                     performance variations.
@@ -1473,33 +2042,18 @@ inside one coherent system.
 
             </div>
 
-            <div style="
-                padding:30px;
-                background:#0d1017;
-            ">
 
-                <div style="
-                    color:#6878ff;
-                    font-size:9px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:18px;
-                ">
+            <div class="workflow-card">
+
+                <div class="workflow-number">
                     02 / PRODUCTION
                 </div>
 
-                <h3 style="
-                    margin-bottom:10px;
-                    font-size:21px;
-                ">
+                <h3>
                     Shape the Track
                 </h3>
 
-                <p style="
-                    color:#7f8798;
-                    font-size:12px;
-                    line-height:1.7;
-                ">
+                <p>
                     MC-707 and Force handle
                     sequencing, synthesis,
                     sampling and arrangement.
@@ -1507,33 +2061,18 @@ inside one coherent system.
 
             </div>
 
-            <div style="
-                padding:30px;
-                background:#0d1017;
-            ">
 
-                <div style="
-                    color:#6878ff;
-                    font-size:9px;
-                    font-weight:800;
-                    letter-spacing:.2em;
-                    margin-bottom:18px;
-                ">
+            <div class="workflow-card">
+
+                <div class="workflow-number">
                     03 / MIX
                 </div>
 
-                <h3 style="
-                    margin-bottom:10px;
-                    font-size:21px;
-                ">
+                <h3>
                     Perform the Mix
                 </h3>
 
-                <p style="
-                    color:#7f8798;
-                    font-size:12px;
-                    line-height:1.7;
-                ">
+                <p>
                     MX-1 becomes the central
                     mixing and routing point
                     for the hardware system.
@@ -1541,79 +2080,112 @@ inside one coherent system.
 
             </div>
 
+
         </div>
 
     </div>
 
 </section>
 
+
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-<div class="footer-inner">
+    <div class="footer-inner">
 
-    <span>
-        HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
-    </span>
+        <span>
+            HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+        </span>
 
-    <span>
-        © 2026 HAERVIU
-    </span>
+        <span>
+            © 2026 HAERVIU
+        </span>
 
-</div>
+    </div>
 
 </footer>
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const menuButton = document.querySelector(".menu");
-    const navLinks = document.querySelector(".nav-links");
+    const menuButton =
+        document.querySelector(".menu");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
+
+    /* MENU */
 
     if (menuButton && navLinks) {
 
-        menuButton.addEventListener("click", () => {
+        menuButton.addEventListener(
+            "click",
+            () => {
 
-            navLinks.classList.toggle("open");
+                navLinks.classList.toggle("open");
 
-            const isOpen = navLinks.classList.contains("open");
+                const isOpen =
+                    navLinks.classList.contains("open");
 
-            menuButton.textContent = isOpen ? "✕" : "☰";
+                menuButton.textContent =
+                    isOpen ? "✕" : "☰";
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-        });
-
-        navLinks.querySelectorAll("a").forEach((link) => {
-
-            link.addEventListener("click", () => {
-
-                navLinks.classList.remove("open");
-                menuButton.textContent = "☰";
                 menuButton.setAttribute(
                     "aria-expanded",
-                    "false"
+                    isOpen ? "true" : "false"
+                );
+
+            }
+        );
+
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navLinks.classList.remove("open");
+
+                        menuButton.textContent = "☰";
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
                 );
 
             });
 
-        });
-
     }
+
+
+    /* IMAGE ERROR CHECK */
 
     document
         .querySelectorAll(".hardware-image img")
-        .forEach(function(image){
+        .forEach((image) => {
 
             image.addEventListener(
                 "error",
-                function(){
+                () => {
 
                     console.error(
                         "Image introuvable : " +
@@ -1628,6 +2200,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+
 
 </body>
 </html>
