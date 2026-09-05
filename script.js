@@ -1,129 +1,106 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =====================================================
-     HAERVIU ENGINE — UNIVERSAL NAVIGATION
-  ===================================================== */
+  /* =========================================
+     HAERVIU ENGINE — UNIVERSAL MENU SYSTEM
+  ========================================= */
 
-  const menu = document.querySelector(".menu");
+  const menuButton =
+    document.querySelector(".menu-toggle") ||
+    document.querySelector(".hamburger") ||
+    document.querySelector(".nav-toggle");
 
-  if (menu) {
+  const navLinks =
+    document.querySelector(".nav-links") ||
+    document.querySelector(".menu-links") ||
+    document.querySelector(".mobile-menu");
 
-    // Transform existing menu element into accessible button
-    menu.setAttribute("role", "button");
-    menu.setAttribute("tabindex", "0");
-    menu.setAttribute("aria-label", "Open navigation");
+  if (menuButton && navLinks) {
 
-    // Create overlay
-    const overlay = document.createElement("div");
-    overlay.className = "engine-menu-overlay";
+    menuButton.setAttribute("aria-expanded", "false");
 
-    overlay.innerHTML = `
-      <nav class="engine-menu-panel">
+    menuButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
 
-        <a href="index.html" class="engine-menu-link">Home</a>
+      const isOpen = navLinks.classList.toggle("open");
 
-        <a href="studio.html" class="engine-menu-link">Studio</a>
-
-        <a href="methods.html" class="engine-menu-link">Methods</a>
-
-        <a href="setup.html" class="engine-menu-link">Setup</a>
-
-        <a href="support.html" class="engine-menu-link">Support</a>
-
-        <a href="privacy.html" class="engine-menu-link">Privacy Policy</a>
-
-      </nav>
-    `;
-
-    document.body.appendChild(overlay);
-
-    // Open / Close menu
-    const toggleMenu = () => {
-
-      const isOpen = overlay.classList.contains("active");
-
-      overlay.classList.toggle("active");
-
-      menu.innerHTML = isOpen ? "☰" : "✕";
-
-      menu.setAttribute(
-        "aria-label",
-        isOpen ? "Open navigation" : "Close navigation"
+      menuButton.classList.toggle("active", isOpen);
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
       );
 
-      document.body.classList.toggle("menu-open");
-
-    };
-
-    menu.addEventListener("click", toggleMenu);
-
-    menu.addEventListener("keydown", (event) => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        toggleMenu();
-
+      if (isOpen) {
+        menuButton.innerHTML = "✕";
+      } else {
+        menuButton.innerHTML = "☰";
       }
-
     });
 
-    // Close when clicking outside panel
-    overlay.addEventListener("click", (event) => {
 
-      if (event.target === overlay) {
+    /* Close menu when clicking a link */
 
-        overlay.classList.remove("active");
+    navLinks.querySelectorAll("a").forEach((link) => {
 
-        menu.innerHTML = "☰";
+      link.addEventListener("click", () => {
 
-        menu.setAttribute(
-          "aria-label",
-          "Open navigation"
+        navLinks.classList.remove("open");
+
+        menuButton.classList.remove("active");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
         );
 
-        document.body.classList.remove("menu-open");
-
-      }
-
-    });
-
-    // Close when clicking a link
-    overlay
-      .querySelectorAll(".engine-menu-link")
-      .forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-          overlay.classList.remove("active");
-
-          menu.innerHTML = "☰";
-
-          document.body.classList.remove("menu-open");
-
-        });
+        menuButton.innerHTML = "☰";
 
       });
 
-    // Close with Escape key
+    });
+
+
+    /* Close menu when clicking outside */
+
+    document.addEventListener("click", (event) => {
+
+      if (
+        !navLinks.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+
+        navLinks.classList.remove("open");
+
+        menuButton.classList.remove("active");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.innerHTML = "☰";
+
+      }
+
+    });
+
+
+    /* Close menu with Escape */
+
     document.addEventListener("keydown", (event) => {
 
       if (event.key === "Escape") {
 
-        overlay.classList.remove("active");
+        navLinks.classList.remove("open");
 
-        menu.innerHTML = "☰";
+        menuButton.classList.remove("active");
 
-        menu.setAttribute(
-          "aria-label",
-          "Open navigation"
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
         );
 
-        document.body.classList.remove("menu-open");
+        menuButton.innerHTML = "☰";
 
       }
 
@@ -132,28 +109,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =====================================================
-     SMOOTH SCROLLING
-  ===================================================== */
+  /* =========================================
+     SMOOTH SCROLL
+  ========================================= */
 
   document
-    .querySelectorAll('a[href^="#"]')
+    .querySelectorAll('a[href^="#"]:not([href="#"])')
     .forEach((link) => {
 
       link.addEventListener("click", (event) => {
 
         const targetId = link.getAttribute("href");
 
-        if (targetId === "#") {
-
-          event.preventDefault();
-
-          return;
-
-        }
-
-        const target =
-          document.querySelector(targetId);
+        const target = document.querySelector(targetId);
 
         if (target) {
 
@@ -171,48 +139,54 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-  /* =====================================================
-     REVEAL ANIMATION
-  ===================================================== */
+  /* =========================================
+     PREVENT EMPTY LINKS
+  ========================================= */
 
-  const revealElements =
-    document.querySelectorAll(
-      ".card, .section-title, .hero-content, .instrument, .setup"
+  document
+    .querySelectorAll('a[href="#"]')
+    .forEach((link) => {
+
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+
+    });
+
+
+  /* =========================================
+     REVEAL ANIMATIONS
+  ========================================= */
+
+  const revealElements = document.querySelectorAll(
+    ".card, .section-title, .hero-content, .setup-card, .method-card"
+  );
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
     );
-
-  if (
-    "IntersectionObserver" in window &&
-    revealElements.length > 0
-  ) {
-
-    const observer =
-      new IntersectionObserver(
-
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-
-        {
-          threshold: 0.08
-        }
-
-      );
 
     revealElements.forEach((element) => {
 
@@ -222,26 +196,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+  } else {
+
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+
   }
 
 
-  /* =====================================================
+  /* =========================================
      CURRENT YEAR
-  ===================================================== */
+  ========================================= */
 
-  const year =
-    document.querySelector("#year");
+  const year = document.querySelector("#year");
 
   if (year) {
-
-    year.textContent =
-      new Date().getFullYear();
-
+    year.textContent = new Date().getFullYear();
   }
 
 
-  console.log(
-    "HAERVIU ENGINE — Universal navigation initialized."
-  );
+  console.log("HAERVIU ENGINE initialized.");
 
 });
