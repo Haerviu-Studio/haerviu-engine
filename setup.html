@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,17 +8,14 @@
 
 <style>
 
-/* =========================================================
-   HAERVIU ENGINE — STUDIO SETUP
-========================================================= */
-
 :root{
-    --bg:#07080d;
-    --panel:#12141c;
-    --line:rgba(255,255,255,.12);
-    --text:#f4f4f7;
-    --muted:#8b91a0;
-    --green:#72e7a5;
+    --bg:#090a10;
+    --panel:#12141d;
+    --panel-soft:#171923;
+    --line:#2a2e3b;
+    --text:#f1f2f5;
+    --muted:#9ba1af;
+    --green:#75e6a5;
 }
 
 *{
@@ -33,54 +29,32 @@ html{
 }
 
 body{
-    min-height:100vh;
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     background:
         radial-gradient(
-            circle at 82% 18%,
-            rgba(70,85,160,.14),
-            transparent 30%
+            circle at 70% 10%,
+            rgba(75,88,170,.10),
+            transparent 32%
         ),
-        linear-gradient(
-            180deg,
-            #07080d,
-            #090b12 60%,
-            #07080d
-        );
-
+        var(--bg);
     color:var(--text);
-
+    min-height:100vh;
     overflow-x:hidden;
 }
 
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
 body::before{
     content:"";
-
     position:fixed;
-
-    inset:-20%;
-
-    border:1px solid rgba(255,255,255,.045);
-
-    border-radius:50%;
-
-    transform:rotate(-18deg);
-
+    inset:0;
     pointer-events:none;
-
-    z-index:0;
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 75%,
+            rgba(100,120,200,.04) 75.1%,
+            transparent 76%
+        );
 }
 
 a{
@@ -94,156 +68,81 @@ a{
 ========================================================= */
 
 header{
-    height:104px;
-
+    height:88px;
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
-    padding:0 6vw;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    background:rgba(7,8,13,.92);
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
+    padding:0 5vw;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(10,11,16,.94);
+    position:relative;
+    z-index:1001;
 }
-
 
 .brand{
     display:flex;
-
     align-items:center;
-
-    gap:20px;
-
-    position:relative;
-
-    z-index:102;
+    gap:18px;
 }
-
 
 .logo{
-    width:58px;
-    height:58px;
-
-    border:1px solid var(--line);
-
-    border-radius:17px;
-
+    width:52px;
+    height:52px;
+    border:1px solid #303541;
+    border-radius:16px;
     display:grid;
-
     place-items:center;
-
     font-family:Georgia,serif;
-
-    font-size:28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.015)
-        );
+    font-size:25px;
+    color:#e7e8ec;
 }
 
-
 .brand-name{
-    font-size:17px;
-
+    font-size:15px;
     font-weight:800;
-
-    letter-spacing:.22em;
+    letter-spacing:.28em;
+    color:#e7e8ec;
 }
 
 
 /* =========================================================
-   HAMBURGER BUTTON
+   HAMBURGER
 ========================================================= */
 
 .menu-toggle{
-    width:58px;
-    height:58px;
-
-    border:1px solid var(--line);
-
-    border-radius:17px;
-
-    background:
-        rgba(255,255,255,.015);
-
-    color:#dfe2e9;
-
+    width:52px;
+    height:52px;
+    border:1px solid #303541;
+    border-radius:16px;
+    background:#11131a;
+    color:#d9dce4;
+    font-size:22px;
     cursor:pointer;
-
     display:grid;
-
     place-items:center;
-
-    font-size:24px;
-
-    line-height:1;
-
-    position:relative;
-
-    z-index:102;
-
     transition:.25s ease;
+    position:relative;
+    z-index:1003;
 }
 
 .menu-toggle:hover{
-    border-color:
-        rgba(255,255,255,.28);
-
-    background:
-        rgba(255,255,255,.05);
+    border-color:#59606f;
+    background:#171a23;
 }
 
 
 /* =========================================================
-   NAVIGATION OVERLAY
+   FULLSCREEN MENU
 ========================================================= */
 
-.navigation{
+.menu-overlay{
     position:fixed;
-
-    top:104px;
-    right:0;
-
-    width:100%;
-
-    height:calc(100vh - 104px);
-
-    background:
-        rgba(8,10,16,.98);
-
-    backdrop-filter:blur(20px);
-
-    -webkit-backdrop-filter:blur(20px);
-
-    z-index:90;
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    padding:70px 10vw;
+    inset:0;
+    background:#0d1015;
+    z-index:1000;
 
     opacity:0;
-
     visibility:hidden;
-
     pointer-events:none;
 
     transition:
@@ -251,50 +150,53 @@ header{
         visibility .3s ease;
 }
 
-
-.navigation.open{
+.menu-overlay.active{
     opacity:1;
-
     visibility:visible;
-
     pointer-events:auto;
 }
 
+.menu-content{
+    width:min(100% - 80px, 445px);
 
-.nav-links{
-    width:min(520px,100%);
+    margin-left:auto;
 
-    display:flex;
+    padding-top:220px;
+    padding-right:7vw;
 
-    flex-direction:column;
+    transform:translateX(40px);
+    opacity:0;
 
-    align-items:flex-start;
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
 }
 
+.menu-overlay.active .menu-content{
+    transform:translateX(0);
+    opacity:1;
+}
 
-.nav-links a{
-    width:100%;
+.menu-content a{
+    display:block;
 
-    padding:22px 0;
+    padding:19px 0;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.10);
+    border-bottom:1px solid #252a33;
 
-    font-size:
-        clamp(28px,4vw,52px);
-
+    font-size:42px;
     font-weight:800;
 
-    letter-spacing:-.04em;
+    letter-spacing:-.045em;
+
+    color:#e8e9ed;
 
     transition:.2s ease;
 }
 
-
-.nav-links a:hover{
-    padding-left:14px;
-
-    color:#8b9cff;
+.menu-content a:hover{
+    color:var(--green);
+    padding-left:10px;
 }
 
 
@@ -303,188 +205,96 @@ header{
 ========================================================= */
 
 main{
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:
-        65px
-        6vw
-        120px;
-
+    width:min(100% - 48px, 820px);
+    margin:0 auto;
+    padding:55px 0 100px;
     position:relative;
-
     z-index:1;
 }
 
-
-/* =========================================================
-   TOP
-========================================================= */
-
-.kicker{
-    color:#8e92a2;
-
-    letter-spacing:.35em;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    margin-bottom:25px;
-}
-
-
-h1{
-    font-size:
-        clamp(
-            52px,
-            8vw,
-            100px
-        );
-
-    line-height:.9;
-
-    letter-spacing:-.065em;
-
-    margin-bottom:30px;
-}
-
-
-.intro{
-    color:#aeb2bf;
-
-    font-size:19px;
-
-    line-height:1.65;
-
-    max-width:680px;
-
-    margin-bottom:45px;
-}
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
 .back{
     display:inline-flex;
-
     align-items:center;
-
-    min-height:46px;
-
-    border:1px solid var(--line);
-
-    border-radius:999px;
-
-    padding:
-        0
-        20px;
-
-    color:#d5d7df;
+    gap:8px;
 
     margin-bottom:42px;
 
-    font-size:13px;
+    padding:11px 18px;
 
-    font-weight:700;
+    border:1px solid #292e38;
+    border-radius:999px;
 
-    transition:.25s ease;
+    color:#c9ccd4;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.2s ease;
 }
 
-
 .back:hover{
-    background:#fff;
-
-    color:#08090d;
-
-    transform:
-        translateY(-2px);
+    background:#181b24;
+    border-color:#434a58;
 }
 
 
 /* =========================================================
-   STUDIO SETUP
+   SETUP PANEL
 ========================================================= */
 
 .setup{
-
-    border:1px solid var(--line);
-
-    border-radius:30px;
+    border:1px solid #303542;
+    border-radius:27px;
 
     overflow:hidden;
 
     background:
-        radial-gradient(
-            circle at 80% 0%,
-            rgba(80,95,170,.10),
-            transparent 40%
-        ),
         linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(50,60,120,.07)
         );
 }
 
-
 .setup-head{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    padding:30px 34px;
+    padding:26px 30px;
 
-    border-bottom:
-        1px solid var(--line);
+    border-bottom:1px solid #2d323d;
 }
 
-
 .setup-title{
-
-    font-size:24px;
-
+    font-size:23px;
     font-weight:800;
-
     letter-spacing:.04em;
 }
 
-
 .online{
-
     display:flex;
-
     align-items:center;
-
     gap:10px;
 
-    color:var(--green);
+    color:#91dfb5;
 
     font-size:11px;
-
     font-weight:800;
-
-    letter-spacing:.22em;
+    letter-spacing:.28em;
 }
 
-
 .online-dot{
-
     width:8px;
     height:8px;
 
-    background:var(--green);
-
     border-radius:50%;
 
+    background:var(--green);
+
     box-shadow:
-        0 0 16px var(--green);
+        0 0 8px var(--green),
+        0 0 18px rgba(117,230,165,.45);
 }
 
 
@@ -493,158 +303,153 @@ h1{
 ========================================================= */
 
 .instrument{
+    margin:22px 25px;
 
-    margin:26px 30px;
+    min-height:145px;
 
-    min-height:164px;
-
-    border:1px solid var(--line);
-
-    border-radius:24px;
+    padding:26px 22px;
 
     display:flex;
-
     align-items:center;
+    gap:21px;
 
-    gap:25px;
-
-    padding:25px;
+    border:1px solid #303541;
+    border-radius:22px;
 
     background:
-        rgba(255,255,255,.025);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.01)
+        );
 
-    transition:.3s ease;
+    transition:.25s ease;
 }
-
-
-.instrument:last-child{
-    margin-bottom:30px;
-}
-
 
 .instrument:hover{
-
-    border-color:
-        rgba(255,255,255,.25);
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,.04);
+    transform:translateY(-2px);
+    border-color:#454d5d;
+    background:rgba(255,255,255,.035);
 }
 
 
 /* =========================================================
-   INSTRUMENT ICON
+   REAL IMAGES
 ========================================================= */
 
 .instrument-icon{
-
-    width:92px;
-    height:92px;
+    width:82px;
+    height:82px;
 
     flex-shrink:0;
 
-    border:1px solid var(--line);
+    border:1px solid #363b46;
+    border-radius:19px;
 
-    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.08),
-            rgba(255,255,255,.02)
+            #242730,
+            #1a1c24
         );
-
-    display:grid;
-
-    place-items:center;
-
-    font-size:38px;
-
-    overflow:hidden;
 }
 
-
 .instrument-icon img{
-
     width:100%;
     height:100%;
 
     object-fit:contain;
 
-    padding:8px;
+    padding:10px;
 
     display:block;
 }
 
-
-/* =========================================================
-   INSTRUMENT INFO
-========================================================= */
-
 .instrument-info{
-
     flex:1;
+    min-width:0;
 }
-
 
 .instrument-name{
-
-    font-size:26px;
-
+    font-size:24px;
     font-weight:800;
-
     letter-spacing:-.025em;
 
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
-
 .instrument-type{
-
-    color:#8c92a1;
+    color:var(--muted);
 
     font-size:14px;
 
-    margin-bottom:18px;
+    margin-bottom:14px;
+}
+
+.connected{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#8ee2b4;
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.25em;
+}
+
+.connected-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:0 0 12px rgba(117,230,165,.7);
 }
 
 
 /* =========================================================
-   STATUS
+   VOCAL CHAIN DOUBLE IMAGE
 ========================================================= */
 
-.connected{
+.vocal-icons{
+    width:82px;
+    height:82px;
+
+    flex-shrink:0;
+
+    border:1px solid #363b46;
+    border-radius:19px;
 
     display:flex;
-
     align-items:center;
+    justify-content:center;
+    gap:2px;
 
-    gap:9px;
+    padding:6px;
 
-    color:var(--green);
-
-    font-size:10px;
-
-    font-weight:800;
-
-    letter-spacing:.22em;
+    background:
+        linear-gradient(
+            145deg,
+            #242730,
+            #1a1c24
+        );
 }
 
+.vocal-icons img{
+    width:50%;
+    height:100%;
 
-.connected-dot{
-
-    width:7px;
-    height:7px;
-
-    background:var(--green);
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 13px var(--green);
+    object-fit:contain;
 }
 
 
@@ -653,23 +458,16 @@ h1{
 ========================================================= */
 
 footer{
+    border-top:1px solid rgba(255,255,255,.07);
 
-    border-top:
-        1px solid rgba(255,255,255,.08);
+    padding:30px 5vw;
 
-    padding:
-        32px
-        6vw;
+    color:#656b78;
 
-    color:#626674;
+    font-size:11px;
+    font-weight:600;
 
-    font-size:12px;
-
-    letter-spacing:.12em;
-
-    position:relative;
-
-    z-index:1;
+    letter-spacing:.16em;
 }
 
 
@@ -680,150 +478,85 @@ footer{
 @media(max-width:700px){
 
     header{
-        height:88px;
-
-        padding:0 26px;
+        height:78px;
+        padding:0 22px;
     }
 
-
-    .logo,
-    .menu-toggle{
-        width:50px;
-        height:50px;
+    .logo{
+        width:46px;
+        height:46px;
+        border-radius:14px;
+        font-size:22px;
     }
 
+    .brand{
+        gap:13px;
+    }
 
     .brand-name{
-        font-size:13px;
-
-        letter-spacing:.16em;
+        font-size:12px;
+        letter-spacing:.20em;
     }
 
-
-    .navigation{
-        top:88px;
-
-        height:
-            calc(100vh - 88px);
-
-        padding:
-            45px
-            26px;
+    .menu-toggle{
+        width:46px;
+        height:46px;
+        border-radius:14px;
     }
-
-
-    .nav-links a{
-        font-size:34px;
-
-        padding:18px 0;
-    }
-
 
     main{
-        padding:
-            48px
-            26px
-            90px;
+        width:min(100% - 32px, 820px);
+        padding-top:35px;
     }
 
-
-    h1{
-        font-size:56px;
+    .menu-content{
+        width:calc(100% - 50px);
+        padding-top:150px;
+        padding-right:0;
+        margin:auto;
     }
 
-
-    .intro{
-        font-size:17px;
+    .menu-content a{
+        font-size:34px;
     }
-
 
     .setup-head{
-        padding:25px;
+        padding:22px;
     }
-
 
     .setup-title{
         font-size:20px;
     }
 
-
     .instrument{
-
-        margin:20px;
-
-        min-height:145px;
-
-        padding:20px;
-
-        gap:18px;
-    }
-
-
-    .instrument-icon{
-
-        width:72px;
-        height:72px;
-
-        border-radius:16px;
-
-        font-size:30px;
-    }
-
-
-    .instrument-icon img{
-        padding:5px;
-    }
-
-
-    .instrument-name{
-        font-size:20px;
-    }
-
-
-    .instrument-type{
-        font-size:13px;
-
-        margin-bottom:15px;
-    }
-
-
-    .instrument:last-child{
-        margin-bottom:20px;
-    }
-
-}
-
-
-@media(max-width:480px){
-
-    .brand{
-        gap:12px;
-    }
-
-
-    .brand-name{
-        font-size:10px;
-
-        letter-spacing:.13em;
-    }
-
-
-    .instrument{
-        padding:16px;
-
+        margin:16px;
+        padding:20px 16px;
+        min-height:125px;
         gap:15px;
     }
 
+    .instrument-icon,
+    .vocal-icons{
+        width:68px;
+        height:68px;
+        border-radius:16px;
+    }
 
-    .instrument-icon{
-        width:64px;
-        height:64px;
+    .instrument-icon img{
+        padding:7px;
+    }
+
+    .instrument-name{
+        font-size:19px;
+    }
+
+    .instrument-type{
+        font-size:12px;
     }
 
 }
 
 </style>
-
 </head>
 
 
@@ -831,386 +564,472 @@ footer{
 
 
 <!-- =====================================================
-     HEADER
+HEADER
 ===================================================== -->
 
 <header>
 
+    <a class="brand" href="index.html">
 
-<a class="brand" href="index.html">
+        <div class="logo">H</div>
 
-<div class="logo">
-H
-</div>
+        <div class="brand-name">
+            HAERVIU ENGINE
+        </div>
 
-<div class="brand-name">
-HAERVIU ENGINE
-</div>
-
-</a>
+    </a>
 
 
-<button
-class="menu-toggle"
-id="menuToggle"
-aria-label="Open navigation"
-aria-expanded="false"
->
-☰
-</button>
-
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
 </header>
 
 
 <!-- =====================================================
-     NAVIGATION
+FULLSCREEN NAVIGATION
 ===================================================== -->
 
 <nav
-class="navigation"
-id="navigation"
+    class="menu-overlay"
+    id="menuOverlay"
+    aria-label="Main navigation"
 >
 
-<div class="nav-links">
+    <div class="menu-content">
 
-<a href="index.html">
-Home
-</a>
+        <a href="index.html">Home</a>
 
-<a href="studio.html">
-Studio
-</a>
+        <a href="studio.html">Studio</a>
 
-<a href="methods.html">
-Methods
-</a>
+        <a href="methods.html">Methods</a>
 
-<a href="setup.html">
-Setup
-</a>
+        <a href="setup.html">Setup</a>
 
-<a href="support.html">
-Support
-</a>
+        <a href="support.html">Support</a>
 
-<a href="privacy.html">
-Privacy Policy
-</a>
+        <a href="privacy.html">Privacy Policy</a>
 
-</div>
+    </div>
 
 </nav>
 
 
 <!-- =====================================================
-     MAIN
+MAIN
 ===================================================== -->
 
 <main>
 
 
-<div class="kicker">
-HAERVIU ENGINE / STUDIO SETUP
-</div>
+    <a class="back" href="studio.html">
+        ← Back to Studio
+    </a>
 
 
-<h1>
-Your Studio.
-</h1>
+    <section class="setup">
 
 
-<p class="intro">
-One central workspace to organize your instruments,
-connections, routing and creative workflow.
-</p>
+        <!-- HEADER -->
 
+        <div class="setup-head">
 
-<a
-class="back"
-href="studio.html"
->
-← Back to Studio
-</a>
+            <div class="setup-title">
+                STUDIO SETUP
+            </div>
 
+            <div class="online">
 
-<!-- =====================================================
-     STUDIO SETUP
-===================================================== -->
+                <span class="online-dot"></span>
 
-<section class="setup">
+                ONLINE
 
+            </div>
 
-<div class="setup-head">
+        </div>
 
 
-<div class="setup-title">
-STUDIO SETUP
-</div>
+        <!-- MC-707 -->
 
+        <div class="instrument">
 
-<div class="online">
+            <div class="instrument-icon">
 
-<span class="online-dot"></span>
+                <img
+                    src="images/mc-707.webp"
+                    alt="Roland MC-707"
+                >
 
-ONLINE
+            </div>
 
-</div>
+            <div class="instrument-info">
 
+                <div class="instrument-name">
+                    Roland MC-707
+                </div>
 
-</div>
+                <div class="instrument-type">
+                    Groovebox / MIDI / Audio
+                </div>
 
+                <div class="connected">
 
-<!-- MC-707 -->
+                    <span class="connected-dot"></span>
 
-<div class="instrument">
+                    CONNECTED
 
+                </div>
 
-<div class="instrument-icon">
-🎛️
-</div>
+            </div>
 
+        </div>
 
-<div class="instrument-info">
 
+        <!-- TR-8S -->
 
-<div class="instrument-name">
-Roland MC-707
-</div>
+        <div class="instrument">
 
+            <div class="instrument-icon">
 
-<div class="instrument-type">
-Groovebox / MIDI / Audio
-</div>
+                <img
+                    src="images/tr-8s.webp"
+                    alt="Roland TR-8S"
+                >
 
+            </div>
 
-<div class="connected">
+            <div class="instrument-info">
 
-<span class="connected-dot"></span>
+                <div class="instrument-name">
+                    Roland TR-8S
+                </div>
 
-CONNECTED
+                <div class="instrument-type">
+                    Drum Machine
+                </div>
 
-</div>
+                <div class="connected">
 
+                    <span class="connected-dot"></span>
 
-</div>
+                    CONNECTED
 
-</div>
+                </div>
 
+            </div>
 
-<!-- TR-8S -->
+        </div>
 
-<div class="instrument">
 
+        <!-- GAIA SH-01 -->
 
-<div class="instrument-icon">
-🥁
-</div>
+        <div class="instrument">
 
+            <div class="instrument-icon">
 
-<div class="instrument-info">
+                <img
+                    src="images/roland-gaia-sh01.webp"
+                    alt="Roland GAIA SH-01"
+                >
 
+            </div>
 
-<div class="instrument-name">
-Roland TR-8S
-</div>
+            <div class="instrument-info">
 
+                <div class="instrument-name">
+                    Roland GAIA SH-01
+                </div>
 
-<div class="instrument-type">
-Drum Machine
-</div>
+                <div class="instrument-type">
+                    Synthesizer / Sound Design / MIDI
+                </div>
 
+                <div class="connected">
 
-<div class="connected">
+                    <span class="connected-dot"></span>
 
-<span class="connected-dot"></span>
+                    READY
 
-CONNECTED
+                </div>
 
-</div>
+            </div>
 
+        </div>
 
-</div>
 
-</div>
+        <!-- AKAI FORCE -->
 
+        <div class="instrument">
 
-<!-- GAIA -->
+            <div class="instrument-icon">
 
-<div class="instrument">
+                <img
+                    src="images/akai-force.webp"
+                    alt="Akai Force"
+                >
 
+            </div>
 
-<div class="instrument-icon">
+            <div class="instrument-info">
 
-<img
-src="images/roland-gaia-sh01.webp"
-alt="Roland GAIA SH-01"
->
+                <div class="instrument-name">
+                    Akai Force
+                </div>
 
-</div>
+                <div class="instrument-type">
+                    Production / Performance
+                </div>
 
+                <div class="connected">
 
-<div class="instrument-info">
+                    <span class="connected-dot"></span>
 
+                    READY
 
-<div class="instrument-name">
-Roland GAIA SH-01
-</div>
+                </div>
 
+            </div>
 
-<div class="instrument-type">
-Synthesizer / Sound Design / MIDI
-</div>
+        </div>
 
 
-<div class="connected">
+        <!-- ARTURIA KEYLAB -->
 
-<span class="connected-dot"></span>
+        <div class="instrument">
 
-READY
+            <div class="instrument-icon">
 
-</div>
+                <img
+                    src="images/keylab-mk2-88.webp"
+                    alt="Arturia KeyLab MK2 88"
+                >
 
+            </div>
 
-</div>
+            <div class="instrument-info">
 
-</div>
+                <div class="instrument-name">
+                    Arturia KeyLab MK2 88
+                </div>
 
+                <div class="instrument-type">
+                    MIDI Controller / Keyboard
+                </div>
 
-<!-- AKAI FORCE -->
+                <div class="connected">
 
-<div class="instrument">
+                    <span class="connected-dot"></span>
 
+                    READY
 
-<div class="instrument-icon">
-🎚️
-</div>
+                </div>
 
+            </div>
 
-<div class="instrument-info">
+        </div>
 
 
-<div class="instrument-name">
-Akai Force
-</div>
+        <!-- MX-1 -->
 
+        <div class="instrument">
 
-<div class="instrument-type">
-Production / Performance
-</div>
+            <div class="instrument-icon">
 
+                <img
+                    src="images/mx-1.webp"
+                    alt="Roland MX-1"
+                >
 
-<div class="connected">
+            </div>
 
-<span class="connected-dot"></span>
+            <div class="instrument-info">
 
-READY
+                <div class="instrument-name">
+                    Roland MX-1
+                </div>
 
-</div>
+                <div class="instrument-type">
+                    Performance Mixer / Audio Routing
+                </div>
 
+                <div class="connected">
 
-</div>
+                    <span class="connected-dot"></span>
 
-</div>
+                    READY
 
+                </div>
 
-<!-- VOCAL CHAIN -->
+            </div>
 
-<div class="instrument">
+        </div>
 
 
-<div class="instrument-icon">
-🎙️
-</div>
+        <!-- VOCAL CHAIN -->
 
+        <div class="instrument">
 
-<div class="instrument-info">
+            <div class="vocal-icons">
 
+                <img
+                    src="images/rode-nt1.webp"
+                    alt="RØDE NT1"
+                >
 
-<div class="instrument-name">
-Vocal Chain
-</div>
+                <img
+                    src="images/vt-4.webp"
+                    alt="Roland VT-4"
+                >
 
+            </div>
 
-<div class="instrument-type">
-RØDE NT1 / Roland VT-4
-</div>
+            <div class="instrument-info">
 
+                <div class="instrument-name">
+                    Vocal Chain
+                </div>
 
-<div class="connected">
+                <div class="instrument-type">
+                    RØDE NT1 / Roland VT-4
+                </div>
 
-<span class="connected-dot"></span>
+                <div class="connected">
 
-READY
+                    <span class="connected-dot"></span>
 
-</div>
+                    READY
 
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
 
-</section>
+        <!-- YAMAHA HS8 -->
 
+        <div class="instrument">
+
+            <div class="instrument-icon">
+
+                <img
+                    src="images/yamaha-hs8.webp"
+                    alt="Yamaha HS8"
+                >
+
+            </div>
+
+            <div class="instrument-info">
+
+                <div class="instrument-name">
+                    Yamaha HS8
+                </div>
+
+                <div class="instrument-type">
+                    Studio Monitor Speakers
+                </div>
+
+                <div class="connected">
+
+                    <span class="connected-dot"></span>
+
+                    READY
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
 
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
 
-HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
+    HAERVIU ENGINE — CREATIVE MUSIC SYSTEM
 
 </footer>
 
 
 <!-- =====================================================
-     JAVASCRIPT — HAMBURGER
+MENU SCRIPT
 ===================================================== -->
 
 <script>
 
-const menuToggle = document.getElementById("menuToggle");
-const navigation = document.getElementById("navigation");
-const navLinks = document.querySelectorAll(".nav-links a");
+document.addEventListener("DOMContentLoaded", function(){
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function openMenu(){
+
+        menuOverlay.classList.add("active");
+
+        menuToggle.innerHTML = "×";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close menu"
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        document.body.style.overflow = "hidden";
+    }
 
 
-menuToggle.addEventListener("click", function(){
+    function closeMenu(){
 
-    navigation.classList.toggle("open");
+        menuOverlay.classList.remove("active");
 
-    const isOpen =
-        navigation.classList.contains("open");
+        menuToggle.innerHTML = "☰";
 
-    menuToggle.textContent =
-        isOpen ? "×" : "☰";
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen
-    );
-
-});
-
-
-navLinks.forEach(function(link){
-
-    link.addEventListener("click", function(){
-
-        navigation.classList.remove("open");
-
-        menuToggle.textContent = "☰";
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
 
         menuToggle.setAttribute(
             "aria-expanded",
             "false"
         );
 
+        document.body.style.overflow = "";
+    }
+
+
+    menuToggle.addEventListener("click", function(){
+
+        if(menuOverlay.classList.contains("active")){
+            closeMenu();
+        }else{
+            openMenu();
+        }
+
     });
+
+
+    document.addEventListener("keydown", function(event){
+
+        if(event.key === "Escape"){
+            closeMenu();
+        }
+
+    });
+
 
 });
 
